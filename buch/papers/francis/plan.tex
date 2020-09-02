@@ -1,17 +1,17 @@
 \section{Strategie\label{francis:section:strategie}}
 \rhead{Strategie}
-Dieser Abschnitt dient dazu, dem Leser einen Überblick über den folgenden Algorithmus und dessen Prinzip zu geben.
+Dieser Abschnitt dient dazu, dem Leser einen Überblick über den folgenden Algorithmus zu geben.
 
 Das Ziel des Verfahrens ist es, die Eigenwerte einer Matrix zu bestimmen.
 Bei einer Dreiecksmatrix kann man diese auf der Diagonale ablesen.
 Ein direkte Transformation zu einer Dreiecksmatrix ist für eine allgemeine Matrix nicht möglich.
-Die Transformation zu einer oberen Hessenberg Matrix, welche sich von der Dreiecksmatrix lediglich in der Subdiagonalen, ist aber machbar.
+Die Transformation zu einer oberen Hessenberg-Matrix, welche sich von der Dreiecksmatrix lediglich in der Subdiagonalen unterscheidet, ist aber machbar.
 
 Folglich wird für die Bestimmung der Eigenwerte wie folgt vorgegangen:
 \begin{enumerate}
-	\item Transformation in obere Hessenberg Form
-	\item Subdiagonale verkleinern
-	\item Zurück zu Punkt 1, da bei Punkt 2 die Hessenberg Form zerstört wird
+	\item Transformation in obere Hessenberg-Form.
+	\item Subdiagonale verkleinern.
+	\item Zurück zu Punkt 1, da bei Punkt 2 die Hessenberg-Form zerstört wird.
 \end{enumerate}
 Nach genügend Iterationen sind die Subdiagonalelemente so klein, dass es sich bei der Matrix praktisch um eine Dreieckmatrix handelt und sich die Eigenwerte auf der Diagonale befinden.
 

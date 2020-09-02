@@ -6,14 +6,19 @@
 \section{Numerische Instabilität
 \label{buch:section:instabilitaet}}
 \rhead{Numerische Instabilitöt}
+\index{numerische Instabilität}%
+\index{Instabilität}%
 Die Untersuchungen zum Verhalten von Iterationsfolgen sind davon
 ausgegangen, dass alle Rechnung ohne Fehler ausgeführt werden können.
+\index{Iterationsfolge}%
 Dies ist aber nicht realistisch, in den meisten numerischen Berechnungen
 müssen Zwischenresultate mit der beschränkten verfügbaren Genauigkeit
 der Gleitkommaformate gespeichert werden, die die Maschine zur Verfügung
 stellt.
+\index{Konvergenz}%
 Es ist daher zu untersuchen, wie sich die Konvergenz eines Lösungsverfahrens
 ändert, wenn es durch Rundungsfehler im Laufe der Rechnung gestört wird.
+\index{Rundungsfehler}%
 
 %
 % Eine instabile Quadratwurzel
@@ -21,15 +26,18 @@ Es ist daher zu untersuchen, wie sich die Konvergenz eines Lösungsverfahrens
 \subsection{Eine instabile Quadratwurzel
 \label{buch:subsection:quadratwurzel}}
 Die Quadratwurzel von $a$ ist ein Fixpunkt der Funktion
-$f(x)=x^3/a$ denn $f(\sqrt{a})=a^{\frac32}/a=\sqrt{a}$.
+$f(x)=x^3/a$ denn $f(\!\sqrt{a})=a^{\frac32}/a=\!\sqrt{a}$.
+\index{Quadratwurzel}%
+\index{Wurzel}%
 Das Konvergenzkriterium Satz~\ref{buch:satz:konvergenzkriterium} besagt,
 dass Konvergenz garantiert ist, wenn der Betrag der Ableitung von $f'(x)$
 am Fixpunkt kleiner als $1$ ist.
+\index{Ableitung}%
 Aber
 \[
 f'(x) = \frac{3x^2}{a}
 \quad\Rightarrow\quad
-f'(\!\sqrt{a}) = \frac{3\sqrt{a}^2}{a}=3,
+f'(\!\sqrt{a}) = \frac{3\!\sqrt{a}^2}{a}=3,
 \]
 die Iterationsfolge wird also niemals konvergieren.
 Im Gegenteil, der Fehler wird in jeder Iteration um den Faktor $3$
@@ -37,11 +45,13 @@ anwachsen.
 
 Der \texttt{float}-Gleitkommatyp verwendet eine Mantisse von 23 bit,
 das niederwertigste Bit hat also die Wertigkeit $2^{-23}$.
-Eine Approximation von $\sqrt{a}$ wird daher, sofern sie nicht
+Eine Approximation von $\!\sqrt{a}$ wird daher, sofern sie nicht
 exakt ist, beim Speichern als \texttt{float}-Zahl einen Fehler
 von der Grössenordnung $2^{-24}$ aufnehmen.
+\index{Approximation}%
 Nach $k$ Iterationen wird dieser Fehler auf $3^k2^{-24}=2^{k\log_23-24}$
 angewachsen sein.
+\index{Iteration}%
 Nach $k\ge 24/\log_23=15.142$ Iterationen ist also der Fehler von der
 gleichen Grössenordnung wie das gesuchte Resultat.
 
@@ -83,12 +93,12 @@ gleichen Grössenordnung wie das gesuchte Resultat.
 \hline
 \end{tabular}
 \caption{Iterationsfolge der Funktion $f(x)=x^3/2$ für verschiedene Näherungen
-des Fixpunktes $x^*=\sqrt{2}$.
+des Fixpunktes $x^*=\!\sqrt{2}$.
 Die Startwerte unterscheiden sich nur in den letzten zwei Bits ihrer
 Darstellung als \texttt{float}-Gleitkommazahl, die letzten fünf Bits
 der Mantisse sind in der ersten Kopfzeile dargestellt.
 In der dritten Zeile stehen die Differenzen zur besten Approximation
-von $\sqrt{2}$ durch eine \texttt{float}-Zahl.
+von $\!\sqrt{2}$ durch eine \texttt{float}-Zahl.
 \label{buch:table:sqrtinstabil}}
 \end{table}
 
@@ -97,18 +107,20 @@ hierzu ist \texttt{sqrt.cpp} im Verzechnis
 \texttt{buch/chapters/experimente/sqrt} von \cite{buch:repo}.},
 deren Resultate in Tabelle~\ref{buch:table:sqrtinstabil} zusammengestellt
 sind.
-Zunächst berechnen wir die Quadratwurzel $\sqrt{2}$ als \texttt{float}-Zahl.
+\index{C++}%
+Zunächst berechnen wir die Quadratwurzel $\!\sqrt{2}$ als \texttt{float}-Zahl.
 Dann bilden wir die nächsten Nachbarn, die sich nur in den letzten
 zwei Bits unterscheiden, die letzten fünf Bits der Mantisse dieser
 Zahlen sind in der obersten Kopfzeile der Tabelle gezeigt.
 In der zweiten Kopfzeile sieht man, dass diese Unterschiede so klein
 sind, dass sie nur gerade die Rundung in der sechsten dezimalen
 Nachkommastelle beinflussen können.
-Der Unterschied dieser Startwerte zum Maschinen-Wert für $\sqrt{2}$
+Der Unterschied dieser Startwerte zum Maschinen-Wert für $\!\sqrt{2}$
 ist in der dritten Kopfzeile dargestellt.
 
 Im unteren Teil der Tabelle wird dann ausgehend von jedem dieser Startwerte
 die Iterationsfolge mit der Funktion $f(x)=x^3/2$ gebildet.
+\index{Startwert}%
 Spätestens nach der zweiten Iteration beginnen sich die Werte vom Fixpunkt zu
 entfernen, nach 16 Iterationen sind die Abweichungen von der 
 Grössenordnung $1$ wie in der Überschlagsrechnung weiter oben
@@ -120,7 +132,7 @@ vorhergesagt.
 \subsection{Numerische Instabilität
 \label{buch:subsection:numerischeinstabilitaet}}
 Von {\em numerischer Instabilität} spricht man, wenn ein Berechnungsverfahren
-\index{Instabilität, numerische}
+\index{Instabilität!numerisch}
 \index{numerische Instabilität}
 allein wegen der unvermeidlichen Rundungsfehler keine sinnvollen
 Resultate liefern kann.
@@ -132,12 +144,14 @@ I_n = \int_0^1 \frac{x^n}{x+a}\,dx
 \]
 für festes $a>1$ und für ganze Zahlen $n$ mit $1\le n\le 15$ berechnet
 werden.
-Da im Interval $[0,1]$ gilt $x^{n+1}>x^n$ ist $I_n$ eine monoton
+\index{Integral}%
+Da im Intervall $[0,1]$ gilt $x^{n+1}>x^n$ ist $I_n$ eine monoton
 abnehmende Folge.
 Es ist auch klar, dass $\lim_{n\to\infty}I_n=0$.
 
 Das Integral ist im Prinzip nicht schwierig zu berechnen, wenn man im
-Integranden die Polynom-Division ausführt:
+Integranden die Polynomdivision ausführt:
+\index{Polynomdivision}%
 \begin{align}
 \frac{x^n}{x+a}
 &=
@@ -193,6 +207,7 @@ Jeder Term ist ein elementares Integral.
 $a=10$.
 In jedem Schritt wird der Fehler mit $a$ multipliziert.
 In der dritten Spalte die Resultate der stabilen Rückwärtsiteration.
+\index{Rückwärtsiteration}%
 \label{buch:table:Iiteration}}
 \end{table}
 
@@ -200,6 +215,7 @@ Wenn $n$ gross ist, ist \eqref{buch:numerik:instabil:summe}
 eine ziemlich aufwendig Rechnung.
 Da man das Integral für alle $n$ haben will, bietet sich eine
 Rekursionsformel an.
+\index{Rekursionsformel}%
 Es ist nämlich
 \begin{align*}
 I_n
@@ -228,6 +244,7 @@ $I_0$ ein unvermeidlicher Rundungsfehler der Grösse $\varepsilon$ passiert
 und dass alle folgenden Operationen exakt ausgeführt werden können.
 Da der Logarithmus eine transzendente Funktion ist, werden fast alle Werte
 des Logrithmus bei Speichern als Gleitkommazahl gerundet werden müssen.
+\index{Logarithmus}%
 Wir müssen jetzt also die Rekursionsfolge $I^*_n$ ausgehend von
 $I_0^* = I_0+\varepsilon$
 bilden:
@@ -260,6 +277,7 @@ Indem wir nach $I_{n-1}$ auflösen, erhalten wir die Rekursionsformel
 I_{n-1} = \frac1{a} \biggl(
 \frac{1}{n+1} -I_n\biggr).
 \]
+\index{Rekursionsformel}%
 In dieser Rekursion wird tatsächlich in jedem Schritt durch $a$ dividiert,
 man darf daher davon ausgehen, dass in jeder Iteration 
 $\log_2a$ Binärstellen Genauigkeit gewonnen werden.
@@ -274,8 +292,10 @@ Binärstellen.
 Da die Werte $I_n$ alle kleiner als $1$ sind, macht man also
 niemals einen Fehler grösser als $1$ und nach $k$ Rückwärtsiterationsschritten
 ist der Fehler kleiner als $a^k$.
+\index{Rückwärtsiteration}%
 Man kann also selbst ohne die Kenntnis eines Startwertes ausreichend
 genaue Werte von $I_n$ bestimmen.
+\index{Startwert}%
 Dies ist in der dritten Spalte von Tabelle~\ref{buch:table:Iiteration}
 durchgeführt.
 

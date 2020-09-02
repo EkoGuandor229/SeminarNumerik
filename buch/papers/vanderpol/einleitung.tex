@@ -6,13 +6,20 @@
 \section{Einleitung\label{vanderpol:section:einleitung}}
 \rhead{Einleitung}
 In diesem Kapitel wird die Empfindlichkeit einiger numerischer Methoden der Runge-Kutta-Familie auf die Länge der Integrationsschrittes erläutert.
+\index{Runga-Kutta-Verfahren}%
+\index{chaotisch}%
 Chaotische Systeme reagieren sehr empfindlich auf die Wahl der Anfangsbedingungen. Eine kleine Änderung z.~B. führt zu einer völlig anderen Antwort.
 Die Ausbreitung des numerischen Fehlers kann den gleichen Effekt haben und für verschiedene Werte völlig unterschiedliche Lösungen ergeben.
 In unserem Fall ist das untersuchte chaotische System der Van der Pol Oszillator.
+\index{Oszillator, Van der Pol}%
+\index{Van der Pol-Oszillator}%
 Die betreffende Differentialgleichung wurde im Jahr 1927 von Balthasar Van der Pol während seiner Studien über Vakuumröhren oszillatoren formuliert \cite{vanderpol:bibvdp}.
+\index{Van der Pol, Balthasar}%
+\index{Vakuumröhre}%
 Sie wird wie folgt beschrieben:
 \begin{equation}
 \frac{d^{2}x}{dt^{2}} - \mu (1 - x^{2}) \frac{dx}{dt} + x = 0.
 \label{vanderpol:equations:vdp}
 \end{equation}
-Die numerischen Methoden, die in diesem Kapitel verwendet werden, sind der Runge-Kutta-Algorithmus vierter Ordnung (Abschnitt \ref{subsection:buch:ode:runge-kutta}) und der Euler-Algorithmus, der als Runge-Kutta-Algorithmus erster Ordnung betrachtet werden kann (Satz \ref{buch:ode:einschritt}).
+Die numerischen Methoden, die in diesem Kapitel verwendet werden, sind der Runge-Kutta-Algo\-rith\-mus vierter Ordnung (Abschnitt \ref{subsection:buch:ode:runge-kutta}) und der Euler-Algorithmus, der als Runge-Kutta-Algorithmus erster Ordnung betrachtet werden kann (Satz \ref{buch:satz:euler-verfahren}).
+\index{Euler-Verfahren}%

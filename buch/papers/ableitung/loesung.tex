@@ -6,14 +6,14 @@
 \section{Lösung
 \label{ableitung:section:loesung}}
 \rhead{Lösung}
-Um nun ein neueronales Netzwerk zu optimieren, ohne den Backpropagation Algorithmus muss eine Methode gefunden werden, welche den Gradienten berechnen kann. Die Weitergabe des Gradienten an eine beliebige Implementation des Gradientenabstiegs ist somit durch das Framework gewährleistet.
+Um nun ein neueronales Netzwerk ohne den Backpropagation Algorithmus zu optimieren, muss eine Methode gefunden werden, welche den Gradienten berechnen kann. Die Weitergabe des Gradienten an eine beliebige Implementation des Gradientenabstiegs ist somit durch das Framework gewährleistet.
 \subsection{Finite Differenzen Methode}
-Wir wissen, dass jede Ableitung einer beliebigen Funktion der Tangente an diesem Punkt entspricht. Diese Tangente wird als Sekante zweier Punkte der Funktion berechnet, wobei beide Punkte einen Abstand von $\Delta h \rightarrow 0$ annehmen. Dieses Konzept wird im Differentialquotienten in Gleichung \ref{ableitung:equations:differentialquotient} dargestellt.
+Wir wissen, dass jede Ableitung einer beliebigen Funktion der Tangente an diesem Punkt entspricht. Diese Tangente wird als Sekante zweier Punkte der Funktion berechnet, wobei beide Punkte einen Abstand von $\Delta h \rightarrow 0$ annehmen. Dieses Konzept wird im Differentialquotienten in Gleichung
 \begin{equation}
 f'(x_0) = \lim_{{\Delta h} \rightarrow 0} \frac{f(x_0+\Delta h) - f(x_0)}{\Delta h}
 \label{ableitung:equations:differentialquotient}
 \end{equation}
-
+dargestellt.
 In der Numerik existiert die Möglichkeit von $\Delta h \rightarrow 0$ nicht, da die Datenpunkte diskretisiert sind. Aus diesem Grund kann man die numerische Ableitung (Differenzenquotient), angelehnt an den Differentialquotienten analog zu \ref{ableitung:equations:differenzenquotient} schreiben.
 
 \begin{figure}

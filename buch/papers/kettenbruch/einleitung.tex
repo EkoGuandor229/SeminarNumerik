@@ -11,7 +11,7 @@ worden. Kettenbrüche fanden Verwendung bei der Annäherung von
 Verhältnisgrössen in Form von Brüchen, zur Ermittlung von Schaltjahren
 bei der Kalenderberechnung, zur Annäherung natürlicher Konstanten
 wie $e$ und $\pi$ und zum Beweis der Irrationalität bestimmter
-Zahlen. Mit Hilfe von Kettenbruchsysteme können Approximationsalgorithmen 
+Zahlen. Mit Hilfe von Kettenbruchsystem können Approximationsalgorithmen 
 für Funktionen entwickelt werden. Die vielseiten Aspekten der Kettenbrüche
 werden wir in den folgenden Kapiteln erläutern.
 
@@ -19,26 +19,22 @@ werden wir in den folgenden Kapiteln erläutern.
 \begin{itemize}
 \item
 Ein Kettenbruch ist eine eindeutige Darstellungsform der reellen Zahlen. 
-Ein Allgemeiner Kettenbruch ist der Form:
-\begin{beispiel}
+Ein Allgemeiner Kettenbruch ist von der Form:
 \begin{equation}
 a_0 + \cfrac{b_1}{a_1+\cfrac{b_2}{a_2+\cfrac{\cdots}{\cdots+\cfrac{b_{n-1}}{a_{n-1} + \cfrac{b_n}{a_n}}}}}
 \end{equation}
-wobei $a_i, b_i \in \mathbb{Z}$
-\end{beispiel}
-Hier ist eine Darstellung mit eckigen Klammern nicht möglich, da im Zähler keine Einsen mehr stehen.
+wobei $a_i, b_i \in \mathbb{Z}$.
 \item
-Ein regulärer oder einfacher Kettenbruch ist definiert als ein Bruch der Form:
+Ein regulären oder einfachen Kettenbruch ist definiert als ein Bruch der Form:
 \begin{align*}
 [x_0;x_1,x_2,\cdots,x_n]
 =
 \frac{a}{b}=x_0+\cfrac{1}{x_1+\cfrac{1}{x_3+\cfrac{1}{x_4+\cdots}}}
 \end{align*}
 mit $x_0,x_1,x_2,x_3, \dots \in \mathbb{N}$.
-Aus dieser Darstellung wird ersichtlich, dass ein Kettenbruch ein Bruch dessen 
-Nenner wieder als Kettenbruch geschrieben ist.
-Eine alternative Schreibweis für Kettenbrüche ist $[x_0;x_1,x_2,x_3,\dots]$ 
-ist eine kompakte, Art irrationalen Zahlen  zu beschreiben. 
+Bei Allgemeine Kettenbrüche kann eine Darstellung mit eckigen Klammern nicht möglich sein, da im Zähler keine Einsen mehr stehen.
+Eine alternative Schreibweise für reguläre Kettenbrüche ist $[x_0;x_1,x_2,x_3,\dots]$,
+ist eine kompakte, Art ein Kettenbruch zu beschreiben. 
 Bei Dezimalbrüchen würde dies unendlich gehen (Bspw. 0.333333\dots) da die Dezimalbruchentwicklung offensichtlich nicht als Bruch mit einer Zehnerpotenz (10, 100, 1000 etc.) im Nenner  geschrieben werden kann.
 \end{itemize}
 
@@ -49,29 +45,8 @@ für unendliche Folge von $x_0,x_1,\dots$ gilt der Grenzwert
 \begin{align*}
 \lim_{x\to\infty} [x_0;x_1,\dots,x_n] 
 \end{align*}  
-oder auch in Matrixform
-\begin{equation*}
-	\begin{pmatrix}
-		x_0&	1\\
-		1  &	0
-	\end{pmatrix}
-	\begin{pmatrix}
-		x_1&	1\\
-		1  &	0
-	\end{pmatrix}
-	\cdots
-	\begin{pmatrix}
-		x_n&	1\\
-		1  &	0
-	\end{pmatrix}
-	=\begin{pmatrix}
-		p_n&	p_{n-1}\\
-		q_n&	q_{n-1}
-	\end{pmatrix} 
-\end{equation*}
-hier eine Form des Bilgungsgesetz für die Näherungsbrüche
 
 Kettenbrüche können schnell konvergierende Approximationen liefern.
 Damit also das, was ich unter der Bezeichnung Kettenbruch verstehe,
-besser erläutert wird, biete ich weitreichende Beispiele für
+besser erläutert wird, biete ich Beispiele für
 rationalen und irrationalen Zahlen dar.

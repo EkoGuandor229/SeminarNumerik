@@ -6,7 +6,7 @@
 \section{Lösung
 \label{fem:section:loesung}}
 \rhead{Lösung}
-Wie im vorherigen Kapitel erwähnt sind Herausforderungen bzw. Ansprüche an die Ansatzfunktionen zu beachten. Nun stellt sich die Frage, wie die Ansatzfunktion gewählt werden müssen, so das entlang eines Randes nur \frqq Knicke \flqq entstehen und keine Sprünge. Und wie ist gewährleistet das in der gleichen Stützstelle alle Elemente den gleichen Wert haben?  Als Lösungs bietet sich ein lineare Funktion an. Für das Dreieck  ist es der Term $u(x) = c_1 + c_2x + c_3y$ an. Diese Zusammensetzung ergibt sich, da der lineare Ansatz durch die Funktionswerte in den Ecken des Dreiecks bestimmt wird. In anderen Worten ausgedrückt sind die Funktionswerte in den Ecken des Teilgebiets, hier im Dreieck, die Unbekannten, die bestimmt werden müssen. Wie diese Koeffizienten in einer Matrix bestimmt werden ist in \ref{fem:section:GL} aufgezeigt.
+Wie im vorherigen Kapitel erwähnt sind Herausforderungen bzw. Ansprüche an die Ansatzfunktionen zu beachten. Nun stellt sich die Frage, wie die Ansatzfunktion gewählt werden müssen, so das entlang eines Randes nur \frqq Knicke \flqq entstehen und keine Sprünge. Und wie ist gewährleistet das in jeder Stützstelle alle Elemente den gleichen Wert haben?  Als Lösungs bietet sich ein lineare Funktion an. Für ein Dreieck  ist es der Term $u(x) = c_1 + c_2x + c_3y$ an. Diese Zusammensetzung ergibt sich, da der lineare Ansatz durch die Funktionswerte in den Ecken des Dreiecks bestimmt wird. In anderen Worten ausgedrückt sind die Funktionswerte in den Ecken des Teilgebiets, hier im Dreieck, die Unbekannten, die bestimmt werden müssen. Wie diese Koeffizienten in einer Matrix bestimmt werden ist in \ref{fem:section:GL} aufgezeigt.
 
 %\begin{figure}[h!]
 %	\centering
@@ -20,12 +20,12 @@ Nochmals zur Verdeutlichung warum ein linearer Ansatzfunktion verwendet wird:
 	\item in dem Teilgebiet ist die Integral- Formel sehr einfach zu berechnen wie z.B. eine lineare Funktion die durch Koeffizienten bestimmt wird.
 \end{itemize}
 %ls Standardverfahren in der Ebene haben sich Flächenelement wie Dreiecken oder Parallelogramme bewährt. Die Wahl der  der Flächen- bzw. Gebiet- Elementen sollte so erfolgen, dass diese die zu approximierende Fläche möglichst gut nachbildet bzw. approxmimiert wird.
-Um möglichst einfach darzustellen, wie das Verfahren der Finiten Elemente vonstatten geht, wurde auf eine einfache Approximation mit Einheitsdreiecken und einem linearen Ansatz gewählt. 
+Um möglichst einfach darzustellen, wie das Verfahren der finiten Elemente vonstatten geht, wurde auf eine einfache Approximation mit Einheitsdreiecken und einem linearen Ansatz gewählt. 
 
 \subsection{Vorbereitung
 \label{fem:section:loesungTrans}}
 
-Damit die Integration über das gewählte Teilgebiet bzw. Flächenelement einfacher fällt, wird als Vorbereitung im entsprechenden Fall das gewählte Flächenelement in ein Einheitsdreieck oder in ein Eineheitsparallelogramm transformiert. Ein Dreieck oder Parallelogramm stellt eine Formfunktion dar, über die die gewählte Fläche bzw. Teilgebiet berechnet werden kann. Die gewählte Formfunktion eines Teilgebietes z.B. integrieren des Gebietes über ein Dreieck oder Pallelogramm,  bringt auch den Vorteil, dass die gewählten Formfunktionen gleich behandelt werden können. \\
+Damit die Integration über das gewählte Teilgebiet einfacher fällt, wird als Vorbereitung im entsprechenden Fall das gewählte Gebiet in ein Einheitsdreieck oder in ein Einheitsparallelogramm transformiert. So können alle Gebiete gleich behandelt und berechnet werden. \\
 Das allgemeine Dreieck in allgemeiner Lage mit den Eckpunkten $P_1(x_1, y_1$), $ P_2(x_2, y_2)$ und $P_3(x_3,y_3)$ kann mit Hilfe der linearen Transformation
 \begin{equation}
 	\begin{split}
@@ -34,8 +34,7 @@ Das allgemeine Dreieck in allgemeiner Lage mit den Eckpunkten $P_1(x_1, y_1$), $
 		\label{fem:linTransformation}
 	\end{split}
 \end{equation}
-in das einfachere Gebiet nämlich das gleichschenklig rechtwinklige Einheitsdreieck mit Kathetenlänge 1 überführt werden wie in der Abbildung \ref{fig:TransformationEinheitsdreieckBild} dargestellt ist.
-
+in das einfachere Gebiet nämlich das gleichschenklig rechtwinklige Einheitsdreieck mit Kathetenlänge 1 überführt werden, wie in der Abbildung \ref{fig:TransformationEinheitsdreieckBild} dargestellt ist.
 
 \begin{figure}[h!]
 	\centering
@@ -43,8 +42,12 @@ in das einfachere Gebiet nämlich das gleichschenklig rechtwinklige Einheitsdrei
 	\caption{Transformation in ein Einheitsdreieck}
 	\label{fig:TransformationEinheitsdreieckBild}
 \end{figure}
-Nun ist das Flächenelement $dx \, dy$ mit Hilfe der Jacobi Determinante \eqref{fem:JocobiDeterminante} der Transformation zu ersetzen durch \eqref{fem:newTransformation}.
-
+Die Variablen $\xi$ und $\eta$ werden die neuen Integrationsvariablen. Damit die Berechnung korrekt ist, muss noch die Determinante der Jacobi- Matrix auf der rechten Seite, wie in 
+\begin{equation}
+			dy \, dy = \det(J) \, d\xi \, d\eta
+			\label{fem:newTransformation}
+\end{equation}
+dargestellt, dazu multipliziert werden wie in \eqref{fem:newTransformation}. Die Jacobi- Matrix \eqref{fem:Jocobi} besteht aus den partiellen Ableitungen aus \eqref{fem:linTransformation}.  
 \begin{equation}
 J % 
 =
@@ -56,19 +59,15 @@ J %
 \begin{bmatrix}
     x_2 - x_1  &  x_3 -x_1      \\
     y_2 - y_1  &  y_3 - y_1      
-\end{bmatrix} 
-	\label{fem:JocobiDeterminante}
+\end{bmatrix} \; .
+	\label{fem:Jocobi}
 \end{equation}
-Die Determinante dieser Jacobi- Matrix ergibt
+Aus der Transformation \eqref{fem:linTransformation} erhält man 
 \begin{equation}
-	\det(J) = x_1 \cdot y_2 - 2 \cdot x_1 \cdot y_1 + x_2 \cdot y_1 + x_1\cdot y_3 + x_3 \cdot y_1 - x_2 \cdot y_3 - x_3 \cdot y_2
+	\det(J) = x_1 \cdot y_2 - 2 \cdot x_1 \cdot y_1 + x_2 \cdot y_1 + x_1\cdot y_3 + x_3 \cdot y_1 - x_2 \cdot y_3 - x_3 \cdot y_2 \; .
 	\label{fem:JocobiDetBerechnet}
 \end{equation}
-\begin{equation}
-			dy \, dy = \det(J) \, d\xi \, d\eta
-			\label{fem:newTransformation}
-\end{equation}
-Die Jacobi- Determinante entspricht der doppelten Fläche des Dreiecks. Die partiellen Ableitungen werden gemäss der Kettenregel zu 
+Die Jacobi- Determinante \eqref{fem:JocobiDetBerechnet} entspricht der doppelten Fläche des Dreiecks. Die partiellen Ableitungen werden gemäss der Kettenregel zu 
 %\begin{equation}
 %			\begin{aligned}
 %			u_x = u_{\xi} \xi_x + u_{\eta} \eta_x \\
@@ -79,295 +78,402 @@ Die Jacobi- Determinante entspricht der doppelten Fläche des Dreiecks. Die part
 \begin{equation}
 \begin{split}
 	\frac{\partial u}{\partial x} = \frac{\partial u}{\partial \xi} \, \frac{\partial \xi}{\partial x} + \frac{\partial u}{\partial \eta} \, \frac{\partial \eta}{\partial x} \\
-	\frac{\partial u}{\partial y} = \frac{\partial u}{\partial \xi} \, \frac{\partial \xi}{\partial y} + \frac{\partial u}{\partial \eta} \, \frac{\partial \eta}{\partial y}
+	\frac{\partial u}{\partial y} = \frac{\partial u}{\partial \xi} \, \frac{\partial \xi}{\partial y} + \frac{\partial u}{\partial \eta} \, \frac{\partial \eta}{\partial y} \; .
 	\end{split}
 \end{equation}
-Auf Grund der linearen Transformation \eqref{fem:linTransformation} ergeben sich nach der partieller Differentiation der beiden Beziehungen nach $x$ zunächst
+Auf Grund der linearen Transformation \eqref{fem:linTransformation} ergeben sich nach partieller Differentiation der beiden Beziehungen nach $x$ zunächst
 
 \begin{equation}
 			\begin{aligned}
-			1  = (x_2 -x_1) \, \eta_x + (x_3 -x_1) \, \eta_x \\
-			0 = (y_2 -y_1) \, \eta_x + (y_3 -y_1) \, \eta_x \\
+			1  = (x_2 -x_1) \, \frac{\partial \xi}{\partial x} + (x_3 -x_1) \, \frac{\partial \eta}{\partial x} \\
+			0 = (y_2 -y_1) \, \frac{\partial \xi}{\partial x} + (y_3 -y_1) \, \frac{\partial \eta}{\partial x} \; . \\
 			 \end{aligned}
 \end{equation}
-Nach Auflösung  der beiden Gleichungen nach $\xi_x$ und $\eta_x$ ergibt sich
-
+Nach Auflösung  der beiden Gleichungen nach $\frac{\partial \xi}{\partial x}$ und $\frac{\partial \eta}{\partial x}$ ergibt sich
 \begin{equation}
-			\xi_x = \frac{y_3 - y_1}{J} \quad \eta_x = -\frac{y_2 - y_1}{J}
+			\frac{\partial \xi}{\partial x} = \frac{y_3 - y_1}{J} \qquad \qquad \frac{\partial \eta}{\partial x} = -\frac{y_2 - y_1}{J} \; .
 \end{equation}
 Analog nach der partiellen Ableitung nach $y$ erhält man
 
 \begin{equation}
-			\xi_y = \frac{x_3 - x_1}{J} \quad \eta_y = -\frac{x_2 - x_1}{J}
+			\frac{\partial \xi}{\partial y} = \frac{x_3 - x_1}{J} \qquad \qquad \frac{\partial \eta}{\partial y} = -\frac{x_2 - x_1}{J} \; .
 \end{equation}
-Somit vereinfacht sich die Integration über das Einheitsdreieck 
+Somit vereinfacht sich die Integration über das Einheitsdreieck zu
 \begin{equation}
-			\int_{\triangle} u \quad dy \, dx = \int_0^1 \int_0^{1 - \xi} \, ... \, d \eta \, d \xi
+			\int_{\triangle} u \quad dy \, dx = \int_0^1 \int_0^{1 - \xi} \, u \det (J) \, d \eta \, d \xi \; .
 \end{equation}
 
-\subsection{Schritt 1 Minimalproblem bilden}
+\subsection{Schritt 1: Minimalproblem bilden}
 
-Analog zum Kapitel 7.4.1 muss auch die DGL in der Ebene zuerst in ein äquivalentes Minimalproblem übersetzt werden. Das Minimalproblem für FEM in einer Dimension hatte die Form
+Analog zum Kapitel 7.4.1 muss auch die DGL in der Ebene zuerst in ein äquivalentes Minimalproblem übersetzt werden. Das Minimalproblem für FEM in einer Dimension hatte die Form:
 
 \begin{equation}
-			\int_0^1 u \textcolor{red}{'} (x)^2 - \lambda \, u(x)^2 dx \,dy
+			\int_0^1 u \textcolor{red}{'} (x)^2 - \lambda \, u(x)^2 dx \,dy \; .
 			\label{fem:Minimal1D}
 \end{equation}
-Im Unterschied zu den mehrdimensionale Form wird anstatt der einfachen Ableitungt der Laplace Operator verwendet der zugleich zweifache Differenziebarkeit von der Ansatzfunktion $u(x)$ fordert. Zudem wird nicht mehr über eine Strecke integriert sondern nun über ein Gebiet $\Omega$ was gleichbedeutend für eine Integration über eine Teilgebiet steht.
+Im Unterschied zu den mehrdimensionale Form wird anstatt der einfachen Ableitung der Laplace Operator verwendet, der zugleich zweifache Differenziebarkeit von der Ansatzfunktion $u(x)$ fordert. Zudem wird nicht mehr über eine Strecke integriert sondern über ein Teilgebiet $\Omega_i$:
 
 \begin{equation}
-			\int_{\Omega} (\textcolor{red}{\nabla} u)^2 - \lambda u^2 dx \, dy
+			\int_{\Omega_i} (\textcolor{red}{\nabla} u)^2 - \lambda u^2 dx \, dy \, .
 			\label{fem:Minimal2D}
 \end{equation}
-Der Integrationsterm \ref{fem:Minimal2D} wird gemäss der Summenregel in 2 Terme zerlegt nämlich 
+Der Integrationsterm \eqref{fem:Minimal2D} wird gemäss der Summenregel in zwei Terme zerlegt nämlich 
 
 \begin{equation}
-			\int_{\Omega} (\nabla u)^2 \, dx \, dy - \lambda \int_{\Omega} u^2 dx \, dy
+			\int_{\Omega_i} (\nabla u)^2 \, dx \, dy - \lambda \int_{\Omega_i} u^2 dx \, dy \, .
 			\label{fem:Minimal2D2Term}
 \end{equation}
-Nun ist die Bildung des Minimalproblems abgeschlossen. In einem nächsten Schritt wird das Minimalproblem auf das Element formuliert. Dies wird in dem folgenden Abschnitt erläutert.
+In einem nächsten Schritt wird das Minimalproblem auf das Element formuliert. Dies wird im folgenden Abschnitt erläutert.
 
-\subsection{Schritt 2 Ansatzfunktionen auf Lösung approximieren}
+\subsection{Schritt 2: Lösung durch Ansatzfunktionen approximieren}
 
-Die lineare Ansatzfunktion hat wie schon erwähnt die folgende Form
-
+Die lineare Ansatzfunktion hat wie schon erwähnt die Form
 \begin{equation}
-u(x,y) = c_1 + c_2x + c_3y
+u(\xi, \eta) = c_0 + c_1 \xi + c_2 \eta \, .
 \label{fem:equationSchwarzLinear}
-\end{equation}.
-Die Ansatzfunktion \eqref{fem:equationSchwarzLinear} kann somit direkt in das Minimalproblem \eqref{fem:Minimal2D} eingesetzt werden. Ziel ist es, dass die unbekannten Koeffizienten $c_1, c_2 \, $und$ \, c_3$ anhand dieses Verfahrens bestimmt werden.
-
-Das Minimalproblem muss noch auf das entsprechende Gebietsintegral angewendet werden. Um diesen Schritt umzusetzen wird ddas Minimalproblem in das Gebietsintegral eingesetzt sprich $\int_{\Omega}$ wird durch das folgende Flächenelement bzw. Flächenintegral des angekündeten Einheitsdreieck ersetzt. 
-
+\end{equation}
+Bei näherer Betrachtung fällt jedoch auf, dass in \eqref{fem:equationSchwarzLinear} die Parameter $c_1, c_2$ und $c_3$ von einem Dreieck zu einem anderen Dreieck unterscheiden. Die Ursache liegt insbesondere darin, dass $c_2$ und $c_3$ von den Kanten abhängig sind und die Kanten wiederum können von Dreieck zu Dreieck variieren ($\Omega_i$, $\Omega_j$). Daher ist die lineare Ansatzfunktion 
 \begin{equation}
-\int_0^1 \int_0^{1 - \xi} f(x,y) \, d \eta \, d \xi
+u(\xi, \eta) = \tilde{c_1} + (\tilde{c_2} -\tilde{c_1})\xi + (\tilde{c_3} - \tilde{c_1})\eta
+\label{fem:equationLinearMod}
+\end{equation}
+besser geeignet. In \eqref{fem:equationLinearMod} sind die Funktionswerte in den Ecken und eignen sich somit viel besser, da nur die Eckwerte ohne Einfluss der Kanten berücksichtigt werden wie in Abbildung \ref{fem:Stuestellen} dargestellt. Die Ansatzfunktion \eqref{fem:equationLinearMod} kann somit direkt in die Formel \eqref{fem:Minimal2D} für ein Teilgebiet eingesetzt werden. Ziel ist es, dass die unbekannten Koeffizienten $c_1, c_2 \, $und$ \, c_3$ anhand dieses Verfahrens bestimmt werden. Das zu lösende Integral für Teilgebiet hat die Form
+\begin{equation}
+\int_0^1 \int_0^{1 - \xi} \bigl[ \nabla \, \bigl( \tilde{c_1} + (\tilde{c_2} - \tilde{c_1})\xi + (\tilde{c_3} - \tilde{c_1})\eta \bigr) \, \bigr]^2 - \lambda \bigl[\tilde{c_1} + (\tilde{c_2} - \tilde{c_1})\xi + (\tilde{c_3} -\tilde{c_1})\eta \, \bigr]^2 \, d \eta \, d \xi \; .
 \label{fem:FlaecheDreieck}
 \end{equation}
-Schlussendlich ergibt das Einsatzen der Ansatzfunktion und des Flächenintegrals dann folgenden Ausdruck.
-
-\begin{equation}
-\int_0^1 \int_0^{1 - \xi} c_1 + c_2x + c_3y \, d \eta \, d \xi
-\label{fem:MinimalproblemElement}
-\end{equation}
-@ Hr. Müller\\
-Wäre hier besser gedacht die folgende Formel
-\begin{equation}
-\int_0^1 \int_0^{1 - \xi} u_1 + (u_2 - u_1)\xi + (u_3 - u_1)\eta \, d \eta \, d \xi
-\label{fem:MinimalproblemElement2}
-\end{equation}
-was ich ja dann berechnen sollte und als Lösung das folgende hat
-\begin{equation}
-\frac{1}{6}(u_1 + u_2 + u_3)
-\label{fem:MinimalproblemElement3}
-\end{equation}
-bin hier nicht ganz sicher welche Formel das nun besser wäre
-@ Hr- Müller ende\\
-Wichtig zu verstehen ist, dass dieses Minimalproblem bzw. der Ausdruck \ref{fem:MinimalproblemElement} auf jedes Flächenelement bzw. Teilgebiet angewendet wird. Sprich jedes Element hat eine Ansatzfunktion in Form eines Minimalproblems. Als Beispiel kann vorgestellt werden, dass wenn ein Rechteck mit zwei Dreiecken approximiert wird, das Minimalproblem \ref{fem:MinimalproblemElement} auf jedes der beiden Dreiecke angewendet wird. Je feiner die Auflösung, desto grösser das Gleichungs- System das Schluss endlich gelöst werden muss.
-
-\begin{figure}[h!]
-	\centering
-	\includegraphics[scale=0.8]{papers/fem/Images/FoTeilgebiet.jpeg}
-	\caption{Anwenden des Minimalprinzipes auf jedes Teilgebiet}
-	\label{fig:schemNMR_vorlage}
-\end{figure}
-
-Nun kann der erste Teil der Berechnung beginnen. Die partielle Ableitung nach dergewählten linearen Funktion $f(u)$ erigbt das Resultat
-
-\begin{equation}
-	\nabla u = 	
-	\left[ \begin{array}{r}
-	c_2  \\
-	c_3 \\
-	\end{array}\right]
-	\label{fem:equationSchwarzquadratischP}
-\end{equation} 
-
-Nun ist aber noch die Frage offen wie die Gleichungen zustande kommen für diese Koeffizienten. In folgenden Abschnitt wird dies anhand eines Beispiels beschrieben.
-
-\subsubsection{Gleichungssystem aufstellen 
-\label{fem:section:GL}}
-
-Bekannt ist nun wie die Formeln für die einzelne Elemente aussehen. Allerdings stellt sich dann die Frage, wie die das alles in eine Matrix zusammengefasst werden soll, da sich auch quadratische Koeffizienten aus der Ansatzfunktion ergeben $\int_{\Omega u^2 \, dx \, dy}$. Inn der Abbildung \ref{fem:Stuestellen} sind von 2 Dreiecken die Eckpunkt bzw. Stützstellen aufgezeichnet. Es lässt sich erkennen das in 2 Eckpunkten die Stützstellen gleich sind.
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.8]{papers/fem/Images/Stuezstellen.jpeg}
 	\caption{Stuezstellen der Elemente $\int_{\Omega_1}$ und $\int_{\Omega_2}$ }
 	\label{fem:Stuestellen}
+\end{figure} 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.6]{papers/fem/Images/FoTeilgebiet.jpeg}
+	\caption{Anwenden der Formel \eqref{fem:FlaecheDreieck} auf jedes Teilgebiet}
+	\label{fig:schemNMR_vorlage}
 \end{figure}
+Allerdings sollte gemäss \eqref{fem:Minimal2D2Term} die Formel \eqref{fem:FlaecheDreieck} aufgeteilt werden in
+\begin{equation}
+\int_0^1 \int_0^{1 - \xi} \bigl[ \nabla \, \bigl( \tilde{c_1} + (\tilde{c_2} - \tilde{c_1})\xi + (\tilde{c_3} - \tilde{c_1})\eta \bigr) \, \bigr]^2 \, d \eta \, d \xi \; - \; \lambda \int_0^1 \int_0^{1 - \xi} \bigl[\tilde{c_1} + (\tilde{c_2} - \tilde{c_1})\xi + (\tilde{c_3} - \tilde{c_1})\eta \, \bigr]^2 \, d \eta  \, d \xi \, .
+\label{fem:IntInt}
+\end{equation}
 
-Nach der Formel \eqref{fem:equationSummGebiete} werden die beiden Gebiete aufsummiert zu
+\subsubsection{Berechnung der Integrale}
+
+Im ersten Integralterm von \eqref{fem:IntInt} wird der Gradienten von $u(\xi, \eta)$  quadriert benötigt. Der Gradient von $u(\xi, \eta)$ ist 
 \begin{equation}
-	\int u = \int_{\Omega_1} u + \int_{\Omega_2} u 
-\end{equation}
-Der Koeffizienten des Dreiecks $\Omega_i$ kann wie in \eqref{fem:DreiVektor} notiert werden.
-\begin{equation}
-	\left( \begin{array}{c} c_0^i \\\ c_1^i \\\ c_2^i \\\ \end{array}\right)
-	\label{fem:DreiVektor}
-\end{equation}
-Um nun quadratische Koeffizienten in der Matrixschreibweise zu erhalten wird diese wie folgt Notiert.
-\begin{equation}
-\begin{bmatrix}
-c_0^1 &  c_1^1 &  c_2^i1  
-\end{bmatrix}
-\begin{bmatrix}
-\ddots & \dots &  \dots    \\
-\vdots & \ddots &   \\
-\vdots &  & \ddots
-\end{bmatrix}
-\begin{bmatrix}
-c_0^1  \\
-c_1^1 \\
-c_2^1
-\end{bmatrix}
-+
-\begin{bmatrix}
-c_0^2 &  c_1^2 &  c_2^2    \\   
-\end{bmatrix}
-\begin{bmatrix}
-\ddots & \dots &  \dots    \\
-\vdots & \ddots &   \\
-\vdots &  & \ddots
-\end{bmatrix}
-\begin{bmatrix}
-c_0^2  \\
-c_1^2 \\
-c_2^2
-\end{bmatrix}
-	\label{fem:MatrixKoeffizient}
-\end{equation}
-Die ist auch die Begründung für die später verwendete Formel \eqref{fem:Minimal2LinAlg}.
-%Für jedes Flächenelement gilt die Gleichung \ref{fem:MinimalproblemElement}. Nun müssen alle diese Elemente in eine Matrix umgeschrieben werden die sich wie folgt zusammensetzen lässt.
+	\nabla u = 	
+	\left[ \begin{array}{r}
+	\tilde{c_2} - \tilde{c_1} \\
+	\tilde{c_3} - \tilde{c_1} \\
+	\end{array}\right] \, .
+	\label{fem:equationSchwarzquadratischP22}
+\end{equation} 
+Der Koeffizient $\tilde{c_1}$ im ersten Integralterm von \eqref{fem:IntInt} verschwindet in \eqref{fem:equationSchwarzquadratischP22}. Der Gradient \ref{fem:equationSchwarzquadratischP22} quadriert ergibt
 
 \begin{equation}
-			\underbrace{ \int_{\Omega} (\nabla u)^2 dx \, dy} \, -  \, \underbrace{\lambda \int_{\Omega} u^2 dx \,dy}
+	(\nabla u)^2 = \tilde{c_2}^2 - 2 \tilde{c_1} \tilde{c_2} + \tilde{c_1}^2 + \tilde{c_3}^2 -2 \tilde{c_1}\tilde{c_3} + \tilde{c_1}^2 = 2\tilde{c_1}^2 + \tilde{c_2}^2 + \tilde{c_3}^2 -2\tilde{c_1}\tilde{c_2} -2\tilde{c_1}\tilde{c_3}\, .
+	\label{fem:equationSchwarzquadratischQ2}
+\end{equation}
+Im zweite Integralterm wird 
+\begin{multline}
+	u(\xi, \eta)^2 = \tilde{c_1}^2 x^2  - 2 \tilde{c_1} \tilde{c_2} x^2 + \tilde{c_2}^2 x^2 + 2 \tilde{c_1}^2 \xi \eta - 2 \tilde{c_1} \tilde{c_2} \xi \eta - 2 \tilde{c_1} \tilde{c_3} \xi \eta + 2 \tilde{c_2} \tilde{c_3} \xi \eta - 2 \tilde{c_1}^2 \xi + \\\ 2 \tilde{c_1} \tilde{c_2} \xi + \tilde{c_1}^2 \eta^2 - 2 \tilde{c_1} \tilde{c_3} \eta^2 + \tilde{c_3}^2 \eta^2 - 2 \tilde{c_1}^2 \eta + 2 \tilde{c_1} \tilde{c_3} \eta + \tilde{c_1}^2 \; .
+	\label{fem:vielzuviel}
+\end{multline}
+Wie in \eqref{fem:vielzuviel} zusehen ist, ist die Berechnung nicht anspruchsvoll, aber aufwändig. Nun ist aber noch die Frage offen wie die Koeffizienten in Matrixform zustande kommen. In folgenden Abschnitt wird dies anhand eines Beispiels beschrieben.
+
+\subsubsection{Matrixform der Integrale
+\label{fem:section:GL}}
+
+Da die Ansatzfunktion \eqref{fem:equationLinearMod} zwar unabhängig von den Kanten ist, aber die Berechnung des Quadrates von $u$ \eqref{fem:vielzuviel} unübersichtlich, wird in diesem Beispiel in diesem Abschnitt die lineare Ansatzfunktion \eqref{fem:equationSchwarzLinear} verwendet. Somit ist
+\begin{equation}
+	\nabla u = 	
+	\left[ \begin{array}{r}
+	c_1 \\
+	c_2 \\
+	\end{array}\right] \; \Longrightarrow \; (\nabla u)^2 = c_1^2 + c_2^2
+	\label{fem:equationSchwarzquadratischPP}
+\end{equation}  
+und 
+\begin{equation}
+ 	u^2 = \textcolor{cyan}{c_0^2} + \textcolor{blue}{c_1^2 x^2} + \textcolor{red}{c_2^2 y^2} + \textcolor{green}{2 c_0 c_1 x} + \textcolor{orange}{2 c_0 c_2 y} +\textcolor{purple}{ 2 c_1 c_2 xy} \, .
+	\label{fem:equationSchwarzquadratischQQQ}
+\end{equation}  
+Bekannt ist nun, wie die Integrale für die einzelne Teilgebiete aussehen. Um eine Matrixnotation der Koeffizienten $c_i$ zu erhalten, um dann ein Gleichungssystem für deren Berechnung aufzubauen, werden die Koeffizienten in Vektorform
+\begin{equation}
+	\begin{bmatrix}
+	c_{\triangle_i}^0  \\
+	c_{\triangle_i}^1 \\
+	c_{\triangle_i}^2
+	\end{bmatrix}
+	\label{fem:VektorAlg}
+\end{equation}
+aufgeschrieben. In \eqref{fem:VektorAlg} ist die Vektornotation der Koeffizienten von \eqref{fem:equationSchwarzLinear}. Nun wird der Integraltem
+\begin{equation}
+			\underbrace{ \int_{\Omega_i} (\nabla u)^2 d\xi \, d\eta}_{\text{1. Term}} \, -  \, \underbrace{\lambda \int_{\Omega_i} u^2 d\xi \,d\eta}_{\text{2. Term}}
 			\label{fem:Minimal2TermLinAlg}
 \end{equation}
-
-
+eines Teilgebietes in die lineare Notation
 \begin{equation}
-			c^t Ac \, - \, \lambda c^t Bc
+			\underbrace{ c^t Ac}_{\text{1. Term}} \, - \, \underbrace{\lambda c^t Bc}_{\text{2. Term}}
 			\label{fem:Minimal2LinAlg}
 \end{equation}
-Die Matrix $A$ wird gebildet durch die Teilmatrizen eines jeden Flächenelements. Die Teilmatrix eines Flächenelements besteht  aus dem Integral des 1. Terms von \ref{fem:Minimal2TermLinAlg} 
+gebracht. Gemäss \eqref{fem:Minimal2TermLinAlg} sind Quadrate der Koeffizienten $c_i$ gefordert. Um nun quadratische Koeffizienten in der Matrixschreibweise zu erhalten wird dies wie folgt notiert:
+\begin{equation}
+\begin{bmatrix}
+c_1^{(0)} &  c_1^{(1)} &  c_1^{(2)}  
+\end{bmatrix}
+\begin{bmatrix}
+\ddots & \cdots &  \cdots    \\
+\vdots & \ddots &   \\
+\vdots &  & \ddots
+\end{bmatrix}
+\begin{bmatrix}
+c_1^{(0)}  \\
+c_1^{(1)} \\
+c_1^{(2)}
+\end{bmatrix}
++
+\lambda
+\begin{bmatrix}
+c_2^{(0)} &  c_2^{(1)} &  c_2^{(2)}    \\   
+\end{bmatrix}
+\begin{bmatrix}
+\ddots & \cdots &  \cdots    \\
+\vdots & \ddots &   \\
+\vdots &  & \ddots
+\end{bmatrix}
+\begin{bmatrix}
+c_2^{(0)}  \\
+c_2^{(1)} \\
+c_2^{(2)}
+\end{bmatrix} \; .
+	\label{fem:MatrixKoeffizient}
+\end{equation}
+Dies ist auch die Begründung warum Formel \eqref{fem:Minimal2LinAlg} verwendet wird.
+%Für jedes Flächenelement gilt die Gleichung \ref{fem:MinimalproblemElement}. Nun müssen alle diese Elemente in eine Matrix umgeschrieben werden die sich wie folgt zusammensetzen lässt.
+Die Matrix $A$ wird gebildet durch die Teilmatrizen eines jeden Teilgebietes. Die Teilmatrix eines Teilgebiet besteht  aus dem Integral des 1. Terms von \eqref{fem:Minimal2TermLinAlg} 
 
 \begin{equation}
-			\int_0^1 \int_0^{1 - \xi} \left( \begin{array}{c} c_2 \\ c_3\\	
-\end{array} \right)^2 d\eta \, dxi
+			\int_0^1 \int_0^{1 - \xi} \left( \begin{array}{c} c_1 \\ c_2 \\	
+\end{array} \right)^2 d\eta \, d\xi
 			\label{fem:Minimal2LinAlgA}
 \end{equation}
-was dann zu der entsrechenden Teilmatrix eines Dreiecks führt
-
+was dann zu der entsrechenden Teilmatrix
 \begin{equation}
-	A_{\triangle} = \left( \begin{array}{cc}
-	c_2^2 \int_{\Omega} 1 dx \, dy & 0  \\ 
-	0 & c_3^2 \int_{\Omega} 1 dx \, dy  \\
+	A_{\triangle_i} = \left( \begin{array}{cc}
+	\int_{\Omega_i} 1 d\eta \, d\xi & 0  \\ 
+	0 & \int_{\Omega_i} 1 d\eta \, d\xi  \\
 	\end{array}\right)
 	\label{fem:TeilmatrixA}
 \end{equation}
-und wird dann in die Matrix $A $eingefügt bzw. zusammengefasst, dass  somti sämtliche Teilmatrizen aller Flächenelemente in der Matrix $A$ vorhanden sind. Eine jede Farbe soll veranschaulichen, dass dies ein Dreieck- Flächenelement darstellt.
-
-\begin{equation}
- A = \begin{pmatrix} 0 & 0 & \hdotsfor{4} & 0 \\
-	0 & \textcolor{green}{ c_2^2 \int_{\Omega} 1 dx \, dy }& \vdots & 0 & \vdots & & \vdots \\
-	\vdots & \vdots & \textcolor{green}{c_3^2 \int_{\Omega} 1 dx \, dy }& 0 & \vdots  & & \\
-	\vdots & \vdots & 0 & \ddots & \textcolor{red}{ c_2^2 \int_{\Omega} 1 dx \, dy }& & \\
-	\vdots & \vdots & 0 & 0 & 0 & \textcolor{red}{c_3^2 \int_{\Omega} 1 dx \, dy} & \\
-	0 & \hdotsfor{2} & 0 &  & & &  \ddots  \\
-	\end{pmatrix}
-	\label{fem:MatrixA}
+Hier gibt es ein Problem. Der Koeffizient $c_0$ ist hier nicht berücksichtigt. Es wird eine Matrix $A_{\triangle_i}$ derart benötigt so, dass
+ \begin{equation}
+	\int_{\triangle_i} (\nabla u)^2 d\xi d\eta = c^tAc
+	\label{fem:KeiAhnig}
 \end{equation}
-Etwas anders zusammengefasst dargestellt wie die Matrix $A$ aus den Teilmatrizen $A_{\triangle}$ besteht.
-
+Daher wird die Matrix
 \begin{equation}
- A =	\begin{pmatrix}
-	A_{\triangle_1} & 0 & \cdots & \cdots & 0 \\
-	0 & \ddots & \vdots & 0 & \vdots \\
-	\vdots & \vdots & \ddots & 0 & \vdots \\
-	\vdots & \vdots & 0 & A_{\triangle_i} & \vdots \\
-	0 & \cdots & \cdots & 0 &  \ddots \\
-	\end{pmatrix}
+	A_{\triangle_i} = \left( \begin{array}{ccc}
+	0 & 0 & 0 \\
+	0 &  \int_{\Omega_i} 1 d\eta \, d\xi & 0  \\ 
+	0 & 0 & \int_{\Omega_i} 1 d\eta \, d\xi  \\
+	\end{array}\right)
+	\label{fem:TeilmatrixA}
 \end{equation}
+mit $0$en entsprechend angepasst. Die Teilmatrix ausgerechnet ergibt
+\begin{equation}
+	A_{\triangle_i} = \left( \begin{array}{ccc}
+	0 & 0 & 0 \\
+	0 & \frac{1}{2} & 0  \\ 
+	0 & 0 &  \frac{1}{2}\\
+	\end{array}\right)
+\end{equation}
+und wird dann in die Matrix $A$ eingefügt. Wie genau die Teilmatrizen $A_{\triangle_i}$ in eine Gesamte Matrix A zusammengesetzt werden, wird in den nächsten Zeilen am Beispiel der Matrix B erläutert. 
 
-Die Matrix $A$ ist nun bekannt. Es fehlt jedoch noch die Matrix $B$, um das Gleichungs-System zu komplettieren. Die Matrix $B$ wird nun wie folgt definiert. Um die folgende Form zu erhalten muss lediglich der rechte Term von \ref{fem:Minimal2D2Term} für die einzelne Koeffizienten berechnet werden was dann den folgenden Ausdruck ergibt
+%\begin{equation}
+% A = \begin{pmatrix} 0 & 0 & \hdotsfor{4} & 0 \\
+%	0 & \textcolor{green}{ c_2^2 \int_{\Omega} 1 dx \, dy }& \vdots & 0 & \vdots &\vdots  & \vdots \\
+%	\vdots & \vdots & \textcolor{green}{c_3^2 \int_{\Omega} 1 dx \, dy }& 0 & \vdots  & & \\
+%	\vdots & \vdots & 0 & \ddots & \textcolor{red}{ c_2^2 \int_{\Omega} 1 dx \, dy }& & \vdots \\
+%	\vdots & \vdots & 0 & 0 & 0 & \textcolor{red}{c_3^2 \int_{\Omega} 1 dx \, dy} & \\
+%	0 & \hdotsfor{2} & 0 &  & & &  \ddots  \\
+%	\end{pmatrix}
+%	\label{fem:MatrixA}
+%\end{equation}
+%\begin{equation}
+% A =	\begin{pmatrix}
+%	\textcolor{green}{A_{\triangle_1} }& 0 & \cdots & \cdots & 0 \\
+%	0 & \ddots & \vdots & 0 & \vdots \\
+%	\vdots & \vdots & \ddots & 0 & \vdots \\
+%	\vdots & \vdots & 0 & \textcolor{red}{A_{\triangle_i}} & \vdots \\
+%	0 & \cdots & \cdots & 0 &  \ddots \\
+%	\end{pmatrix}
+%\end{equation}
+%Die Koeffizienten werden ausserhalb der Matrix $A$ geschrieben, so dass diese in einem weiteren Schritt berechnet werden können durch ein Gleichungssystem.
+%\begin{equation}
+%\begin{bmatrix}
+%c_1^0 &  c_1^1 &  c_1^2  
+%\end{bmatrix}
+%\begin{bmatrix}
+%\ddots & \cdots &  \cdots    \\
+%\vdots & \ddots &   \\
+%\vdots &  & \ddots
+%\end{bmatrix}
+%\begin{bmatrix}
+%c_1^0  \\
+%c_1^1 \\
+%c_1^2
+%\end{bmatrix}
+%\end{equation}
+Die Matrix $A$ ist nun bekannt. Es fehlt jedoch noch die Matrix $B$, um das Gleichungs-System zu komplettieren. Die Matrix $B$ wird nun wie folgt definiert. Um die folgende Form zu erhalten muss lediglich der zwite Term von \eqref{fem:Minimal2TermLinAlg} für die einzelne Koeffizienten berechnet werden was dann den folgenden Ausdruck
 
 \begin{equation}
 			\int_0^1 \int_0^{1 - \xi}  \textcolor{cyan}{c_0^2} + \textcolor{blue}{c_1^2 x^2} + \textcolor{red}{c_2^2 y^2} + \textcolor{green}{2 c_0 c_1 x} + \textcolor{orange}{2 c_0 c_2 y} +\textcolor{purple}{ 2 c_1 c_2 xy} \,  d\eta \, d \xi
 			\label{fem:Minimal2LinAlgB}
 \end{equation}
-Nun soll dies wieder in die Matrix- Schreibweise übertragen werden was dann eine Teilmatrix $B$ eines Dreickes entspricht
+ergibt. Nun soll dies wieder in die Matrix- Schreibweise übertragen werden was dann eine Teilmatrix $B_{\triangle_i}$ eines Dreickes entspricht
 
 \begin{equation}
- B_{\triangle} = \left( \begin{array}{ccc}
-	\textcolor{cyan}{- \lambda \int_{\Omega} 1} &  \textcolor{green}{- \lambda \int_{\Omega} x} & \textcolor{orange}{- \lambda \int_{\Omega} y}  \\
-	\textcolor{green}{- \lambda \int_{\Omega}x} & \textcolor{blue}{- \lambda \int_{\Omega} x^2} &  \textcolor{purple}{- \lambda \int_{\Omega} xy} \\
-	\textcolor{orange}{- \lambda \int_{\Omega} y} & \textcolor{purple}{- \lambda \int_{\Omega} xy} & \textcolor{red}{ - \lambda \int_{\Omega} y^2} \\
+ B_{\triangle_i} = \left( \begin{array}{ccc}
+	\textcolor{cyan}{- \lambda \int_{\Omega_i} 1} &  \textcolor{green}{- \lambda \int_{\Omega_i} x} & \textcolor{orange}{- \lambda \int_{\Omega_i} y}  \\
+	\textcolor{green}{- \lambda \int_{\Omega_i}x} & \textcolor{blue}{- \lambda \int_{\Omega_i} x^2} &  \textcolor{purple}{- \lambda \int_{\Omega_i} xy} \\
+	\textcolor{orange}{- \lambda \int_{\Omega_i} y} & \textcolor{purple}{- \lambda \int_{\Omega_i} xy} & \textcolor{red}{ - \lambda \int_{\Omega_i} y^2} \\
 	\end{array}\right)
 	\label{fem:MatrixB}
 \end{equation}
-Diese Teilmatrix $B$ eines jeden Flächenelements wird dann wieder analog der Matrix $A$ in eine Matrix $B$ eingesetzt, so dass diese dann alle Teilmatrizen aller Dreieck-  Flächenstücke enthält.
-
+und ergibt ausgerechnet
 \begin{equation}
-B =	\begin{pmatrix}
-	B_{\triangle_1} & 0 & \cdots & \cdots & 0 \\
-	0 & \ddots & \vdots & 0 & \vdots \\
-	\vdots & \vdots & \ddots & 0 & \vdots \\
-	\vdots & \vdots & 0 & B_{\triangle_i} & \vdots \\
-	0 & \cdots & \cdots & 0 &  \ddots \\
-	\end{pmatrix}
+ B_{\triangle_i} = - \lambda \left( \begin{array}{ccc}
+	\textcolor{cyan}{ \frac{1}{2}} &  \textcolor{green}{ \frac{1}{6}}& \textcolor{orange}{\frac{1}{3}}  \\
+	\textcolor{green}{\frac{1}{6}} & \textcolor{blue}{\frac{1}{12}} &  \textcolor{purple}{ \frac{1}{24}} \\
+	\textcolor{orange}{\frac{1}{3}} & \textcolor{purple}{\frac{1}{24}} & \textcolor{red}{ \frac{1}{12}} \\
+	\end{array}\right) \; .
+	\label{fem:MatrixB}
 \end{equation}
 
 
-\subsection{Schritt 3 Minimalprinizip anwenden auf Approximation}
+\subsubsection{Zusammensetzten der Teilmatrizen $A$ und $B$}
+Anhand eines Beispieles soll gezeigt werden wie sich die $B$ Matrix aus den Teilmatrizen $B_{\triangle_i}$ zusammenstellt. Als Beispiel dient eine Approximation mit den beiden Dreiecken $\textcolor{red}{\triangle_1}$ und $\textcolor{blue}{\triangle_2}$
+\begin{figure}[h]
+	\centering
+	\input{papers/fem/Images/dreiecke.tex}
+	\caption{Zwei Dreiecke mit gemeinsamen Stützstellen $c_2$ und $c_4$ }
+\end{figure}
+Das Dreieckgebiet $\textcolor{red}{\triangle_1}$ hat
+
+\begin{equation}
+\int_{\triangle_1} u^2 d\eta \; d\xi = \begin{bmatrix}
+c_1 &  c_2 &  c_4  
+\end{bmatrix}
+\begin{bmatrix}
+ & &      \\
+ & B_1 &   \\
+ &  & 
+\end{bmatrix}
+\begin{bmatrix}
+c_1  \\
+c_2 \\
+c_4
+\end{bmatrix}
+\end{equation}
+als Matrixform und das Gebiet $\textcolor{blue}{\triangle_2}$
+
+\begin{equation}
+\int_{\triangle_2} u^2 d\eta \; d\xi = \begin{bmatrix}
+c_2 &  c_3 &  c_4  
+\end{bmatrix}
+\begin{bmatrix}
+ & &      \\
+ & B_2 &   \\
+ &  & 
+\end{bmatrix}
+\begin{bmatrix}
+c_2  \\
+c_3 \\
+c_4
+\end{bmatrix} \; .
+\end{equation}
+Beide Gebiete zusammen entsprechen 
+
+\begin{equation}
+\int_{\triangle_1 und \triangle_2} u^2 d\eta \; d\xi = \int_{\triangle_1} u^2 d\eta \; d\xi + \int_{\triangle_2} u^2 d\eta \; d\xi = c_{\triangle_1}^t B_1 c_{\triangle_1} + c_{\triangle_2}^t B_2 c_{\triangle_2} \; .
+\end{equation}
+Die Koeffizienten von $\textcolor{red}{\triangle_1}$ sind
+
+\begin{equation}
+\int_{\triangle_1} \underbrace{c_1^2}_{\textcolor{red}{\frac{1}{2}}} + \underbrace{c_2^2 x^2}_{\textcolor{red}{\frac{1}{12}}} + \underbrace{c_4^2 y^2}_{\textcolor{red}{\frac{1}{12}}} + \underbrace{2 c_1 c_2 x}_{\textcolor{red}{\frac{1}{6}}} + \underbrace{2 c_1 c_4 y}_{\textcolor{red}{\frac{1}{3}}} + \underbrace{2 c_2 c_4}_{\textcolor{red}{\frac{1}{24}}} d\eta \; d\xi
+\end{equation}
+und von $\textcolor{blue}{\triangle_2}$ 
+\begin{equation}
+\int_{\triangle_2} \underbrace{c_2^2}_{\textcolor{blue}{\frac{1}{2}}} + \underbrace{c_3^2 x^2}_{\textcolor{blue}{\frac{1}{12}}} + \underbrace{c_4^2 y^2}_{\textcolor{blue}{\frac{1}{12}}} + \underbrace{2 c_2 c_3 x}_{\textcolor{blue}{\frac{1}{6}}} + \underbrace{2 c_2 c_4 y}_{\textcolor{blue}{\frac{1}{3}}} + \underbrace{2 c_3 c_4}_{\textcolor{blue}{\frac{1}{24}}} d\eta \; d\xi \; .
+\end{equation}
+Die Koeffizienten der jeweiligen Gebiete werden gemäss der Abbildung \ref{fem:MatrixBKomplett} zusammengesetzt.
+\begin{figure}[h]
+	\centering
+	\input{papers/fem/Images/matrizen.tex}
+	\caption{Matrix $B$ zusammenstellen }
+	\label{fem:MatrixBKomplett}
+\end{figure}
+Das Vorgehen für die Matrix $A$ ist genau gleich. Zu beachten ist allerdings dass beim Zusammensetzen die $\tilde{c}$- Variablen verwendet werden müssen. Die Umrechnung ist im Abschnitt \ref{fem:section:loesungTrans} beschrieben. 
+Wie sieht die Matrix aus wenn mit mehr Dreiecken approximiert wird? Bei einem 5x5 Gitter mit 36 Variablen hätte die Matrix $B$ die Form wie in Abbildung \ref{fem:MatrixBGross} .
+
+\begin{figure}[h]
+	\centering
+	\input{papers/fem/Images/gross.tex}
+	\caption{5x5 Gitter}
+	\label{fem:MatrixBGross}
+\end{figure}
+
+
+\subsection{Schritt 3: Minimalprinizip anwenden auf Approximation}
 
 Nun folgt der nächste Schritt nämlich das Minimieren des quadratischen Ausdrucks
 \begin{equation}
-	c^t Ac - c^t \lambda Bc
+	c^t Ac - c^t \lambda Bc \; .
 \end{equation}
-Was so viel bedeutet wie nach den Koeffizienten $c_k$ ableiten was für den  für 1. Term
+Entsprechend nach den Koeffizienten $c_k$ ableiten was für den  für 1. Term
 \begin{equation}
 	\nabla c^t Ac = 2Ac
 \end{equation}
 ergibt und für den 2. Term den Ausdruck
 
 \begin{equation}
-	\nabla c^t \lambda Bc = 2\lambda Bc
+	\nabla c^t \lambda Bc = 2\lambda Bc \; .
 \end{equation}
-Diese Ableitungen erscheinen nicht gerade ersichtlich insbesondere der Faktor 2. 
+Diese Ableitungen erscheinen nicht gerade ersichtlich insbesondere der Faktor 2. \\
 
-Das ableiten im 1- Dimensionalen Raum ergibt nach der klassichen Analysis
+Das Ableiten im 1- dimensionalen Raum ergibt nach der klassichen Analysis
 
 \begin{equation}
-	\frac{d}{dx} ax^2 = 2ax
+	\frac{d}{dx} ax^2 = 2ax \; .
 \end{equation}
-Um die Ableitung in einem n-Dimensionalen, quadratischen Matrix vorzunehmen muss diese erst in einen Summennotation umgeschrieben werden wie folgt
+%Um die Ableitung in einem n-Dimensionalen, quadratischen Matrix vorzunehmen muss diese erst in einen Summennotation umgeschrieben werden wie folgt
+Die Ableitung von $x^tAx, x \in \mathbb{R}^n $ nach $x_n$ ergibt nach der Produktregel
+\begin{equation}
+	\sum_{i,j} \frac{\partial x_i}{\partial x_n} a_{ij} x_j + \sum_{i,j} x_i a_{ij} \frac{\partial x_j}{\partial x_n} \; .
+\end{equation}
+Dies kann vereinfacht werden anhand der Kürzungs- Berechnung
 
 \begin{equation}
-			x^tAx, x \in \mathbb{R}^n
-\end{equation}
-Zu erkennen ist, dass nach der Ableitung von $x$ die Produkt- Regel zum tragen kommt. 
-
-\begin{equation}
-	\sum_{i,j} \frac{\partial x_i}{\partial x_n} a_{ij} x_j + \sum_{i,j} x_i a_{ij} \frac{\partial x_j}{\partial x_n}
-\end{equation}
-Dies kann vereinfacht werden anhand der folgenden Kürzungs- Berechnung:
-
-\begin{equation}
-	\sum_{j} a_{nj} x_j + \sum_{i,j} x_i a_{in} = \sum_{j} a_{nj} x_j + \sum_{\textcolor{red}{\not{j}} i} a_{n \textcolor{red}{\not{j}} i} x_{\textcolor{red}{\not{j}} i} = 2(Ax)_n
+	\sum_{j} a_{nj} x_j + \sum_{i,j} x_i a_{in} = \sum_{j} a_{nj} x_j + \sum_{\textcolor{red}{\not{j}} i} a_{n \textcolor{red}{\not{j}} i} x_{\textcolor{red}{\not{j}} i} = 2(Ax)_n \; .
 \end{equation}
 
 \subsection{Schritt 4 Gleichungssystem aufstellen}
-Nun kann das Gleichungssystem aufgestellt werden.
+Nun kann das Gleichungssystem aufgestellt werden:
 \begin{equation}
-	2Ac - 2\lambda Bc = 0 \Rightarrow (A-\lambda B)c = 0
+	2Ac - 2\lambda Bc = 0 \Rightarrow (A-\lambda B)c = 0 \; .
 	\label{fem:GLLang}
 \end{equation}
-Durch das umschreiben der Gleichung \ref{fem:GLLang} ist ersichtlich, dass es sich um ein Eigenwertproblem für die Matrix $B^{-1}A$ handelt.
+Durch das umschreiben der Gleichung \eqref{fem:GLLang} in 
 
 \begin{equation}
 		B^{-1}Ac = \lambda c
  \end{equation}
- Dieses kann z.B. durch das Jacobi Verfahren, beschrieben im Kapitel 6.4 gelöst werden.
- 
+ ist ersichtlich, dass es sich um ein Eigenwertproblem für die Matrix $B^{-1}A$ handelt. % Dieses kann z.B. durch das Jacobi Verfahren, beschrieben im Kapitel 6.4 gelöst werden.
+ Dieses kann z.B. mit dem Francis- Algorithmus, beschrieben im Kapitel 22, gelöst werden.
 \subsection{Andere lineare Ansatzfunktionen
 \label{fem:subsection:Ansatzfunktionen}}
 

@@ -2,6 +2,7 @@ Betrachten Sie die Funktion
 \[
 f(x) = \frac{1-\cos x}{x}.
 \]
+\index{cosx@$\cos(x)$}%
 \begin{teilaufgaben}
 \item Berechnen Sie $f(10^{-10})$.
 \item Berechnen Sie $\displaystyle \lim_{x\to 0} f(x)$.
@@ -21,6 +22,7 @@ Werte von $x$ funktioniert.
 Mit jedem Datentyp findet man $f(10^{-10})=0$.
 \item
 Der Grenzwert kann mit Hilfe der Regel von de l'Hospital berechnet werden:
+\index{de l'Hospital}%
 \[
 \lim_{x\to 0}f(x)
 =
@@ -34,6 +36,7 @@ Der Grenzwert kann mit Hilfe der Regel von de l'Hospital berechnet werden:
 Der Wert von $\cos x$ ist sehr nahe bei $1$, daher tritt Auslöschung auf.
 \item
 Die Taylor-Reihe für $\cos x$ ist
+\index{Taylor-Reihe}
 \[
 \cos x = 1 -\frac1{2!}x^2 + \frac{1}{4!}x^4 - \frac{1}{6!}x^6 +\dots
 \]
@@ -41,6 +44,7 @@ Der Funktionswert von $f(x)$ lässt sich nicht mehr von $0$ unterscheiden,
 wenn der zweite Term der Reihe sich nicht mehr von $1$ unterscheiden lässt.
 Dies ist genau der Wert für $\varepsilon$ für den verwendeten Datentyp,
 den man der Tabelle~\ref{buch:table:limits} entnehmen kann.
+\index{epsilon@$\varepsilon$}%
 Daraus leitet man ab:
 \[
 \frac12x^2 = \varepsilon
@@ -51,6 +55,7 @@ Für \texttt{float} findet man $x\simeq 0.000488281$,
 für \texttt{double} dagegen $x\simeq 2.10734\cdot 10^{-8}$.
 \item
 Die Halbwinkelformel für die $\sin$-Funktion liefert
+\index{Halbwinkelformel}%
 \[
 \sin^2 \frac{x}2
 =
@@ -67,6 +72,7 @@ f(x)
 g(x).
 \]
 Der Ausdruck $g(x)$ leidet nicht unter Auslöschung.
+\index{Auslöschung}%
 \qedhere
 \end{teilaufgaben}
 \begin{figure}
@@ -78,6 +84,7 @@ Die rote Kurve zeigt die Unzuverlässigkeit der Resultate infolge
 Auslöschung.
 Die blaue Kurve zeigt die Berechnung mit der verbesserten Funktion
 $g(x)$, in der Auslöschung vermieden wird.
+\index{Auslöschung}%
 \label{buch:figure:1001}}
 \end{figure}
 Abbildung~\ref{buch:figure:1001} vergleicht die beiden Ausdrücke

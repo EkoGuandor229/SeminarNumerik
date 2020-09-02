@@ -1,0 +1,244 @@
+%
+% main.tex -- Paper zum Thema arctan
+%
+% (c) 2020 Hochschule Rapperswil
+%
+\chapter{Interpolation und numerische Ableitung\label{chapter:interdiff}}
+\lhead{Interpolation und numerische Ableitung}
+\rhead{}
+\begin{refsection}
+\chapterauthor{Andreas Müller}
+
+{\parindent0pt
+In} Kapitel~\ref{chapter:interpolation} wurde gezeigt, wie man durch
+Interpolation gute Approximationen einer Funktion in einem Interval
+finden kann.
+Für äquidistante Stützstellen ist das Interpolationspolynom vor allem in
+der Mitte des Intervalls sehr genau.
+Man kann daher versuchen, diese Approximation durch das Interpolationspolynom
+auch für eine Approximation der Ableitung der Funktion zu verwenden, indem
+man das Interpolationspolynom ableitet.
+Am Ende dieses Prozesses sollte sich eine Formel ergeben, welche die
+Ableitung näherungsweise aus Funktionswerten in der Nähe des
+interessierenden Punktes bestimmt, ganz ähnlich wie das aus der
+Taylor-Reihe abgeleitet, in Kapitel~\ref{chapter:ableitung} beschriebene
+Verfahren.
+Dieses Kapitel führt die Berechnung der Gewichte der Funktionswerte durch
+und untersucht an Hand von numerischen Beispielen, was man von dem Verfahren
+erwarten kann.
+
+\section{Das Problem der numerischen Ableitung}
+\rhead{Das Problem der numerischen Ableitung}
+Wir gehen von einer in einem Intervall $I=[a,b]$ definierten differenzierbaren
+Funktion $f\colon[a,b]\to\mathbb R$ aus. 
+Zu bestimmen ist die Ableitung von $f$ in einem Punkt $x\in[a,b]$.
+Der Differenzenquotient
+\[
+f'(x)
+\approx
+\frac{f(x+h)-f(x)}{h}
+\]
+ist die naheliegende Approximation, doch für kleines $h$ werden $f(x+h)$ und
+$f(x)$ fast gleich gross, die Differenz ist daher stark verschmiert.
+Grosses $h$ wiederum beschränkt die Genauigkeit, denn die Taylor-Entwicklung
+liefert für den Differenzenquotienten
+\[
+f'(x)
+\approx
+\frac{f(x) + hf'(x) + h^2f''(x)/2 + O(h^3) - f(x)}{h}
+=
+f'(x) + h\frac{f''(x)}2 + O(h^2),
+\]
+für nicht allzu kleines $h$ wird der Einfluss des $f''(x)$-Terms
+merklich.
+Es muss also angestrebt werden, genaue Resultate auch bei relativ grossem
+$h$ bekommen zu können.
+
+Eine erste Verbesserung kann mit dem symmetrischen Differenzenquotienten
+\[
+f'(x)
+\approx
+\frac{f(x+\frac{h}2) -f(x-\frac{h}2)}{h}
+\]
+erreicht werden.
+Setzt man wieder die Taylor-Reihe ein, erhält man
+\begin{align*}
+f'(x) &\approx
+\frac{1}{h} \biggl(
+f(x) + \frac{h}2 f'(x) + \frac{h^2}{8} f''(x) + \frac{h^3}{48}f'''(x) + O(h^4)
+\\
+&\qquad\qquad
+-
+\biggl(
+f(x) - \frac{h}2 f'(x) + \frac{h^2}{8} f''(x) - \frac{h^3}{48}f'''(x) + O(h^4)
+\biggr)
+\biggr)
+\\
+&=
+f'(x) + \frac{h^2}{24}f'''(x) + O(h^3).
+\end{align*}
+Danke der Symmetrie ist der $f''(x)$-Term verschwunden, der Fehler ist nur
+noch von Ordnung $h^2$.
+
+Den symmetrischen Differenzenquotienten kann man auch als Wert eines
+Interpolationspolynoms ansehen.
+Die beiden Stützstellen $x_{0,1}=x\pm \frac{h}2$ definieren die lineare
+Interpolationsfunktion
+\begin{align*}
+p(x)
+&=
+f(x_0) l_0(x) + f(x_1) l_1(x)
+=
+f(x_0) \frac{x-x_1}{x_0-x_1}
++
+f(x_1) \frac{x-x_0}{x_1-x_0}
+=
+-f(x_0) \frac{x-x_1}{h}
++
+f(x_1) \frac{x-x_0}{h}
+\\
+&=
+\frac{f(x_1) - f(x_0)}{h}
+x
++
+\text{const}.
+\intertext{%
+Die symmetrische Differenz ist daher auch die Ableitung}
+p'(x)
+&=
+\frac{f(x_1)-f(x_0)}{h}
+\end{align*}
+des Interpolationspolynoms.
+Es liegt daher nahe, die Ableitung $f'(x)$ als Ableitung eines
+Interpolationspolynoms höherer Ordnung von $f(x)$ zu berechnen.
+
+\section{Die Ableitung des Interpolationspolynoms}
+\rhead{Die Ableitung des Interpolationspolynoms}
+In Kapitel~\ref{chapter:interpolation} wurde für das Interpolationspolynom
+der Ausdruck
+\[
+p(x)
+=
+\sum_{j=0}^n f(x_j) l_j(x)
+\qquad\text{mit}\quad
+l_j(x)
+=
+\frac{(x-x_0)(x-x_1)\cdots\widehat{(x-x_j)}\cdot (x-x_n)}{(x_j-x_0)(x_j-x_1)\cdots\widehat{(x_j-x_j)}\cdot (x_j-x_n)}
+\]
+gefunden.
+Die Ableitung seine Ableitung ist
+\[
+p'(x)
+=
+\sum_{j=0}^n f(x_j) l'_j(x).
+\]
+Die Ableitungen der speziellen Interpolationspolynome $l_j(x)$ kann
+man ebenfalls direkt berechnen:
+\begin{equation}
+l_j'(x)
+=
+\frac{1}{(x_j-x_0)(x_j-x_1)\cdots\widehat{(x_j-x_j)}\cdot (x_j-x_n)}
+\sum_{k\ne j} (x-x_0)\cdots \widehat{(x-x_k)}\cdots\widehat{(x-x_j)}\cdots (x-x_n).
+\label{interdiff:koeffizienten}
+\end{equation}
+Durch Einsetzen der Stütztstellen lassen sich die $l_j(x)$ aus
+Formel~\eqref{interdiff:koeffizienten} direkt berechnen, so dass
+man die Näherungsformel 
+\begin{equation}
+f'(x) = \sum_{j=0}^n f(x_j) l'_j(x)
+\label{interdiff:ableitung}
+\end{equation}
+erhält.
+
+\section{Ableitungsverfahren}
+\rhead{Ableitungsverfahren}
+Wir wenden die Formeln
+\eqref{interdiff:ableitung}
+und
+\eqref{interdiff:koeffizienten}
+zunächst auf den Fall zweier Stützstellen $x_0=\xi-\frac{h}2$ und
+$x_1=\xi+\frac{h}2$ an.
+Es folgt
+\begin{align*}
+l_0(x)
+&=
+-\frac{1}{h} (x-x_1)
+&
+l_0'(x)
+&=
+-\frac1h \cdot 1
+\\
+l_1(x)
+&=
+\frac1{h} (x-x_0)
+&
+l_1'(x)
+&=
+\frac1h \cdot 1
+\\
+f'(x)
+&\approx
+\frac1h(- f(x_0)+f(x_1)) = \frac{f(x+\frac{h}2)-f(x-\frac{h}2)}{2},
+\end{align*}
+der bereits bekannte symmetrische Differenzenquotient.
+
+Für $n=2$ und die Stützstellen $x_0=x-h$, $x_1=x$ und $x_2=x+h$ erhalt man
+dagegen
+\begin{align*}
+l_0(x)
+&=
+\frac{1}{h\cdot 2h} (x-x_1)(x-x_2)
+&
+l_0'(x)
+&=
+\frac{1}{2h^2}(2x-x_2-x_1)
+&
+l_0'(\xi)
+&=
+\frac{1}{2h^2}(2\xi -(\xi+h) -\xi)
+=
+-\frac{1}{2h}
+\\
+l_1(x)
+&=
+\frac{1}{h^2} (x-x_0)(x-x_2)
+&
+l'_1(x)
+&=
+\frac{1}{h^2} (2x-x_0-x_2)
+&
+l'_1(\xi)
+&=
+\frac{1}{h^2}(2\xi-(\xi-h)-(\xi+h)) = 0
+\\
+l_2(x)
+&=
+\frac{1}{2h\cdot h} (x-x_0)(x-x_1)
+&
+l'_2(x)
+&=
+\frac{1}{2h^2} (2x-x_0-x_1)
+&
+l'_2(\xi)
+&=
+\frac{1}{2h^2} (2\xi-(\xi-h)-\xi)
+=
+\frac{1}{2h}
+\\
+f'(\xi)
+&\approx
+\frac{1}{2h}(f(x_2) - f(x_0))
+\rlap{$\displaystyle= \frac{f(\xi+h)-f(\xi-h)}{2h},$}
+\end{align*}
+also wieder eine symmetrische Differenz.
+Die zusätzliche Stützstelle in der Mitte bringt keinen Genauigkeitsgewinn.
+
+
+
+\section{Numerische Experimente}
+\rhead{Numerische Experimente}
+
+\cite{interdiff:numerical-analysis}
+
+\printbibliography[heading=subbibliography]
+\end{refsection}

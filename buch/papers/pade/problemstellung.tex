@@ -6,8 +6,8 @@
 
 \section{Problemstellung
 \label{pade:section:Problemstellung}}
-Eine Padé-Approximation ist ein Bruch, welcher aus zwei Polynomen, welche aus den Koeffizienten der Taylorreihe einer Funktion gewonnen werden, gebildet wird. 
-Ziel dieses Kapitels ist es dem Leser den Nutzen der Padé-Approximation näher zu bringen und zu zeigen wie man aus einer analytischen Funktion eine solche Approximation bildet.
+Eine Padé-Approximation ist ein Bruch, aus zwei Polynomen, welche aus den Koeffizienten der Taylor-Reihe einer Funktion gewonnen werden. 
+Ziel dieses Kapitels ist, dem Leser den Nutzen der Padé-Approximation näher zu bringen und zu zeigen, wie man aus einer analytischen Funktion eine solche Approximation bildet.
 Des Weiteren wird auf mehrere praktische Beispiele eingegangen und mögliche Fehlerquellen aufgezeigt. 
 
 
@@ -16,17 +16,18 @@ Des Weiteren wird auf mehrere praktische Beispiele eingegangen und mögliche Feh
 \label{pade:subsection:Potenzreihen}}
 \rhead{Potenzreihen}
 Die Koeffizienten einer Potenzreihe können verwendet werden, um die Koeffizienten einer Padé-Approximation zu gewinnen. 
-In der Analysis kann eine Funktion mit einer Taylorreihe um eine Stelle $x_{0}$ durch eine Potenzreihe dargestellt werden. 
-Diese Potenzreihen werden um einen vorgegebene Stelle $x_{0}$ als eine unendliche Summe 
+In der Analysis kann eine Funktion mit einer Taylor-Reihe um eine Stelle $x_{0}$ durch eine Potenzreihe dargestellt werden. 
+Diese Potenzreihen werden wie folgt um eine vorgegebene Stelle $x_{0}$ als eine unendliche Summe 
 \begin{equation}
 f(x)=\sum_{n=0}^{\infty} a_{n} (x-x_{0})^{n} 
 \label{pade:expofunk}
 \end{equation}
 gebildet.
-Für viele Funktionen sind die dazugehörigen Potenzreihen schon bekannt. 
+Für viele Funktionen sind die dazugehörigen Potenzreihen bereits bekannt. 
 Funktionen welche durch eine Potenzreihe dargestellt werden können, werden auch analytische Funktionen genannt.
 Es gibt verschiedene Methoden, um eine Potenzreihe einer Funktion zu erhalten. 
-Bei analytischen Funktionen sind die Potenzreihen schon bekannt und können durch Differentialgleichungen oder eine andere Reihenentwicklungsmethoden hergeleitet werden.
+Bei analytischen Funktionen sind die Potenzreihen konvergent.
+Das heisst, sie können durch Differentialgleichungen oder eine andere Reihenentwicklungsmethoden hergeleitet werden.
 
 \subsubsection{Beispiel Potenzreihen
 \label{pade:section:Bsp_Potenzreihen}}
@@ -38,7 +39,7 @@ Gesucht ist eine Potenzreihe, welche das Verhalten
 \end{equation*}
 aufweist.
 
-Die Form der Potenzreihe ist gegeben durch die schon gezeigte Summe \ref{pade:expofunk}.
+Die Form der Potenzreihe ist gegeben durch die schon gezeigte Summe \eqref{pade:expofunk}.
 Weiter wissen wir, dass die Exponentialfunktion 
 \begin{equation*}
 f(0) = 1
@@ -63,7 +64,7 @@ f^{\prime}(x)
 \sum_{n=0}^{\infty}(n+1) \cdot a_{n+1} \cdot x^{n},
 \end{equation*}
 um die weiteren Koeffizienten $a_n$ zu erhalten.
-Da immer noch die Anforderung $f(x) = f^{\prime}(x)$ gilt, wissen wir, dass die Koeffizienten vor $x^n$  von der Form
+Da immer noch die Anforderung $f(x) = f^{\prime}(x)$ gilt, wissen wir, dass die Koeffizienten von $x^n$  von der Form
 \begin{equation*}
 (n+1) \cdot a_{n+1} 
 = 
@@ -81,7 +82,7 @@ a_{n}
 \frac{1}{n!}
 \end{equation*}
 und damit sind die Koeffizienten des Polynoms der Exponentialfunktion ermittelt.
-Ausgeschrieben 
+Ausgeschrieben erhält man
 
 
 \begin{equation}
@@ -89,12 +90,11 @@ e^{x}
 =
 \sum_{n=0}^{\infty} \frac{x^{n}}{n !}
 =
-\frac{x^{0}}{0 !}+\frac{x^{1}}{1 !}+\frac{x^{2}}{2 !}+\frac{x^{3}}{3 !}+\cdots 
+\frac{x^{0}}{0 !}+\frac{x^{1}}{1 !}+\frac{x^{2}}{2 !}+\frac{x^{3}}{3 !}+\cdots .
 \label{pade:potenzexp}
 \end{equation}
-Aus der bekannten Potenzreihe der Exponentialfunktion \ref{pade:potenzexp} können nun auch andere Potenzreihen gewonnen werden.
-Für die Potenzreihen gilt alle $x \in \mathbb{R}$ d.h., der Konvergenzradius der Potenzreihe ist unendlich. 
-Aus der Exponentialfunktion kann sogleich die Potenzreihe für den Sinus und Kosinus ermittelt werden.
+Aus der bekannten Potenzreihe der Exponentialfunktion \eqref{pade:potenzexp} können nun auch andere Potenzreihen gewonnen werden.
+Aus der Exponentialfunktion kann die Potenzreihe für die Sinus- und Kosinus- Funktion ermittelt werden.
 Um dies zu erreichen wird, zuerst die Reihe komplex erweitert
 \begin{equation*}
 e^{x}
@@ -105,7 +105,7 @@ e^{ix}
 =
 \sum_{n=0}^{\infty} \frac{ix^{n}}{n !}.
 \end{equation*}
-Die komplexe Reihe bringen wir durch den Gebrauch von Euler in eine sehr bekannte Form  
+Die komplexe Reihe bringen wir durch den Gebrauch von Euler in eine bekannte Form  
 \begin{equation}
 e^{ix}
 =
@@ -114,18 +114,18 @@ e^{ix}
 \frac{(ix)^{0}}{0 !}+\frac{(ix)^{1}}{1 !}+\frac{(ix)^{2}}{2 !}+\frac{(ix)^{3}}{3 !}+\cdots
 \end{equation}
 
-Man sieht gleich, dass die komplexen Zahlen bei den geraden Exponenten verschwinden und bei denn ungeraden Exponenten bestehen bleiben. 
-Sortiert man nun das Polynom nach komplexen und reellen Werten erkennt man die $cis$-Form 
+Man erkennt gleich, dass die komplexen Zahlen bei den geraden Exponenten verschwinden und bei denn ungeraden Exponenten bestehen bleiben. 
+Sortiert man nun das Polynom nach komplexen und reellen Werten erkennt man die $\operatorname{cis}$-Form 
 \begin{align*}
 e^{ix}
 &=
-\left(1-\frac{x^{2}}{2 !}+\frac{x^{4}}{4 !}-\ldots\right)+\mathrm{i} \cdot\left(x-\frac{x^{3}}{3 !}+\frac{x^{5}}{5 !}-\ldots\right)
+\left(1-\frac{x^{2}}{2 !}+\frac{x^{4}}{4 !}-\ldots\right)+i \cdot\left(x-\frac{x^{3}}{3 !}+\frac{x^{5}}{5 !}-\ldots\right)
 \\
 &=
 \cos(x)+i\cdot \sin(x).
 \end{align*}
-und kann diese beiden Teile als Sinus und Kosinus aufschreiben.
-Wobei die Sinusfunktion 
+und kann diese beiden Teile als Sinus und Kosinus aufschreiben,
+wobei die Sinusfunktion 
 \begin{equation*}
 \sin (x)
 =
@@ -148,18 +148,278 @@ beide als einzelne Summen ausgeschrieben werden können.
 \subsection{Padé-Approximation erstellen
 	\label{pade:subsection:Pade_erstellen}}
 
-Die Padé-Approximation 
-
-\todo{Erklärung wie man Gleichungsystem aufstellt und was ein Padé-Table ist}
-
-\todo{Einfaches Beispiel durchrechnen}
-
+Um eine Padé-Approximation zu erstellen, startet man immer mit der Potenzreihe der zu approximierenden Funktion.
+Diese Potenzreihe der Form 
+\begin{equation}
+f(x)=\sum_{n=0}^{\infty} c_{n} (z)^{n} 
+\end{equation}
+(\textcolor{red}{Achtung $c_n$ wird statt $a_n$ ab hier verwendet}) 
+möchte man dann durch einen rationalen Bruch 
 \begin{equation}
 [L/M]
 =
 \frac{a_0 + a_1 z + \dots + a_L z^L}{b_0 + b_1 z + \dots + b_M z^M}
 +O(z^{L+M+1})
 \end{equation}
+beschreiben.
+Der erste Koeffizient des Nennerpolynoms wird mit $b_0 = 1$ bestimmt.
+Dank dieser Definition haben wir $L+1$ bestimmbare Zähler- und $M$ bestimmbare Nenner- Koeffizienten. 
+Dies resultiert in $[L+M+1]$ unbekannten Koeffizienten, welche mit der Nummerierung der Potenzreihe $z^0, z^1, z^2,\dots , z^{L+M}$ übereinstimmt.
+
+Um die einzelnen $a_k$ (mit $0\leq k\leq L$) und $b_k$ (mit $0\leq k\leq M $) Koeffizienten zu berechnen, wir die Approximation mit der Potenzreihe gleichgesetzt
+\begin{equation}
+\sum_{n=0}^{\infty} c_{n} (z)^{n} 
+=
+\frac{a_0 + a_1 z + \dots + a_L z^L}{b_0 + b_1 z + \dots + b_M z^M}
++O(z^{L+M+1}),
+\end{equation}
+wobei das ganze umgestellt und als lineares Gleichungssystem
+\begin{equation}
+\sum_{n=0}^{\infty} c_{n} (z)^{n} 
+\cdot
+(b_0 + b_1 z + \dots + b_M z^M)
+=
+(a_0 + a_1 z + \dots + a_L z^L) 
++
+O(z^{L+M+1})
+\end{equation}
+betrachtet werden kann.
+Diese lineare Gleichungen können in der Matrixform aufgeschrieben
+\[
+\renewcommand\arraystretch{1.25}
+\begin{pmatrix}
+c_{L-M+1} & c_{L-M+2} & c_{L-M+3} &\dots & c_{L}\\
+c_{L-M+2} & c_{L-M+3} & c_{L-M+4} &\dots & c_{L+1}\\
+c_{L-M+3} & c_{L-M+4} & c_{L-M+5} &\dots & c_{L+2}\\
+\vdots & \vdots  & \vdots  &  & \vdots \\
+c_{L} & c_{L+1} & c_{L+2} &\dots & c_{L+M-1}\\
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+b_{M}\\
+b_{M-1}\\
+b_{M-2}\\
+\vdots \\
+b_{1}\\
+\end{pmatrix}
+=
+-
+\begin{pmatrix}
+c_{L+1}\\
+c_{L+2}\\
+c_{L+3}\\
+\vdots \\
+c_{L+M}\\
+\end{pmatrix}
+\label{pade:bKoeff}
+\]
+und nach den $b_M$ Koeffizienten aufgelöst werden.
+Die dazugehörigen $a_k$ Koeffizienten können dann aus den $b_k$ und den $c_n$ (mit $0\leq n \leq M+L$) Koeffizienten 
+\begin{equation}
+\begin{array}{l}
+a_{0}=c_{0} \\
+a_{1}=c_{1}+b_{1} c_{0} \\
+a_{2}=c_{2}+b_{1} c_{1}+b_{2} c_{0} \\
+\vdots \\
+a_{L}=c_{L}+\displaystyle\sum_{n=1}^{\min (L, M)} b_{n} c_{L-n}
+\end{array}
+\label{pade:aKoeff}
+\end{equation}
+berechnet werden.
+Wenn die Berechnungen der $a_L$ und $b_M$ Koeffizienten funktioniert hat, haben wir einen $[L/M]$ Padé-Approximanten konstruiert.
+Dieser Approximant stimmt mit 
+\begin{equation}
+\sum_{n=0}^{\infty} c_{n} z^{n}
+\end{equation}
+bis zu der Ordnung $z^{[L+M]}$ überein.
+
+\begin{beispiel}
+
+
+Nehmen wir das Beispiel der Einleitung,
+\begin{equation}
+f(x)
+=
+\left(\frac{1+2x}{1+x}\right)^{\frac{1}{2}}
+\approx
+1+\frac{1}{2}x - \frac{5}{8}x^2+\frac{13}{16}x^3 -\frac{141}{128}x^4 +\frac{399}{256}x^5 - \frac{2353}{1024}x^6 + \frac{7205}{2048}x^7 \mp \cdots
+\label{pade:bspPotenz}
+\end{equation}
+von welchem wir nun den Padé-Approximanten der dritten Ordnung $R_{[3/3]}$ berechnen möchten.
+Zuerst kreieren wir die Matrix, um die $b_k$ Koeffizienten zu berechnen.
+\[
+\renewcommand\arraystretch{1.25}
+\begin{pmatrix}
+c_{1} & c_{2} & c_{3}\\
+c_{2} & c_{3} & c_{4}\\
+c_{3} & c_{4} & c_{5} \\
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+b_{3}\\
+b_{2}\\
+b_{1}\\
+\end{pmatrix}
+=
+-
+\begin{pmatrix}
+c_{4}\\
+c_{5}\\
+c_{6}\\
+\end{pmatrix}
+\]
+Hier können nun die Koeffizienten der Potenzreihe \ref{pade:bspPotenz} eingesetzt werden.
+\[
+\renewcommand\arraystretch{1.25}
+\begin{pmatrix}
+\frac{1}{2} & -\frac{5}{8} & \frac{13}{16}\\
+-\frac{5}{8} & \frac{13}{16}& -\frac{141}{128}\\
+\frac{13}{16} & -\frac{141}{128} & \frac{399}{256} \\
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+b_{3}\\
+b_{2}\\
+b_{1}\\
+\end{pmatrix}
+=
+-
+\begin{pmatrix}
+-\frac{141}{128}\\
+\frac{399}{256}\\
+-\frac{2353}{1024}\\
+\end{pmatrix}
+\]
+Da es sich in diesem Fall um eine Matrix gleicher Dimensionen handelt, kann die Inverse der $C$-Matrix 
+\begin{equation}
+C\cdot b = -c
+\qquad\Rightarrow\qquad
+b = C^{-1} \cdot -c
+\end{equation}
+genommen werden, um die Gleichung 
+
+\[
+\renewcommand\arraystretch{1.25}
+\begin{pmatrix}
+b_{3}\\
+b_{2}\\
+b_{1}\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+\frac{1}{2} & -\frac{5}{8} & \frac{13}{16}\\
+-\frac{5}{8} & \frac{13}{16}& -\frac{141}{128}\\
+\frac{13}{16} & -\frac{141}{128} & \frac{399}{256} \\
+\end{pmatrix}^{-1}
+\cdot
+-
+\begin{pmatrix}
+-\frac{141}{128}\\
+\frac{399}{256}\\
+-\frac{2353}{1024}\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+\frac{169}{64}\\
+\frac{47}{8}\\
+\frac{17}{4}\\
+\end{pmatrix}
+\]
+zu lösen.
+Die $a_k$ Koeffizienten können nun aus den $b_k$ und den $c_n$ Koeffizienten berechnet werden.
+\begin{equation}
+\begin{array}{l}
+a_{0}=c_{0} \\
+a_{1}=c_{1}+b_{1} c_{0} \\
+a_{2}=c_{2}+b_{1} c_{1}+b_{2} c_{0} \\
+a_{3}=c_{3}+b_{1} c_{2}+b_{2} c_{1} + b_{3} c_{0} \\
+\end{array}
+\qquad\Rightarrow\qquad
+\begin{array}{l}
+a_{0}=1 \\
+a_{1}=\frac{1}{2}+\frac{17}{4} \cdot 1 = \frac{19}{4}\\
+a_{2}=-\frac{5}{8} +\frac{17}{4}\cdot \frac{1}{2} +\frac{47}{8} \cdot 1 = \frac{59}{8} \\
+a_{3}=\frac{13}{16}+\frac{17}{4}\cdot -\frac{5}{8} + \frac{47}{8}\cdot \frac{1}{2} + \frac{169}{64} \cdot 1 = \frac{239}{64}\\
+\end{array}
+\end{equation}
+Daraus resultiert der gesamte Padé-Approximant der dritten Ordnung, welcher aus der Taylor-Reihe der sechsten Ordnung gewonnen werden konnte.
+\begin{equation}
+R_{[3, 3]}(x)
+=
+\frac{a_0+a_1x+a_2 x^2+a_3x^3}
+{1+b_1x+b_2 x^2+b_3 x^3}
+=
+\frac{1+\frac{19}{4}x+\frac{59}{8}x^2+\frac{239}{64}x^3}
+{1+\frac{17}{4}x+\frac{47}{8}x^2+\frac{169}{64}x^3}
+\end{equation}
+\end{beispiel}
+Auffallend ist, dass dieser Approximant der dritten Ordnung aus komplett anderen Polynomen zusammengesetzt ist, als der Approximant zweiter Ordnung des obigen Beispiels \ref{pade:bspordnung2}.
+
+
+Dieser Aufwand, um einen Approximant zu berechnen, muss jedoch nicht immer betrieben werden.
+Für mache Funktionen, konnten Formeln zur Konstruktion der Nenner- und Zähler- Polynome der Padé-Approximanten gefunden werden.
+Wie man auf diese Formeln kommt, ist in der weiterführenden Literatur \cite{pade:Baker2009} beschrieben.
+Die Exponentialfunktion, welche für viele Anwendungen gebraucht wird, besitzt glücklicherweise eine solche Formel \cite{pade:moler} für die Konstruktion der Nenner- und Zähler- Polynome.
+Wir verwenden nun für den Approximanten die Notation $R_{[L/M]}$.
+Um eine  Padé-Approximation beliebiger Ordnung für die Exponentialfunktion zu erhalten 
+\begin{equation}
+R_{[L/M]}(x)
+=
+\frac{P_{[L/ M]}(x)}{Q_{[L, M]}(x)} \approx e^{-x}
+\end{equation}
+können nun zwei gegebenen Formeln verwendet werden.
+Für $P_{[L/ M]}(x)$ also das Zählerpolynom gilt die Formel
+\begin{equation}
+P_{[L/ M]}(x)
+=
+\sum_{n=0}^{L} \frac{(L+M-n) ! L !}{(L+M) ! n !(L-n) !}(-x)^{n}
+\label{pade:expP}
+\end{equation}
+und für $Q_{[L/ M]}(x)$ das Nennerpolynom gilt die Formel
+\begin{equation}
+Q_{[L/ M]}(x)
+=
+\sum_{n=0}^{M} \frac{(L+M-n) ! M !}{(L+M) ! n !(M-n) !} x^{n}.
+\label{pade:expQ}
+\end{equation}
+
+
+Es ist gängige Praxis die Padé-Approximanten in einer Tabelle mit der Form
+\begin{center}
+	\begin{tabular}{c| c c c c}
+		
+		$[L/M]$ 	& 0 		& 1 		& 2 		& $\cdots$ \\
+		\hline
+		0 		& $[0/0]$ 	& $[1/0]$ 	& $[2/0]$ 	& $\dots$ \\
+		1 		& $[0/1]$ 	& $[1/1]$ 	& $[2/1]$ 	& $\dots$ \\
+		2 		& $[0/2]$ 	& $[1/2]$ 	& $[2/2]$ 	& $\dots$ \\
+		$\vdots$ 	& $\vdots$ 	& $\vdots$  	& $\vdots$  	&  \\
+	\end{tabular}
+\end{center}
+darzustellen.
+Diese Darstellung dient zur Übersicht der einzelnen Approximanten und macht deutlich, dass alle Approximanten verschiedener Ordnung unabhängig von einander sind. 
+Das heisst die Polynome sehen bei jeder Ordnung komplett verschieden aus und werden nicht wie bei der Taylor-Reihe einfach immer länger. 
+
+
+In diese Tabelle können nun die einzelnen Approximanten einer Funktion eingefüllt werden.
+Als Beispiel wurde die Exponentialfunktion, mit den dazugehörigen $[L/M]$ Approximanten bis zum Approximant $[2/2]$, mit Hilfe der Formeln \ref{pade:expP} und \ref{pade:expQ} berechnet und in die Tabelle
+\begin{center}
+	\begin{tabular}{c| c c c }
+		$[L/M]$ 	& 0 		& 1 		& 2 	 \\
+		\hline
+		0 		& $\frac{1}{1}$ 	& $\frac{1+z}{1}$ 	& $\frac{2+2 z+z^{2}}{2}$ \\
+		1 		& $\frac{1}{1-z}$ 	& $\frac{2+z}{2-z}$ 	& $\frac{6+4 z+z^{2}}{6-2 z}$ 	 \\
+		2 		& $\frac{2}{2-2 z+z^{2}} $ 	& $\frac{6+2 z}{6-4 z+z^{2}}$ 	& $\frac{12+6 z+z^{2}}{12-6 z+z^{2}}$ 	 \\
+	\end{tabular}
+\end{center}
+eingefügt.
+
+
+
+
+
+
+
 
 
 

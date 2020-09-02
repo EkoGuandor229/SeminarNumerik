@@ -4,15 +4,19 @@ x_{n+1} = 2^{n+1} (\sqrt{1+2^{-n}x_n}-1)
 \label{1002:eqn}
 \end{equation}
 definierte Folge für Startwerte $x_0>-1$ gegen $\log(x_0+1)$ konvergiert.
+\index{Startwert}%
 \begin{teilaufgaben}
 \item
 Warum tritt in der Rekursionsformel~\eqref{1002:eqn} Auslöschung auf?
+\index{Rekursionsformel}%
 \item
 Formulieren Sie \eqref{1002:eqn} derart, dass keine Auslöschung auftritt.
+\index{Auslöschung}%
 \end{teilaufgaben}
 
 \begin{hinweis}
 Verwenden Sie die Halbwinkelformel
+\index{Halbwinkelformel}%
 \begin{equation}
 \tan\frac{\alpha}2 = \frac{\sqrt{1+\tan^2 \alpha } - 1}{\tan \alpha}.
 \label{buch:1002:halbwinkel}
@@ -25,11 +29,16 @@ Verwenden Sie die Halbwinkelformel
 Da die Folge $x_n$ konvergiert, geht $2^{-n}x_n$ gegen $0$ und damit
 geht $\sqrt{1+2^{-n}x_n}$ gegen $1$.
 Die Differenz mit $1$ führt dann zu Auslöschung.
+\index{Auslöschung}%
 \item
 Im Zähler der rechten Seite der Halbwinkelformel
+\index{Halbwinkelformel}%
 \eqref{buch:1002:halbwinkel} für den Tangens
+\index{Tangens}%
+\index{tanx@$\tan(x)$}%
 kommt genau der Ausdruck vor, der für die
 Auslöschung verantwortlich ist.
+\index{Auslöschung}%
 Um die Formel verwenden zu können muss
 \[
 \tan \alpha
@@ -67,6 +76,8 @@ Allerdings benötigt die Iteration jetzt zusätzlich die Auswertung
 eines Arkustangens und eines Tangens, was den Rechenaufwand 
 beträchtlich erhöht, selbst auf modernen Floatingpoint-Hardware, die
 diese Operationen sehr schnell ausführen kann.
+\index{Iteration}%
+\index{Tangens}%
 \qedhere
 \end{teilaufgaben}
 \begin{table}

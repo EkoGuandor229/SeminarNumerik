@@ -162,27 +162,23 @@ t, y=rk.rk_system_nd_ssc_fehlberg(0, [np.array([0])], 1, f, hmin=1e-6, hmax=2, e
 # t, y=rk.rk_system_nd(0, [np.array([0])], 2, f, 0.1) # 10 steps
 
 x=np.arange(0, 1, 1e-6)
-plt.figure()
-plt.plot(x, np.log((-1)/(np.array(x)-1)), '--', c='#8F8F8F',label='analytisch')
-plt.plot(t, [y[0,0] for y in y], '.-', label='numerisch', c=(0.8, 0.2, 0, .5))
-plt.ylim(0, 12)
-plt.title("$y'=e^y$, $y(0)=0$")
-plt.legend()
-plt.grid()
-plt.tight_layout()
-plt.savefig('test3.pdf')
+fig, (ax1, ax2)=plt.subplots(1,2, figsize=(8, 5))
+ax1.plot(x, np.log((-1)/(np.array(x)-1)), '--', c='#8F8F8F',label='analytisch')
+ax1.plot(t, [y[0,0] for y in y], '.-', label='numerisch', c=(0.8, 0.2, 0, .5))
+ax1.set_ylim(0, 12)
+ax1.set_xlabel('x')
+ax1.set_ylabel('y')
+ax1.set_title("$y'=e^y$, $y(0)=0$")
+ax1.legend()
+ax1.grid()
 
-fig, ax=plt.subplots() #step_size
-ax.set_xlim(0, len(t)-2)
-#ax.set_ylim(1e-6, 1)
-ax.semilogy((np.r_[t, t[-1]]-np.r_[0, t])[1:], '-C1', drawstyle='steps-post')
-ax.plot([t[i+1]-t[i] for i in range(len(t)-1)], '.C1')
-ax.set_xlabel('step n')
-ax.set_ylabel('step size')
-ax.grid(which="both")
+ax2.set_xlim(0, len(t)-2)
+#ax2.set_ylim(1e-6, 1)
+ax2.semilogy((np.r_[t, t[-1]]-np.r_[0, t])[1:], '-C1', drawstyle='steps-post')
+ax2.plot([t[i+1]-t[i] for i in range(len(t)-1)], '.C1')
+ax2.set_xlabel('Schritt n')
+ax2.set_ylabel('Schrittweite')
+ax2.grid(which="both")
+ax2.set_title("Schrittweitenverlauf")
 fig.tight_layout()
-plt.savefig('test3_step.pdf')
-
-
-
-
+fig.savefig('test3.pdf')

@@ -1,0 +1,33 @@
+\subsection{Der Backpropagation Algorithmus}
+
+Für den einfachen Fall eines neuronalen Netzwerks, bei welchem alle Schichten nur mit der Nachfolgenden verbunden sind und es eine Verlustfunktion ($\Lb$) gibt die einen skalares Resultat gibt, kann der Backpropagation Algorithmus einfach durch Matrixmultiplikationen verstanden werden:
+\begin{equation}
+\Lb(y_{i}, \sigma^{l}(W^{l}\sigma^{l-1}(W^{l-1}\cdots \sigma^{1}(W^{1}x+b^{1}) + b^{l-1} \cdots ) )
+\end{equation}
+Dies resultiert, dass partiellen Ableitung $\partial \Lb / \partial w^l_{jk}$ und $\partial \Lb / \partial b^l_j$ berechnet werden müssen. Um diese zu berechnen führen wir eine neuronspezifischen Fehleränderung $\delta$ ein. $\delta^{l}_{j}$ ist somit die Änderung des Fehlers im Neuron $j$ in der Schicht $l$. Backpropagation ist ein Algorithmus um $\delta^{l}_{j}$ zu berechnen, welchen wir auf $\partial \Lb / \partial w^l_{jk}$ und $\partial \Lb / \partial b^l_j$ zurück führen können. Wir können also festhalten, dass in der letzten Schicht folgende Bedingung
+\begin{equation}
+\delta^{L}_{j} = \frac{\partial \Lb}{\partial a^{L}_{j}} \sigma'(z^L_j)
+\end{equation}
+gilt. (Index $L$ ='last') Analog dazu in Matrixschreibweise
+\begin{equation}
+\delta^{L} = \nabla_a \Lb \odot \sigma'(z^L)
+\end{equation}
+mit $\odot$ als komponentenweise Multiplikation der Matrix (Hadamard Produkt). Es kann für die Fehlerfunktion $\Lb$ eine beliebige Funktion verwendet werden. Oft wird die der $L_1$ oder $L_2$ Fehler verwendet. Für dieses Beispiel verwenden wir die quadatische Fehlerfunktion ($L_2$ / MSE).
+\begin{equation}
+\Lb = \frac{1}{2} \sum_j \left( \hat{y} - y \right)^2
+\end{equation}
+Somit resultiert nach der partiellen Ableitung von $\Lb$ und einsetzten von $a^L$ die Gleichung:
+\begin{equation}
+\delta^{L} = (\hat{y} - a^L) \odot \sigma'(z^L)
+\end{equation}
+Mit diesen Annahmen wurde nun die Änderung des Fehlers abhänig von den Parametern der letzten Schicht berechnet. Der nächste Schritt wird sein herauszufinden, wie dieser durch das Netzwerk rückwärts gerechnet werden kann --- back propagiert.
+\begin{equation}
+\delta^{l} = ((w^{l+1} \delta{l+1}) \cdot \sigma'(z^l)
+\end{equation}
+Die Transponierte der Matrix $w^{l+1}$ kann man sich intuitiv vorstellen, als das 'Rückwärtsrechnen' des gewichteten Fehlers, da $w^{l+1} \cdot (w^{l+1})^T = I$. Dies ermöglicht die Änderung des Fehlers pro Neuron in der vorherliegenden Schicht zu bestimmen. Abschliessend müssen noch die Gradienten für $w$ und $b$ berechnet werden, diese resultieren aus den folgenden 2 Gleichungen:
+\begin{equation}
+\begin{split}
+\frac{\partial \Lb}{\partial b} & = \delta \\
+\frac{\partial \Lb}{\partial w} & = a^{l-1}_{k} \delta^{l}_j = a_{\text{in}} \delta_{\text{out}}
+\end{split}
+\end{equation}

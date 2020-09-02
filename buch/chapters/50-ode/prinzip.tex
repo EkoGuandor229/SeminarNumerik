@@ -7,7 +7,6 @@
 \rhead{Grundprinzip}
 \begin{figure}
 \centering
-%\includegraphics{chapters/images/numerik-2.pdf}
 \includegraphics{chapters/50-ode/figures/prinzip.pdf}
 \caption{Lineare Approximation von $y(x+\Delta x)$ durch Information,
 die am Punkt $x$ verfügbar ist.
@@ -32,6 +31,8 @@ Das Ziel ist jetzt, $y(x_k)$ näherungsweise zu berechnen.
 Wir schreiben $y_k$ für die Näherungswerte von $y(x_k)$.
 
 Die Ableitung liefert eine lineare Approximation für $y(x)$,
+\index{lineare!Approximation}%
+\index{Approximation!linear}%
 nämlich
 \[
 y(x+\Delta x)\approx y(x) + y'(x)\cdot\Delta x
@@ -45,8 +46,10 @@ Die Differentialgleichung liefert Werte für $y'(x_k)$ aus $x_k$ und $y(x_k)$,
 damit können wir aus dieser Approximation ein allgemeines
 Näherungsverfahren für die Lösung einer Differentialgleichung
 konstruieren.
+\index{Näherungsverfahren}%
 
 \begin{satz}[Euler-Verfahren]
+\label{buch:satz:euler-verfahren}
 \index{Euler-Verfahren}%
 Die Differentialgleichung
 \begin{equation}
@@ -77,23 +80,17 @@ y_{k+1}=y_k - \alpha y_k \dot h.
 gewinnen.
 Die Rekursionsgleichung kann in diesem Fall exakt gelöst werden,
 und wir finden
+\index{Rekursionsformel}%
 \begin{equation}
 y(x_{k+1}) = y(x_k)-\alpha y(x_k) h=(1-\alpha h) y(x_k)=\dots
 =(1-\alpha h)^{k+1}y_0
 \label{buch:ode:rekursion}
 \end{equation}
 für die Näherung $y_k$ der Funktionswerte $y(x_k)$.
-%Angewendet auf eine beliebige Differentialgleichung, ist dieses
-%einfache numerische Verfahren bekannt als das {\em Euler-Verfahren}.
-%Es ist nicht besonders genau, aber soll in diesem Abschnitt dazu
-%dienen, die Anforderungen an ein gutes numerisches Verfahren
-%zu illustrieren.
-
-
 
 Wir möchten $y(x)$ für einen ganz bestimmten $x$-Wert berechnen.
 Dazu unterteilen wir das Intervall $[0,x]$ in $n$ Teilschritte der
-Breite $x/n$, und wenden die Formel~\eqref{buch:ode:rekursion} an:
+Breite $x/n$ und wenden die Formel~\eqref{buch:ode:rekursion} an:
 \[
 y(x)=y(x_n)=(1-\alpha h)^n y_0=\biggl(1+\frac{-\alpha x}{n}\biggr)^n y_0.
 \]
@@ -104,7 +101,6 @@ korrekte Lösung:
 \]
 \begin{figure}
 \centering
-%\includegraphics{chapters/images/numerik-1.pdf}
 \includegraphics{chapters/50-ode/figures/euler.pdf}
 \caption{Approximationen der Lösung der Differentialgleichung $y'=-\alpha y$
 mit verschiedener Anzahl Schritte (rot) nähern sich für wachsendes
@@ -150,11 +146,13 @@ Der relative Fehler des Verfahrens ist also
 \includegraphics{chapters/50-ode/figures/relativ.pdf}
 \caption{Relativer Fehler des Euler-Verfahrens für die Differentialgleichung
 \eqref{buch:ode:expdgl} in Abhängigkeit von der Anzahl $k$ der Schritte.
+\index{relativer Fehler}%
 \label{buch:ode:relfehler}}
 \end{figure}%
 Ganz unabhängig von der Schrittweite $h$ wird der relative Fehler
 des Verfahrens immer gegen 1 streben, der Fehler wird also von der
 gleichen Grössenordnung wie die berechneten Resultate.
+\index{Schrittweite}%
 
 Die Abbildung~\ref{buch:ode:relfehler} zeigt, dass zu Beginn des Verfahrens
 der relative Fehler ungefähr linear mit der Anzahl der Schritte zunimmt.
@@ -162,6 +160,7 @@ Um eine angemessene Genauigkeit über einen grösseren Bereich
 zu erreichen, muss das Euler-Verfahren also sehr viel kleinere Schritte
 und eine entsprechend grössere Anzahl von Schritten ausführen,
 die viel Rechenzeit benötigen.
+\index{Euler-Verfahren}%
 
 Ein praktisch nützliches Verfahren muss also anstreben, mit einer
 sehr viel kleineren Anzahl von Schritten eine deutlich grössere Genauigkeit

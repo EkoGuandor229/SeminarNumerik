@@ -1,45 +1,56 @@
-%
-% main.tex -- Paper zum Thema <francis>
-%
-% (c) 2020 Hochschule Rapperswil
-%
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
 
 \chapter{Francis Algorithmus\label{chapter:francis}}
 \lhead{Francis-Algorithmus}
-\begin{refsection}
 \chapterauthor{Tobias Grab}
 
-\begin{figure}
+\begin{refsection}
+{\parindent 0pt
+Die} Berechnung der Eigenvektoren und Eigenwerte einer Matrix ist in vielen Bereichen der Wissenschaft ein oft zu lösendes Problem.
+\index{Grab, Tobias}%
+\index{Francis-Algorithmus}%
+\index{Eigenwert}%
+\index{Eigenvektor}%
+Mittlerweile halten wir die Berechnung für selbstverständlich.
+Dank guter Hardware und vor allem guter Software ist das heutzutage meist kein Problem mehr, auch nicht von grossen Matrizen.
+Eine effiziente Berechnung ist in vielen Bibliotheken integriert, wie beispielsweise der MATLAB-Befehl \texttt{eig}.
+\index{MATLAB}%
+\index{eig@\texttt{eig}}%
+Vor rund 60 Jahren sah die Situation völlig anders aus.
+Zum einen war die zur Verfügung stehende Hardware langsam und unzuverlässig, aber vor allem kannte niemand einen zuverlässigen und effizienten Weg zur Berechnung.
+Dies änderte sich im Jahre 1959 als John Francis den implizit geshifteten QR-Algorithmus, heute auch bekannt unter dem Namen \emph{Francis-Algorithmus}, entwickelt und verifiziert hat.
+\index{Francis, John}%
+\index{QR-Algorithmus!implizit geshifteter}%
+Der Algorithmus bzw. verschiedene Versionen davon werden bis heute von diversen Bibliotheken benutzt. \cite{francis:watkins_paper}
+
+\begin{figure}[h]
 	\begin{center}
 		\includegraphics[scale=0.5]{papers/francis/images/Francis.png}
-		\caption{John Francis im July 2008 \cite{francis:francis_portrait}}
+		\caption{John Francis im Juli 2008 \cite{francis:francis_portrait}}
 		\label{John Francis}
 	\end{center}
 \end{figure}
 
-Die Berechnung der Eigenvektoren und Eigenwerten einer Matrix ist in der Wissenschaft ein sehr oft vorkommendes Problem.
-Mittlerweile halten wir die Berechnung für selbstverständlich.
-Dank guter Hardware und vor allem guter Software ist das heutzutage meist kein Problem mehr, auch nicht von grossen Matrizen.
-Eine effiziente Berechnung ist in vielen Bibliotheken integriert, wie beispielsweise der MATLAB-Befehl \glqq eig \grqq.
-Vor rund 60 Jahren sah die Situation völlig anders aus.
-Zum einen war die zur Verfügung stehende Hardware langsam und unzuverlässig, aber vor allem kannte niemand einen zuverlässig und effizienten Weg zur Berechnung.
-Dies änderte sich im Jahre 1959 also John Francis den implizit geshifteten QR-Algorithmus, heute auch bekannt unter dem Namen \glqq Francis Algorithmus \grqq, entwickelt und verifiziert hat.
-Der Algorithmus bzw. verschiedene Versionen davon werden bis heute von diversen Bibliotheken benutzt. \cite{francis:watkins_paper}
 
 Wieso wird zur Berechnung der Eigenvektoren ein numerisches Verfahren benötigt?
-Zur Berechnung der Eigenwerte einer 3x3 Matrix kann man das charakteristische Polynom bilden und dessen Nullstellen finden, diese entsprechen den Eigenwerten der Matrix.
+Zur Berechnung der Eigenwerte einer $3 \times 3$ Matrix kann man das charakteristische Polynom bilden und dessen Nullstellen finden, diese entsprechen den Eigenwerten der Matrix.
+\index{charakteristisches Polynome}%
 Das grundlegende Problem ist also die Suche nach den Nullstellen eines Polynoms.
-Anfangs des 19. Jahrhunderts wurde von Niels Henrik Abel bewiesen, dass es keine Formel zur Berechnung der Nullstellen eines Polynoms der 5. Ordnung gibt.
+Anfangs des 19.~Jahrhunderts wurde von Niels Henrik Abel bewiesen, dass es keine Formel zur Berechnung der Nullstellen eines Polynoms der 5. Ordnung gibt.
+\index{Abel, Niels Henrik}%
 Folglich ist auch eine direkte Berechnung der Eigenwerte einer Matrix nicht möglich und die numerische Berechnung mit einem iterativen Verfahren der einzige Weg.
 Der Algorithmus fokussiert sich auf die Berechnung der Eigenwerte.
 Sind die Eigenwerte gefunden, können auch die dazugehörigen Eigenvektoren einfach berechnet werden.
 
 \input{papers/francis/grundlagen.tex}
+\input{papers/francis/plan.tex}
 \input{papers/francis/vorbereitung.tex}
 \input{papers/francis/francis_iteration.tex}
 \input{papers/francis/francis_iteration_ordnung_n.tex}
 \input{papers/francis/nachweis.tex}
-
+\rhead{Literatur}
 \printbibliography[heading=subbibliography]
 \end{refsection}

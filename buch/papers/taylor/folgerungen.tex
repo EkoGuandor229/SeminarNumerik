@@ -3,16 +3,16 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Folgerungen
+\section{Folgerungen des Beispiels
 \label{taylor:section:folgerungen}}
 \rhead{Folgerungen}
-Wie in Abbildung \ref{taylor:section:fig:FehlerRungeTaylor} ersichtlich ist, ist die Runge-Kutta Approximationen im Vergleich zur Taylor Approximation gleicher Ordnung bezüglich der logistischen Funktion genauer.
+Wie in Abbildung \ref{taylor:section:fig:FehlerRungeTaylor} ersichtlich ist, ist die Runge-Kutta Approximationen im Vergleich zur Taylor Approximation jeweils 5. Ordnung bezüglich der logistischen Funktion genauer.
 Dies gilt allerdings nur für den ausgewerteten Bereich der Gleichtung als Ganzes.
 Da die Entwicklungen des Fehlers unterschiedlich verlaufen, sind beide Verfahren in gewissen Abschnitten besser.
 Da man aber normalerweise die originale Funktion nicht kennt und somit auch der Fehler unbekannt ist, ziehen wir hier den defensiven Schluss und sagen, dass im Fall der logistischen Funktion die Runge-Kutte Approximation besser geeignet ist als die Taylor Approximation.
 
-\subsection{Erklärung der Folgerung
-\label{taylor:subsection:malorum}}
+\section{Analytischer Vergleich der Inkrementfunktionen
+\label{taylor:subsection:VergleichInkrementft}}
 Wird eine Funktion nur in einem Punkt und seiner unmittelbaren Umgebung betrachtet, so kann er durch eine Funktion 1. Grades approximiert werden, bzw. einer Geraden mit der selben Steigung.
 Die höheren Ordnungen spielen erst ab einem gewissen Abstand zum Auswertungspunkt eine Rolle.
 Wenn wir also genug nahe bleiben, können wir eine Funktion nur durch die erste Ableitung ziemlich gut approximieren.

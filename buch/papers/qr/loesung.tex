@@ -5,6 +5,7 @@
 %
 \section{Lösung mit Givens-Rotationen
 \label{qr:section:loesung}}
+\index{Givens-Rotation}%
 \rhead{Lösung}
 Eine Drehung in der von $x_i$ und $x_j$ aufgespannten Ebene um den Winkel $\alpha$ kann mit der Matrix
 \begin{equation}
@@ -32,7 +33,7 @@ R = D_{\alpha_k,l,n-1}...D_{\alpha_2,3,1}D_{\alpha_1,2,1}A.
 \end{equation*}
 
 
-Die erste Drehmatrix soll bewirken, dass das Element in der 2. Zeile und 1. Spalte nach der Multiplikation 
+Die erste Drehmatrix soll bewirken, dass das Element in der zweiten Zeile und ersten Spalte nach der Multiplikation 
 \begin{equation*}
 	D_{\alpha_1, 2,1}A=
 	\begin{pmatrix}
@@ -75,10 +76,11 @@ Die Matrizen $Q$ und $R$ sind beide von der Grösse $l\times l$.
 Für den Spezialfall $l=n$ können sie so stehen gelassen werden.
 Für alle Fälle aber wo $l>n$ müssen die Dimensionen noch angepasst werden, um den Forderungen der $QR$-Zerlegung zu genügen.
 In der Matrix $R$ stehen ab der $n.$ Zeile nur noch Nullen.
-Diese Zeilen können somit weggelassen werden und folglich alle Einträge ab der $n.$ Spalte von $Q$.
+Diese Zeilen können somit weggelassen werden und folglich alle Einträge ab der $n$-ten Spalte von $Q$.
 Als Matrizen ausgeschrieben:
-\begin{multline*}
-A=QR=
+\begin{align*}
+A=QR
+&=
 \begin{pmatrix}
 q_{11}&\cdots&q_{1n}&q_{1(n+1)}&\cdots&q_1l\\
 \vdots&\ddots&\vdots&\vdots    &\ddots&\vdots\\
@@ -92,7 +94,8 @@ r_{11}&r_{12}&\cdots&r_{1n}\\
 0     &0     &\cdots&0\\
 \vdots&\vdots&\ddots&\vdots\\
 0     &0     &\cdots&0
-\end{pmatrix}\\=
+\end{pmatrix}\\
+&=
 \begin{pmatrix}
 q_{11}&\cdots&q_{1n}&\\
 \vdots&\ddots&\vdots&\\
@@ -104,6 +107,6 @@ r_{11}&r_{12}&\cdots&r_{1n}\\
 \vdots&\vdots&\ddots&\vdots\\
 0     &0     &\cdots&r_{nn}
 \end{pmatrix}.
-\end{multline*}
+\end{align*}
 $Q$ ist daraufhin also eine $l\times n$-Matrize und $R$ ist von der Grösse $n\times n$, wie verlangt.
 

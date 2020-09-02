@@ -6,6 +6,7 @@
 \section{Nullstellen von Funktionen
 \label{buch:section:nullstellen}}
 \rhead{Nullstellen von Funktionen}
+\index{Nullstelle}%
 Die Aufgabe, eine Gleichung der Form $f(x) = g(x)$
 zu lösen, also ein $x\in\mathbb R$ zu finden derart, dass die Gleichung
 erfüllt wird, ist gleichbedeutend damit, eine Nullstelle der Funktion
@@ -17,6 +18,7 @@ Es muss davon ausgegangen werden, dass die Funktion $f$ nicht einfach
 algebraisch invertiert werden kann.
 Sie wird also als Black-Box behandelt, man kann mit ihr nur Funktionswerte
 zu vorgegebenen $x$ ermitteln.
+\index{Black-Box}%
 Bei einem Versuch mit einem Wert $x_0$ gibt der Funktionswert $f(x_0)$
 nur die Information, ob der Versuch erfolgreich war oder nicht.
 Grundsätzlich können wir nicht einmal schliessen, dass ein
@@ -42,18 +44,20 @@ entfernt ist.
 Zwei Werte mit unterschiedlichem Vorzeichen zeigen dagegen klar an,
 dass sich eine Nullstellen zwischen Argumenten befinden muss.
 Dies ist der Inhalt des folgenden Spezialfalls des Zwischenwertsatzes.
+\index{Zwischenwertsatz}
 
 \begin{satz}[Zwischenwertsatz für Nullstellen]
 \label{buch:satz:nullstellenzwsatz}
+\index{Zwischenwertsatz!für Nullstellen}%
 Ist die Funktion $f\colon[a,b]\to\mathbb R$ stetig mit $f(a) <0$ und $f(b)>0$,
-dann hat $f$ eine Nullstelle im Inneren des Intervals $[a,b]$.
+dann hat $f$ eine Nullstelle im Inneren des Intervalls $[a,b]$.
 \end{satz}
 
 \begin{figure}
 \centering
 \includegraphics{chapters/20-gleichungen/figures/stufe.pdf}
 \caption{Die Werte einer stetigen Funktion an den Intervallenden verraten
-nichts über die Lage einer Nullstelle im Interval.
+nichts über die Lage einer Nullstelle im Intervall.
 Die beiden Graphen gehören zu Funktionen, die den gleichen Wert an den
 Intervallenden haben, aber die Nullstelle $x_0$ liegt an völlig
 unterschiedlichen Stellen
@@ -61,37 +65,41 @@ unterschiedlichen Stellen
 \end{figure}
 
 Man beachte, dass der Betrag der Funktionswerte an den Intervallenden keine
-Information darüber liefert, wo im Interval die Nullstelle zu finden ist.
+Information darüber liefert, wo im Intervall die Nullstelle zu finden ist.
 Abbildung~\ref{buch:figure:stufe} zeigt zwei Funktionen mit identischen
 Funktionswerten an den Intervallenden aber völlig verschiedener Lage
 der Nullstellen.
 Erst zusätzliche Annahmen über die Steigung oder Krümmung der Kurve können
 die Lage der Nullstelle besser eingrenzen.
+\index{Steigung}%
+\index{Krümmung}%
 
 Der Zwischenwertsatz~\ref{buch:satz:nullstellenzwsatz} liefert trotzdem
 genug Information, um die Nullstelle zu finden.
 Für die folgende Diskussion nehmen wir der Einfachheit an, dass $f(a)<0$
 und $f(b)>0$ ist.
-Wir wissen bereits, dass die Nullstelle im Interval $[a,b]$ liegen muss.
-Sei $m=\frac12(a+b)$ der Mittelpunkt des Intervals.
+Wir wissen bereits, dass die Nullstelle im Intervall $[a,b]$ liegen muss.
+Sei $m=\frac12(a+b)$ der Mittelpunkt des Intervalls.
 Wenn $f(m) > 0$ ist, können wir schliessen, dass eine Nullstelle im
-Teilinterval $[a,m]$ liegen muss.
+Teilintervall $[a,m]$ liegen muss.
 Wenn $f(m) <0$ ist, liegt eine Nullstelle in $[m,b]$.
-Damit ist ein neues Interval halber Länge gefunden, welches eine
+Damit ist ein neues Intervall halber Länge gefunden, welches eine
 Nullstelle von $f$ enthält.
 Wir haben ein Bit Information über die Nullstelle gewonnen.
 Durch Wiederholen dieses Prozesses können wir ein beliebige kleines
-Interval erhalten, welches eine Nullstelle enthält.
-Nach dem Intervalschachtelungsprinzip der Analysis definiert dies
+Intervall erhalten, welches eine Nullstelle enthält.
+Nach dem Intervallschachtelungsprinzip der Analysis definiert dies
 die Nullstelle.
+\index{Intervallschachtelung}%
 
 \begin{satz}[Intervallhalbierung]
+\index{Intervallhalbierung}%
 Sei $f\colon[a,b]\to\mathbb R$ eine stetige Funktion mit $f(a)<0$ und
 $f(b)>0$.
 Sei $I_k=[a_k,b_k]$ die Folge von Intervallen rekursiv definiert wie folgt.
 \begin{enumerate}
 \item
-Das Startinterval hat Intervallenden $a_0=a$ und $b_0=b$.
+Das Startintervall hat Intervallenden $a_0=a$ und $b_0=b$.
 \item
 Sei $m_k = \frac12(a_k+b_k)$.
 Das Intervall $I_{k+1}$ ist 
@@ -141,27 +149,34 @@ folgt für jedes beliebige $\varepsilon>0$, dass
 \]
 ist.
 Die Folgen sind also Cauchy-Folgen.
+\index{Cauchy-Folge}%
 \end{proof}
 
 Die Konvergenzgeschwindigkeit des Intervall-Halbierungs-Verfahrens ist
 sehr beschränkt.
+\index{Konvergenzgeschwindigkeit}%
+\index{Konvergenzgeschwindigkeit!Intervalhalbierung}%
 Der Fehler halbiert sich in jeder Iteration, man gewinnt also genau
 1 Bit Genauigkeit.
 Für die volle Genauigkeit eines Gleitkomma-Typs der Maschine braucht
 man also etwa soviele Iterationen, wie die Mantisse Binärstellen hat,
 aber auch nur, wenn das erste Bit und der Exponent bereits richtig
 sind.
+\index{Mantisse}%
+\index{Exponent}%
 
 \begin{beispiel}
 Als Beispiel berechnen wir $\sqrt[100]{10}$.
 Die Potenzfunktion $p(x)=x^{100}$, die wir dazu invertieren müssen, hat
 extrem grosse Steigung in der Näher der Lösung.
+\index{Potenzfunktion}%
 Es muss eine Nullstelle der Funktion $f(x)=x^{100}-10$ gefunden werden.
 Wegen $f(0)=-10$ und $f(2)\approx 1.2677\cdot 10^{30}$ muss das Intervall
 $[0,2]$ eine Nullstelle enthalten.
 Weil die Funktion monoton wachsend ist, ist es auch die einzige.
 Der Wert $f(2)$ ist klein genug für den \texttt{float} Typ,
 daher kann man die Berechnung in \texttt{float} durchführen.
+\index{float@\texttt{float}}%
 
 \begin{table}
 \centering
@@ -205,13 +220,16 @@ Die jeweils neue Intervallgrenze ist {\color{red}rot} markiert.
 Tabelle~\ref{buch:table:intervallhalbierung} zeigt den Gang der
 Berechnung.
 Die Implementation in C++ verwendet als Abbruchkriterium die
-Länge des Intervals.
+Länge des Intervalls.
+\index{C++}%
 Die Iteration endet, wenn 
 die Intervallänge $b_k-a_k$ den $\varepsilon$-Wert
 erreicht, der für den Typ \texttt{float} im Header
 \texttt{limits} definiert ist.
+\index{epsilon@$\varepsilon$}%
 Wie erwartet sind soviele Iterationen nötig, wie die Mantisse 
 des \texttt{float}-Typs Bits hat.
+\index{Mantisse}%
 
 Das Programm \texttt{nullstellen.cpp}\footnote{Das Programm
 kann im Verzeichnis 
@@ -223,26 +241,28 @@ grösseren Gleitkommatypen durch die Bitlänge der Mantisse gegeben ist.
 \end{beispiel}
 
 %
-% Sekanten-Verfahren
+% Sekantenverfahren
 %
-\subsection{Sekanten-Verfahren
+\subsection{Sekantenverfahren
 \label{buch:subsection:sekanten}}
 Das Intervallhalbierungsverfahren verwendet nicht mehr als die
 Stetigkeit der Funktion.
+\index{Sekantenverfahren}%
 Dies führt zu sehr langsamer Konvergenz, weil die relative Grösse
 der Funktionswerte in den Intervallenden keine Information über die
 Lage der Nullstelle im Intervall gegen kann.
 Dazu wird Information darüber benötigt, wie schnell sich Funktionswerte
 ändern können.
 Insbesondere muss davon ausgegangen werden können, dass die Steigung
-der Funktion über das betrachtete Interval nicht zu stark schwankt.
+der Funktion über das betrachtete Intervall nicht zu stark schwankt.
 Die Ableitung einer differenzierbaren Funktion kann diese Information
 liefern, es ist aber ausreichend, eine Lipschitz-Bedingung zu verlangen,
 die wie folgt definiert ist.
+\index{Lipschitz-Verfahren}%
 
 \begin{definition}
 \label{buch:definition:lipshitz}
-Die Funktion $f\colon[a,b]\to\mathbb R$ erfüllt eine Lipschitz-Bedingung
+Die Funktion $f\colon[a,b]\to\mathbb R$ erfüllt eine {\em Lipschitz-Bedingung}
 zum Exponenten $\alpha$, wenn es eine Konstante $L$ gibt derart, dass
 \[
 |f(x)-f(y)|
@@ -262,7 +282,7 @@ Sei jetzt $f\colon[a,b]\to\mathbb R$ wieder eine Funktion mit
 $f(a)<0$ und $f(b) > 0$.
 Wenn $f$ eine Lipschitz-Bedingung erfüllt, dann geben die
 Werte $f(a)$ und $f(b)$ zusätzlich Information über die Lage
-der Nullstelle, die im Interval liegen muss.
+der Nullstelle, die im Intervall liegen muss.
 Da sich Funktionswerte nicht beliebig schnell ändern können,
 dürfte die Nullstelle näher beim kleineren Funktionswert sein.
 
@@ -281,6 +301,8 @@ Funktionswerten, dann ist die Nullstelle der Schnittpunkt
 der Geraden durch $(a,f(a))$ und $(b,f(b))$ mit der $x$-Achse
 (Siehe auch Abildung~\ref{buch:figure:sekante}).
 Der Strahlensatz zeigt
+\index{Strahlensatz}%
+\index{Schnittpunkt}%
 \[
 \begin{aligned}
 &&
@@ -303,6 +325,8 @@ Man kann diese Formel für $x_0$ auch bekommen als mit den
 Funktionswerten gewichtetes Mittel der Endpunkte wie folgt.
 Das Gewicht $m_a$ von $a$ ist $f(b)$, das Gewicht $m_b$ von
 $b$ ist $-f(a)$, hier verwenden wir $f(a)<0$.
+\index{Gewicht}%
+\index{Mittel!gewichtet}%
 Das gewichtete Mittel ist dann
 \begin{equation}
 \frac{a\,m_a+b\,m_b}{m_a+m_b}
@@ -325,14 +349,14 @@ Im Intervallhalbierungsverfahren ist sichergestellt, dass das neue
 Intervall höchstens halb so gross ist.
 Eine solche Garantie gibt es bei Verwendung der
 Formel~\eqref{buch:equation:sekante} nicht.
-Ist zum Beispiel im Interval $[a,b]$ die erste Ableitung $f'(x)>0$ und
+Ist zum Beispiel im Intervall $[a,b]$ die erste Ableitung $f'(x)>0$ und
 die zweite Ableitung $f''(x)<0$,
 dann ist der neue Teilpunkt immer rechts von der Nullstelle.
 Das neue Intervall hat daher immer den gleichen linken Endpunkt $a$,
 die Folge $a_k$ konvergiert nicht.
 
 \begin{beispiel}
-Die Funktion $f(x)=\sin x - \frac12$ hat im Interval $[0,\frac{\pi}2]$
+Die Funktion $f(x)=\sin x - \frac12$ hat im Intervall $[0,\frac{\pi}2]$
 positive Steigung und negative zweite Ableitung.
 Wie erwartet bleibt $a_k$ konstant, aber $b_k$ konvergiert monton
 gegen die Nullstelle.
@@ -357,7 +381,7 @@ Wert $\arcsin\frac12$.
   8 & \underline{0.523598}79 \\
 \hline
 \end{tabular}
-\caption{Sekanten-Verfahren zur Bestimmung von $\arcsin \frac12$.
+\caption{Sekantenverfahren zur Bestimmung von $\arcsin \frac12$.
 Die Konvergenz ist ungefähr linear, aber deutlich schneller als
 beim Intervallhalbierungsverfahren.
 \label{buch:table:sekanten}}
@@ -378,8 +402,9 @@ Dies bedeutet, dass es eine Zahl $l>0$ gibt derart, dass
 Solche Lipschitz-Bedingungen sind automatisch erfüllt, wenn eine 
 Funktion stetig differenzierbar ist, dies ist auch für die Praxis der
 übliche Fall.
+Daraus ergibt sich jetzt der folgende Algorithmus.
 
-\begin{satz}[Sekanten-Verfahren]
+\begin{algorithmus}[Sekantenverfahren]
 Sei $f\colon[a,b]\to\mathbb R$ eine stetig differenzierbare Funktion mit
 $f(a)<0$ und $f(b)>0$.
 Man setzt $x_{-1}=a$ und $x_0=b$ und konstruiert die Folge
@@ -389,30 +414,36 @@ x_{n+1} = \frac{x_{n-1}f(x_n) - x_nf(x_{n-1})}{f(x_{n})-f(x_{n-1})}.
 \end{equation}
 Falls $a$ und $b$ nahe genug bei einer Nullstelle der Funktion $f$ ist,
 dann konvergiert die Folge $x_{n+1}$ gegen die Nullstelle.
-\end{satz}
+\end{algorithmus}
 
-\begin{proof}[Beweis]
-Sie $\bar{x}$ die gesuchte Nullstelle im Intervall $[a,b]$.
-Da wir andernfalls $f(x)$ durch $-f(x)$ ersetzen können, können wir
-ohne Beschränkung der Allgemeinheit annehmen, dass $f(a)<0$
-und $f(b)>0$ gilt.
-Es gibt dann Zahlen $l$ und $L$ derart, dass
-\[
-l\cdot |x-y|
-<
-|f(x)-f(y)|
-<
-L\cdot |x-y|
-\]
-für Argumente $x$ und $y$ in einer Umgebung von $\bar{x}$.
+%\begin{proof}[Beweis]
+%Sie $\bar{x}$ die gesuchte Nullstelle im Intervall $[a,b]$.
+%Da wir andernfalls $f(x)$ durch $-f(x)$ ersetzen können, können wir
+%ohne Beschränkung der Allgemeinheit annehmen, dass $f(a)<0$
+%und $f(b)>0$ gilt.
+%Es gibt dann Zahlen $l$ und $L$ derart, dass
+%\[
+%l\cdot |x-y|
+%<
+%|f(x)-f(y)|
+%<
+%L\cdot |x-y|
+%\]
+%für Argumente $x$ und $y$ in einer Umgebung von $\bar{x}$.
+%
+%XXX TODO
+%\end{proof}
 
-XXX TODO
-\end{proof}
+Leider garantieren die Bedingungen die Konvergenz nicht unbedingt.
+Es zeigt sich aber, dass das Verfahren fast immer konvergiert, wenn
+$f'(x)$ im Suchintervall nicht zu stark schwankt und dem Wert $0$
+nicht nahe kommt.
 
 Die Iterationsformel \eqref{buch:eqn:sekanten-iteration} hat den
 gravierenden Nachteil, dass in der Nähe der Lösung die beiden
 Grössen im Zähler und im Nenner fast gleich gross sind und damit
 starke Auslöschung auftreten wird.
+\index{Iterationsformel}%
 Die Umformung
 \begin{align}
 x_{n+1}
@@ -430,9 +461,12 @@ ist algebraisch identisch, jedoch wird in der letzten Form die Approximation
 $x_{n-1}$ um einen Betrag korrigiert, der umso kleiner wird, je besser
 $x_{n-1}$ die Nullstelle bereits approximiert und damit je kleiner
 der Faktor $f(x_{n-1})$ ist.
+\index{Approximation}
 Der Bruch in \eqref{buch:sekante:stabil} kann jedoch immer noch
 erratische Werte annehmen und damit die Konvergenz des Verfahrens
 gefährden.
+\index{stabil}%
+\index{Konvergenz}%
 
 Man beachte, dass die Bedingung an die Vorzeichen von $f(a)$ und $f(b)$
 nur dazu dient, die Existenz einer Nullstelle im Intervall zu garantieren.
@@ -444,6 +478,7 @@ Im Intervallhalbierungsalgorithmus ist dies kein Problem, weil keine
 Differenzen von Funktionswerten gebildet werden und ausschliesslich das
 Vorzeichen des Funktionswertes verwendet wird, die Genauigkeit hat
 keinen Einfluss auf das Vorzeichen.
+\index{Intervallhalbierung}%
 
 
 

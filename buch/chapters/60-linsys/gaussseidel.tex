@@ -6,6 +6,8 @@
 \section{Iterative Gleichungslösung
 \label{buch:section:gaussseidel}}
 \rhead{Gauss-Seidel-Iteration}
+\index{Gleichungssystem!linear}%
+\index{lineares Gleichungssystem}%
 Gegeben ist eine lineares Gleichungssystem von $n$ Gleichungen mit
 $n$ Unbekannten, welches wir als
 \begin{equation}
@@ -21,6 +23,7 @@ schreiben.
 Abgekürzt wird das Gleichungssystem auch $Ax=b$ notiert, wobei $A=(a_{ij})$
 die Koeffizientenmatrix ist, $x=(x_k)$ der Vektor der Unbekannten
 und $b=(b_k)$ der Vektor der rechten Seiten.
+\index{Koeffizientenmatrix}%
 
 %
 % Iterative Lösung
@@ -42,12 +45,11 @@ Aufgelöst nach $x_k$ ist dies
 sofern $a_{kk}\ne 0$.
 Diese Gleichung kann dazu verwendet werden, die Werte für die Unbekannten
 zu verbessern.
-
 Wir verwenden daher die Notation $x^{(m)}$ für die $m$-te Approximation
 der Lösung.
-Mit dieser Notation können wir die Iterations 
 
 \begin{satz}[Gauss-Seidel-Iteration]
+\index{Gauss-Seidel-Iteration}%
 Unter geeigneten Voraussetzungen konvergiert die Folge $x^{(m)}$
 definiert durch
 \begin{equation}
@@ -66,7 +68,7 @@ gegen die Lösung $x$ des Gleichungssystems $Ax=b$.
 In Abschnitt~\ref{buch:subsection:konvergenzbedingung} werden die
 Bedingungen genauer untersucht, die Konvergenz des Verfahrens gegen die
 Lösung garantieren können.
-
+\index{Konvergenzbedingung}%
 
 \begin{beispiel}
 Sei das Gleichungssystem gegeben durch
@@ -110,8 +112,10 @@ Die Konvergenz scheint linear zu sein.
 \caption{Lösung des Gleichungssystems mit Koeffizientenmatrix $A$ und
 rechter Seite $b$ aus \eqref{buch:eqn:gsbeispiel} mit Hilfe des
 Gauss-Seidel-Algorithmus.
+\index{Gauss-Seidel-Algorithmus}%
 In der letzten Zeile die exakten Resultate, erhalten mit dem
 Gauss-Algorithmus.
+\index{Gauss-Algorithmus}%
 \label{buch:table:gaussseidelbeispiel}}
 \end{table}
 \end{beispiel}
@@ -125,9 +129,12 @@ Gauss-Algorithmus.
 Die Iterationsformel~\eqref{buch:eqn:gs:iteration} verknüpft bei der
 Berechnung von $\color{red}x^{(m)}$ Komponenten von $x^{(m-1)}$ und
 $\color{red}x^{(m)}$,
+\index{Iterationsformel}%
 was es etwas schwieriger macht, die Iteration als Fixpunktiteration
 der Form ${\color{red}x^{(m)}} = Fx^{(m-1)}$ mit einer
 $n\times n$-Matrix $F$ zu schreiben.
+\index{Fixpunktiteration}%
+\index{Iteration}%
 Um dies zu erreichen, zerlegen wir die Matrix $A$ in drei Summanden
 $A=L+D+U$, wobei $L$ eine untere Dreiecksmatrix mit Nullen auf der 
 Diagonalen sein soll, $D$ eine Diagonalmatrix und $U$ eine obere
@@ -199,8 +206,10 @@ und der Fehler der Iteration $m$ ist
 \end{equation}
 Konvergenz kann also nur vorliegen, wenn dieser Vektor im Laufe der
 Iteration immer kleiner wird.
+\index{Konvergenz}%
 Dies ist zum Beispiel dann der Fall, wenn die {\em Norm} der Matrix
 kleiner als $1$ ist:
+\index{Norm}%
 
 \begin{definition}
 Die {\em Norm} einer Matrix $M$ ist
@@ -215,6 +224,7 @@ Für einen Vektor $x\in\mathbb R^n$ gilt $|Mx| \le \|M\|\cdot |x|$.
 Die Bedingung \eqref{buch:gs:fehler} bedeutet jedoch nicht,
 dass die Norm der Ableitung $<1$ sein muss, es genügt, wenn
 genügend hohe Potenzen der Ableitung eine Norm $<1$ haben.
+\index{Ableitung}%
 
 \begin{beispiel}
 Die Matrix
@@ -258,9 +268,11 @@ Ist $\pi(M) < 1$, dann wird jeder Anfangsvektor $v$ zu einer Iterationsfolge
 $M^kv$ führen, die gegen $0$ konvergiert.
 Die Kennzahl $\pi(M)$ erlaubt also zu entscheiden, ob ein
 Iterationsverfahren konvergent ist.
+\index{Konvergenzbedingung}%
 
 Die Berechnung von $\pi(M)$ als Grenzwert ist sehr unhandlich.
 Viel einfacher ist der Begriff des Spektralradius.
+\index{Spektralradius}%
 
 \begin{definition}
 \label{buch:definition:spektralradius}
@@ -273,6 +285,7 @@ $\pi(M) = \varrho(M)$, dies ist bekannt als der Satz von Gelfand.
 Um die beiden Begriffe bis dann auseinander halten zu können,
 nennen wir den Grenzwert~\ref{buch:eqn:gelfand-grenzwert}
 den {\em Gelfand-Radius} $\pi(M)$ der Matrix $M$.
+\index{Gelfand-Radius}%
 Wir erlauben uns aber, die Überlegungen zu den Iterationsverfahren
 mit dem Spektralradius zu formulieren.
 
@@ -282,9 +295,11 @@ Startwerte $x_0$ linear konvergent, wenn der Spektralradius
 \varrho\bigl( (L+D)^{-1}U \bigr) < 1
 \]
 ist.
+\index{Iterationsverfahren}%
 
 \subsection{Zerlegungsverfahren
 \label{buch:subsection:zerlegung}}
+\index{Zerlegungsverfahren}%
 Das Gauss-Seidel-Verfahren ist nur ein Beispiel einer ganzen Familie
 von iterativen Lösungsverfahren für lineare Gleichungssysteme.
 Sie basieren alle auf einer Zerlegung $A=B+C$ der Matrix $A$.
@@ -316,6 +331,7 @@ genau dann konvergiert, wenn der Spektralradius
 $\varrho(B^{-1}C)$ von $B^{-1}C$ kleiner ist als $1$.
 
 \subsubsection{Das Verfahren von Jacobi}
+\index{Jacobi-Verfahren}%
 Beim Gauss-Seidel-Verfahren wurde jede einzelne Gleichung des
 Gleichungssytems nach einer der Variablen aufgelöst und der neue
 Wert bei der nächsten Iteration gleich wieder verwendet.
@@ -348,9 +364,11 @@ Dieser Fall tritt dann ein, wenn die Diagonalelemente  sehr viel grösser
 sind als der Rest der Matrix.
 
 \subsubsection{Richardson-Verfahren}
+\index{Richardson-Verfahren}%
 Das {\em Richardson-Verfahren} ist besonders gut geeignet für den
 Fall, dass die Matrix $A$ nahe an einem Vielfachen der Einheitsmatrix
 ist.
+\index{Einheitsmatrix}%
 Man verwendet dazu die Aufspaltung
 \[
 A = B + C = \tau E  + (A - \tau E).
@@ -372,6 +390,7 @@ und desto näher werden die Eigenwerte von $B^{-1}C$ bei $0$ liegen,
 was zu Konvergenz des Verfahrens führt.
 
 Die Iterationsformel für die Lösung ist
+\index{Iterationsformel}%
 \begin{equation}
 {\color{red}x}
 =
@@ -385,12 +404,14 @@ B^{-1}b - B^{-1}Cx
 In jedem Schritt wird $x$ also ein Vielfaches von $b-Ax$ korrigiert.
 Die Differenz $b-Ax$ misst, um wieviel die Gleichungen nicht 
 erfüllt ist, sie heisst auch {\em Residuum}.
+\index{Residuum}%
 
 Man kann die Iterationsformel \eqref{buch:richardson-iteration}
 auch als eine Variante des Newton-Verfahrens verstehen.
 Gesucht wird eine Nullstelle der Funktion $f(x) = b-Ax$.
 Das Newton-Verfahren besagt, dass man $x$ um $-Df(x)^{-1}\cdot f(x)$
 korrigieren muss.
+\index{Newton-Verfahren}%
 Allerdings ist $Df(x) = -A$, so dass die Newton-Iterationsformel zu
 \[
 {\color{red}x}
@@ -413,23 +434,32 @@ x
 \]
 Dies ist wieder die Iterationsformel~\eqref{buch:richardson-iteration}
 für das Richardson-Verfahren.
+\index{Richardson-Verfahren}%
 
 Im Kapitel~\ref{chapter:cg} wird die Methode der konjugierten Gradienten
 vorgeführt.
+\index{konjugierte Gradienten}%
 Mit ihr lässt sich für symmetrische,
+\index{symmetrisch}%
 positiv definite Matrizen $A$ ein auf einem Minimalproblem basierendes
+\index{positiv definit}%
+\index{Minimalproblem}%
 iteratives Verfahren konstruieren lässt, welches ebenfalls genau
 die Residuen als Verbesserungsrichtungen für die Lösung verwendet.
 
 \subsubsection{Successive Overrelaxation (SOR)}
+\index{successive overrelaxation}%
+\index{SOR}%
 Das Gauss-Seidel-Verfahren versucht jede einzelne Variable
 ohne Rücksicht auf alle anderen zu korrigieren.
+\index{Gauss-Seidel-Verfahren}%
 Die einzelne Korrektur soll also den ganzen verbleibenden Fehler
 ausbügeln.
 Es ist klar, dass diese Korrektur zwar ungefähr in die richtige
 Richtung erfolgt, aber nicht vom richtigen Betrag sein wird.
 Das Richardson-Verfahren enthält einen Parameter, mit dem man die Konvergenz
 beeinflussen kann.
+\index{Richardson-Verfahren}%
 Man muss also versuchen, das Ausmass der Korrektur im Gauss-Seidel-Verfahren
 zu parametrisieren und den Parameter so zu wählen, dass die
 Konvergenzgeschwindigkeit optimiert werden kann.
@@ -471,7 +501,7 @@ x_k
 - \sum_{i=k+1}^n a_{ki}x_i\biggr)-x_k\biggr)
 \biggr).
 \]
-In Matrixform geschrieben wird dis zu
+In Matrixform geschrieben wird dies zu
 \[
 {\color{red}x}
 =
@@ -526,11 +556,14 @@ gefunden.
 
 Die Korrektur der Variablen $x_k$ nach Gauss-Seidel wird oft
 Relaxation genannt.
+\index{Relaxation}%
 Ein Parameter-Wert $\omega >1$ führt eine grössere Korrektur aus,
 man bezeichnet dies als Überrelaxation.
+\index{Überrelaxation}
 Die Korrektur wird wie beim Gauss-Seidel-Verfahren
 nacheinander auf alle Variablen angewendet wird, daher heisst dieses
 Verfahren {\em Successive Overrelaxation} oder kurz SOR.
+\index{sukzessiv}%
 Geignete Werte von $\omega$ liegen zwischen $0$ und $2$,
 das Gauss-Seidel-Verfahren ist der Fall $\omega = 1$.
 Man kann zeigen, dass dieses Verfahren für symmetrische Matrizen
@@ -551,7 +584,9 @@ SOR          & \displaystyle B_\omega=\frac1\omega D + L
 \\[3pt]
 \hline
 \end{tabular}
-\caption{Zusammenstellung iterativer Verfahren für die Lösung eines Gleichungssystems $Ax=b$, welche auf einer Zerlegung der Matrix $A$ in $A=B+C$ basieren.
+\caption{Zusammenstellung iterativer Verfahren für die Lösung eines
+Gleichungssystems $Ax=b$, welche auf einer Zerlegung der Matrix $A$
+in $A=B+C$ basieren.
 \label{buch:table:liniteration}}
 \end{table}
 Tabelle~\ref{buch:table:liniteration} stellt die in diesem Abschnitt
@@ -561,7 +596,7 @@ beschriebenen, auf dem Zerlegungsprinzip basierenden Verfahren zusammen.
 Zur Illustration berechnen wir die verschiedenen Spektralradien für
 eine symmetrische $30\times 30$-Matrix der Form $E + R$,
 wobei $R$ aus zufälligen Werten
-im Interval $[0,0.1]$ besteht.
+im Intervall $[0,0.1]$ besteht.
 In einer typischen Rechnung ergaben sich die Werte
 \[
 \begin{aligned}
@@ -589,6 +624,7 @@ das Richardson-Verfahren und für SOR dargestellt.
 In beiden Fällen gibt es einen Wert für den Parameter,
 für den der Spektralradius minimal und damit die Konvergenzgeschwindigkeit
 am grössten wird.
+\index{Konvergenzgeschwindigkeit}%
 Es stellt sich heraus, dass das SOR-Verfahren in diesem speziellen Fall
 für ein $\omega<1$ am schnellsten konvergiert, also für Unterrelaxation.
 \end{beispiel}

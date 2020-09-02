@@ -5,19 +5,21 @@
 %
 \section{Fehler-Entwicklung numerischer Lösungen}
 \rhead{Fehler-Entwicklung}
+\index{Fehler}%
 Wir betrachten wieder die Differentialgleichung~\eqref{buch:ode:eulerdgl}
 und versuchen, den Fehler eines Näherungsverfahrens zu bestimmen,
 welches Schritte der Grösse $h$ durchführt, um den Wert $y(x)$
 zu approximieren.
 
 Das Euler-Verfahren verwendet Schritte der Form
+\index{Euler-Verfahren}%
 \[
 y_{k+1}=y_{k\mathstrut} + hf(x_{k\mathstrut},y_{k\mathstrut}).
 \]
 In jedem einzelnen Schritt der Länge $\Delta x$
 entsteht ein Fehler, dessen Grösse wir
 aus der Taylor-Entwicklung
-\index{Taylor-Reihe}
+\index{Taylor-Reihe}%
 \[
 y(x+\Delta x)
 =

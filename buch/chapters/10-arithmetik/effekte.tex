@@ -9,6 +9,8 @@
 Die Unzulänglichkeiten der in Computern verwendeten Zahlensysteme haben 
 zwei Effekte zur Folge, denen bei der Konzeption eines numerischen
 Lösungsverfahrens Rechnung getragen werden muss.
+\index{numerische Effekte}%
+\index{Effekte!numerische}%
 
 %
 % Ausläschung
@@ -18,8 +20,11 @@ Lösungsverfahrens Rechnung getragen werden muss.
 Zahlen gebildet wird.
 \index{Auslöschung}
 Als Beispiel betrachten wir die beiden Zahlen $a=\pi$ und $b=\sqrt{10}$.
+\index{pi@$\pi$}%
+\index{sqrt10@$\sqrt{10}$}%
 Berechnen wir deren Differenz in Octave, erhalten wir:
 \verbatiminput{chapters/10-arithmetik/pi10.txt}
+\index{Octave}%
 Die ersten zwei Stellen von $a$ und $b$ stimmen überein.
 Octave zeigt sowohl von $a$ als auch von $b$ 15 signifikante Stellen an.
 Ein Vergleich mit einer Berechnung mit noch mehr Stellen zeigt, dass diese
@@ -29,9 +34,12 @@ letzte Stelle is falsch, wie zum Beispiel die Berechnung mit 20 Stellen
 Genauigkeit zeigt\footnote{Diese Berechnung wurde mit dem
 Linux-Kommandozeilenprogramm \texttt{bc} durchgeführt, welches mit
 einstellbarer Festkommapräzision von tausenden von Stellen rechnen kann.
+\index{Linux}%
+\index{bc@\texttt{bc}}%
 Es ist Teil jeder Linux-Distribution.}
 \verbatiminput{chapters/10-arithmetik/pi20.txt}
 Schreiben wir die Subtraktion in der tabellarischen Form
+\index{Subtraktion}%
 \begin{center}
 \begin{tabular}{>{\tt}r}
  3.16227766016838\\
@@ -44,9 +52,15 @@ Schreiben wir die Subtraktion in der tabellarischen Form
 wird erkennbar, dass nur 13 Stellen der Differenz tatsächlich bekannt sind.
 
 Die Rechnung wird in Binärdarstellung etwas klarer.
+\index{Binärdarstellung}%
 In der folgenden Tabelle sind die Werte in der mittleren Spalte in
 binärer Gleitkommadarstellung gezeigt, Vorzeichen, Exponent und Mantisse
 sind zur Verdeutlichung durch ein Leerzeichen getrennt.
+\index{Gleitkommadarstellung}%
+\index{Festkommadarstellung}%
+\index{Vorzeichen}%
+\index{Exponent}%
+\index{Mantisse}%
 Zu Beginn der Mantisse muss man sich eine implizite \texttt{1}
 denken, die nicht gespeichert wird.
 In der dritten Spalte werden die gleichen Zahlen als binäre Festkommawerten
@@ -64,12 +78,13 @@ Festkommadarstellung.
 \sqrt{10}     & 0 10000000 10010100110001011000010&11.0010100110001011000010\\
 \pi           & 0 10000000 10010010000111111011011&11.0010010000111111011011\\
 \hline
-\sqrt{10}-\pi & 0 01111001 01010010111001110000000& 0.00000{\color{red}10101001011100111}\\
+\sqrt{10}-\pi & 0 01111001 {\color{red}0101001011100111}0000000& 0.00000{\color{red}10101001011100111}\\
 \hline
 \end{tabular}
 \end{center}
 Man kann gut erkennen, dass die Differenz nur 17 signifkante Stellen (rot
 hervorgehoben) hat.
+\index{signifikant}%
 Bei der nachfolgenden Darstellung als Gleitkommazahl werden 7 Nullen
 hinzugefügt, die aber nichts mit der tatsächlichen Differenz 
 $\sqrt{10}-\pi$ zu tun haben.
@@ -81,8 +96,10 @@ Es sind 7 Binärstellen Genauigkeit ausgelöscht worden.
 \label{buch:beispiel:erfc}
 Sei $X$ ein standardnormalverteilte Zufallsvariable, es soll die 
 Wahrscheinlichkeit dafür berechnet werden, dass $a\le X\le b$ ist.
+\index{Wahrscheinlichkeit}%
 In der Wahrscheinlichkeitsrechnung lernt man, dass man dazu die
 Verteilungsfunktion
+\index{Verteilungsfunktion}%
 \[
 \Phi(x)
 =
@@ -91,6 +108,8 @@ Verteilungsfunktion
 \frac12 + \frac{1}{\sqrt{2\pi}} \int_0^x e^{-s^2/2} \,ds
 \]
 der Standardnormalverteilung verwenden kann:
+\index{Standardnormalverteilung}%
+\index{Normalverteilung}%
 \[
 P(a\le X \le b)
 = 
@@ -99,7 +118,7 @@ P(a\le X \le b)
 Die Funktion $\Phi(x)$ wird in vielen Bibliotheken nicht direkt zur
 Verfügung gestellt, oft ist nur die sogenannte {\em Fehlerfunktion}
 \index{Fehlerfunktion}%
-\index{$\operatorname{erf}(x)$}%
+\index{erfx@$\operatorname{erf}(x)$}%
 \[
 \operatorname{erf}(x)
 =
@@ -107,6 +126,7 @@ Verfügung gestellt, oft ist nur die sogenannte {\em Fehlerfunktion}
 \int_0^x e^{-t^2}\,dt
 \]
 verfügbar.
+\index{Variablentransformation}%
 Die Variablentransformation $t=s/\sqrt{2}$ oder $s=\sqrt{2}t$ macht aus dem
 Integral für
 $\Phi(x)$ den Ausdruck
@@ -126,6 +146,8 @@ gesuchten Wahrscheinlichkeit verwendet werden.
 
 In der C-Bibliothek stehen Funktionen zur Berechnung von $\sqrt{2}$ und
 $\operatorname{erf}(x)$ für alle zur Verfügung stehenden Datentypen bereit.
+\index{C}%
+\index{sqrt2@$\sqrt{2}$}%
 Die Tabelle~\ref{buch:table:erfcancellation}
 zeigt die Resultate\footnote{Diese Resultate wurden
 mit dem Programm \texttt{normal.cpp} Im Verzeichnis
@@ -166,7 +188,7 @@ Um dieses Problem in den Griff zu bekommen, stellt die C-Bibliothek
 zusätzlich die sogenannte {\em komplementäre Fehlerfunktion}
 \index{Fehlerfunktion, komplementäre}%
 \index{komplementäre Fehlerfunktion}%
-\index{$\operatorname{erfc}(x)$}%
+\index{erfcx@$\operatorname{erfc}(x)$}%
 \[
 \operatorname{erfc}(x) = 1-\operatorname{erf}(x)
 \qquad\Rightarrow\qquad
@@ -196,6 +218,7 @@ In der dritten Spalte von Tabelle~\ref{buch:table:erfcancellation}
 sind die Resultate der Berechnung mit Hilfe von $\operatorname{erfc}(x)$
 gezeigt.
 Der Auschlöschungseffekt ist vollständig verschwunden.
+\index{Auslöschung}%
 Man kann sogar ablesen, dass die Verwendung des Datentyps \texttt{long double}
 dem Problem der Auslöschung ebenfalls nicht begegnen konnte.
 Der mit $\operatorname{erf}(x)$ berechnete Wert hat selbst bei Verwendung
@@ -217,6 +240,10 @@ wird {\em Verschmierung} genannt.
 \index{Verschmierung}
 
 \subsubsection{Beispiel: Exponentialreihe $e^x$}
+\index{Exponentialfunktion}%
+\index{Exponentialreihe}%
+\index{Taylor-Reihe}%
+\index{Reihe!der Exponentialfunktion}%
 Die Taylor-Reihe
 \[
 e^x = 1 + x + \frac{x^2}{2!}
@@ -239,10 +266,13 @@ Terme in der Reihe sehr schnell vernachlässigbar klein.
 mit der Exponentialreihe.
 Auf der vertikalen Achse ist der Zehnerlogarithmus der verschiedenen
 Grössen abgetragen.
+\index{Logarithmus}%
+\index{Zehnerlogarithmus}%
 Die beiden Werte $e^{30}$ und $e^{-30}$ sind als rote Linien
 am oberen und unteren Rand eingetragen.
 {\color{blue}Blau} ist der absolute Betrag des Terms $s_k=x^k/k!$ in der
 Exponentialreihe.
+\index{Exponentialreihe}%
 Die {\color{darkgreen}grünen} Linien zeigen den kleinsten Unterschied,
 der zwischen zwei Termen möglich ist, die die Grösse des grössten Summanden
 in der Exponentialreihe haben.
@@ -271,10 +301,12 @@ vollständig ausgelöscht worden ist.
 Für negative Exponenten erwartet man ein sehr kleines Resultat.
 Die Terme der Taylor-Reihe haben alternierende Vorzeichen und werden
 zwischenzeitlich sehr gross.
+\index{Taylor-Reihe}
 Im Laufe der Rechnung müssen sich also grosse Terme wieder wegheben.
 Dies ist in Abbildung~\ref{buch:figure:expversch} illustriert.
 Dort sind die Werte $e^{30}$ und $e^{-30}=1/e^{30}$ auf einer logarithmischen
 Skala vertikal als {\color{red}rote} Linien eingezeichnet.
+\index{logarithmische Skala}%
 Die einzelnen Summanden der Reihe sind in {\color{blue}blau} dargestellt.
 
 \bgroup
@@ -282,15 +314,18 @@ Die einzelnen Summanden der Reihe sind in {\color{blue}blau} dargestellt.
 Die {\color{darkgreen}grünen} Linien zeigen, welche Genauigkeit mit
 verschiedenen Datentypen überhaupt noch möglich ist.
 Der \texttt{float}-Typ hat eine Mantisse von 24 bit, eine Zahl $m$ ist
-daher nur unterscheidbar von $m(1+\epsilon)$, wenn $\epsilon > 2^{-24}$.
+daher nur unterscheidbar von $m(1+\varepsilon)$, wenn $\varepsilon > 2^{-24}$.
+\index{Mantisse}%
 Dies entspricht $24\cdot \log_{10}(2) = 7.22$ Dezimalstellen.
 Die {\color{darkgreen}grüne} Linie für den \texttt{float}-Typ ist daher
 $7.22$ unter dem Maximum der Terme Exponentialreihe eingetragen.
+\index{Exponentialreihe}%
 
-Beim \texttt{double}-Typen ist die Mantiesse 52 bit lang, beim
+Beim \texttt{double}-Typen ist die Mantisse 52 bit lang, beim
 \texttt{long double} sind es 63 bit.
 Doch selbst beim \texttt{long double} ist die Verschmierung vollständig,
 das Resultat für $e^{-30}$ hat nichts mit der Realität zu tun.
+\index{Verschmierung}%
 Im Gegenteil, sie zeigen eher an, wie gross der verwendete Datentyp ist.
 Die {\color{darkgreen}grünen} Linien in Abbildung~\ref{buch:figure:expversch}
 befinden sich ungefähr dort, wo die gefundenen Werte
@@ -299,18 +334,26 @@ eingetragen werden müssten.
 
 In Tabelle~\ref{buch:effekte:taylorsumme} sind die Resultate der
 Summierung der Reihe mit verschiedenen Datentypen zusammengestellt.
+\index{Summierung}%
 Alle Summen weichen um mehrere Grössenordnungen vom exakten Wert ab.
 
 \subsubsection{Summationsreihenfolge}
 Das Beispiel zur Exponentialfunktion hat gezeigt, wie Verschmierung
 die Präzision des Resultates vollständig ausgelöscht hat.
+\index{Exponentialfunktion}%
+\index{Summationsreihenfolge}%
+\index{Reihenfolge}%
 Ein weniger dramatischer Genauigkeitsverlust kann schon bei wenigen
 Summanden stark unterschiedlicher Grössenordnung auftreten, wie das
 folgende Beispiel aus \cite{buch:kahan-summation} zeigt.
+\index{Genauigkeitsverlust}%
 
 Es soll die Summe $10^4 + \pi + e$ berechnet werden.
+\index{pi@$\pi$}
+\index{e@$e$}
 Die Rundung kann entweder ganz am Schluss oder nach jeder einzelnen
-Addition erfolgen, so wie es der IEEE-754-Standard verlangt.
+Addition erfolgen, so wie es der IEEE~754-Standard verlangt.
+\index{IEEE 754}
 Es ergibt sich:
 \begin{center}
 \begin{tabular}{>{$}r<{$}r>{$}r<{$}}
@@ -328,8 +371,10 @@ Es ergibt sich:
 Links ist die exakte Addition mit Rundung auf sechs signifikante
 Stellen am Schluss durchgeführt, rechts steht die Addition mit Rundung 
 nach jeder Operation.
+\index{Addition}%
 Bereits nach drei Termen zeigt sich ein Unterschied in der letzten Stelle,
 der Verschmierung zuzuschreiben ist.
+\index{Verschmierung}%
 
 Die unvermeidliche Rundung nach jeder Addition beinträchtigt die Berechnung
 jeder unendlichen Summe
@@ -340,6 +385,7 @@ s_n
 \]
 Die naive Berechnung in der Reihenfolge aufsteigender $k$ wird in den
 meisten Fällen die Reihenfolge kleiner werdender Terme sein.
+\index{Reihenfolge!aufsteigend}
 Für genügend grosses $k$ werden die zusätzlichen Terme von ähnlicher 
 Grössenordnung sein wie die Rundungsfehler, die sich bei den ersten
 Termen bereits gebildet haben.
@@ -348,6 +394,7 @@ Die Reihenfolge abnehmender $k$ bietet die Chance, dass Rundungsfehler,
 die bei der Addition kleiner Terme entstanden sind, bei der Addition
 grösserer Terme mit kleinerem $k$ verschwinden im neuen Rundungsfehler
 verschwinden.
+\index{Reihenfolge!abnehmend}%
 Dies geschieht allerdings nur, wenn die Beträge der Terme schneller 
 wachsen als die Rundungsfehler in den kleinen Termen.
 Trotzdem ist es eine gute Idee, eine grosse Summe beginnend bei den
@@ -355,7 +402,7 @@ kleinsten Termen zu summieren.
 
 \subsubsection{Kahan-Summationsalgorithmus}
 Der Kahan-Summationsalgorithmus versucht, über die sich ansammelnden
-\index{Kahan-Summation}
+\index{Kahan-Summation}%
 Rundungsfehler in den niederwertigen Stellen in einer separaten 
 Variable Buch zu führen.
 Um das Prinzip zu verstehen, sei also $s_{n-1}$ eine Teilsumme und $a_n$ der
@@ -372,7 +419,7 @@ und erhalten die Summe $s_{n+1} = s_n + \bar{a}_{n+1}$.
 Natürlich können wir auch hier wieder den Fehler als
 $c_{n+1} = (s_{n+1} - s_{n}) - \bar{a}_{n+1}$ berechnen.
 Damit erhalten wir den Algorithmus in
-Listing~\ref{buch:list:kahan-algorithmus}.
+Listing~\ref{buch:listing:kahan-algorithmus}.
 \lstinputlisting[style=C,float,caption={Kahan-Summations-Algorithmus zur
 Vermeidung sich akkumulierender Runungsfehler.},label={buch:listing:kahan-algorithmus}]{chapters/10-arithmetik/kahan.c}
 Er verwendet die Funktion \texttt{a(i)}, welche den Term mit Index $i$
@@ -380,15 +427,19 @@ der Summe berechnet.
 Die Kahan-Summation vervierfacht die Anzahl der Additionen hat aber das
 Potential die Akkumulation von Rundungsfehlern fast vollständig zu 
 eliminieren.
+\index{Akkumulation}%
 
 \begin{beispiel}
 Die harmonische Reihe 
+\index{harmonische Reihe}%
+\index{Reihe!harmonische}%
 \[
 h_n
 =
 \sum_{k=1}^n \frac{1}{k}
 \]
 kann gegen unten abgeschätzt werden mit Hilfe des Integrals
+\index{Integral}%
 \[
 \sum_{k=1}^n \frac1k
 >
@@ -398,6 +449,7 @@ welches divergiert.
 Die Folge $h_n$ divergiert also, aber sehr langsam.
 Beim numerischen Aufsummieren gibt es ausgiebig Gelegenheit für 
 Genauigkeitsverlust.
+\index{Genauigkeitsverlust}%
 Am akutesten ist der Verlust, wenn man die Summe mit dem grössten
 Term $k=1$ beginnt, eine kleine Verbesserung ist von der umgekehrten
 Reihenfolge zu erwarten.

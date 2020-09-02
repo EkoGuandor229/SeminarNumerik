@@ -13,6 +13,7 @@ Es sollte also ein Leichtes sein, eine Softwarebibliothek zur
 Verfügung zu stellen, mit der eine beliebige gewöhnliche
 Differentialgleichung gelöst werden kann.
 Als Input braucht es nur die Funktion $f$ und die Anfangsbedingungen.
+\index{Softwarebibliothek}%
 
 Als Beispiel wollen wir in diesem Abschnitt die Differentialgleichung
 \[
@@ -21,6 +22,7 @@ y''+y=\sin \frac{x}{10},\qquad y(0)=y'(0)=0
 in verschiedenen Programmierumgebungen lösen.
 Als erstes bringen wir die Differentialgleichung wieder in die Standardform
 einer Vektordifferentialgleichung erste Ordnung:
+\index{Vektordifferentialgleichung}%
 \begin{equation}
 Y=\begin{pmatrix} y_1\\y_2\end{pmatrix}
 \qquad\Rightarrow\qquad
@@ -38,6 +40,7 @@ f(x,Y).
 \end{equation}
 Ein numerisches Verfahren braucht also als Input eine Anfangsbedingung
 sowie die Funktion $f$.
+\index{Anfangsbedingung}%
 Ausserdem muss es Möglichkeiten bereitstellen, wie man den Gang der
 Rechnung beeinflussen kann, z.~B.~um die $x$-Werte anzugeben, für die
 die $Y(x)$ ausgegeben werden sollen, oder um Genauigkeitsziele vorzugeben.
@@ -155,7 +158,7 @@ jedoch nicht benötigt.
 
 Die eigentliche Berechnung wird von einer ``driver''-Funktion durchgeführt.
 Diese sorgt im wesentlichen für die Wahl der Schrittweite, verwaltet
-Datenstrukturen, und ruft die Funktionen auf, die die einzelnen Schritte
+Datenstrukturen und ruft die Funktionen auf, die die einzelnen Schritte
 durchführen.
 Die Treiber-Funktion führt die einzelnen Schritte (im Sinne der
 in Abschnitt~\ref{buch:section:ode:einschritt} besprochenen
@@ -166,17 +169,21 @@ Die Funktion \texttt{gsl\_odeiv2\_step\_rk4} ist das klassische
 Runge-Kutta-Verfahren vierter Ordnung, welches in
 Abschnitt~\ref{subsection:buch:ode:runge-kutta}
 beschrieben wurde.
+\index{Runge-Kutta-Verfahren}%
 Im Beispielverfahren verwenden wir \texttt{gsl\_odeiv2\_step\_rk8pd},
-das Runge-Kutta Prince-Dormand Verfahren achter Ordnung.
+das Runge-Kutta-Prince-Dormand-Verfahren achter Ordnung.
+\index{Runge-Kutta-Prince-Dormand-Verfahren}
 Für Aufgaben allgemeiner Art ebenfalls sehr gut geeignet ist das
 Runge-Kutta-Fehlberg-Verfahren fünfter Ordnung mit dem Namen
 \texttt{gsl\_odeiv2\_step\_rkf45}.
+\index{Runge-Kutta-Fehlberg-Verfahren}%
 Diese Datenstrukturen werden mit dem Code
 \lstinputlisting[style=C]{chapters/50-ode/examples/dgl-init.c}
 initialisiert.
 Durch Austausch des zweiten Arguments der Driver-Allozierungs-Funktion
 kann man leicht das Verfahren wechseln und so Zeitaufwand und Genauigkeit
 für verschiedene Lösungsverfahren vergleichen.
+\index{Zeitaufwand}%
 
 Um die Rechnung durchzuführen, muss jetzt die Driver-Funktion so oft
 angewendet werden, wie man Punkt der Lösungskurve ausgeben will.
@@ -245,12 +252,16 @@ mit Hilfe der GNU Scientific Library (GSL).
 Man kann die Funktion $f$ im Programm natürlich auch mit einem Zähler
 ausstatten und damit herausfinden, wie viele Aufrufe der Funktion
 für die numerische Lösung benötigt werden.
+\index{Zähler}%
+\index{Programm}%
 Es stellt sich heraus, dass für das erste Intervall von $0$ bis $1$
 die Funktion $f$ 131 mal aufgerufen wird, hier versucht die Bibliothek
 die optimale Schrittweite $h$ zu bestimmen.
+\index{Schrittweite}%
 In allen folgenden Intervallen der Länge $1$ von $n$ bis $n+1$ werden nur
 noch jeweils 13 Aufrufe der Funktion benötigt.
 Verwendet man stattdessen das Runge-Kutta-Fehlberg-Verfahren,
 werden pro Intervall 18 Auswertungen der Funktion $f$ benötigt,
 und die Genauigkeit sinkt auf zwei Stellen nach dem Komma.
+\index{Runge-Kutta-Fehlberg-Verfahren}%
 

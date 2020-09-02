@@ -12,6 +12,8 @@ Wie man erkennen kann, nimmt dieser innerhalb eines solchen Intervalls stark zu.
 Dies ist vor allem unserem Beispiel geschuldet, da die Störung (in unserem Beispiel der Luftwiderstand) kurzfristig eine grosse Auswirkung auf das Resultat hat.
 Bei Berechnungen von z.B. Satellitenbahnen wäre dies anders, da Störungen,
 wie die Gravitation von Planeten, viel kleiner sind und die Abweichungen erst bei längeren Intervalldauern auftreten.
+\index{Gravitation}%
+\index{Satellitenbahnen}%
 
 Für unser Beispiel haben wir in einem ersten Schritt die Intervalllänge halbiert.
 Daraus resultierte der Fehler in Abbildung \ref{errorShortInterval}.
@@ -70,9 +72,8 @@ r_x(t + \Delta t) &= \textcolor{red}{(r_{x0} +   r_{x1} \cdot \Delta t)} + \text
 r_y(t + \Delta t) &= \textcolor{red}{(r_{y0} +   r_{y1} \cdot \Delta t)} + \textcolor{blue}{(v_{y0} + v_{y1} \cdot \Delta t)} \cdot \Delta t - \frac{1}{2}g \Delta t^2.
 \end{aligned}
 \end{equation}
-
 Um das Problem lösen zu können, werden wir vorerst eine exklusive Betrachtung der Geschwindigkeit durchführen.
-Indem man Gleichung \ref{eq:x_simple} nach $t$ ableitet und anschliessend unseren Ansatz für die Anfangsbedingungen einsetzt, erhält man
+Indem man Gleichung \eqref{eq:x_simple} nach $t$ ableitet und anschliessend unseren Ansatz für die Anfangsbedingungen einsetzt, erhält man
 
 \begin{equation}\label{eq:ordnung1_linear_v}
 \begin{aligned}
@@ -85,7 +86,7 @@ v_y(t+ \Delta t) &= \textcolor{blue}{(v_{y0} + v_{y1} \cdot \Delta t)} - g \Delt
 \label{section:perturbation_ordnung1_linear}
 
 In obigen Gleichungen sind die acht Unbekannten $r_{x0}, r_{x1}, r_{y0}, r_{y1}, v_{x0}, v_{x1}, v_{y0}$ und $v_{y1}$ zu bestimmen.
-Zwar haben wir mit Gleichungen \ref{eq:ordnung1_linear_r} und \ref{eq:ordnung1_linear_v} nur vier Gleichungen zur Verfügung,
+Zwar haben wir mit Gleichungen \eqref{eq:ordnung1_linear_r} und \eqref{eq:ordnung1_linear_v} nur vier Gleichungen zur Verfügung,
 indem wir aber $\Delta t$ variieren, können wir die Anzahl Gleichungen beliebig erhöhen.
 Das Gleichungssystem ist somit lösbar.
 Wir machen uns hierbei zu Nutze, dass die Bodenstation mit dem Runge-Kutta-Verfahren $\vec{r}(t + \Delta t)$ und $\vec{v}(t + \Delta t)$ liefern kann.
@@ -166,12 +167,11 @@ Die Abweichung beträgt nun kaum noch mehr als $1m$.
 	\label{fig:ordnung1_linear_error_C}
 \end{figure}
 
-\subsubsection{Lösung des Problems mit Taylorreihen}
+\subsubsection{Lösung des Problems mit Taylor-Reihen}
 Anstelle von linearer Interpolation kann man die Unbekannten $r_{x0}, r_{x1}, r_{y0}, \dots$ auch mit anderen Verfahren bestimmen.
-Wir können den Ansatz \eqref{eq:ordnung1_linear_ansatz} als Taylorentwicklungen interpretieren.
+Wir können den Ansatz \eqref{eq:ordnung1_linear_ansatz} als Taylor-Entwicklungen interpretieren.
 Betrachten wir nur die Ortskoordinate und leiten wir diese nach $\Delta t$ ab, erhalten wir das folgende System.
-Um die Notation kurz zu halten, verwenden wir Vektornotation anstelle der Aufteilung nach $x$- und $y$-Komponenten.
-
+Um die Notation kurz zu halten, verwenden wir Vektornotation anstelle der Aufteilung nach $x$- und $y$-Komponenten:
 \begin{equation}
 \label{eq:ordnung1_taylor_ansatz}
 \begin{aligned}
@@ -179,13 +179,11 @@ Um die Notation kurz zu halten, verwenden wir Vektornotation anstelle der Auftei
 \dot{\vec{r}} &= \vec{r}_1 \\
 \end{aligned}
 \end{equation}
-
 Die Unbekannte $\vec{r}_0$ ist erneut durch setzen von $\Delta t = 0$ sehr einfach zu erlangen, analog zu Abschnitt \ref{section:perturbation_ordnung1_linear}.
 $\vec{r}_1$ kann ebenfalls ohne grossen Aufwand bestimmt werden, indem wir die Ableitung mit Hilfe der Bodenstation wie folgt annähern:
 \[
-\dot{\vec{r}}(t) \approx \frac{\vec{r}(t+\epsilon) - \vec{r}(t)}{\epsilon}
+\dot{\vec{r}}(t) \approx \frac{\vec{r}(t+\epsilon) - \vec{r}(t)}{\epsilon}.
 \]
-
 Damit ist bereits eine Annäherung des Ortes möglich.
 Analog könnte man auch die Geschwindigkeit betrachten.
 

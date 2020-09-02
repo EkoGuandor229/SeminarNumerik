@@ -8,85 +8,115 @@
 \section{Lösung}
 \label{laplace:section:Methode nach Talbot}
 \rhead{Lösung}
-Eine Bedingung um eine passende Kontur zu finden, wurde von Talbot gefunden.
-Diese fordert, dass die Singularitäten von $F(s)$ bekannt sind, sowie folgendes gilt für $F(s)$
+Eine Bedingung, um eine passende Kontur zu finden, wurde von Talbot gefunden.
+\index{Talbot}%
+Diese fordert, dass die Singularitäten $s_{j}$ von $F(s)$ bekannt sind, sowie für $F(s)$ gelten muss, dass
 \begin{enumerate}
 \item
-$|F(s)|\rightarrow$ 0 mit $|s|\rightarrow$ $\infty$ in $Re(s)<\gamma_{0}$
+$|F(s)|\rightarrow$ $0$ mit $|s|\rightarrow$ $\infty$ in
+$\operatorname{Re}(s)<\gamma_{0}$
 \item
-Für alle Singularitäten $s_{j},~~|Im(s_{j})|<K$, wobei der Wert von $K$ bekannt ist.
+Alle Singularitäten $s_{j}$ liegen links von
+$K$,~~$|\operatorname{Im}(s_{j})|<K$, wobei der Wert von $K$ bekannt ist.
 \end{enumerate}
 
-Die erste Bedingung besagt, dass $F(s)$ für grosse $|s|$ schnell gegen $0$ geht, solange man links von $\gamma_{0}$ ist. Dies hat zur Folge, dass Integrale über Konturen vernachlässigt werden können, wenn Sie sich in diesem Gebiet bewegen. Das ist die entscheidende Idee von Talbot: man verschiebt die Bromwich-Kontur, wo man nicht vermeiden kann, über die ganze imaginäre Achse zu integrieren, derart, dass man nur noch über einen kleinen Teil integrieren muss. Die untenstehende Abbildung veranschaulicht dies Kontur von Talbot.
+Die erste Bedingung besagt, dass $F(s)$ für grosse $|s|$ schnell gegen $0$ geht, solange man links von $\gamma_{0}$ ist. Dies hat zur Folge, dass Integrale über Konturen vernachlässigt werden können, wenn sie sich in diesem Gebiet bewegen. Das ist die entscheidende Idee von Talbot und ein Vorteil gegenüber der Bromwich-Kontur, da diese $F(s)$ für grosse $|s|$ nicht genügend schnell gegen $0$ gehen. In der Konsequenz deformiert man die Bromwich-Kontur zur Talbot-Kontur hin.
+Solange bei der Deformation keine Singularitäten durchfahren werden,
+ist dies zulässig.
+Die beiden Abbildungen \ref{laplace:talbot1} und \ref{laplace:talbot2} veranschaulichen die Kontur von Talbot.
+\index{Talbot-Kontur}%
+\index{Kontur von Talbot}%
+Darin ist zu erkennen, dass $|s|$ im Verlaufe der Kontur grösser werden muss. 
 
 \begin{figure}
 \centering
-\includegraphics[width=6.9cm]{papers/laplace/Talbot_Contour.png}
-\caption{$Talbot Kontur$}
-\label{laplace:talbotkontur}
+\includegraphics{papers/laplace/images/talbot1.pdf}
+\caption{Illustration der Bromwich- (rot) und Talbot-Kontur (blau). Das (breite) Band $2i\lambda\mu\pi$ markiert den Bereich in dem die Singularitäten liegen können (zur linken der Talbot-Kontur).
+\label{laplace:talbot1}}
 \end{figure}
 
-Die Talbots Kontur ist gegeben durch
-\[
+\begin{figure}
+\centering
+\includegraphics{papers/laplace/images/talbot2.pdf}
+\caption{Illustration der Bromwich- (rot) und Talbot-Kontur (blau). Das (schmale) Band $2i\lambda\mu\pi$ markiert den Bereich in dem die Singularitäten liegen können (zur linken der Talbot-Kontur).
+\label{laplace:talbot2}}
+\end{figure}
+
+Die Parameter $\lambda$, $\sigma$ und $\nu$ dienen dazu die
+Talbot-Kontur zu charakterisieren. Eine Erhöhung von $\sigma$ verschiebt
+die Kontur nach rechts, während eine Erhöhung von $\nu$ Ausdehnung
+der Kontur
+in vertikaler Richtung zur Folge hat. Dabei entsteht ein Band der Breite $2i\lambda\mu\pi$, welches symmetrisch zur reellen Achse ist. Das beschriebene Band und dessen Abhängigkeit von den Parametern ist zu erkennen in den Abbildungen \ref{laplace:talbot1} und \ref{laplace:talbot2}.
+Die Parameter sollten so gewählt werden, dass die Singularitäten
+der Laplace-Transformation innerhalb der Talbot-Kontur, respektive
+innerhalb des Bandes liegen.
+Die Parametrisierung der Kontur ist gegeben durch
+\begin{equation}
 s(z) = \sigma+\lambda s_{\nu}(z),~~ z\in (-2\pi i,~~2\pi i)
-\]
+\label{laplace:s(z)}
+\end{equation}
 wobei
-\[
-s_{\nu}(z)=\frac{z}{1-e^{-z}}+\frac{z(\nu-1)}{2}
-\]
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{papers/laplace/Bromwich_Talbot_Contour.PNG}
-\caption{Browich- und Talbot Countour im Vergleich
-\label{laplace:figure:countours}}
-\end{figure}
+\begin{equation}
+s_{\nu}(z)=\frac{z}{1-e^{-z}}+\frac{z(\nu-1)}{2}.
+\label{laplace:snu}
+\end{equation}
 
-In der Gleichung oben folgt mit $z=2i\theta$ die Parametrisierung
-\[
+Wir nutzen die Parametrisierung $z=2i\theta$ und setzen diese in die Gleichungen $\eqref{laplace:s(z)}$ und $\eqref{laplace:snu}$ ein. Es folgt
+\begin{equation}
 s(\theta) = \sigma+\lambda s_{\nu}(\theta),~~ \theta\in (-\pi ,~~\pi)
-\]
+\end{equation}
 wobei
-\[
-s_{\nu}(\theta)=\theta \cot\theta+i\nu\theta,
-\]
-und das Riemannsche Inversionsintegral nimmt die Form 
-\[
+\begin{equation}
+s_{\nu}(\theta)=\theta \cot\theta+i\nu\theta.
+\end{equation}
+Die Parametrisierung $z=2i\theta$ wird verwendet, weil sowohl
+Gleichung $\eqref{laplace:s(z)}$ als auch $\eqref{laplace:snu}$
+rein komplex sind. Daher verwendet man $\theta$ um die Formeln in
+Real- und Imaginärteil aufteilen zu können.
+
+Das Riemannsche Inversionsintegral nimmt die Form 
+\begin{equation}
 f(t)=\frac{\lambda e^{\sigma}}{2\pi i}\int_{-\pi}^{\pi} e^{-\lambda ts_{\nu}(\theta)}F[\sigma + \lambda s_{\nu}(\theta)]s'_{\nu}(\theta)\,d\theta
-\]
-an.
-wobei
-\[
+\end{equation}
+an, wobei
+\begin{equation}
 s'_{\nu}(\theta) = i \Biggl\{\nu + \frac{\theta-\cos(\theta)\sin(\theta)}{\sin^{2}(\theta)}  \Biggr\}.
-\]
-Unter berücksichtigung der Symmetrie, sowie der Trapez Approximationsregel erhält man
-\[
+\end{equation}
+
+
+Nun folgt die eigentliche numerische Berechung des Integrals
+$\eqref{laplace:riemanninversionsformel}$. Die folgende Berechnung
+stammt aus \cite{laplace:talbot}.
+Unter Berücksichtigung der
+Symmetrie, sowie der Trapezregel (für detailierte Informationen
+siehe Kapitel 4) erhält man die Auswertung des Integrals
+
+\begin{equation}
 \tilde{f}(t) = \frac{\lambda e^{\sigma t}}{n}~T_{n}(t)
-\]
+\end{equation}
 wobei 
-\[
+\begin{equation}
 T_{n}(t)
 =
 {\sum_{j=0}^n}'' e^{\lambda s_{\nu}(\theta_{j})}
 F[\sigma + \lambda s_{\nu}(\theta_{j})]
 \frac{1}{i} s'_{\nu}(\theta_{j})
-\]
+\end{equation}
 
-\[
+\begin{equation}
 \theta_{j} = j \frac{\pi}{n}.
-\]
+\end{equation}
 Die Notation ${\sum_{j=0}^n}''$ besagt, dass der erste und letzte
 Term der Summe halbiert werden.
 In diesem Falle wird der Term $j=n$ gleich 0 und der $j=0$ Term wird zu
-\[
+\begin{equation}
 \frac{\nu}{2}e^{\lambda t}F(\sigma + \lambda).
-\]
+\end{equation}
 
-Die Parameter $\lambda$, $\sigma$ und $\nu$ dienen dazu die
-Talbotkontur zu charaktersieren. Eine Erhöhung von $\sigma$ verschiebt
-die Kontur nach rechts, während eine Erhöhung von $\nu$ Ausdehnung
-in vertikaler Richtung zur Folge hat. Die Paramter sollten so gewählt
-werden, dass die Singularität der Laplacetransformation innerhalb
-der Talbotkontur liegen.
 
-Die obige beschriebene Methode wurde in Python implementiert.
+Die beschriebene Methode wurde in Python implementiert und diente
+dazu, numerische Expermiente duchzuführen.
+\index{Python}
+Der Code ist am Ende in Abschnitt~\ref{laplace:section:programmcode}
+ersichtlich.
 

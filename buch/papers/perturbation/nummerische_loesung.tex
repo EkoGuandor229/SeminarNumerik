@@ -1,6 +1,6 @@
 \section{Numerische Lösung
 \label{perturbation:section:nummerischeloesung}}
-\rhead{Nummerische Lösung}
+\rhead{Numerische Lösung}
 Die Gleichungen \eqref{eq:x_diff} lassen sich durch numerische Verfahren lösen.
 Wenn man sich nun jedoch einen Satelliten oder eine Rakete vorstellt, haben diese nur eine begrenzte Rechenkapazität.
 Aus diesem Grund wird die komplexere Berechnung durch eine Bodenstation durchgeführt.
@@ -8,8 +8,10 @@ Die Resultate der Berechnung werden jeweils dem Flugobjekt mitgeteilt, sodass di
 Dieses Kapitel beschäftigt sich mit der genaueren, komplexeren Lösung des Problems, welche durch die Bodenstation übernommen wird.
 
 Da das Runge-Kutta-Verfahren nur mit Differentialgleichungen erster Ordnung umgehen kann, muss die Ordnung des Gleichungssystems \eqref{eq:x_diff}  zuerst um eins reduziert werden.
+\index{Runge-Kutta-Verfahren}%
 Dies kann erreicht werden, indem zwei Hilfsvariablen $v_x = \dot{x}$ und $v_y = \dot{y}$ eingeführt werden.
-Das System wird somit um eine Ordnung reduziert, erhält aber im Austausch zusätzliche Dimensionen.
+Das System wird somit um eine Ordnung reduziert, erhält aber im Austausch zusätzliche Dimensionen:
+\index{Reduktion der Ordnung}%
 \begin{equation*}
 \begin{aligned}
 	\dot{r_x} &= v_x  \\
@@ -25,6 +27,8 @@ Als Vektor formuliert:
 
 Damit haben wir eine mit dem  Runge-Kutta-Verfahren lösbare Variante der Differentialgleichung gefunden.
 Der Python Code in Listing \ref{buch:listing:diffprogram} löst die Differentialgleichung mit Hilfe der Library \textit{SciPy}.
+\index{Python}%
+\index{ScyPi@\textit{SciPy}}
 Die Bodenstation, die zu komplexen Berechnungen in der Lage ist,
 führt also in einem regelmässigen Zeitintervall die Funktion \texttt{runge\_kutta(t)}
 auf dem Differentialgleichungssystem aus und erhält so die Position und die Geschwindigkeit zu einem bestimmten Zeitpunkt.

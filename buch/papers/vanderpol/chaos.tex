@@ -1,12 +1,16 @@
 \section{Chaos im Van der Pol System\label{vanderpol:section:chaos}}
 \rhead{Chaos im Van der Pol System}
+\index{Chaos}%
 
-Die Änderung der Amplitude $A$ in die Gleichung \eqref{vanderpol:equations:inhomogene_2} verändert das Systemverhalten. Bei der Beobachtung der Frequenz des Oszillators wurden drei verschiedene Fälle erkannt. Wie in der Abbildung \ref{vanderpol:figures:fft} gezeigt, ist die Frequenz des Van der Pol Oszillators dominant, wenn der Wert $A$ kleiner als der kritische Wert ist. Wenn der Wert höher ist, dominiert die Frequenz $\omega$. Beim kritischen Punkt gibt es eine Summe von Frequenzen im System. Durch Setzen der Werte $\mu=0.2$ und $\omega=1.15$ beträgt der kritische Wert von $A$ in diesem Fall $A=0.32$. Wie in der Gleichung
+Die Änderung der Amplitude $A$ in die Gleichung \eqref{vanderpol:equations:inhomogene_2} verändert das Systemverhalten. Bei der Beobachtung der Frequenzspektrum des Oszillators wurden drei verschiedene Fälle erkannt. Wie in der Abbildung \ref{vanderpol:figures:fft} gezeigt, ist die Frequenz des Van der Pol Oszillators dominant, wenn der Wert $A$ kleiner als der kritische Wert ist. Wenn der Wert höher ist, dominiert die Frequenz $\omega$.
+Beim kritischen Punkt gibt es eine Summe von Frequenzen im System.
+\index{kritischer Punkt}
+Durch Setzen der Werte $\mu=0.2$ und $\omega=1.15$ beträgt der kritische Wert von $A$ in diesem Fall $A=0.32$. Die Funktion 
 \begin{equation}
 	\ddot{x}-0.2\bigl(1-x^{2}\bigr) \dot{x}+x = 0.32 \cdot \sin(1.15 t).
 	\label{vanderpol:equations:inhomogene_3}
 \end{equation}
-
+zeigt daher ein chaotisches Verhalten.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.9\textwidth]{papers/vanderpol/figures/fft_plot2.pdf}
@@ -18,8 +22,10 @@ Die Änderung der Amplitude $A$ in die Gleichung \eqref{vanderpol:equations:inho
 \begin{cquote}[30pt]{Edward Lorenz}
 ``Chaos: When the present determines the future, but the approximate present does not approximately determine the future.''\cite{vanderpol:biblorenz}
 \end{cquote}
+\index{Lorenz, Edward}%
 \noindent Das angeführte Zitat ist genau die Definition, die das in diesem Kapitel untersuchte Problem erklärt, nämlich die Instabilität der numerischen Methoden. Letztere führen zu einem Rundungsfehler, der sich während der verschiedenen Iterationen ansammelt. Diese hängt von der für den Integrationsschritt gewählten Länge ab. Mehrere Längen entsprechen daher unterschiedlichen Werten des Fehlers.
 Per Definition ist ein chaotisches System sehr empfindlich gegenüber Veränderungen, auch wenn diese minimal sind. Zwei Fehler aufgrund von zwei unterschiedlichen Integrationsschritten können somit zu zwei völlig unterschiedlichen Lösungen führen. In der Regel tritt die Divergenz zwischen den beiden Lösungen nach einer bestimmten Zeitspanne auf. Etwas Ähnliches geschieht immer in einem chaotischen System, wenn eine kleine Variation der Anfangsbedingungen eingeführt wird. Dieser kleine Unterschied kann, analog zu dem durch Fehler verursachten, das Langzeitverhalten des Systems stark beeinflussen. Diese Empfindlichkeit gegenüber Veränderungen im Ausgangszustand ist auch bekannt als {\em Butterfly Effect}. Zur Erklärung dieses Phänomens verwendete Edward Lorentz in 1972 auf einer Konferenz den Satz: ``Ein Schmetterling schlägt in Peking mit den Flügeln, und in New York kommt Regen statt Sonne''.
+\index{butterfly effect}%
 \begin{figure}
 \centering
 \begin{tikzpicture}[scale=1]
@@ -49,6 +55,7 @@ Per Definition ist ein chaotisches System sehr empfindlich gegenüber Veränderu
 
 \end{tikzpicture}
 \caption{Doppelpendel\label{vanderpol:figures:doublependulum}}
+\index{Doppelpendel}%
 \end{figure}
 Kann also eine solch minimale Veränderung der Anfangsbedingungen das Endergebnis vollständig verändern? Die Antwort ist offensichtlich ja, was auch durch die Grafiken auf den folgenden Seiten bewiesen wird.
 \subsubsection{Doppelpendel \cite{vanderpol:bibdopperlpendel}}
@@ -57,21 +64,25 @@ Im Falle des Bildes Abbildung \ref{vanderpol:figures:init_cond_dbl_pend} wurde d
 
 \begin{itemize}
 \item
-Rote Kurve in Abbildung \ref{vanderpol:figures:init_cond_dbl_pend}: $\alpha_1(0) = \frac{\pi}{2}$
+Rote Kurve in Abbildung \ref{vanderpol:figures:init_cond_dbl_pend}: $\alpha_1(0) = \frac{\pi}{2}rad$
 \item
-Blaue Kurve in Abbildung \ref{vanderpol:figures:init_cond_dbl_pend}: $\alpha_2(0) = \alpha_1(0) + \delta, \quad \delta = 10^{-3}$
+Blaue Kurve in Abbildung \ref{vanderpol:figures:init_cond_dbl_pend}: $\alpha_2(0) = \alpha_1(0) + \delta, \quad \delta = 10^{-3}rad$
 \item
-$\dot{\alpha_1}(0) = \dot{\alpha_2}(0)= 1 \frac{m}{s}, \quad \dot{\beta_1}(0) = \dot{\beta_2}(0)= 1 \frac{m}{s}, \quad \beta_1(0)=\beta_2(0)=\displaystyle\frac{\pi}{2}$
+$\dot{\alpha_1}(0) = \dot{\alpha_2}(0)= 1 \frac{m}{s}, \quad \dot{\beta_1}(0) = \dot{\beta_2}(0)= 1 \frac{m}{s}, \quad \beta_1(0)=\beta_2(0)=\displaystyle\frac{\pi}{2}rad$
 \end{itemize}
 
 \begin{figure}
 \includegraphics[width=\textwidth]{papers/vanderpol/figures/initial_cond_DBLPEND.pdf}
 \caption{Verlauf der Winkel $\alpha_1(t)$, $\alpha_2(t)$ des Doppelpendels in Abbildung \ref{vanderpol:figures:doublependulum} und Angabe des Divergenzpunktes $t_0$\label{vanderpol:figures:init_cond_dbl_pend}}
 \end{figure}
-\noindent Wie in Abbildung \ref{vanderpol:figures:init_cond_dbl_pend} zu sehen ist, überlagern sich die beiden Lösungen im Anfangsmoment und sind nicht zu unterscheiden. Ab dem Punkt $t_0$ merkt man, dass sie plötzlich ganz andere Bahnen verfolgen. Der geringe anfängliche Unterschied von $\delta$ hat daher die Endergebnisse in nicht gleichgültiger Weise beeinflusst.
+\noindent Wie in Abbildung \ref{vanderpol:figures:init_cond_dbl_pend} zu sehen ist, überlagern sich die beiden Lösungen im Anfangsmoment und sind nicht zu unterscheiden.
+Ab dem Punkt $t_0$ merkt man, dass sie plötzlich ganz andere Bahnen verfolgen.
+Der geringe anfängliche Unterschied von $\delta$ hat daher die Endergebnisse in nicht gleichgültiger Weise beeinflusst.
 \subsubsection{Van der Pol Gleichung}
 \label{vanderpol:subsubsection:vdp}
-Dasselbe geschieht auch im Fall der Van der Pol Gleichung. Im  Abbildung \ref{vanderpol:figures:init_cond_VDP} sind zwei Darstellungen des Verlaufs der beiden mit dem gleichen Integrationsschritt erhaltenen numerischen Lösungen der Gleichung \eqref{vanderpol:equations:inhomogene_2} im Zeitbereich gezeigt. Die Anfangsbedingung sind in diesem Fall wie folgt gewählt worden:
+Dasselbe geschieht auch im Fall der Van der Pol Gleichung.
+Im  Abbildung \ref{vanderpol:figures:init_cond_VDP} sind zwei Darstellungen des Verlaufs der beiden mit dem gleichen Integrationsschritt erhaltenen numerischen Lösungen der Gleichung \eqref{vanderpol:equations:inhomogene_2} im Zeitbereich gezeigt.
+Die Anfangsbedingung sind in diesem Fall wie folgt gewählt worden:
 
 \begin{figure}
 \includegraphics[width=\textwidth]{papers/vanderpol/figures/initial_cond_VDP.pdf}
@@ -86,23 +97,36 @@ Blaue Kurve in Abbildung \ref{vanderpol:figures:init_cond_VDP}: $\dot{x_2}(0) = 
 \item
 $x_1(0) = x_2(0) = 0$
 \end{itemize}
-Daraus lässt sich natürlich schliessen, dass beide Systeme aufgrund ihrer chaotischen Natur sehr empfindlich auf die Anfangsbedingungen reagieren. Dies lässt sich auf das Zitat zurückführen, denn im Falle einer numerischen und daher approximativen Lösung $\hat{y}$, gilt dass
+Daraus lässt sich natürlich schliessen, dass beide Systeme aufgrund ihrer chaotischen Natur sehr empfindlich auf die Anfangsbedingungen reagieren.
+Dies lässt sich auf das Zitat zurückführen, denn im Falle einer numerischen und daher approximativen Lösung $\hat{y}$, gilt dass
 
 \begin{equation} 
 |\hat{y}(x_n) - y(x_n)| = \epsilon.
 \end{equation}
-Obwohl $\epsilon$ ein sehr kleiner Wert sein kann, kann er unter bestimmten Umständen die gleiche Wirkung haben wie eine Änderung der Anfangsbedingungen. Dank der beiden Diagramme Abbildung \ref{vanderpol:figures:init_cond_VDP} und Abbildung \ref{vanderpol:figures:init_cond_dbl_pend} konnte man feststellen, dass der Unterschied zwar in der Grössenordnung von $10^{-3}$ lag, aber nach einiger Zeit zu einem völlig anderen Verlauf führte. Wie im nächsten Kapitel erläutert, gilt dies auch für die Änderung des Integrationsschrittes.
+Obwohl $\epsilon$ ein sehr kleiner Wert sein kann, kann er unter bestimmten Umständen die gleiche Wirkung haben wie eine Änderung der Anfangsbedingungen.
+Dank der beiden Diagramme Abbildung \ref{vanderpol:figures:init_cond_VDP} und Abbildung \ref{vanderpol:figures:init_cond_dbl_pend} konnte man feststellen, dass der Unterschied zwar in der Grössenordnung von $10^{-3}$ lag, aber nach einiger Zeit zu einem völlig anderen Verlauf führte.
+Wie im nächsten Kapitel erläutert, gilt dies auch für die Änderung des Integrationsschrittes.
 
 \subsection{Ergebnisse
 \label{vanderpol:section:ergebnisse}}
-Nachstehend sind die Ergebnisse der beiden oben beschriebenen Algorithmen aufgeführt. Die ausgewählten Anfangsbedingungen sind:
+Nachstehend sind die Ergebnisse der beiden oben beschriebenen Algorithmen aufgeführt.
+Die ausgewählten Anfangsbedingungen sind:
 \begin{itemize}
 \item
 $\dot{x_1}(0) = \dot{x_2}(0) = 5$
 \item
 $x_1(0) = x_2(0) = 0$
 \end{itemize}
-Im Gegensatz zu den in Abbildung \ref{vanderpol:figures:init_cond_VDP} gezeigten Daten werden nun zwei verschiedene Integrationsschritte ausgewählt, während die Anfangsbedingungen gleich bleiben. Die Ergebnisse sind jedoch fast die gleichen. Im Falle der Runge-Kutta Lösung wird deutlich, dass der Divergenzpunkt aufgrund der Änderung der Integrationsschritt noch vordem liegt, der sich durch die Veränderung der Anfangsbedingungen ergibt. Auch in diesem Fall verursachte eine Divergenz in der Grössenordnung von $10^{-3}$ eine starke Abweichung. Der Runge-Kutta Algorithmus hat einen Rundungsfehler in der Grössenordnung von $O(h^{5})$, während Euler $O(h^{2})$ hat. Dies wirkt sich auf die Zeit $t_{0}$ aus. Wo also der Fehler grösser ist, d.h. im Falle von Euler, haben wir eine Vorwegnahme der Divergenz. In der Tabelle \ref{vanderpol:tab:tab1} wurden die verschiedenen Parameter mit den relativen Abbildungen aufgelistet, in denen die berechneten numerischen Lösungen dargestellt sind. Es zeigt sich, dass die Lösungen trotz der Abnahme des Integrationsschrittes immer einen Punkt der Divergenz $t_{0}$ erreichen. Ein kleinerer Integrationsschritt führt also nicht zu einer höheren Genauigkeit, sondern zu einer Verschiebung des Punktes $t_{0}$ nach rechts. Jenseits dieses Punktes konvergieren die beiden Lösungen nicht und können daher nicht als korrekt betrachtet werden. 
+Im Gegensatz zu den in Abbildung \ref{vanderpol:figures:init_cond_VDP} gezeigten Daten werden nun zwei verschiedene Integrationsschritte ausgewählt, während die Anfangsbedingungen gleich bleiben.
+Die Ergebnisse sind jedoch fast die Gleichen. Im Falle der Runge-Kutta-Lösung wird deutlich, dass der Divergenzpunkt aufgrund der Änderung der Integrationsschritt noch vor demjenigen liegt, der sich durch die Veränderung der Anfangsbedingungen ergibt.
+Auch in diesem Fall verursachte eine Abweichung von $10^{-3}$ eine starke Änderung.
+Der Runge-Kutta-Algorithmus hat einen Rundungsfehler in der Grössenordnung von $O(h^{5})$, während der Euler-Algorithmus $O(h^{2})$ hat.
+Dies wirkt sich auf die Zeit $t_{0}$ aus.
+Wo also der Fehler grösser ist, d.~h.~im Falle von Euler, haben wir eine Vorwegnahme der Divergenz.
+In der Tabelle \ref{vanderpol:tab:tab1} wurden die verschiedenen Parameter mit den relativen Abbildungen aufgelistet, in denen die berechneten numerischen Lösungen dargestellt sind.
+Es zeigt sich, dass die Lösungen trotz der Abnahme des Integrationsschrittes immer einen Punkt der Divergenz $t_{0}$ erreichen.
+Ein kleinerer Integrationsschritt führt also nicht zu einer höheren Genauigkeit, sondern zu einer Verschiebung des Punktes $t_{0}$ nach rechts.
+Jenseits dieses Punktes konvergieren die beiden Lösungen nicht und können daher nicht als korrekt betrachtet werden. 
 
 \begin{table}[]
 \centering
@@ -120,7 +144,7 @@ Runge-Kutta & 0.007 & 0.005	& $2 \cdot 10^{-3}$ & 476.5 & \ref{vanderpol:figures
 
 \begin{figure}
 \includegraphics[width=\textwidth]{papers/vanderpol/figures/EULER_schritt_delta_e-3.pdf}
-\caption{Verlauf der beiden mit der {\em Euler Methode} berechneten Lösungen $x_1$ und $x_2$ der Gl. \eqref{vanderpol:equations:inhomogene_2} im Zeitbereich und Angabe des Divergenzpunktes $t_0$. Integrationsschritte: $h_1 = 0.01, \quad h_2 = 0.009$\label{vanderpol:figures:EULER_schritt}}
+\caption{Verlauf der beiden mit der {\em Euler-Methode} berechneten Lösungen $x_1$ und $x_2$ der Gl. \eqref{vanderpol:equations:inhomogene_2} im Zeitbereich und Angabe des Divergenzpunktes $t_0$. Integrationsschritte: $h_1 = 0.01, \quad h_2 = 0.009$\label{vanderpol:figures:EULER_schritt}}
 \end{figure}
 
 \begin{figure}

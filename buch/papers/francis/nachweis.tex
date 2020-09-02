@@ -1,35 +1,36 @@
 \section{Nachweis\label{francis:section:nachweis}}
 \rhead{Nachweis}
 
-Da ein formaler Beweis zu komplex wäre, verweise ich an dieser Stelle gerne auf \cite{francis:watkins_book}.
+Da ein formaler Beweis zu komplex wäre, verweise ich an dieser Stelle auf \cite{francis:watkins_book}.
 Stattdessen wollen wir aber anhand einer einfachen Implementierung zeigen, dass der Algorithmus funktioniert.
 
 \subsection{Implementation\label{francis:section:nachweis:implementation}}
-Folgender Matlab-Code von \cite{francis:watkins_book} ist eine Schritt-für-Schritt Implementation einer Francis Iteration für eine symmetrische $n \times n$ Matrix 
-
-Zu Beginn muss eine Matrix generiert und auf Hessenberg Form gebracht werden.
-\lstinputlisting[language=Matlab, style=Python, firstline=1, lastline=6,float,caption={},label={francis:codes:code_p1}]{papers/francis/codes/code.m}
+Folgender MATLAB-Code von \cite{francis:watkins_book} ist eine Schritt-für-Schritt Implementation einer Francis-Iteration für eine symmetrische $n \times n$ Matrix.
+Zu Beginn muss eine Matrix generiert und auf Hessenberg-Form gebracht werden.
+\lstinputlisting[language=Matlab, style=Matlab, firstline=1, lastline=6,caption={},label={francis:codes:code1}]{papers/francis/codes/code.m}
 Anschliessend soll der Wilkinson-Shift berechnet werden.
 Dies geschieht im folgenden Code-Abschnitt.
-\lstinputlisting[language=Matlab, style=Python, firstline=7, lastline=21,float,caption={},label={francis:codes:code_p2}]{papers/francis/codes/code.m}
+\lstinputlisting[language=Matlab, style=Matlab, firstline=7, lastline=23,caption={},label={francis:codes:code2}]{papers/francis/codes/code.m}
 Nun muss ein Rotator $Q_0$ gebildet werden.
-Die anschliessende Transformation (Multiplikation von Rechts und Links) erzeugt eine Ausbuchtung in der Matrix.
-\lstinputlisting[language=Matlab, style=Python, firstline=22, lastline=27,float,caption={},label={francis:codes:code_p3}]{papers/francis/codes/code.m}
-Um die Francis Iteration zu beenden, muss nun die Ausbuchtung aus der Matrix hinausgeschoben werden.
+Die anschliessende Transformation (Multiplikation von rechts und links) erzeugt eine Ausbuchtung in der Matrix.
+\lstinputlisting[language=Matlab, style=Matlab, firstline=24, lastline=29,caption={},label={francis:codes:code3}]{papers/francis/codes/code.m}
+Um die Francis-Iteration zu beenden, muss nun die Ausbuchtung aus der Matrix hinausgeschoben werden.
 Dies wird mit dem folgenden Loop erledigt.
-\lstinputlisting[language=Matlab, style=Python, firstline=28, lastline=40,float,caption={},label={francis:codes:code_p4}]{papers/francis/codes/code.m}
+\lstinputlisting[language=Matlab, style=Matlab, firstline=30, lastline=42,caption={},label={francis:codes:code4}]{papers/francis/codes/code.m}
 Zum Schluss kann man die wichtigsten Matrixelemente ausgeben.
-\lstinputlisting[language=Matlab, style=Python, firstline=41, lastline=44,float,caption={},label={francis:codes:code_p5}]{papers/francis/codes/code.m}
+\lstinputlisting[language=Matlab, style=Matlab, firstline=43, lastline=46,caption={},label={francis:codes:code5}]{papers/francis/codes/code.m}
 
 \subsection{Resultate\label{francis:section:nachweis:resultate}}
 Nun wollen wir den in \ref{francis:section:nachweis:implementation} beschriebenen Code testen.
-Zuerst eine Konvention zur Darstellung der Matrizen. 
-Kleine Zahlen, welche nicht 0 sind, werden im folgenden als 0.0000 oder -0.0000 geschrieben.
-Handelt es sich bei einer Zahl um eine exakte 0, so wird sie nicht geschrieben.
+Zuerst eine Bemerkung zur Darstellung der Matrizen. 
+Kleine Zahlen, welche nicht null sind, werden im folgenden als 0.0000 oder -0.0000 geschrieben.
+Handelt es sich bei einer Zahl um eine exakte Null, so wird sie nicht geschrieben.
 Mit Samen \footnote{Wird ein Samen für einen Zufallsgenerator definiert, produziert dieser Zufallsgenerator immer die gleiche Sequenz von Zahlen, welche von der definierten Verteilungsfunktion gesampelt wurden.
+\index{Zufallszahlgenerator}%
+\index{Samen}%
 So kann mit zufälligen Zahlen gerechnet werden und das Resultat ist dennoch reproduzierbar.
 In Matlab kann das durch Einfügen von \texttt{rng(1)} vor dem Zufallsgenerator gemacht werden.}
-1 ergibt sich folgende zufällige Matrix $a$:
+1 für den Zufallszahlgenerator ergibt sich folgende zufällige Matrix $a$:
 
 \begin{equation}
 \begin{bmatrix*}[r]
@@ -38,7 +39,7 @@ In Matlab kann das durch Einfügen von \texttt{rng(1)} vor dem Zufallsgenerator 
  &	1.1276&	0.9950 &	-2.6434 &	\\
  &	 &	-2.6434 &	0.7690 &	-4.4160\\
  &	 &		& -4.4160 & -3.7302\\
-\end{bmatrix*}
+\end{bmatrix*}.
 \end{equation}
 
 Führt man nun mehrere Francis Iterationen gemäss obiger Implementation durch, ergibt sich nach 5 Iterationen die Matrix:
@@ -50,9 +51,8 @@ Führt man nun mehrere Francis Iterationen gemäss obiger Implementation durch, 
  & 1.2488 & -0.3743 & 0.3716 & -0.0000\\
  &  & 0.3716 & -4.3253 & -0.0000\\
  &  &  &-0.0000 & -6.7126\\
-\end{bmatrix*}
+\end{bmatrix*}.
 \end{equation}
-
 Nach 10 Iterationen ergibt sich:
 
 \begin{equation}
@@ -62,19 +62,18 @@ Nach 10 Iterationen ergibt sich:
  & 0.3417 &-1.0764 & 0.0040 & -0.0000\\
  &  & 0.0040 & -4.3623 & -0.0000\\
  &  &  & 0.0000 & -6.7126\\
-\end{bmatrix*}
+\end{bmatrix*}.
 \end{equation}
-
 Nach 50 Iterationen ergibt sich:
 
 \begin{equation}
 \begin{bmatrix*}[r]
-\textcolor{green}{4.9099} & 0.0000	& 0.0000 & 0.0000 & 0.0000\\
-0.0000 & \textcolor{green}{0.5008} & 0.0000 & 0.0000 & -0.0000\\
- & 0.0000 & \textcolor{green}{-1.1499} & 0.0000 & -0.0000\\
- &  & 0.0000 & \textcolor{green}{-4.3623} & -0.0000\\
- &  &  & 0.0000 &\textcolor{green}{-6.7126}\\
-\end{bmatrix*}
+\textcolor{darkgreen}{4.9099} & 0.0000	& 0.0000 & 0.0000 & 0.0000\\
+0.0000 & \textcolor{darkgreen}{0.5008} & 0.0000 & 0.0000 & -0.0000\\
+ & 0.0000 & \textcolor{darkgreen}{-1.1499} & 0.0000 & -0.0000\\
+ &  & 0.0000 & \textcolor{darkgreen}{-4.3623} & -0.0000\\
+ &  &  & 0.0000 &\textcolor{darkgreen}{-6.7126}\\
+\end{bmatrix*}.
 \end{equation}
 Es ist ersichtlich, dass die Subdiagonalelemente von Iteration zu Iteration kleiner werden, bis sie schliesslich annähernd 0 sind und eine Dreiecksmatrix entstanden ist.
 Da wir zur Manipulation unserer Matrix lediglich Ähnlichkeitstransformationen verwendet haben, entsprechen die Diagonalelemente dieser Dreiecksmatrix den Eigenwerten unserer ursprünglichen Matrix.

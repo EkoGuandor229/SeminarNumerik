@@ -9,6 +9,7 @@ Die Diskussion der iterativen Verfahren in
 Abschnitt~\ref{buch:section:gaussseidel} hat gezeigt, dass
 der Spektralradius aus Definition~\ref{buch:definition:spektralradius}
 Auskunft gibt darüber, ob ein iteratives Verfahren konvergiert.
+\index{Spektralradius}%
 Insbesondere wurde behauptet, dass Spektralradius $\varrho(M)$ und
 Gelfand-Radius $\pi(M)$ übereinstimmen.
 In diesem Abschnitt sollen diese Kennzahl noch etwas vertieft
@@ -21,19 +22,24 @@ untersucht werden.
 \label{buch:subsection:spektralradius}}
 In Abschnitt~\ref{buch:subsection:konvergenzbedingung}
 ist der Gelfand-Radius mit Hilfe eines Grenzwertes definiert worden.
+\index{Gelfand-Radius}%
 Nur dieser Grenzwert ist in der Lage, über die Konvergenz eines 
 Iterationsverfahrens Auskunft zu geben.
 Der Grenzwert ist aber sehr mühsam zu berechnen.
+\index{Grenzwert}%
 Es wurde angedeutet, dass der Gelfand-Radius mit dem Spektralradius
 übereinstimmt, dem Betrag des des betragsgrössten Eigenwertes.
 Dies hat uns ein vergleichsweise einfach auszuwertendes Konvergenzkriterium
 geliefert.
+\index{Konvergenzkriterium}%
 In diesem Abschnitt soll diese Identität zunächst an Spezialfällen
 und später ganz allgemein gezeigt werden.
 
 \subsubsection{Spezialfall: Diagonalisierbare Matrizen}
 Ist eine Matrix $A$ diagonalisierbar, dann kann Sie durch eine Wahl
 einer geeigneten Basis in Diagonalform
+\index{diagonalisierbar}%
+\index{Diagonalform}%
 \[
 A'
 =
@@ -46,6 +52,7 @@ A'
 \]
 gebracht werden, wobei die Eigenwerte $\lambda_i$  möglicherweise auch
 komplex sein können.
+\index{komplex}%
 Die Bezeichnungen sollen so gewählt sein, dass $\lambda_1$ der
 betragsgrösste Eigenwert ist, dass also
 \[
@@ -60,6 +67,7 @@ Dazu muss man $|A^nv|$ für einen beliebigen Vektor $v$ und für
 beliebiges $n$ berechnen.
 Der Vektor $v$ lässt sich in der Eigenbasis von $A$ zerlegen, also
 als Summe
+\index{Eigenbasis}%
 \[
 v = v_1+v_2+\dots+v_n
 \]
@@ -126,6 +134,7 @@ Es folgt dann
 \]
 Damit ist gezeigt, dass im Spezialfall einer diagonalisierbaren Matrix der
 Gelfand-Radius tatsächlich der Betrag des betragsgrössten Eigenwertes ist.
+\index{Gelfand-Radius}%
 
 \subsubsection{Blockmatrizen}
 Wir betrachten jetzt eine $(n+m)\times(n+m)$-Blockmatrix der Form
@@ -164,12 +173,16 @@ Blöcken $B$ und $C$  hat Gelfand-Radius
 
 Selbstverständlich lässt sich das Lemma auf Blockmatrizen mit beliebig
 vielen diagonalen Blöcken verallgemeinern.
+\index{Blockmatrix}%
 
 Für Diagonalmatrizen der genannten Art sind aber auch die 
 Eigenwerte leicht zu bestimmen.
+\index{Diagonalmatrix}%
 Hat $B$ die Eigenwerte $\lambda_i^{(B)}$ mit $1\le i\le n$ und $C$ die
 Eigenwerte $\lambda_j^{(C)}$ mit $1\le j\le m$, dann ist das charakteristische
 Polynom der Blockmatrix $A$ natürlich
+\index{charakteristisches Polynom}%
+\index{Polynom!charakteristisch}%
 \[
 \chi_A(\lambda) = \chi_B(\lambda)\chi_C(\lambda),
 \]
@@ -181,6 +194,7 @@ Daher gilt auch für die Spektralradius die Formel
 \]
 
 \subsubsection{Jordan-Blöcke}
+\index{Jordan-Block}%
 Nicht jede Matrix ist diagonalisierbar, die bekanntesten Beispiele sind
 die Matrizen
 \begin{equation}
@@ -203,6 +217,7 @@ $\lambda$ hat und dass der erste Standardbasisvektor ein
 Eigenvektor zu diesem Eigenwert ist.
 
 In der linearen Algebra lernt man, dass jede Matrix durch Wahl
+\index{lineare!Algebra}%
 einer geeigneten Basis als Blockmatrix der Form
 \[
 A
@@ -242,19 +257,20 @@ Die $k$-te Potenz von $J_n(\lambda)$ ist
 \[
 J_n(\lambda)^k
 =
-\renewcommand\arraystretch{1.25}
+\renewcommand\arraystretch{1.35}
 \begin{pmatrix}
 \lambda^k    & \binom{k}{1} \lambda^{k-1} & \binom{k}{2}\lambda^{k-2}&\dots&
 \binom{k}{n-1}\lambda^{k-n+1}\\
       0      &\lambda^k & \binom{k}{1} \lambda^{k-1} & \dots &\binom{k}{n-2}\lambda^{k-n+2}\\
       0     &      0    & \lambda^k & \dots &\binom{k}{n-k+3}\lambda^{k-n+3}\\
-\vdots      & \vdots    &               &\ddots & \\
+\vdots      & \vdots    &               &\ddots & \vdots\\
      0      &      0    &      0        &\dots  &\lambda^k
 \end{pmatrix}.
 \]
 Falls $|\lambda| < 1$ ist, gehen alle Potenzen von $\lambda$ exponentiell
 schnell gegen $0$, während die Binomialkoeffizienten nur polynomiell
 schnell anwachsen. 
+\index{Binomialkoeffizient}
 In diesem Fall folgt also $J_n(\lambda)\to 0$.
 
 Falls $|\lambda| >1$ divergieren bereits die Elemente auf der Diagonalen,
@@ -273,6 +289,8 @@ Der Satz von Gelfand ergibt sich jetzt als direkte Folge aus dem
 Satz~\ref{buch:spektralradius:satz:grenzwert}.
 
 \begin{satz}[Gelfand]
+\index{Satz von Gelfand}
+\index{Gelfand!Satz von}
 \label{buch:satz:gelfand}
 Für jede komplexe $n\times n$-Matrix $A$ gilt
 \[
@@ -350,7 +368,8 @@ Andererseits gibt es für $\varepsilon <0$ eine Konstante $m$ mit
 =
 \varrho(A)+\varepsilon.
 \end{align*}
-Dies gilt für beliebige $\pi(A) \ge \varrho(A)$.
+Dies gilt für beliebige $\varepsilon> 0$, es folgt daher
+$\pi(A) \ge \varrho(A)$.
 Zusammen mit $\pi(A) \le \varrho(A)$ folgt $\pi(A)=\varrho(A)$.
 \end{proof}
 
@@ -359,6 +378,7 @@ Zusammen mit $\pi(A) \le \varrho(A)$ folgt $\pi(A)=\varrho(A)$.
 %
 \subsection{Konditionszahl
 \label{buch:subsection:konditionszahl}}
+\index{Konditionszahl}%
 Der Spektralradius $\varrho(A)$ einer Matrix $A$ gibt darüber Auskunft,
 ob ein auf $A$ basierendes Iterationsverfahren konvergiert.
 Er sagt aber nicht einmal, ob die Matrix zum Beispiel regulär.
@@ -379,6 +399,7 @@ ist, oder $\varrho(A^{-1})$ klein.
 
 \begin{definition}
 \label{buch:konditionszahl:definition}
+\index{Konditionszahl}%
 Die Konditionszahl einer Matrix $A$ ist der Quotient
 \[
 \kappa(A)
@@ -395,9 +416,11 @@ Die Konditionszahl ist also immer $\ge 1$, dieser minimale Wert $1$
 wird zum Beispiel für die Einheitsmatrix erreicht.
 Schlechte Kondition tritt auf, wenn die Eigenwerte sehr grosse
 Betragsunterschiede aufweisen.
+\index{Kondition!schlecht}
 
 \begin{beispiel}
 Die Kahan-Matrix
+\index{Kahan-Matrix}%
 \[
 A
 =
@@ -429,6 +452,7 @@ ergibt.
 Diese einfache Matrix hat also sehr schlechte Kondition.
 
 Die Determinante von $A$ ist
+\index{Determinante}%
 \[
 \det A
 =
@@ -437,6 +461,7 @@ Die Determinante von $A$ ist
 -1.
 \]
 Damit kann man auch die Inverse algebraisch leicht angeben:
+\index{Inverse}%
 \[
 A^{-1}
 =

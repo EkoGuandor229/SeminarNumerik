@@ -3,15 +3,19 @@
 %
 % (c) 2015 Prof Dr Andreas Mueller, Hochschule Rapperswil
 %
-\section{Mehrschritt-Verfahren}
-\rhead{Mehrschritt-Verfahren}
-In den Einschritt-Verfahren wurde wiederholt die Funktion $f$ ausgewertet,
-um die Inkrement-Funk\-tion für einen einzigen Schritt zu bestimmen.
+\section{Mehrschrittverfahren}
+\rhead{Mehrschrittverfahren}
+In den Einschrittverfahren wurde wiederholt die Funktion $f$ ausgewertet,
+um die Inkrementfunk\-tion für einen einzigen Schritt zu bestimmen.
+\index{Einschrittverfahren}%
+\index{Inkrementfunktion}%
 Das Ziel dabei war, $y(x+h)$ in Übereinstimmung mit der Taylor-Reihe
 bis zu möglichst hoher Ordnung zu bestimmen.
+\index{Taylor-Reihe}%
 Im Runge-Kutta-Verfahren wurden dabei halbe Euler-Schritte durchgeführt,
 man hat also eigentlich die Auflösung nochmals halbiert, um die
-Inkrement-Funktion zu ermitteln.
+Inkrementfunktion zu ermitteln.
+\index{Runge-Kutta-Verfahren}%
 Diese Zwischenwerte geben dem Verfahren die Information über die
 höheren Ableitungen der Funktionen.
 
@@ -23,7 +27,7 @@ den nächsten Wert $y_{n+s\mathstrut}$ mit der verlangten Genauigkeit
 zu berechnen.
 Der Vorteil eines solchen Vorgehens ist, dass für jeden Schritt nur 
 eine einzige Auswertung der Funktion $f$ nötig ist,
-nicht mehrere wie bei den besprochenen Einschritt-Verfahren.
+nicht mehrere wie bei den besprochenen Einschrittverfahren.
 
 Mehrschrittverfahren sind immer dann die einzige Möglichkeit, wenn Daten
 nur zu festen Zeitpunkten entlang der Zeitachse zur Verfügung stehen,
@@ -129,7 +133,7 @@ Diese Rekursionsformel definiert ein quadratisches Verfahren, das
 \index{Adams-Bashforth-Verfahren}
 
 \subsection{Vergleich mit der Taylor-Reihe}
-Man kann das Mehrschritt-Verfahren~\eqref{buch:ode:mehrschritt:2}
+Man kann das Mehrschrittverfahren~\eqref{buch:ode:mehrschritt:2}
 auch als eine Verbesserung des Euler-Verfahrens sehen.
 Dazu schreiben wir \eqref{buch:ode:mehrschritt:2} als
 \begin{align*}
@@ -221,14 +225,14 @@ Die Verbesserung der Genauigkeit des Adams-Bash\-forth-Verfahrens
 gegenüber dem Euler-Ver\-fah\-ren ist konsistent damit, dass
 das Adams-Bashforth-Verfahren ein quadratisches Verfahren ist.
 
-Nachteilig an den Mehrschritt-Verfahren ist die Notwendigkeit,
+Nachteilig an den Mehrschrittverfahren ist die Notwendigkeit,
 genügend viele Werte $y_{n},\dots,y_{n+s-1}$ mit ausreichend
-hoher Genauigkeit zu bestimmen, bevor das Mehrschritt-Verfahren
+hoher Genauigkeit zu bestimmen, bevor das Mehrschrittverfahren
 seine Schritte der Ordnung $s$ beginnen kann.
-Solange diese Werte nicht zur Verfügung stehen, kann ein Mehrschritt-Verfahren
+Solange diese Werte nicht zur Verfügung stehen, kann ein Mehrschrittverfahren
 nur Schritte niedrigerer Ordnung als $s$ durchführen.
 
-Bei einem Einschritt-Verfahren kann in jedem Schritt die Schrittweite $h$
+Bei einem Einschrittverfahren kann in jedem Schritt die Schrittweite $h$
 verändert werden, zum Beispiel für Bereiche von $x$-Werten, in denen
 die Steigung von $y(x)$ sehr rasch ändert.
 
@@ -249,8 +253,11 @@ y_{n\mathstrut}.
 \end{equation}
 Dies ist eine Differenzengleichung mit konstanten Koeffizienten, man kann
 sie mit Hilfe eines Potenzansatzes lösen. 
+\index{Differenzengleichung}%
+\index{Potenzansatz}%
 Wir nehmen also an, dass $y_n=\lambda^n$, und setzen dies in die
 Rekursionsformel~\eqref{buch:einschritt:verfahren} ein.
+\index{Rekursionsformel}%
 Ausserdem kürzen wir $\alpha h/2=\delta$  ab.
 Wir erhalten
 \[
@@ -271,6 +278,7 @@ während $\lambda_+$ näher bei $1$ sein wird.
 Der dominante Einfluss auf die Lösung rührt also von $\lambda_+$ her.
 Um diesen Unterschied genauer zu verstehen, verwenden wir eine
 lineare Approximation der Wurzel auf der rechten Seite von $\lambda_\pm$:
+\index{Wurzel}%
 \begin{align*}
 \sqrt{1+x}
 &=
@@ -288,6 +296,7 @@ lineare Approximation der Wurzel auf der rechten Seite von $\lambda_\pm$:
 \sqrt{x_0}+\frac12\frac{x-x_0}{\sqrt{x_0}}-\frac14\frac{(x-x_0)^2}{\sqrt{x_0}^3}+\dots
 \end{align*}
 Wir verwenden diese Approximation mit $x_0=(1-3\delta)^2$ und $x-x_0=-4\delta$
+\index{Approximation}%
 \begin{align*}
 \sqrt{(1-3\delta)^2+4\delta}
 &=
@@ -321,12 +330,12 @@ $e^{-2\delta}$ überein.
 Damit ist erneut bestätigt, dass wir es mit einem quadratischen Verfahren zu
 tun haben.
 
-Wir können auch $\lambda_-$ berechnen, und erhalten
+Wir können auch $\lambda_-$ berechnen und erhalten
 \[
 \lambda_-=-\delta-2\delta^2+O(\delta^3).
 \]
 Da $\delta$ klein ist, ist eine Komponente der Lösung bereits nach
-drei Schritten kleiner als $O(\delta^3)$, und spielt daher im Vergleich
+drei Schritten kleiner als $O(\delta^3)$ und spielt daher im Vergleich
 zu den von $\lambda_+$ herrührenden Lösungen in dritter Ordnung keine
 Rolle.
 

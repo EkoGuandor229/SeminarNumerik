@@ -34,6 +34,7 @@ Als Referenz: Das analytische Resultat des Integrals ist $\frac{\pi}{2} \approx 
         \hline
     \end{tabular}
     \caption{Resultatvergleich zwischen der Gauss-Quadratur und der Trapezregel
+\index{Resultatvergleich}
     \label{buch:table:gaussvergleich}}   
 \end{table}
 Man kann sehr schön sehen, dass die Resultate der Gauss-Quadratur mit nur wenigen Funktionsauswertungen
@@ -43,9 +44,11 @@ Man sieht, dass die Genauigkeit der Trapezregel mit $n = 100$ bei der Gauss-Quad
 erreicht wird.
 
 \subsection{Programm für Gauss-Quadratur in Python}
+\index{Python}%
 In Python lässt sich die Gauss-Quadratur in gerade mal $25$ Zeilen Code umsetzen.
 Dafür wird aus dem Modul \texttt{scipy} die Klasse \texttt{integrate} importiert. 
 Ausserdem wird für die mathematischen Funktionen das Modul \texttt{numpy} verwendet
+\index{numpy@\texttt{numpy}}
 \begin{lstlisting}[float,language=Python,style=Python]
     import numpy as np
     from scipy import integrate

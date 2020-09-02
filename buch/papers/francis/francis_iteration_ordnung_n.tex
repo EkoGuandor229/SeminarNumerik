@@ -1,24 +1,31 @@
-\section{Francis Iteration der Ordnung $n$}
-\rhead{Francis Iteration der Ordnung n}
-
-Im Prinzip kann eine Francis Iteration für eine beliebige Ordnung $n$ durchgeführt werden, praktisch sollte die Ordnung $n$ aber klein gewählt werden.
+\section{Francis-Iteration der Ordnung $n$}
+\rhead{Francis-Iteration der Ordnung $n$}
+\index{Francis-Iteration der Ordnung $n$}
+Im Prinzip kann der Francis-Algorithmus für eine beliebige Ordnung $n$ durchgeführt werden, praktisch sollte die Ordnung $n$ aber klein gewählt werden.
 Francis hat die Ordnung $n=2$ gewählt.
-Gegenüber der Ordnung $n=1$ entsteht dabei der Vorteil, dass für komplex konjugierte Shifts gewählt werden können (Und somit auch komplex konjugierte Eigenwerte approximiert) ohne dass komplex gerechnet werden muss.
+Gegenüber der Ordnung $n=1$ entsteht dabei der Vorteil, dass komplex konjugierte Shifts gewählt werden können (Und somit auch komplex konjugierte Eigenwerte approximiert) ohne dass komplex gerechnet werden muss.
 
 Berechnung einer Francis Iteration:
 \begin{enumerate}
 	\item Wähle $n$ verschiedene Shifts $\rho_{1}$ ... $\rho_{n}$.
 	\item Berechne $p= (A - \rho_{n}I) ... (A - \rho_{1}I)e_{1}$.
-	\item Berechne den Reflektor $Q_{0}$ dessen erste Kolonne proportional zu $x$ ist.
-	\item Führe eine Ähnlichkeitstransformation mit dem berechneten Shift $Q_{0}^{-1}AQ_{0}$, was eine \glqq Ausbuchtung \grqq in der Matrix erzeugt.
-	\item Führe weitere Ähnlichkeitstransformationen durch, wobei sich die Ausbuchtung immer weiter nach unten verschiebt und sich schlussendlich wieder eine Hessenberg Matrix ergibt.
+	\item Berechne den Reflektor $Q_{0}$, welcher die erste Spalte wie gewünscht verändert.
+	\item Führe eine Ähnlichkeitstransformation mit dem berechneten Shift $Q_{0}^{-1}AQ_{0}$, was eine Ausbuchtung in der Matrix erzeugt.
+	\item Führe weitere Ähnlichkeitstransformationen durch, wobei sich die Ausbuchtung immer weiter nach unten verschiebt und sich schlussendlich wieder eine Hessenberg-Matrix ergibt.
 \end{enumerate}
 
-Wichtig anzumerken ist, dass wir nach der Wahl von $n$ Shifts nicht die gesamte Matrix $(A - \rho_{n}I) ... (A - \rho_{1}I)$ berechnen, denn die Kosten dafür wären zu hoch. Es reicht die erste Kolonne zu berechnen, welche bei einer vernünftigen Wahl von $n$ einfach zu berechnen ist.
+Wichtig anzumerken ist, dass wir nach der Wahl von $n$ Shifts nicht die gesamte Matrix $(A - \rho_{n}I) ... (A - \rho_{1}I)$ berechnen, denn die Kosten dafür wären zu hoch. Es reicht die erste Spalte zu berechnen, welche bei einer vernünftigen Wahl von $n$ einfach zu berechnen ist.
 
-Der Francis Algorithmus der 1. Ordnung kann auf allgemeine komplexe Matrizen angewendet werden, wobei dann die ganze Arithmetik ebenfalls komplex ist.
+Der Francis-Algorithmus der 1. Ordnung kann auf allgemeine komplexe Matrizen angewendet werden, wobei dann die ganze Arithmetik ebenfalls komplex ist.
 Sind die Matrix und die Shifts aber reell, so kann die ganze Iteration in reeller Arithmetik ausgeführt werden.
-Beim Francis Algorithmus der 2. Ordnung können sogar konjugiert komplexe Shifts verwendet werden, aber die ganze Berechnung kann in reeller Arithmetik ausgeführt werden.
+Beim Francis-Algorithmus der 2. Ordnung können sogar konjugiert komplexe Shifts verwendet werden, aber die ganze Berechnung kann in reeller Arithmetik ausgeführt werden. Grund dafür ist, dass beim Berechnen der ersten Spalte (Punkt 2) mit konjugiert komplexen Shifts
+\begin{equation}
+p= (A - \rho I)(A - \bar{\rho} I)e_{1}
+\end{equation}
+\begin{equation}
+p= (A^2-(\rho+\bar{\rho})A+\rho\bar{\rho}I)e_{1}
+\end{equation}
+der Imaginäranteil verschwindet.
 
-Die totalen Kosten für den expliziten QR Algorithmus für k Iterationen ist $8kn^{3}$ Additionen und $12kn^{3}$ Multiplikationen.
-Im Vergleich dazu betragen die totalen Kosten für den impliziten QR Algorithmus (Francis) für k Iterationen ist $2kn^{3}$ Additionen und $2kn^{3}$ Multiplikationen, wobei ein Schritt des impliziten Verfahrens zwei Schritten des expliziten Verfahrens entspricht. \cite{francis:EthSeminar}
+Die totalen Kosten für den expliziten QR Algorithmus für $k$ Iterationen sind $8kn^{3}$ Additionen und $12kn^{3}$ Multiplikationen.
+Im Vergleich dazu betragen die totalen Kosten für den impliziten QR-Algorithmus (Francis) für $k$ Iterationen $2kn^{3}$ Additionen und $2kn^{3}$ Multiplikationen, wobei ein Schritt des impliziten Verfahrens zwei Schritten des expliziten Verfahrens entspricht. \cite{francis:EthSeminar}

@@ -6,12 +6,17 @@
 \section{Diagonalisierung mit dem Jacobi-Verfahren
 \label{buch:section:jacobi}}
 \rhead{Diagonalisierung mit dem Jacobi-Verfahren}
+\index{Diagonalisierung}%
 Die Diskretisierung linearer partieller Differentialgleichungen wie
 zum Beispiel
 der Wellengleichung führen immer auf symmetrische Eigenwertprobleme,
-also auf Gleichungen der From $Av=\lambda v$ mit $A=A^t$. Aus der
+also auf Gleichungen der From $Av=\lambda v$ mit $A=A^t$.
+\index{Diskretisation}%
+Aus der
 linearen Algebra ist bekannt, dass es in diesem Fall eine orthogonale
 Matrix $O$ gibt mit
+\index{Matrix!orthogonal}%
+\index{orthogonale Matrix}%
 \[
 \begin{pmatrix}
 \lambda_1&\dots&0\\
@@ -25,9 +30,12 @@ ab, in der $i$-ten Spalten von $O$ steht der $i$-te Eigenvektor von $A$.
 Findet man $O$, kann man daraus die Eigenvektoren ablesen.
 
 Das Jacobi-Verfahren versucht, $O$ als Zusammensetzung von Drehungen
-in jeweils zwei Dimensionen aufzubauen. Gleichzeitig wird die
+in jeweils zwei Dimensionen aufzubauen.
+Gleichzeitig wird die
 Matrix $A$ ``in place'' auf Diagonalform reduziert, so dass man dort
 die Eigenwerte ablesen kann.
+\index{Diagonalform}%
+\index{Drehung}%
 
 \subsection{Jacobi-Verfahren in zwei Dimensionen\label{jacobi2d}}
 In zwei Dimensionen hat eine orthogonale Matrix $O$ immer die
@@ -123,8 +131,10 @@ O'=\begin{pmatrix}
 0 &      &-\sin\alpha&\dots & \cos\alpha&\dots &0\\
   &      &\vdots    &      & \vdots    &\ddots& \\
 0 &\dots &0         &      & 0         &      &1
-\end{pmatrix}.
+\end{pmatrix},
 \]
+wobei die trigonometrischen Funktionen in den Zeilen und Spalten mit
+Indizes $p$ und $q$ stehen.
 \item Setzte $A:=O'^tAO'$ und $O:=OO'$.
 \item Wiederhole das Verfahren ab Schritt \ref{loop}, falls noch Indexpaare
 $(p,q)$ mit $|a_{pq}|>\varepsilon$ vorkommen.
@@ -135,11 +145,12 @@ Diagonalform gebracht, sie enthält die Eigenvektoren in den
 Spalten.
 
 Dieses Verfahren ist nur auf symmetrische Matrizen anwendbar.
+\index{symmetrisch}%
 In Kapitel~\ref{chapter:francis} wird gezeigt, wie der
 Francis-Algorithmus die Ideen der Abschnitte~\ref{buch:section:qr}
 und \ref{buch:section:jacobi} zu einem funktionierenden
 Eigenwert-Algorithmus kombiniert, der für beliebige Matrizen funktioniert.
-
+\index{Francis-Algorithmus}
 
 
 

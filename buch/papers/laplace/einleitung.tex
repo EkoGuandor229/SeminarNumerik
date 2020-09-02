@@ -3,27 +3,39 @@
 %
 % (c) 2020 Severin Weiss
 %
-Die Laplacetransformation einer auf $[0, \infty)$ definierten und in jedem endlichen Intrevall  $[0, a)$ absolut integrierbaren Funktion ist die Funktion
-\[
-F(s) = \int_0^\infty e^{-st}f(t)\,dt,~~Re(s)>\gamma_{0}.
-\]
-Das Argument s kann eine komplexe Zahl sein, im Folgenden wird vorausgesetzt, dass das Integral für $Re(s)>\gamma_{0}$ konvergieren muss.
-Das inverse Laplaceproblem ist, die Funktionen $f(t)$ im Zeitbereich aus jenen bekannten Funktionen $F(s)$ im Frequenzbereich zu rekonstruieren.
+Die Laplace-Transformation einer auf $[0, \infty)$ definierten und in jedem endlichen Intervall $[0, a)$ absolut integrierbaren Funktion, ist die Funktion
+\index{Laplace-Transformation}%
+\begin{equation}
+F(s) = \int_0^\infty e^{-st}f(t)\,dt,~~ \qquad Re(s)>\gamma_{0}.
+\label{laplace:definition}
+\end{equation}
+Das Argument $s$ kann eine komplexe Zahl sein, im Folgenden wird vorausgesetzt, dass das Integral für $Re(s)>\gamma_{0}$ konvergieren muss.
+Das inverse Laplace-Problem ist, die Funktionen $f(t)$ im Zeitbereich aus der bekannten Funktionen $F(s)$ im Frequenzbereich zu rekonstruieren.
 
-Mit der Riemanninversionsformel ergibt sich $f(t)$ aus $F(s)$
-\[
-f(t) = \frac{1}{2\pi i} \oint_{B} e^{st}F(s)\,ds,~~t>0,~~i=\sqrt{-1}
-\]
-wobei $B$ die Bromwich Kontur von $\gamma-i\infty$ bis $\gamma+i\infty$, mit $\gamma>\gamma_{0}$, parallel zur imaginären Achse ist. Die Bromwich Kontur ist eine geschlossen Kurve. Die Kurve ist in untestehender Abbildung ersichtlich. Sie besteht aus zwei Teilen. C1 ist ein Teilkreis mit Radius R vom Mittelpunkt. C2 ist die vertikale Linie AB, welche sich zur rechten aller Singularitäten von $F(s)$ befindet.  Bei Vergrösserung des Radius R wird die Bromwich Kontur alle Singularitäten umschliessen. Unter diesen Bedingung konvergiert das Integral über C1 gegen Null, wenn der Radius R gegen unendlich strebt. Desweiteren wird in diesem Fall das Integral über C2 gleich der Summe der Residuen, der in der Bromwich Kontur enthaltenen Singularitäten.
+Mit der Riemann-Inversionsformel ergibt sich $f(t)$ aus $F(s)$
+\index{Riemann-Inversionsformel}%
+\index{Inversionsformel, Riemann-}%
+\begin{equation}
+f(t) = \frac{1}{2\pi i} \oint_{B} e^{st}F(s)\,ds,~~\qquad t>0,
+\label{laplace:riemanninversionsformel}
+\end{equation}
+wobei $B$ die Bromwich-Kontur von $\gamma-i\infty$ bis $\gamma+i\infty$, mit $\gamma>\gamma_{0}$, parallel zur imaginären Achse ist. Die Bromwich-Kontur ist die geschlossene Kurve in Abbildung \ref{laplace:bromwichkontur}. Sie besteht aus zwei Teilen,  aus dem zum einen der Teilkreis mit Radius $R$ vom Mittelpunkt und zum anderen aus der vertikalen Linie $\gamma$, welche sich zur Rechten aller Singularitäten von $F(s)$ befindet.  Bei Vergrösserung des Radius $R$ wird die Bromwich-Kontur alle Singularitäten umschliessen. Unter diesen Bedingung konvergiert das Integral über dem Kreisbogen-Teil der Kontur gegen Null, wenn der Radius $R$ gegen unendlich strebt.
+\index{Bromwich-Kontur}%
+\index{Kontur, Bromwich-}%
+\index{Singularität}%
+\index{Kreisbogen}%
+Damit man das Integral mit der Bromwich-Kontur numerisch berechnen kann, braucht man, dass $F(s)$, für alle $s\rightarrow$ $\infty$ mit $Re(s)< \gamma_{0}$ genügend schnell gegen 0 gehen, weil der Umfang des Kreises anwächst.
+
 
 \begin{figure}
 \centering
-\includegraphics[width=6.9cm]{papers/laplace/Bromwich_Contour}
-\caption{Fehler von $Bromwich Kontur$
+%\includegraphics[width=6.9cm]{papers/laplace/images/bromwich.pdf}
+\includegraphics{papers/laplace/images/bromwich.pdf}
+\caption{Die Bromwich-Kontur in der komplexen Ebene. Dargestellt ist die wachsende Figur abhängig vom Radius $R$.
 \label{laplace:bromwichkontur}
 }
 \end{figure}
 
-Im Allgemeinen möchte man die Kontur zur linken Seite platzieren, sodass der Betrag des Faktors $e^{st}$ im Integrand kleiner wird.
-Die Kontur sollte jedoch nicht zu nahe an Singularitäten von $F(s)$ angenähert werden, dies würde Spitzen des Integranden zur Folge haben.
+Im Allgemeinen möchte man die Kontur zur linken Seite bewegen, sodass der Betrag des Faktors $e^{st}$ im Integrand kleiner wird.
+Die Kontur sollte jedoch nicht zu nahe an Singularitäten von $F(s)$ angenähert werden, dies würde Spitzen des Integranden zur Folge haben, welche die numerische Berechnung erschweren.
 

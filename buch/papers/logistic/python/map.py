@@ -15,9 +15,12 @@ for i in range(0, 250):
     x = logistic(r, x)
     plt.plot(r, x, ',k', alpha=0.05)
 
+fig = plt.gcf()
+fig.set_size_inches(6.4, 3.8)
 
-plt.xlim(0.0, 4)
-plt.ylim(0.0, 1)
+plt.xlim(0.0, 4.1)
+plt.ylim(-0.025, 1.025)
 plt.xlabel("λ")
-plt.ylabel("x wenn n gegen unendlich")
+plt.ylabel("$x_n$ wenn $n \\rightarrow \infty$")
+plt.tight_layout()
 plt.savefig("../figures/map.png", dpi=300)

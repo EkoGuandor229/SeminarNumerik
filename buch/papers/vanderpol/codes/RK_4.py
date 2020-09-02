@@ -1,8 +1,8 @@
 def RK_4(func, z_n, t_n, h):
     """ 
     z_n: Aktueller Zustandsvektor [y_n, y_n']
-    t_n: Time variable [sec]
-    h  : Integration step value
+    t_n: Zeitvariable 
+    h  : Integrationsschritt
     """
     k1 = h*func(z_n, t_n)                     
     k2 = h*func(z_n + 0.5*k1, t_n + 0.5*h)

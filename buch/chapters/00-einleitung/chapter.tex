@@ -30,49 +30,62 @@ Formeln zur Verfügung.
 Es bleibt dann nichts anderes übrig, als die Berechnungen auf einem
 Computer durchzuführen, der unvermeidliche Rundungsfehler einführt,
 die die Resultate ebenfalls beeinträchtigen können.
+\index{Rundungsfehler}%
 Wie kann man auch unter diesen erschwerten Bedingungen die Präzision
 der Ergebnisse sicherstellen, die die genannten technischen Meisterleistungen
 erst möglich gemacht haben?
 
 Die numerische Mathematik befasst sich mit der Konstruktion und Analyse
 von Algorithmen für kontinuierliche mathematische Probleme.
+\index{Algorithmus}%
 Die von einem Computer zur Verfügung gestellten Zahlensysteme sind nur
 Approximationen für die reellen Zahlen.
 \index{Zahlensystem}%
+\index{Approximation}%
 Sie besser zu verstehen und die Auswirkungen ihre Unzulänglichkeiten 
 besser in den Griff zu bekommen ist der Inhalt von
 Kapitel~\ref{chapter:berechnung}.
 Das wichtigste Werkzeug, die Iteration, wird darin einer gründlichen
 Analyse unterzogen und es werden Bedingungen ermittelt, unter denen
 der Erfolg garantiert werden kann.
+\index{Iteration}%
 Es lassen sich Gesetzmässigkeiten für die Fehler finden, die einerseits
 instabiles Verhalten vorhersagen können, aber andererseits auch dazu
 dienen können, den Fehler zu reduzieren und die Konvergenz eines
 Verfahrens zu beschleunigen.
+\index{instabil}%
 
 Kapitel~\ref{chapter:gleichungen} kümmert sich um eine der ältesten
 Aufgaben der Numerik, nämlich die Lösung von Gleichungen.
+\index{Lösung!einer Gleichung}%
+\index{Gleichung}%
 Da es sich dabei um eine sehr grundlegende Aufgabenstellung handelt,
 die immer wieder als Baustein umfassender Problemlösungen auftritt,
 ist hohe Genauigkeit und Geschwindigkeit besonders wichtig.
 Es wird gezeigt, wie der Newton-Algorithmus sich durch sogenannte
 {\em quadratische Konvergenz} auszeichnet.
-\index{quadratische Konvergenz}%
+\index{quadratische!Konvergenz}%
 
 Die Mathematik stellt eine grosse Zahl von nützlichen Funktionen zur
 Verfügung, deren exakte Berechnung jedoch oft umständlich und
 zeitaufwendig ist.
+\index{Funktion}%
 Kapitel~\ref{chapter:interpolation} zeigt, wie solche Funktionen
 mit hoher Genauigkeit durch Polynome approximiert werden können,
 die meist viel einfacher zu berechnen sind.
+\index{Polynom}%
 Besonderes Augenmerk wird dabei darauf gelegt, die Approximationsfehler
 abzuschätzen, so dass ein Interpolationsverfahren immer den
 Genaugikeitsanforderungen der Anwendung angepasst werden kann.
+\index{Approximationsfehler}%
 Spline-Interpolation und Bézier-Kurven runden als in der Praxis besonders
 erfolgreiches Approximationsverfahren das Kapitel ab.
+\index{Spline-Interpolation}%
+\index{Bézier-Kurve}%
 
 In der Analysis lernt man unter anderem, Integrale in geschlossener
 Form auszuwerten.
+\index{Integral}%
 Dabei entsteht oft der falsche Eindruck, mit genügend Ausdauer sei praktisch
 jedes Integral lösbar.
 Nichts könnte weiter von der Realität entfernt sein.
@@ -81,52 +94,86 @@ für die die Numerik effiziente Methoden bereitstellen soll.
 Kapitel~\ref{chapter:integration} diskutiert die Mittelpunktsformel und
 die Trapezregel und zeigt, wie sich die Genauigkeit dieser Verfahren
 sehr erfolgreich dank einer sorgfältigen Fehleranalyse steigern lässt.
+\index{Mittelpunktformel}%
+\index{Trapezregel}%
 
 Zu den wichtigsten mathematischen Modellen für natürliche Prozesse
 gehören gewöhnliche Differentialgleichungen.
+\index{Differentialgleichung!gewöhnliche}%
+\index{gewöhnliche Differentialgleichung}%
 Hier ist die Verfügbarkeit analytischer Lösungen noch prekärer als
 bei den Integralen.
+\index{analytische Lösung}%
+\index{Lösung!analytische}%
 Glücklicherweise stehen Verfahren sehr hoher Präzision in weit
-verbreiten Software-Paketen für die numerische Analyse zur Verfügung.
+verbreiteten Softwarepaketen für die numerische Analyse zur Verfügung.
+\index{Software}%
 Die Techniken, mit denen sich diese Präzision erreichen lässt,
 werden in Kapitel~\ref{chapter:ode} dargestellt.
 Neben dem universell einsetzbaren Runge-Kutte-Verfahren, welches zur
-Klasse der Einschritt-Verfahren gehört, werden auch Mehrschritt-Verfahren
+Klasse der Einschrittverfahren gehört, werden auch Mehrschrittverfahren
 vorgestellt sowie Techniken.
+\index{Runge-Kutta-Verfahren}%
+\index{Einschrittverfahren}%
+\index{Mehrschrittverfahren}%
 Es wird auch gezeigt, wie man die Abhängigkeit der Lösung einer 
 Differentialgleichung nach Anfangsbedingungen und Parameter modellieren
 kann.
+\index{Anfangsbedingung}%
+\index{Parameter}%
 Die Lösung von Randwertproblemen wird damit effizient möglich.
+\index{Randwertproblem}%
 
 Im Kapitel~\ref{chapter:gleichungen} wurde bewusst auf die Behandlung
 linearer Gleichungssysteme verzichtet.
+\index{Gleichungssystem!linear}%
+\index{lineares!Gleichungssystem}%
 Zwar kennt man den Gauss-Algorithmus aus den Grundvorlesungen, er benötigt
+\index{Gauss-Algorithmus}%
 aber für $n$ Unbekannte eine Laufzeit von der Grössenordnung $O(n^3)$,
 was für die sehr grosse Zahl von Unbekannten, mit der man es zum Beispiel
 bei der numerischen Lösung von partiellen Differentialgleichungen zu tun hat,
 zu langsam ist.
+\index{partielle Differentialgleichung}
+\index{Differentialgleichung!partielle}
 Die besonderen Eigenschaften linearer Gleichungssysteme ermöglichen
 aber alternative Ansätze zu deren Lösung.
 Das Kapitel~\ref{chapter:linsys} beginnt mit einer Diskussion von 
 in der Praxis häufig vorkommenden Spezialfällen von Gleichungssystemen,
 die sich schneller als in $O(n^3)$ lösen lässt.
 Es diskutiert dann eine Reihe von iterativen Verfahren zur Gleichungslösung
+\index{iterativ}%
+\index{Gleichungssystem!iteratives Verfahren}%
 und zeigt, wie der Spektralradius einer Matrix die zentrale
 Masszahl für den Erfolg oder Misserfolg solcher Verfahren ist.
+\index{Spektralradius}%
 Es schliesst mit einer Diskussion zweier einfacher Verfahren für die
 QR-Zerlegung und für das Eigenwertproblem, die im zweiten Teil vertieft
 wird.
+\index{QR-Zerlegung}%
+\index{Eigenwertproblem}%
 
 Partielle Differentialgleichungen stellen mathematische Modelle
 für ausgedehnte System wie elektromagnetische Felder, Temperaturverteilung,
 Dichte etc.~bereit.
+\index{Differentialgleichung!partielle}%
+\index{partielle Differentialgleichung}%
+\index{Feld!elektromagnetisches}%
+\index{elektromagnetisches Feld}%
+\index{Temperatur}%
+\index{Dichte}%
 Für deren Lösung sind die Methoden für gewöhnliche Differentialgleichungen
 nicht geeignet.
+\index{Differentialgleichung!gewöhnliche}%
+\index{gewöhnliche Differentialgleichung}%
 Kapitel~\ref{chapter:pde} führt die grundlegenden Definitionen aus
 der Theorie der partiellen Differentialgleichungen ein und vermittelt
 die Grundideen der wichtigsten Diskretisations- und Lösungsverfahren.
+\index{Diskretisation}%
 Zur Sprache kommen finite Differenzen, finite Volumina und finite Elemente.
-
+\index{finite Differenzen}%
+\index{finite Volumina}%
+\index{finite Elemente}%
 
 
 

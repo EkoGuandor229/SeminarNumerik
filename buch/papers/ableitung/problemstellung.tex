@@ -6,100 +6,98 @@
 \section{Problemstellung
 \label{ableitung:section:problemstellung}}
 \rhead{Problemstellung}
-Die Optimierung neuronaler Netze funktioniert mittels Gradientenabstiegverfahren.
+Die Optimierung von neuronalen Netzen wird auch als 'lernen' bezeichnet und funktioniert mittels Gradientenabstieg verfahren.
 Nach jeder vollständigen Iteration über den gesammten Datensatz (Epoche) wird der Gradient berechnet um den Fehler zu minimieren. Die Gradientenberechnung funktioniert in den meisten neuronalen Netzwerk-Frameworks mittels Backpropagation.
-Es wird bewusst auf eine vollständige Einführung in neuronale Netzwerke verzichtet, da das Internet eine sehr grosse Sammlung guter Literatur zu Verfügung stellt. 
-Wichtige Details und eine einfache Nomenklatur wird aber benötigt um den Lesefluss der Arbeit zu ermöglichen.
 
-\subsection{Lernen als Optimierungsproblem}
-Ein neuronales Netzwerk ist im Grunde ein Optimierungsproblem. Das Netzwerk umfasst einen Paramterraum, welcher so optimiert werden möchte, dass der Fehler möglichst klein ist. 
-\begin{figure}
-	\begin{center}
-		\input{papers/ableitung/neuronal_network.tex}
-		\caption{Übersicht eines Neuronalen Netzwerks}
-		\label{ableitung:fig:neuronal_network}
-	\end{center}
-\end{figure} 
-Anhand eines einfachen neuronalen Netzwerks gemäss Abbildung \ref{ableitung:fig:neuronal_network} können die Komponenten eingeführt werden. $W$ entspricht dem Gewicht, $b$ dem Offset (bias) und $\sigma$ ist die Aktivierungsfunktion. Diese wird benötigt um die Linearität der verschiedenen Schichten zu brechen. In der letzten Schicht wird die Aktiverungsfunktion $\sigma$ weiter noch dazu verwendet um den Output auf das vorliegende Problem abzubilden. Eine lineare Ausgabe zwischen $[-\infty, \infty]$ ist erwünscht sofern ein Regressionsproblem vorliegt, bei einem stochastischen Problem soll die Ausgabe dem Abbildungsbereich $[0, 1]$ entsprechen. Das Trainieren oder Lernen eines neuronalen Netzwerks ist im Grunde nichts anderes als das bestimmen des Minimums des Fehlers mit Hilfe der Paramter $w$, und $b$ für die gegebenen Problemstellung. Es gilt somit die Gleichung für ein beliebiges Neuron in der Abbilung \ref{ableitung:fig:neuronal_network}:
-\begin{equation}
-a^{l}_{j} = \sigma \left( \sum\limits_{k}w^{l}_{jk} \cdot a^{l-1}_{k}+b^{l}_{j} \right)
-\label{ableitung:eqn:simple_neuron_eqn}
-\end{equation}
-Weiter formalisieren wir das neuronale Netzwerk wie folgt:
-\begin{itemize}
-	\item{$x$: Input ins Neuronale Netzwerk}
-	\item{$y$: Erwarteter Output aus dem Neuronalen Netzwerk gem. dem Trainingsdatensatz}
-	\item{$\hat{y}$: Effektiver gerechneter Output aus den neuronalen Netzwerk}
-	\item{$\Lb$: Die Verlustfunktion (\textit{loss}) welche den Fehler zwischen dem gerechenten und tatsächlechen Output berechnet.}
-	\item{$w_{jk}^{l}$: Das Gewicht des $k$-ten Neurons in der Schicht $(l-1)$ zum $j$-ten Neuron.}
-	\item{$b_{j}^{l}$: Das Offset-Gewicht (bias) für das $j$-te Neuron in der Schicht $l$.}
-	\item{$\sigma$: Die Aktivierungsfunktion zur Brechnung der Linearität.}
-\end{itemize}
-Als letztes müssen wir noch die Aktiverungsfunktion $\sigma$ einführen. Treffen wir die einfach Annahme, dass $\sigma: f(x) = x^2$ gilt, so gilt für die Schreibweise in einer ganzen Schicht:
-\begin{equation}
-\sigma \begin{pmatrix} 5 \\ 3 \end{pmatrix} =  \begin{pmatrix} f(5) \\ f(3) \end{pmatrix} =  \begin{pmatrix} 25 \\ 9 \end{pmatrix}
-\end{equation}
-Das neuronale Netzwerk resultiert somit in folgender Gleichung:
-\begin{equation}
-	\hat{y}(x):= \sigma^{l}(W^{l}\sigma^{l-1}(W^{l-1}\cdots \sigma^{1}(W^{1}x+b^{1}) + b^{l-1} \cdots ) + b^{l})
-\end{equation}
-Mit dieser Notation lässt sich die Gleichung aus \ref{ableitung:eqn:simple_neuron_eqn} in Matrix schreibweise vereinfachen:
-\begin{equation}
-	a^{l} = \sigma \left(w^{l}a^{l-1}+b^l \right)
-\end{equation}
-Um an einem späteren Zeitpunkt die Struktur etwas einfacher zu halten wird $z^l$ definiert als $a^l$ ohne die Aktivierungsfunktion. Somit gilt $z^l = w^l a^{l-1} + b^l$.
-Das neuronale Netzwerk wurde somit in groben Zügen und dazugehöriger Nomenklatur eingeführt. Die Definition des Fehlers, welchen es zu minimieren gibt, kann wie folgt formalisiert werden:
-\begin{equation}
-	\Lb(y_{i},\hat{y}(x_{i}))
-\end{equation}
-Die resultierende Gleichung für das Training eines neuronalen Netzwerks ist somit:
-\begin{equation}
-	\min \{ \Lb(y_{i},\hat{y}(x_{i})) \}
-\end{equation}
-Da die Parameterzahl in modernen neuronalen Netzwerken sehr hoch ist, ist keine 'Brute Force' Lösung mit Probieren sämtlicher Kombinationen möglich. Es wird aus diesem Grund mittels Gradientenabstieg optimiert. Für den Gradientenabstieg sind die einzelnen Gradienten der Paramter von nöten, welche verändert werden können, im Fall des Neuronalen Netzwerks sind dies $W$ und $b$. 
-Die Bestimmung der Gradienten erfolgt mittels Backpropagation Algorithmus
-% https://www.nature.com/articles/323533a0
-
-\subsection{Backpropagation}
-Für den einfachen Fall eines neuronalen Netzwerks, bei welchem alle Schichten nur mit der Nachfolgenden verbunden sind und es eine Verlustfunktion ($\Lb$) gibt die einen skalares Resultat gibt, kann der Backpropagation Algorithmus einfach durch Matrixmultiplikationen verstanden werden:
-\begin{equation}
-\Lb(y_{i}, \sigma^{l}(W^{l}\sigma^{l-1}(W^{l-1}\cdots \sigma^{1}(W^{1}x+b^{1}) + b^{l-1} \cdots ) \}
-\end{equation}
-Dies resultiert, dass partiellen Ableitung $\partial \Lb / \partial w^l_{jk}$ und $\partial \Lb / \partial b^l_j$ berechnet werden müssen. Um diese zu berechnen führen wir eine neuronspezifischen Fehleränderung $\delta$ ein. $\delta^{l}_{j}$ ist somit die Änderung des Fehlers im Neuron $j$ in der Schicht $l$. Backpropagation ist ein Algorithmus um $\delta^{l}_{j}$ zu berechnen, welchen wir auf $\partial \Lb / \partial w^l_{jk}$ und $\partial \Lb / \partial b^l_j$ zurück führen können. Wir können also festhalten, dass in der letzten Schicht folgende Bedingung
-\begin{equation}
-\delta^{L}_{j} = \frac{\partial \Lb}{\partial a^{L}_{j}} \sigma'(z^L_j)
-\end{equation}
-gilt. (Index $L$ ='last') Analog dazu in Matrixschreibweise
-\begin{equation}
-\delta^{L} = \nabla_a \Lb \odot \sigma'(z^L)
-\end{equation}
-mit $\odot$ als komponentenweise Multiplikation der Matrix (Hadamard Produkt). Es kann für die Fehlerfunktion $\Lb$ eine beliebige Funktion verwendet werden. Oft wird die der $L_1$ oder $L_2$ Fehler verwendet. Für dieses Beispiel verwenden wir die quadatische Fehlerfunktion ($L_2$ / MSE).
-\begin{equation}
-\Lb = \frac{1}{2} \sum_j \left( \hat{y} - y \right)^2
-\end{equation}
-Somit resultiert nach der partiellen Ableitung von $\Lb$ und einsetzten von $a^L$ die folgende Gleichung:
-\begin{equation}
-\delta^{L} = (\hat{y} - a^L) \odot \sigma'(z^L)
-\end{equation}
-Mit diesen Annahmen wurde nun die Änderung des Fehlers abhänig von den Parametern der letzten Schicht berechnet. Der nächste Schritt wird sein herauszufinden, wie dieser durch das Netzwerk rückwärts gerechnet werden kann - back propagiert.
-\begin{equation}
-\delta^{l} = ((w^{l+1} \delta{l+1}) \odot \sigma'(z^l)
-\end{equation}
-Die Transponierte der Matrix $w^{l+1}$ kann man sich Intuitiv vorstellen, als das 'Rückwärtsrechnen' des gewichteten Fehlers, da $w^{l+1} * (w^{l+1})^T = I$. Dies ermöglicht die Änderung des Fehlers pro Neuron in der vorherliegenden Schicht zu bestimmen. Abschliessend müssen noch die Gradienten für $w$ und $b$ berechnet werden, diese resultieren aus den folgenden 2 Gleichungen:
-\begin{equation}
-\begin{split}
-\frac{\partial \Lb}{\partial b} & = \delta \\
-\frac{\partial \Lb}{\partial w} & = a^{l-1}_{k} \delta^{l}_j = a_{in} \delta_{out}
-\end{split}
-\end{equation}
-
-
-
-\subsection{Erkenntnisse und Probleme}
-\subsubsection{Vanishing Gradient}
-Vorallem in den Anfängen der Forschung im Bereich neuronaler Netzwerke war der Fokus auf Aktivierungsfunktionen wie Sigmoid oder Tangenshyperbolicus. Diese Funktionen neigen stark dazu, dass durch die Abbilung zwischen [-1,1] die Kettenregel dazu neigt sehr kleine Produkte zu erzeugen. Dies ist it dem erlernten Wissen nun erklärbar, da mit Hilfe des Backpropagation Algorithmus kleine Gradienten noch kleiner werden in den höheren Schichten. Der Gradient neigt dazu zu verschwindet, dieser Effekt wird mit zunehmender Tiefe noch verstärkt.
-\subsubsection{Rauschanfälligkeit durch kleine Gewichte}
-Weiter exisitiert durch die diskrete Representation im Computer eine diskrete mindest Grösse $\epsilon$. Es kann kein Wert kleiner werden als dieser Wert $\epsilon$ und der Mindestabstand zweier benachbarter Zahlen ist $\epsilon$. Diese Diskretisierung neigt dazu, dass jeder 'reale' Wert einen gewissen Fehler annimmt, welcher durch das Rückwärtsrechnen des Netzwerks verstärkt wird.
-\subsubsection{Konsequenz}
-Als Konsequenz um diese Probleme zu lösen wird ein Ansatz gewählt, welche den Gradienten eines Netzwerks berechnen kann, ohne die Ableitung zu kennen. Dies hat nicht nur den Vorteil, dass die Aktivierungsfunktion $\sigma$ nicht differenzierbar sein muss, aber auch, dass die beiden oben eingeführten Probleme weit gehend beseitigt werden können. 
+%\subsection{Lernen als Optimierungsproblem}
+%Ein neuronales Netzwerk ist im Grunde ein Optimierungsproblem. Das Netzwerk umfasst einen Paramterraum, welcher so optimiert werden möchte, dass der Fehler möglichst klein ist. 
+%\begin{figure}
+%	\begin{center}
+%		\input{papers/ableitung/neuronal_network.tex}
+%		\caption{Übersicht eines Neuronalen Netzwerks}
+%		\label{ableitung:fig:neuronal_network}
+%	\end{center}
+%\end{figure} 
+%Anhand eines einfachen neuronalen Netzwerks gemäss Abbildung \ref{ableitung:fig:neuronal_network} können die Komponenten eingeführt werden. $W$ entspricht dem Gewicht, $b$ dem Offset (bias) und $\sigma$ ist die Aktivierungsfunktion. Diese wird benötigt um die Linearität der verschiedenen Schichten zu brechen. In der letzten Schicht wird die Aktiverungsfunktion $\sigma$ weiter noch dazu verwendet um den Output auf das vorliegende Problem abzubilden. Eine lineare Ausgabe zwischen $[-\infty, \infty]$ ist erwünscht sofern ein Regressionsproblem vorliegt, bei einem stochastischen Problem soll die Ausgabe dem Abbildungsbereich $[0, 1]$ entsprechen. Das Trainieren oder Lernen eines neuronalen Netzwerks ist im Grunde nichts anderes als das bestimmen des Minimums des Fehlers mit Hilfe der Paramter $w$, und $b$ für die gegebenen Problemstellung. Es gilt somit die Gleichung für ein beliebiges Neuron in der Abbilung \ref{ableitung:fig:neuronal_network}:
+%\begin{equation}
+%a^{l}_{j} = \sigma \left( \sum\limits_{k}w^{l}_{jk} \cdot a^{l-1}_{k}+b^{l}_{j} \right)
+%\label{ableitung:eqn:simple_neuron_eqn}
+%\end{equation}
+%Weiter formalisieren wir das neuronale Netzwerk wie folgt:
+%\begin{itemize}
+%	\item{$x$: Input ins Neuronale Netzwerk}
+%	\item{$y$: Erwarteter Output aus dem Neuronalen Netzwerk gem. dem Trainingsdatensatz}
+%	\item{$\hat{y}$: Effektiver gerechneter Output aus den neuronalen Netzwerk}
+%	\item{$\Lb$: Die Verlustfunktion (\textit{loss}) welche den Fehler zwischen dem gerechenten und tatsächlechen Output berechnet.}
+%	\item{$w_{jk}^{l}$: Das Gewicht des $k$-ten Neurons in der Schicht $(l-1)$ zum $j$-ten Neuron.}
+%	\item{$b_{j}^{l}$: Das Offset-Gewicht (bias) für das $j$-te Neuron in der Schicht $l$.}
+%	\item{$\sigma$: Die Aktivierungsfunktion zur Brechnung der Linearität.}
+%\end{itemize}
+%Als letztes müssen wir noch die Aktiverungsfunktion $\sigma$ einführen. Treffen wir die einfach Annahme, dass $\sigma: f(x) = x^2$ gilt, so gilt für die Schreibweise in einer ganzen Schicht:
+%\begin{equation}
+%\sigma \begin{pmatrix} 5 \\ 3 \end{pmatrix} =  \begin{pmatrix} f(5) \\ f(3) \end{pmatrix} =  \begin{pmatrix} 25 \\ 9 \end{pmatrix}
+%\end{equation}
+%Das neuronale Netzwerk resultiert somit in folgender Gleichung:
+%\begin{equation}
+%	\hat{y}(x):= \sigma^{l}(W^{l}\sigma^{l-1}(W^{l-1}\cdots \sigma^{1}(W^{1}x+b^{1}) + b^{l-1} \cdots ) + b^{l})
+%\end{equation}
+%Mit dieser Notation lässt sich die Gleichung aus \ref{ableitung:eqn:simple_neuron_eqn} in Matrix schreibweise vereinfachen:
+%\begin{equation}
+%	a^{l} = \sigma \left(w^{l}a^{l-1}+b^l \right)
+%\end{equation}
+%Um an einem späteren Zeitpunkt die Struktur etwas einfacher zu halten wird $z^l$ definiert als $a^l$ ohne die Aktivierungsfunktion. Somit gilt $z^l = w^l a^{l-1} + b^l$.
+%Das neuronale Netzwerk wurde somit in groben Zügen und dazugehöriger Nomenklatur eingeführt. Die Definition des Fehlers, welchen es zu minimieren gibt, kann wie folgt formalisiert werden:
+%\begin{equation}
+%	\Lb(y_{i},\hat{y}(x_{i}))
+%\end{equation}
+%Die resultierende Gleichung für das Training eines neuronalen Netzwerks ist somit:
+%\begin{equation}
+%	\min \{ \Lb(y_{i},\hat{y}(x_{i})) \}
+%\end{equation}
+%Da die Parameterzahl in modernen neuronalen Netzwerken sehr hoch ist, ist keine 'Brute Force' Lösung mit Probieren sämtlicher Kombinationen möglich. Es wird aus diesem Grund mittels Gradientenabstieg optimiert. Für den Gradientenabstieg sind die einzelnen Gradienten der Paramter von nöten, welche verändert werden können, im Fall des Neuronalen Netzwerks sind dies $W$ und $b$. 
+%Die Bestimmung der Gradienten erfolgt mittels Backpropagation Algorithmus
+%% https://www.nature.com/articles/323533a0
+%
+%\subsection{Backpropagation}
+%Für den einfachen Fall eines neuronalen Netzwerks, bei welchem alle Schichten nur mit der Nachfolgenden verbunden sind und es eine Verlustfunktion ($\Lb$) gibt die einen skalares Resultat gibt, kann der Backpropagation Algorithmus einfach durch Matrixmultiplikationen verstanden werden:
+%\begin{equation}
+%\Lb(y_{i}, \sigma^{l}(W^{l}\sigma^{l-1}(W^{l-1}\cdots \sigma^{1}(W^{1}x+b^{1}) + b^{l-1} \cdots ) \}
+%\end{equation}
+%Dies resultiert, dass partiellen Ableitung $\partial \Lb / \partial w^l_{jk}$ und $\partial \Lb / \partial b^l_j$ berechnet werden müssen. Um diese zu berechnen führen wir eine neuronspezifischen Fehleränderung $\delta$ ein. $\delta^{l}_{j}$ ist somit die Änderung des Fehlers im Neuron $j$ in der Schicht $l$. Backpropagation ist ein Algorithmus um $\delta^{l}_{j}$ zu berechnen, welchen wir auf $\partial \Lb / \partial w^l_{jk}$ und $\partial \Lb / \partial b^l_j$ zurück führen können. Wir können also festhalten, dass in der letzten Schicht folgende Bedingung
+%\begin{equation}
+%\delta^{L}_{j} = \frac{\partial \Lb}{\partial a^{L}_{j}} \sigma'(z^L_j)
+%\end{equation}
+%gilt. (Index $L$ ='last') Analog dazu in Matrixschreibweise
+%\begin{equation}
+%\delta^{L} = \nabla_a \Lb \odot \sigma'(z^L)
+%\end{equation}
+%mit $\odot$ als komponentenweise Multiplikation der Matrix (Hadamard Produkt). Es kann für die Fehlerfunktion $\Lb$ eine beliebige Funktion verwendet werden. Oft wird die der $L_1$ oder $L_2$ Fehler verwendet. Für dieses Beispiel verwenden wir die quadatische Fehlerfunktion ($L_2$ / MSE).
+%\begin{equation}
+%\Lb = \frac{1}{2} \sum_j \left( \hat{y} - y \right)^2
+%\end{equation}
+%Somit resultiert nach der partiellen Ableitung von $\Lb$ und einsetzten von $a^L$ die folgende Gleichung:
+%\begin{equation}
+%\delta^{L} = (\hat{y} - a^L) \odot \sigma'(z^L)
+%\end{equation}
+%Mit diesen Annahmen wurde nun die Änderung des Fehlers abhänig von den Parametern der letzten Schicht berechnet. Der nächste Schritt wird sein herauszufinden, wie dieser durch das Netzwerk rückwärts gerechnet werden kann - back propagiert.
+%\begin{equation}
+%\delta^{l} = ((w^{l+1} \delta{l+1}) \odot \sigma'(z^l)
+%\end{equation}
+%Die Transponierte der Matrix $w^{l+1}$ kann man sich Intuitiv vorstellen, als das 'Rückwärtsrechnen' des gewichteten Fehlers, da $w^{l+1} * (w^{l+1})^T = I$. Dies ermöglicht die Änderung des Fehlers pro Neuron in der vorherliegenden Schicht zu bestimmen. Abschliessend müssen noch die Gradienten für $w$ und $b$ berechnet werden, diese resultieren aus den folgenden 2 Gleichungen:
+%\begin{equation}
+%\begin{split}
+%\frac{\partial \Lb}{\partial b} & = \delta \\
+%\frac{\partial \Lb}{\partial w} & = a^{l-1}_{k} \delta^{l}_j = a_{in} \delta_{out}
+%\end{split}
+%\end{equation}
+%
+%
+%
+%\subsection{Erkenntnisse und Probleme}
+%\subsubsection{Vanishing Gradient}
+%Vorallem in den Anfängen der Forschung im Bereich neuronaler Netzwerke war der Fokus auf Aktivierungsfunktionen wie Sigmoid oder Tangenshyperbolicus. Diese Funktionen neigen stark dazu, dass durch die Abbilung zwischen [-1,1] die Kettenregel dazu neigt sehr kleine Produkte zu erzeugen. Dies ist it dem erlernten Wissen nun erklärbar, da mit Hilfe des Backpropagation Algorithmus kleine Gradienten noch kleiner werden in den höheren Schichten. Der Gradient neigt dazu zu verschwindet, dieser Effekt wird mit zunehmender Tiefe noch verstärkt.
+%\subsubsection{Rauschanfälligkeit durch kleine Gewichte}
+%Weiter exisitiert durch die diskrete Representation im Computer eine diskrete mindest Grösse $\epsilon$. Es kann kein Wert kleiner werden als dieser Wert $\epsilon$ und der Mindestabstand zweier benachbarter Zahlen ist $\epsilon$. Diese Diskretisierung neigt dazu, dass jeder 'reale' Wert einen gewissen Fehler annimmt, welcher durch das Rückwärtsrechnen des Netzwerks verstärkt wird.
+%\subsubsection{Konsequenz}
+%Als Konsequenz um diese Probleme zu lösen wird ein Ansatz gewählt, welche den Gradienten eines Netzwerks berechnen kann, ohne die Ableitung zu kennen. Dies hat nicht nur den Vorteil, dass die Aktivierungsfunktion $\sigma$ nicht differenzierbar sein muss, aber auch, dass die beiden oben eingeführten Probleme weit gehend beseitigt werden können. 
 

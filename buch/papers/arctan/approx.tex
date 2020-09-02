@@ -1,0 +1,78 @@
+%
+% approx.tex -- Pade-Approximation für arctan(x)
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\def\w{1.6}
+
+\definecolor{farbe1}{rgb}{0.8,0,1}
+\definecolor{farbe2}{rgb}{1,0,0.2}
+\definecolor{farbe3}{rgb}{0.6,0,0}
+\definecolor{farbe4}{rgb}{1,0.4,0}
+\definecolor{farbe5}{rgb}{0.2,0.4,0}
+
+\begin{scope}
+\clip ({-4*\w},{-1.8*\w}) rectangle ({4*\w},{1.8*\w});
+
+\draw[color=blue,line width=1.5pt] plot[domain=-4:4,samples=100]
+	({\w*\x},{\w*3.14159*atan(\x)/180});
+
+\draw[color=farbe1,line width=1.2pt] plot[domain=-4:4,samples=100]
+	({\w*\x},{\w*\x});
+\draw[color=farbe2,line width=1.2pt] plot[domain=-4:4,samples=100]
+	({\w*\x},{\w*3*\x/(\x*\x+3)});
+\draw[color=farbe3,line width=1.2pt] plot[domain=-4:4,samples=100]
+	({\w*\x},{\w*((4*\x*\x+15)*\x)/(9*\x*\x+15)});
+\draw[color=farbe4,line width=1.2pt] plot[domain=-4:4,samples=100]
+	({\w*\x},{\w*(55*\x*\x+105)*\x/((9*\x*\x+90)*\x*\x+105)});
+\draw[color=farbe5,line width=1.2pt] plot[domain=-4:4,samples=100]
+	({\w*\x},{\w*((0.64*\x*\x+7.35)*\x*\x+9.45)*\x/((2.25*\x*\x+10.50)*\x*\x+9.45)});
+
+\end{scope}
+
+\draw ({1*\w},-0.1) -- ({1*\w},0.1); \node at ({1*\w},-0.1) [below] {$1$};
+\draw ({2*\w},-0.1) -- ({2*\w},0.1); \node at ({2*\w},-0.1) [below] {$2$};
+\draw ({3*\w},-0.1) -- ({3*\w},0.1); \node at ({3*\w},-0.1) [below] {$3$};
+\draw ({4*\w},-0.1) -- ({4*\w},0.1); \node at ({4*\w},-0.1) [below] {$4$};
+\draw ({-1*\w},-0.1) -- ({-1*\w},0.1); \node at ({-1*\w},-0.1) [below] {$-1$};
+\draw ({-2*\w},-0.1) -- ({-2*\w},0.1); \node at ({-2*\w},-0.1) [below] {$-2$};
+\draw ({-3*\w},-0.1) -- ({-3*\w},0.1); \node at ({-3*\w},-0.1) [below] {$-3$};
+\draw ({-4*\w},-0.1) -- ({-4*\w},0.1); \node at ({-4*\w},-0.1) [below] {$-4$};
+
+\draw[color=gray!50] ({-4*\w},{\w*3.14159/2}) -- ({4*\w},{\w*3.14159/2});
+\draw[color=gray!50] ({-4*\w},{0.5*\w*3.14159/2}) -- ({4*\w},{0.5*\w*3.14159/2});
+\draw[color=gray!50] ({-4*\w},{-\w*3.14159/2}) -- ({4*\w},{-\w*3.14159/2});
+\draw[color=gray!50] ({-4*\w},{-0.5*\w*3.14159/2}) -- ({4*\w},{-0.5*\w*3.14159/2});
+\node at (0,{0.5*\w*3.14159/2}) [above left] {$\displaystyle\frac{\pi}4$};
+\node at (0,{\w*3.14159/2}) [above left] {$\displaystyle\frac{\pi}2$};
+\node at (0,{-0.5*\w*3.14159/2}) [below right] {$\displaystyle-\frac{\pi}4$};
+\node at (0,{-\w*3.14159/2}) [below right] {$\displaystyle-\frac{\pi}2$};
+\draw (-0.1,{0.5*\w*3.14159/2}) -- (0.1,{0.5*\w*3.14159/2});
+\draw (-0.1,{\w*3.14159/2}) -- (0.1,{\w*3.14159/2});
+\draw (-0.1,{-\w*3.14159/2}) -- (0.1,{-\w*3.14159/2});
+\draw (-0.1,{-0.5*\w*3.14159/2}) -- (0.1,{-0.5*\w*3.14159/2});
+
+\draw[->] ({-4.1*\w},0) -- ({4.5*\w},0) coordinate[label={below:$x$}];
+\draw[->] (0,{-1.9*\w}) -- (0,{2.1*\w}) coordinate[label={right:$y$}];
+
+\node[color=farbe1] at ({\w*1.5},{\w*1.4}) [above left] {$\displaystyle\frac{p_1(x)}{q_1(x)}$};
+
+\node[color=farbe2] at ({4*\w},{\w*0.4}) [right] {$\displaystyle\frac{p_2(x)}{q_2(x)}$};
+\node[color=farbe3] at ({3.7*\w},{\w*1.8}) [above] {$\displaystyle\frac{p_3(x)}{q_3(x)}$};
+\node[color=farbe4] at ({4*\w},{\w*1.0}) [right] {$\displaystyle\frac{p_4(x)}{q_4(x)}$};
+\node[color=farbe5] at ({4*\w},{\w*1.7}) [right] {$\displaystyle\frac{p_5(x)}{q_5(x)}$};
+
+\end{tikzpicture}
+\end{document}
+

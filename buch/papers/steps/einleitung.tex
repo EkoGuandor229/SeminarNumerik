@@ -6,14 +6,19 @@
 \section{Einleitung\label{steps:section:einleitung}}
 \rhead{Einleitung}
 
-Numerische Verfahren zur Berechnung von Differentialgleichungen wie das Euler- oder Runge-
-Kutta Verfahren bekanntlich auf iterativem Vorgehen in Schritten, das bedeutet, dass der Verlauf
+Numerische Verfahren zur Berechnung der Lösungen von
+Differentialgleichungen wie das Euler- oder Runge-Kutta-Verfahren
+beruhen bekanntlich auf iterativem Vorgehen in Schritten, das
+bedeutet, dass der Verlauf
 der Kurve mit vielen Einzelschritten bis zum gesuchten Endpunkt angenähert wird und nicht exakt
 bestimmt werden kann. Um den Fehler möglichst klein zu halten,
 kann bei gegebenem Lösungsverfahren beispielsweise die Schrittlänge zwischen den einzelnen Punkten verkleinert werden, wodurch
+\index{Schrittlänge}%
 jedoch der Rechenaufwand steigt. Die für die geforderte Genauigkeit nötige Schrittweite richtet sich
-nach dem Punkt, an dem die "Krümmung" der Kurve am grössten ist. Die Aufgabe der Schrittlän-
-gensteuerung ist es nun, die Schrittlänge laufend der Dynamik der Kurve anzupassen, sodass der
-Zielpunkt mit möglichst wenig Schritten und der erforderlichen Genauigket berechnet werden
+nach dem Punkt, an dem die ``Krümmung'' der Kurve am grössten ist. Die Aufgabe der Schrittlängensteuerung ist,
+\index{Krümmung}%
+die Schrittlänge laufend der Dynamik der Kurve anzupassen, sodass der
+Zielpunkt mit möglichst wenig Schritten und der erforderlichen Genauigkeit berechnet werden
+\index{Genauigkeit}%
 kann.
 

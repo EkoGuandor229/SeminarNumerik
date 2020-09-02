@@ -8,6 +8,8 @@
 Als etwas ausführlicheres Beispiel soll in den folgenden Abschnitten
 das Wärmeleitungsproblem auf einem Stab mit verschiedenen Randbedingungen
 und Methoden gelöst werden.
+\index{Stab}%
+\index{Wärmeleitung}%
 Dieser Abschnitt beginnt damit, das Problem und seine Diskretisierung
 zu formulieren.
 In den folgenden Abschnitten werden die Gleichungen dann für verschiedene
@@ -17,6 +19,7 @@ Randbedingungen numerisch gelöst.
 Die Temperaturverteilung $u(x,t)$ auf einem Stab mit $x$-Koordinaten
 zwischen $0$ und $1$ zur Zeit $t$ wird durch eine partielle
 Differentialgleichung auf dem Gebiet
+\index{Temperaturverteilung}%
 \[
 \Omega = \{ (x,t)\;|\; 0 < x < 1\wedge 0<t\}
 \]
@@ -30,12 +33,16 @@ In der Wärmeleitungsgleichung
 \end{equation}
 ist die $\kappa$ eine Konstante, die Wärmeleitfähigkeit und
 Wärmekapazität des Materials charaktersiert.
+\index{Wärmeleitfähigkeit}%
+\index{Wäermekapazität}%
 
 \subsubsection{Randbedingungen}
 Zudem müssen Randbedingungen zur Zeit $t=0$ und an den Enden
 des Stabes bei $x=0$ oder $x=1$ erfüllt sein.
+\index{Randbedingung}%
 Zur Zeit $t=0$ muss die initiale Temperaturverteilung $f(x)$ 
 spezifiziert werden.
+\index{Temperaturverteilung}%
 
 Dirichletrandbedingungen
 \[
@@ -45,6 +52,7 @@ u(x,0)&=f(x)&&x\in[0,1]
 \]
 am Rand des Intervals bedeuten, dass die Enden des Stabes mit Wärmereservoirs
 verbunden sind, welche ihn auf einer vorgegebenen Temperatur halten.
+\index{Wärmereservoir}%
 
 Neumann-Randbedingungen
 \[
@@ -54,8 +62,10 @@ Neumann-Randbedingungen
 \]
 spezifizieren den Temperaturgradienten am Rande und legen damit fest,
 wieviel Wärmeenergie in den Stab hineinfliesst oder ihn verlässt.
+\index{Temperaturgradient}%
 Im Falle $g(x)=0$ verschwindet der Gradient und Wärmefluss ist unterbunden.
 Dies entspricht einem thermisch isolierten Stab.
+\index{Wärmefluss}%
 
 \subsubsection{Energie}
 Die physikalische Interpretation der
@@ -66,6 +76,7 @@ Dazu berechnen wir die Gesamtenergie
 U(t) = \int_0^1 u(x,t)\,dx,
 \]
 die im Intervall enthalten ist.
+\index{Energie}%
 Die Wärmeleitungsgleichung~\ref{buch:pde:waerme:gleichung} erlaubt nun,
 die Änderung der Energie mit der Zeit zu bestimmen.
 Es gilt
@@ -87,6 +98,7 @@ Anders ausgedrückt:
 die Energie bleibt dann konstant, wenn die Steigung
 in beiden Enden gleich gross ist, was gleichbedeutend ist damit,
 dass der Wärmefluss durch beide Intervallenden gleich gross ist.
+\index{Wärmefluss}%
 
 In allen Fällen kann man das Verhalten der Lösung für $t\to\infty$
 bestimmen.
@@ -160,6 +172,7 @@ Dirichlet-Randbedingungen erfoderlich.
 \subsubsection{Diskretisation}
 Zur Diskretisation verwenden wir ein Gitter mit Gitterkonstanten
 $h_x=1/N$ und $h_t$.
+\index{Gitterkonstante}%
 Die zu bestimmenden Unbekannten sind die $u_{ik}$ mit
 $0\le i\le N$ und $k\ge 0$.
 Die Randbedingungen auf dem Rand $t=0$ geben die Werte 
@@ -193,6 +206,7 @@ u_{0k}&=u_{1k}&&\text{und}&u_{Nk}&=u_{N-1,k}.
 \end{align*}
 Die Differentialgleichung verwendet die zweite Ableitung nach $x$, 
 für die wir die Approximation
+\index{Approximation}%
 \[
 \frac{\partial^2u}{\partial x^2}(x_{ik})
 =
@@ -204,6 +218,7 @@ verwenden können.
 Da die Werte $u(x,0)=f(x)$ von $u$ zur Zeit $t=0$ bereits bekannt
 sind, wird die numerische Lösung nacheinander die Variablen
 $u_{ik}$ mit $k=1,2,3,\dots$ bestimmen.
+\index{Matrixform}%
 Der Schritt $k\to k+1$ kann etwas kompakter beschrieben und vor allem
 leichter analysiert werden, wenn wir die Werte $u_{ik}$ für gegebenes $k$
 in den Vektor
@@ -228,18 +243,21 @@ in jedem Zeitschritt verschieden sein.
 Ausserdem kann in jedem Zeitschritt ein konstanter Wert hinzukommen.
 Insgesamt gibt es also eine Matrix $A_k$ und ein Vektor $b_k$ derart,
 dass $u_{k+1} = A_ku_k + b_k$.
-
+\index{Zeitschritt}%
 
 Für die erste Ableitung nach der Zeit könnten Vorwärts- oder
 Rückwärtsdifferenzen verwendet werden, in beiden Fällen entsteht
 ein unvermeidbarer Fehler und ein jeweils anderes numerisches
 Lösungsverfahren.
+\index{Vorwärtsdifferenz}%
+\index{Rückwärtsdifferenz}%
 
 \subsubsection{Euler-Verfahren}
 \begin{figure}
 \centering
 \includegraphics{chapters/70-pde/images/euler.pdf}
 \caption{Euler-Verfahren für das Wärmeleitungsproblem.
+\index{Euler-Verfahren}%
 \label{buch:pde:figure:euler}}
 \end{figure}
 Wir müssen jetzt die Differentialgleichung des Wärmeleitungsproblems
@@ -308,7 +326,8 @@ u_k.
 \]
 Die Lösung wird sich durch Iteration dieser Matrix finden lassen,
 Konvergenz wird allein von $c$ abhängen.
-Wir erwarten also, ein Konvergenz-Kriterium basierend auf $c$.
+Wir erwarten also, ein Konvergenzkriterium basierend auf $c$.
+\index{Konvergenzkriterium}
 
 Die Gleichung~\eqref{buch:pde:waerme:euler} gilt nur für innere Punkte.
 Für die Variablen $u_{0k}$, $u_{1k}$, $u_{N-1,k}$ und $u_{Nk}$ müssen
@@ -365,6 +384,7 @@ die Knotenwerte untereinander verknüpfen.
 \caption{Verwendung der Knotenvariablen im Crank-Nicholson-Verfahren.
 \label{buch:pde:figure:cngrid}}
 \end{figure}
+\index{Crank-Nicholson-Verfahren}%
 Sowohl Vorwärts- wie auch Rückwärts-Differenzen bestimmen die erste
 Ableitung nach der Zeit eigentlich für einen Zeitpunkt zwischen 
 den Vielfachen von $h_t$.
@@ -469,8 +489,11 @@ für die Randwerte $g$.
 
 Für homogene Randbedingungen wird die Situation etwas einfacher zu
 analysieren, denn dann ist $b_k=0$.
+\index{homogene Randbedingung}%
+\index{Randbedingung!homogen}%
 Wir erwarten, dass die Lösung exponentiell gegen $0$ konvergiert,
 das System ``kühlt aus''.
+\index{exponentiell}%
 Da die Randbedingungen $u_{0k}=u_{Nk}=0$ erzwingen, kann man diese 
 Variablen weglassen, die Vektoren $u$ und die Matrix $A$ verkürzen sich auf
 \begin{equation}
@@ -512,12 +535,15 @@ A
 Die Lösung $u$ entsteht also durch Iteration mit der Matrix $\tilde{A}$.
 Der Spektralradius der Matrix gibt Auskunft darüber, ob das Verfahren
 konvergiert.
+\index{Spektralradius}%
 Da die Matrix $\tilde{A}$ symmetrisch ist, sind alle Eigenwerte reell.
+\index{symmetrisch}%
 \begin{figure}
 \centering
 \includegraphics{chapters/70-pde/images/explizitspektrum.pdf}
 \caption{Spektrum der Matrix $\tilde{A}$ für $N=16$,
 die sich für das Euler-Verfahren mit
+\index{Euler-Verfahren}%
 homogenen Dirichlet-Randwerte ergibt.
 Nur für $c<2$ ist der Spektralradius $<1$.
 \label{buch:pde:waerme:explizitspektrum}}
@@ -526,6 +552,7 @@ In Abbildung~\ref{buch:pde:waerme:explizitspektrum} sind die Eigenwerte
 von $\tilde{A}$ dargestellt.
 Man kann erkennen, dass nur für $c<\frac12$ der Spektralradius $<1$
 wird.
+\index{Spektralradius}%
 Daraus ergibt sich das Kriterium
 \[
 \frac{2\kappa h_t}{h_x^2} < 1
@@ -533,6 +560,7 @@ Daraus ergibt sich das Kriterium
 für die Konvergenz des Verfahrens.
 
 Für das Rückwärtsverfahren sieht die Matrix etwas anders aus, es gilt
+\index{Rückwärtsverfahren}%
 \begin{equation}
 \begin{pmatrix}
    0  &    0  &   0  &      &      &      &      &      &      \\
@@ -845,10 +873,13 @@ Lösungen im gleichen Graphen dargestellt.
 Die Lösung des Euler-Verfahrens weicht stark von den anderen Verfahren ab.
 Die Wärmeleitungsgleichung hat Lösungen, bei denen sich Wärme mit
 unendlicher Geschwindigkeit ausbreitet.
+\index{Euler-Verfahren}%
+\index{Ausbreitungsgeschwindigkeit}%
 Im Euler-Verfahren kann sich ein Temperatursprung nur um $h_x$ in
 jeder Iteration ausbreiten, also maximal mit der Geschwindigkeit $h_x/h_t$.
 Daher verhält sich das Euler-Verfahren so, wie wenn die Wärmeleitfähigkeit
-reduziert wäre, was zu dem ausgeprägteren Buckel der Euler-Lösung
+reduziert wäre, was zu dem ausgeprägteren ``Buckel'' der Euler-Lösung
 führt.
+\index{Wärmeleitfähigkeit}%
 
 

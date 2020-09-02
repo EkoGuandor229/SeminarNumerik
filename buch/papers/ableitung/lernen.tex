@@ -1,0 +1,29 @@
+\subsection{Was ist Lernen?}
+Anders als das menschliche Lernen lernt das neuronale Netzwerk durch den Vergleich einer errechneten Ausgabe mit der erwarteten Ausgabe.
+Neuronale Netzwerke sind in der Regel 'supervised learning'-Algorithmen, diese Gruppe von Algorithmen benötigen einen Datensatz welcher aus einem Input $x$ und einem erwarteten Output $y$ bestehen.
+Das neuronale Netzwerk als Blackbox versucht aus dem Input $x$ einen brauchbaren Output $\hat{y}$ zu erzeugen, welcher dann mittels einer Fehlermetrik $\Lb$ zum bestehnden Output $y$ verglichen wird.
+Die Bewertung des Lernfortschritts entspricht der Formalisierung
+\begin{equation}
+	\Lb(y_{i},\hat{y_i}))
+\end{equation}
+mit dem neuronalen Netzwerk als Blackbox-Funktion $N$ abhängig vom Input $x$
+\begin{equation}
+\hat{y} = N(x)
+\end{equation}
+resultiert dies in dem berechneten Fehler:
+\begin{equation}
+\Lb(y,N(x))
+\end{equation}
+Der Fehler $\Lb$ wird in der Literatur auch oft \textit{Loss} genannt.
+Als einfaches Beispiel für eine solche Fehlerfunktion kann die mittlere quadratische Abweichung (MSE) verwendet werden. Diese hat die Eigenschaft, dass sie Vorzeichen unabhänig ist und bei grösserer Distanz zwischen $y$ und $\hat{y}$ der Fehler auch dementsprechend grösser wird
+\begin{equation}
+\Lb = \frac{1}{2} \sum_i \left( \hat{y} - y \right)^2
+\ref{ableitung:eqn:loss}
+\end{equation}
+Die Aufgabe des Lernprozesses ist es nun die best mögliche Lösung für den Fehler zu finden. Entsprechen gilt es für
+\begin{equation}
+	\min \{ \Lb(y,\hat{y})) \}
+	\ref{ableitung:eqn:min_loss}
+\end{equation}
+eine optimale Lösung zu finden. Da $x$ und $y$ nicht 'optimierbar' sind, muss nun auf den Parameterraum des neuronalen Netzwerks eingegangen werden.
+

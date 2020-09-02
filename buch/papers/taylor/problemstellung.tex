@@ -5,7 +5,7 @@
 %
 \section{Problemstellung
 \label{taylor:section:problemstellung}}
-Um die numerische Approximation an einem konkreten Beispiel zeigen zu können wird hier die logistische Differentialgleichung \eqref{taylor:section:logistifunction} analysiert.
+Um die numerische Approximation an einem konkreten Beispiel zeigen zu können wird hier die logistische Differentialgleichung analysiert.
 Es handelt sich hierbei um eine begrenze Wachstumsfunktion. 
 Mit dieser Differentialgleichung können zum Beispiel der Verlauf einer Krankheit, der Lebenszyklus eines Produktes oder auch Zerfallsprozesse beschrieben werden. Die Parameter der logistischen Differentialgleichung (mit Anfangsbedingung)
 \begin{align*}
@@ -17,9 +17,16 @@ haben die Bedeutung: $L$ = Endwert und $k$ = Wachstumsrate.
 Wir normieren den Endwert $L$ auf 1.
 Der Endwert entspricht zum Beispiel der Anzahl Infizierten am Ende einer Epidemie.
 In der Abbildung ~\ref{taylor:section:fig:DGLDarstellung} ist zu erkennen, dass der Wachstumsfaktor $k$ bestimmt, wie steil die Funktion wird.
-Somit haben wir nun ein Richtungsfeld gegeben, indem wir in jedem möglichen Punkt der Ebene eine genau definierte Steigung, bzw. ein genau definiertes $k$ haben.
-Um aber das $k$ und damit die Lösung der Differentialgleichung bestimmen zu können müssten wir diese aufwendig ausrechnen.
-Deshalb macht es in einem solchen Fall Sinn die Funktion mit kleinen Schritten zu erarbeiten.
+Es existiert nun also für jeden möglichen Punkt der logistischen Funktion in diesem Richtungsfeld ein genau definierter Wert $k$.
+Um nun das $k$ zu bestimmen, müsste die Differentialgleichung gelöst werden.
+Möchte man dies umgehen, weil das zum Beispiel viel Rechenaufwand bedeuten würde, bzw. für einen Computer viel Rechenzeit bedeutet, kann die Lösung der DGL mit kleinen Schritten erarbeitet werden.
+Dazu vergleichen wir die beiden Inktrmentfunktionen Runge-Kutta und Taylor Approximation.
+Der Wachstumsfaktor
+\begin{equation}
+k=\frac{-\ln{(\frac{1}{y}-1)}}{x}
+\end{equation}
+ist also sowohl von $x$ als auch von $y$ abhängig, allerdings nur durch $x$ und $y$ berechenbar wenn die DGL gelöst wurde.
+Die Taylor Approximation darf sich dieser Formel deshalb nicht bedienen.
 
 \begin{figure}
 	\centering
@@ -28,28 +35,24 @@ Deshalb macht es in einem solchen Fall Sinn die Funktion mit kleinen Schritten z
 	\label{taylor:section:fig:DGLDarstellung}
 \end{figure}
 
-Da wir für die Taylor Approximation die Ableitungen bis zur $n$-ten Ordnung benötigen, müssen diese natürlich bekannt sein. Man erhält die Gleichungen
-
-\begin{equation}
-	\begin{aligned}
-		y'&=k\cdot (y-y^{2})\\
-		y''&=k\cdot (y'-2y'\cdot y)\\
-		y'''&=k\cdot (y''-2y''\cdot y+y'^{2})\\
-		y''''&=k\cdot (y'''-2y'''\cdot y+3y''\cdot y')\\
-		y'''''&=k\cdot (y''''-2y'''\cdot y+4y''\cdot y'+3y''^{2})\\
-	\end{aligned}
-\end{equation}
-indem man die logistische Funktion ableitet.
-
-Wie in Abbildung \ref{taylor:section:fig:DGLDarstellung} nun ersichtlich ist, kann jedem möglichen Punkt der logistischen Funktion ein Wachstumsfaktor $k$ zugeordnet werden. Dieser Wachstumsfaktor
-\begin{equation}
-	k=\frac{-\ln{(\frac{1}{y}-1)}}{x}
-\end{equation}
-ist also sowohl von $y$ als auch von $x$ abhängig.
-Somit können wir nun also alle gewünschten Ableitungen von $y$ als eine Funktion von $y$ und $x$ ausdrüken.
-
 \section{Das Taylor Verfahren}
 \label{taylor:subsection:Vorgehen}
+Wir benötigen für die Taylor Approximation die Ableitungen bis zur $n$-ten Ordnung.
+Also bis zur Ordnung, mit welcher wir die DGL approximieren wollen.
+Wie man auf diese kommt, ist in Kapitel \ref{grundlagen:hoehere-ableitungen} beschrieben.
+Man erhält die Gleichungen
+
+\begin{equation}
+\begin{aligned}
+y'&=k\cdot (y-y^{2})\\
+y''&=k\cdot (y'-2y'\cdot y)\\
+y'''&=k\cdot (y''-2y''\cdot y+y'^{2})\\
+y''''&=k\cdot (y'''-2y'''\cdot y+3y''\cdot y')\\
+y'''''&=k\cdot (y''''-2y'''\cdot y+4y''\cdot y'+3y''^{2})\\
+\end{aligned}
+\end{equation}
+durch ableiten der logistischen Funktion.
+
 Die allgemeine Formel der Einschritttheorie sieht so aus:
 \begin{equation}
 y(x+h) = y(x) + h\cdot f(x,y)
@@ -79,6 +82,7 @@ nennt man nun das Taylor Approximationsverfahren.
 Dort werden erneut die Ableitungen ausgerechnet und eine weitere Approximationsfunktion aufgestellt, mit der dann der darauf folgende Punkt bestimmen wird.
 Je kleiner nun die Schrittweite gewählt wird, desto weniger spielen höhere Ableitungen, beziehungsweise höhere Frequenzanteile, eine Rolle.
 In der Abbildung~\ref{taylor:section:fig:LogisticFunctionApproximation} sieht man ein Vergleich des Runge-Kutta Verfahrens und des Taylor Verfahrens.
+Detailierte Resultate bieten die beiden Tabellen \ref{taylor:section:tablerunge} und \ref{taylor:section:tabletaylor}.
 
 \begin{figure}
 	\begin{center}
@@ -107,7 +111,8 @@ In der Abbildung~\ref{taylor:section:fig:LogisticFunctionApproximation} sieht ma
 	\hline
 \end{tabular}
 
-\caption{$k$ = Ordnung, $n$ = Schritte, Start = $-5$, Ende = $-0.02$, (letzte Ziffer abgerundet)}
+\caption{$k$ = Ordnung, $n$ = Schritte, Start = $-5$, Ende = $-0.02$, (letzte Ziffer abgerundet)
+\label{taylor:section:tablerunge}}
 \end{table}
 
 \begin{table}
@@ -129,7 +134,8 @@ In der Abbildung~\ref{taylor:section:fig:LogisticFunctionApproximation} sieht ma
 	\hline
 \end{tabular}
 
-\caption{$k$ = Ordnung, $n$ = Schritte, Start = $-5$, Ende = $-0.02$, (letzte Ziffer abgerundet)}
+\caption{$k$ = Ordnung, $n$ = Schritte, Start = $-5$, Ende = $-0.02$, (letzte Ziffer abgerundet)
+\label{taylor:section:tabletaylor}}
 \end{table}
 
 \begin{figure}
@@ -141,7 +147,9 @@ In der Abbildung~\ref{taylor:section:fig:LogisticFunctionApproximation} sieht ma
 
 \subsection{Auswertung des Vergleiches}
 \label{taylor:subsection:Auswertung}
-Die ersten Spalten der beiden Verfahren sehen gleich aus, weil die Approximationen erster Ordnung auf das selbe herauskommen, nämlich auf das Approximieren der Funktion mit geraden erster Ordnung, was der Steigung im Auswertungspunkt entspricht.
+Die ersten Spalten der beiden Tabellen \ref{taylor:section:tablerunge} und \ref{taylor:section:tabletaylor} der beiden Verfahren sehen gleich aus.
+Das ist so weil die Approximationen erster Ordnung auf das selbe herauskommen, nämlich auf das Approximieren der Funktion mit geraden erster Ordnung.
+Das entspricht der Steigung im Auswertungspunkt.
 
 Beim Punkt $n=1$ und $k=2$ ist die Taylor Approximation besser als Runge-Kutta.
 Eine Approximation mit dem Grad 2 und einem Schritt über eine sich so stark verändernde Kurve ist aber eher ein Glückstreffer als ein mathematischer Erfolg.
@@ -158,17 +166,17 @@ Wie in Abbildung
 \ref{taylor:section:fig:DGLDarstellung}
 ersichtlich ist, läuft die Lösung der Differentialgleichung im Punkt 0 gegen 0.5 und bei $\infty$ gegen 1.
 Wird nun also diese Differentialgleichung approximiert, dann ist sowieso klar auf welchem Wert wir ungefähr landen werden.
-Um eine aussagekräftige Antwort auf die Frage der Qualität geben zu können wurden in Abbildung \ref{taylor:section:fig:FehlerRungeTaylor} die Fehler über den ganzen Verlauf der Approximation verglichen.
+Um eine aussagekräftige Antwort auf die Frage der Qualität der Approximation geben zu können wurden in Abbildung \ref{taylor:section:fig:FehlerRungeTaylor} die Fehler über den ganzen Verlauf der Approximation verglichen.
 
 \subsection{Gefähliche Umgebung der Anfangsbedingung}
 \label{taylor:subsection:0Punkt}
 Wie in Abbildung 
 \ref{taylor:section:fig:DGLDarstellung}
-klar dargestellt ist, ist die Ableitung in direkter Umgebung von der gewählten Anfangsbedingung (0, 0.5) zwischen 0 und $\infty$ da der Punkt in der Lösung der Differentialgleichung mit der Anfangsbedingung (0, 0,5) einer Polstelle entspricht.
+klar dargestellt ist, ist die Ableitung in direkter Umgebung von der gewählten Anfangsbedingung (0, 0.5) zwischen 0 und $\infty$ da der Punkt in der Lösung der Differentialgleichung einer Polstelle entspricht.
 Wenn also eine Approximation der Differentialgleichung durch diesen Punkt verläuft, oder auch nur in seine unmittelbare Umgebung kommt kann die Approximation komplett anders weiter verlaufen als man erwarten würde.
-Dies liegt daran, dass selbs kleine Fehler welche eine Approximation zwangsweise haben muss sich in der nähe des Punktes sehr stark auf den weiteren Verlauf auswirken.
-Um dies zu umgehen wurde einfach nicht durch diesen Wendepunkt gegangen, sondern nur bis 0.02 davor.
-Man könnte nun aber die erhaltenen linke Kurve an dem Wendepunkt punktspiegeln und hätte so die zweite Hälfte ebenfalls, welche durch die Spiegelung sowieso redundant und für uns deshalb nicht intressant ist.
+Dies liegt daran, dass selbst kleine Fehler welche eine Approximation zwangsweise haben muss, sich in der Nähe des Punktes sehr stark auf den weiteren Verlauf auswirken.
+Um dies zu umgehen wurde die nähere Umgebung dieses Wendepunkts einfach aus der Approximation ausgeschlossen indem nur bis 0.02 davor approximiert wurde.
+Man könnte nun aber die erhaltenen linke Kurve an dem Wendepunkt punktspiegeln und hätte so die zweite Hälfte ebenfalls, welche durch die Spiegelung sowieso redundant und für uns deshalb nicht intressant wäre.
 
 %\nameref
 %\pageref{}

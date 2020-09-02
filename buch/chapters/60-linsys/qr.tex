@@ -6,6 +6,7 @@
 \section{QR-Zerlegung mit Spiegelungen
 \label{buch:section:qr}}
 \rhead{QR-Zerlegung mit Spiegelungen}
+\index{QR-Zerlegung}%
 Das Orthonormalisierungsproblem verlangt, dass zu gegebenen Vektoren
 $a_1,\dots,a_n\in \mathbb R^l$ orthonormierte Vektoren $q_1,\dots ,q_n$
 gefunden werden derart, dass
@@ -41,6 +42,7 @@ Darin ist $Q$ eine $l\times n$-Matrix und $R$ ist eine $n\times n$-Matrix.
 Die Aufgabe, eine Menge von Vektoren $\{a_1,\dots,a_n\}$ zu orthonormieren,
 ist also gleichbedeutend damit, für die Matrix $A$ eine Zerlegung $A=QR$
 zu finden, wobei $Q$ orthogonal und $R$ eine obere Dreiecksmatrix sein soll.
+\index{Dreiecksmatrix}%
 
 %
 % Gram-Schmidt-Orthonormalisierung
@@ -49,6 +51,7 @@ zu finden, wobei $Q$ orthogonal und $R$ eine obere Dreiecksmatrix sein soll.
 \label{buch:subsection:gram-schmidt}}
 Das einfachste und anschaulichste Orthonormalisierungsverfahren, der
 Gram-Schmidt-Prozess verwendet die Formeln
+\index{Gram-Schmidt-Prozess}%
 \begin{align*}
 q_1 & = \frac{a_1}{|a_1|}
 \\
@@ -73,9 +76,11 @@ a_k - (q_1\cdot a_k) q_1 -\dots- (q_{k-1}\cdot a_k) q_{k-1}
 |},
 \end{align*}
 um die orthonormierten Vektoren $q_k$ zu finden.
+\index{orthonormiert}%
 Wegen der Differenzen im Zähler und Nenner besteht die Gefahr von
 Auslöschung, falls der Winkel zwischen $a_k$ und
 $\langle a_1,\dots,a_{k-1}\rangle$ sehr klein ist.
+\index{Auslöschung}%
 Der Gram-Schmidt-Prozess ist daher in seiner Grundform nicht immer stabil.
 In Kapitel~\ref{chapter:qr} wird an einem Simulationsbeispiel gezeigt,
 wie sich die Instabilität des Gram-Schmidt-Algorithmus äusseren kann.
@@ -86,9 +91,12 @@ Mit dem Skalarprodukt kann zu jedem Paar $a$, $b$ von Vektoren
 gleicher Länge eine Matrix gefunden werden, welche eine Spiegelung
 beschreibt, die $a$ auf $b$ abbildet, alle Vektoren orthogonal zu
 $a$ und $b$ aber unverändert lässt.
+\index{Skalarprodukt}%
+\index{Spiegelung}%
 
 Sei $n=(b-a)/|b-a|$ der Einheitsvektor in Richtung $b-a$.
 Es ist $(a-b)\cdot (a+b) = |a|^2 - |b|^2$, also auch $n\cdot (a+b)=0$.
+\index{Einheitsvektor}%
 
 Die Abbildung
 \[
@@ -158,6 +166,7 @@ S_{a,b} = E-2nn^t\qquad \text{mit}\quad n = (b-a)/|b-a|,
 die zu einer Spiegelung gehört, die $a$ auf $b$ abbildet und
 umgekehrt  und ausserdem alle Vektoren senkrecht auf $a$ und $b$ fest lässt.
 \end{satz}
+\index{Spiegelungsmatrix}%
 
 %
 % QR-Zerlegung mit Spiegelungen
@@ -169,6 +178,7 @@ die Gleichung $Q^tA=R$.
 Die Aufgabe, die QR-Zerlegung zu finden, ist also gleichbedeutend damit,
 eine Matrix durch Multiplizieren mit orthogonalen Matrizen auf Dreiecksform
 zu bringen.
+\index{QR-Zerlegung}%
 Das Produkt der orthogonalen Matrizen ist $Q^t$.
 In diesem Abschnitt wird ein Algorithmus basierend auf den Matrizen
 $S_{a,b}$ vorgestellt, der genau dies leistet.
@@ -218,6 +228,7 @@ jeder Matrix der Folge
 A_0 = A, \quad A_{i} = Q_{i}A_{i-1}\quad\text{für $0<i\le n$}
 \]
 die ersten $i$ Spalten die Form einer oberen Dreicksmatrix haben.
+\index{Dreieksmatrix}%
 Mit $Q=Q_1^t\dots Q_n^t$ und $R=A_n=Q_n\dots Q_1A$ gilt $A=QR$.
 \end{satz}
 
@@ -304,6 +315,7 @@ Damit ist die QR-Zerlegung der Matrix $A$ gefunden.
 Tatsächlich bilden die Spalten von $Q$ eine orthonormierte Basis
 von $\mathbb R^3$, sie stimmt mit der Basis überein, die der
 Gram-Schmidt-Prozess aus den Spalten der Matrix $A$ ableitet.
+\index{Gram-Schmidt-Prozess}%
 \end{beispiel}
 
 Der Nachteil dieser Methode ist, dass die Matrizen $S_{a,b}$ typischerweise
@@ -311,4 +323,6 @@ sehr viele Einträge haben und dass damit die Matrixprodukte mit $S_{a,b}$
 aufwendig zu berechnen sind.
 Dies kann durch die Verwendung von Drehmatrizen, sogenannten Givens-Rotationen,
 verbessert werden, wie dies in Kapitel~\ref{chapter:qr} durchgeführt wird.
+\index{Drehmatrix}
+\index{Givens-Rotation}
 

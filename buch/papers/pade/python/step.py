@@ -29,6 +29,24 @@ ax.legend(loc='best', labelspacing=0)
 ax.set_ylim(-0.1,1.1);
 plt.savefig("bilder/padehigh1.pdf")
 
+fig = plt.figure(figsize=(10,6))
+ax = fig.add_subplot(1,1,1)
+ax.set_xlabel('t')
+ax.plot(t,t>=1,'--k')
+for p in [200,190]:
+    q= 200
+    pe = PadeExponential(p,q)
+    zeros, poles, k = pe.zpk
+    H = pe.lti_sscascade
+    _,y = scipy.signal.step2(H,T=t)
+    ax.plot(t,y,label='p=%d, q=%d' % (p,q))
+ax.grid('on')
+ax.legend(loc='best', labelspacing=0)
+ax.set_ylim(-0.1,1.1);
+plt.savefig("bilder/padehigh2.pdf")
+pe = PadeExponential(2,2)
+print(PadeExponential(2,1))
+print(pe.lti_sscascade)
 
 
 # t = np.arange(0,2,0.001)
@@ -90,25 +108,7 @@ plt.savefig("bilder/padehigh1.pdf")
 
 ##-------------------------------------------------------
 
-# def pade_coeffs(p,q):
-#     '''
-#     Calculate the numerator and denominator
-#     polynomial coefficients of the Pade
-#     approximation to e^-x
-#     '''
-#     n = max(p,q)
-#     c = 1
-#     d = 1
-#     clist = [c]
-#     dlist = [d]
-#     for k in range(1,n+1):
-#         c *= -1.0*(p-k+1)/(p+q-k+1)/k
-#         if k <= p:
-#             clist.append(c)
-#         d *= 1.0*(q-k+1)/(p+q-k+1)/k
-#         if k <= q:
-#             dlist.append(d)
-#     return np.array(clist[::-1]),np.array(dlist[::-1])
+
 
 
 # t = np.arange(0,3,0.001)

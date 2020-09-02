@@ -8,8 +8,11 @@
 \rhead{}
 Die lineare Algebra ist fundamental in vielen Bereichen der angewandeten
 Mathematik.
+\index{lineare!Algebra}%
 Eine grosse Zahl von Methoden zur Lösung linearer
 Gleichungssysteme, zur Zerlegung von Matrizen und zur Lösung des
+\index{lineares!Gleichungssystem}%
+\index{Eigenwertproblem}%
 Eigenwertproblems sind über die Jahrhunderte entwickelt worden und
 werden zum Teil bereits in Anfängervorlesungen unterrichtet.
 Insbesondere der Gausssche Eliminationsalgorithmus gehört zu den
@@ -21,12 +24,16 @@ Sie sind aber schlicht nicht leistungsfähig genug oder stabil genug für
 grosse Systeme, wie sie zum Beispiel bei der Lösung von partiellen
 Differentialgleichungen oder Simulationen komplexer Systeme auftreten.
 Auch ist die Laufzeit für die exakte Lösung oft zu lang.
+\index{Laufzeit}%
+\index{Gauss-Algorithmus}%
 Zum Beispiel hat der Gauss-Algorithmus für $n$ Unbekannte Laufzeitkomplexität
 $O(n^3)$, was für Gleichungsyssteme mit einer grossen Zahl von Unbekannten
 (h.~B.~$n>10^5$) zu prohitiv grossem Rechenaufwand führt.
+\index{Laufzeitkomplexität}%
 Kompromisse zwischen exakter Lösung und Durchführbarkeit in vernünftiger
 Zeit sind daher unumgänglich.
 Bereits Gauss hat zu diesem Zweck iterative numerische Methoden entwickelt.
+\index{Gauss, Carl Friedrich}%
 
 Dieses Kapitel präsentiert einige wenige Algorithmen des überaus weiten
 Feldes der numerischen linearen Algebra, welche die Vielfalt dieses
@@ -43,19 +50,26 @@ zu orthonormalisieren, welches schon vom Gram-Schmidt-Algorithmus gelöst
 wurde, welcher allerdings gewisse Stabilitätsprobleme hat.
 Der in Abschnitt~\ref{buch:section:qr} vorgestellte, auf Spiegelungen
 basierende Algorithmus ist effizienter und stabiler.
+\index{Spiegelung}%
 Eine weitere Möglichkeit, die QR-Zerlegung zu finden, wird in
 Kapitel~\ref{chapter:qr} ausgeführt.
+\index{QR-Zerlegung}%
 Das Eigenwertproblem für symmetrische Matrizen ist von grundlegender
 Bedeutung für die Anwendungen, die Lösung über das charakteristische 
 Polynom, welches man oft in den Grundlagenvorlesungen lernt, ist jedoch
 nur für sehr kleine Matrizen praktikabel.
+\index{Eigenwertproblem}%
+\index{symmetrische Matrix}%
+\index{Matrix!symmetrisch}%
 Abschnitt~\ref{buch:section:jacobi} stellt das Jacobi-Verfahren zur
 Diagonalisierung symmetrischer Matrizen vor, welches ebenfalls iterativ
 arbeitet.
+\index{Jacobi-Verfahren}%
 Auf das Eigenwertproblem wird in Kapitel~\ref{chapter:francis} 
 vertieft eingegangen. 
 Es erklärt den Francis-Algorithmus, der Basis der meisten Software-Pakete
 ist, die das Eigenwertproblem lösen können.
+\index{Francis-Algorithmus}%
 
 \input{chapters/60-linsys/thomas.tex}
 \input{chapters/60-linsys/gaussseidel.tex}

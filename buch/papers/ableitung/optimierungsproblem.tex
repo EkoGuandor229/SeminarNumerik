@@ -1,0 +1,30 @@
+\subsection{Das Optimierungsproblem}
+Wie bereits erwähnt, ist durch die extrem hohe Anzahl an Parametern ein Durchprobieren aller Parameterkombinationen nicht möglich.
+Es würde kein Resultat in nützlicher Frist gefunden werden können.
+Aus diesem Grund werden andere Verfahren verwendet um das neuronale Netzwerk zu optimieren.
+Alle diese Verfahren basieren auf dem Gradientenabstieg und werden in der Literatur oft auch 'Optimizer' genannt.
+Ein einfacher Algorithmus, welcher zur Optimierung neuronalen Netzwerke verwendet wird, ist der sogenante stochastische gradienten Abstieg.
+Der Algorithmus multipliziert die aktuellen Gewichte mit dem Gradienten und einer bestimmten Schrittweite $\nu$. 
+Der Parameter $\nu$ wird oft auch als 'learning rate' bezeichnet.
+Der Algorithmus bricht erst ab, wenn ein Minima erreicht ist, oder die Anzahl Iterationen ausgeschöpft sind.
+Das Anpassen der inneren Parameter $p$ 
+\begin{equation}
+p:=p-\eta \nabla \Lb_{i}(p)
+\end{equation}
+lässt sich für alle Gewichte $w$ und Bias-Parameter $b$ festhalten.
+Die Fehlerfunktion $\Lb$ kann nun als
+\begin{equation}
+\Lb(p)=\sum_{i=1}^{n}\Lb_{i}(p)=\sum_{i=1}^{n}\Lb(\hat{y_i}-y_i)^2
+\end{equation}
+geschrieben werden, nachdem die Gleichung \eqref{ableitung:eqn:loss} eingesetzt wurde. Aus Gründen der Einfachheit wird hier das vollständiges Einsetzten des Ausdrücks für das neuronale Netzwerk aus \eqref{ableitung:eqn:full_net} weggelassen, stattdessen konzentrieren wir uns auf ein sehr einfaches Netz
+\begin{equation}
+	\hat{y} = \sigma \left( w_1 \cdot x + b_1 \right)
+\end{equation}
+. Differenzieren wir nun der Ausdruck der Lösungsfunktion, so erhalten wir für die Updates von $w_1$ und $b_1$ folgenden Ausdruck
+\begin{equation}
+\begin{bmatrix}w_{1}\\b_{1}\end{bmatrix}:={\begin{bmatrix}w_{1}\\b_{1}\end{bmatrix}}-\eta {\begin{bmatrix}
+{\frac {\partial }{\partial w_{1}}}(\sigma(w_{1}x_{i}+b_{1})-y_{i})^{2}\\
+{\frac {\partial }{\partial b_{1}}}(\sigma(w_{1}x_{i}+b_{1})-y_{i})^{2}\end{bmatrix}}=
+{\begin{bmatrix}w_{1}\\b_{1}\end{bmatrix}}-\eta {\begin{bmatrix}2((\sigma(w_{1}x_{i}+b_{1}) - y_i) \cdot \sigma(w_{1}x_{i}+b_{1} \cdot (w_{1}x_{i}+b_{1}) x_{i} \\2((\sigma(w_{1}x_{i}+b_{1}) - y_i) \cdot \sigma(w_{1}x_{i}+b_{1} \cdot (w_{1}x_{i}+b_{1}) \end{bmatrix}}
+\end{equation}
+Wie man unschwer erkennen kann, ist das Hauptproblem auf die Kettenregel $u'(v(x)) = u'(v(x)) \cdot (v'(x))$ zurückzuführen. Der Gredientenabstieg ist zwar möglich, jedoch durch die verschachtelte Natur der einzelnen Schichten im Netzwerk sehr rechenintensiv. Aus diesem Grund verwenden die meisten Frameworks den Backpropagation Algorithmus, welcher etwas effizienter ist.

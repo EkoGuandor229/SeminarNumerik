@@ -6,6 +6,8 @@ Created on Tue Aug  4 18:32:02 2020
 """
 import matplotlib.pyplot as plt
 import numpy as np
+import tikzplotlib
+
 
 Q = np.zeros(100)
 Q2_plus = np.zeros(100)
@@ -34,12 +36,17 @@ plt.rc('ytick', labelsize=BIGGER_SIZE)    # fontsize of the tick labels
 plt.rc('legend', fontsize=BIGGER_SIZE)    # legend fontsize
 plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
 
+plt.figure(figsize=(10,6))
 plt.plot(t, Q2_min,lw=1.5, label=r"$\xi_-$")
 plt.plot(t, Q2_plus,lw=3, label=r"$\xi_+$")
 plt.plot(t, Q,"--", markersize=3, label="Q, explicit")
 plt.title(r"$\Delta t = 0.03$, $\kappa = 1$, $Q(0)=1$")
 plt.ylim(-5,5)
 plt.xlim(0,100)
+plt.xlabel("time (s)")
+plt.ylabel("Amplitude (m)")
 plt.legend()
 plt.tight_layout()
 plt.grid(True)
+
+# tikzplotlib.save("test.tex")

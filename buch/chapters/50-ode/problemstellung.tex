@@ -7,9 +7,11 @@
 \label{buch:section:dglproblemstellung}}
 \rhead{Differentialgleichungen}
 Eine {\em gewöhnliche Differentialgleichung} für eine reellwertige
-\index{Differentialgleichung}
+\index{Differentialgleichung}%
 Funktion $y(x)$ stellt einen Zusammenhang her zwischen der Funktion
 und ihren Ableitungen.
+\index{Funktion}%
+\index{Ableitung}%
 Wir schreiben die Ableitungen als $y'$, $y''$, $y'''$ und $y^{(n)}$
 für die $n$-te Ableitung.
 Wir lassen oft das Argument der Funktion weg.
@@ -68,7 +70,10 @@ die Geschwindigkeit, $\ddot{x}(t)$ für die Beschleunigung.
 Dieses Beispiel suggeriert auch, dass die abhängige Variable 
 ein Vektor sein kann, den man als den Ortsvektor eines Teilchens
 interpretieren kann.
-Auch die Funktion $f(t,x,\dots,x^{(n-1)})$ muss dann vektorwertig sein, und
+\index{Ortsvektor}%
+\index{Beschleunigung}%
+\index{Geschwindigkeit}%
+Auch die Funktion $f(t,x,\dots,x^{(n-1)})$ muss dann vektorwertig sein und
 ebenso alle Argumente von $f$ ausser dem Ersten.
 
 \subsection{Reduktion der Ordnung}
@@ -76,7 +81,7 @@ ebenso alle Argumente von $f$ ausser dem Ersten.
 \index{Ordnung!Reduktion der}%
 Eine Differentialgleichung $n$-ter Ordnung für eine skalare Funktion
 kann in eine Vektor-Differen\-tialgleichung erster Ordnung für eine
-\index{Vektor-Differentialgleichung}%
+\index{Vektordifferentialgleichung}%
 \index{Differentialgleichung!Vektor-}%
 $n$-dimensionale vektorwertige Funktion umgewandelt werden.
 Ist $y(x)$ die gesuchte Funktion in der
@@ -112,7 +117,7 @@ kann \eqref{grundlagen:vektordgl} daher als
 \end{equation}
 schreiben.
 Im Folgenden werden wir fast ausschliesslich Differentialgleichungen
-erster Ordnung der Form $y'=f(x,y)$ betrachten, und dabei stillschweigend
+erster Ordnung der Form $y'=f(x,y)$ betrachten und dabei stillschweigend
 zulassen, dass $y$ ein Vektor ist.
 
 \subsection{Anfangswertprobleme\label{section:anfangswertprobleme}}
@@ -133,6 +138,7 @@ erfüllt, ein {\em Anfangswertproblem}.
 Ein Anfangswertproblem verlangt für die gewöhnliche Differentialgleichung
 $n$-ter Ordnung verlangt also die Angabe der Werte von
 $y(0),y'(0),\dots,y^{(n-1)}(0)$
+\index{Anfangswerte}%
 
 \subsubsection{Existenz und Eindeutigkeit von Lösungen}
 Die Existenz und Eindeutigkeit einer Lösung ist aus den Beispielen und
@@ -187,6 +193,8 @@ Existenz und Eindeutigkeit einer Lösung garantiert.
 
 \subsection{Randwertprobleme\label{section:randwertprobleme}}
 Wenn man einen Ball wirft, wird seine Bewegung durch die
+\index{Ball}%
+\index{Bewegung}%
 Vektordifferentialgleichung zweiter Ordnung
 \[
 \frac{d^2}{dt^2}\begin{pmatrix}x\\y\end{pmatrix}
@@ -196,7 +204,11 @@ Vektordifferentialgleichung zweiter Ordnung
 beschrieben.
 Die Bahn ist ausserdem bestimmt durch die Anfangsbedingungen,
 d.~h.~den Anfangspunkt und die Anfangsgeschwindigkeit der Bahn.
+\index{Bahn}%
+\index{Anfangsgeschwindigkeit}%
 Praktischer Ballwurf verlangt aber, dass ein Ziel getroffen wird.
+\index{Ballwurf}%
+\index{Ziel}%
 Die Aufgabenstellung ist daher eine Bahnkurve $\gamma(t)$ zu finden,
 welche sowohl durch den Anfangspunkt als auch den Zielpunkt
 verläuft.
@@ -233,6 +245,7 @@ als allgemeine Lösung.
 Die Konstanten $A$ und $B$ müssen so gewählt werden, dass die Randwerte
 korrekt sind.
 Setzt man $x=0$ und $x=1$ ein, erhält man die linearen Gleichungen
+\index{lineares Gleichungssystem}%
 \begin{align*}
 a=y(0)&=A\cos 0 + B\sin 0
 &&\Rightarrow&A&=0\\
@@ -242,6 +255,7 @@ B&=
 \frac{b-a\cos 1}{\sin 1}.
 \end{align*}
 Die Lösung des Randwertproblems ist daher die Funktion
+\index{Randwertproblem}%
 \[
 y(x)=a\cos x +\frac{b-a\cos 1}{\sin 1}\sin x,
 \]
@@ -302,6 +316,7 @@ mindestens so oft differenzierbar ist wie die Funktion $f(x,y)$, die
 die Differentialgleichung definiert.
 Die Möglichkeit, höhere Ableitungen der Lösung zu berechnen, 
 ermöglicht zusammen mit dem Taylor-Polynom ein recht genaues
+\index{Taylor-Polynom}%
 Lösungsverfahren für gewöhnliche Differentialgleichungen,
 welches im Kapitel~\ref{chapter:taylor} beschrieben wird.
 
@@ -358,6 +373,7 @@ Leiten wir \eqref{grundlagen:jacobi-1} nach $y_0$ ab, finden wir
 \label{grundlagen:jacobi-2}
 \end{equation}
 Die rechte Seite wir mit der Kettenregel zu
+\index{Kettenregel}%
 \begin{align*}
 \frac{\partial}{\partial y_{j0}}f_i(x,y).
 &=
@@ -379,6 +395,7 @@ Schreiben wir die Ableitungen von $f$ nach $y$ in die Matrix
 \label{grundlagen:Jdgl}
 \end{equation}
 kann die Gleichung \eqref{grundlagen:jacobi-2} mit dem Matrizenprodukt als
+\index{Matrixprodukt}%
 \begin{equation*}
 \frac{\partial}{\partial y_0}\frac{dy}{dx}
 =
@@ -394,7 +411,7 @@ Die Ableitungen auf der linken Seite vertauschen,
 Setzen wir dies in die Gleichung~\eqref{grundlagen:Jdgl}, erhalten wir
 den folgenden Satz.
 
-\begin{satz}
+\begin{satz}[Differentialgleichung für die Jacobi-Matrix $J(x)$]
 Ist $y(x,y_0)$ die Lösung der Differentialgleichung 
 \[
 y'=f(x,y)\qquad\text{mit Anfangsbedingung}\qquad y(0)=y_0,
@@ -432,6 +449,7 @@ Lösung von Randwertproblemen als besonders nützlich erweisen.
 
 \subsubsection{Beispiel}
 Wir betrachten wieder die Schwingungsdifferentialgleichung $y''=-y$,
+\index{Schwingungsdifferentialgleichung}%
 oder vielmehr die Form erster Ordnung
 \[
 \frac{d}{dx}\begin{pmatrix}y_1\\y_2\end{pmatrix}
@@ -524,7 +542,8 @@ F(x,y)J(x)
 \]
 die Differentialgleichung ist also tatsächlich erfüllt.
 
-\subsection{Numerische Lösung der Differentialgleichung}
+\subsection{Numerische Lösung der Differentialgleichung für $y(x)$ und $J(x)$}
+\index{Jacobi-Matrix!numerische Lösung}%
 Für die numerische Berechnung von $y(x)$ und $J(x)$ müssen die
 beiden Differentialgleichungen
 \[
@@ -544,6 +563,7 @@ Welche Methode dazu verwendet wird ist egal, solange es immer die
 Gleiche ist.
 Zum Beispiel können die Matrixelemente zeilenweise in den Spaltenvektor
 $Y$ abegfüllt werden.
+\index{Spaltenvektor}%
 In dieser Notation wird die zusammengefasste Differentialgleichung
 \begin{equation}
 \frac{d}{dx}\begin{pmatrix}\color{red}y\\\color{red}J\end{pmatrix}
@@ -565,7 +585,7 @@ Abhängigkeiten deutlicher zu machen.
 
 Wir schreiben dies noch aus für den Fall $n=2$.
 In diesem Fall sind insgesamt sechs Funktionen zu bestimmen, die
-zwei Komponenten von $y$, $y_1(x)$ und $y_2(x)$, und die vier
+zwei Komponenten von $y$, $y_1(x)$ und $y_2(x)$ und die vier
 Komponenten von $J(x)$.
 Um daraus eine einzige Differentialgleichung zu machen, packen wir
 die sechs Funktionen in einen Vektor $Y(x)$
@@ -597,7 +617,7 @@ J_{21}(x)\\
 J_{22}(x)
 \end{pmatrix}
 =
-\renewcommand\arraystretch{1.25}
+\renewcommand\arraystretch{1.35}
 \begin{pmatrix}
 f_1(x,y)\\
 f_2(x,y)\\
@@ -613,6 +633,15 @@ f_2(x,y)\\
 \displaystyle
 \frac{\partial f_2(x,y)}{\partial x_1} J_{12}(x)
 	+\frac{\partial f_2(x,y)}{\partial x_2} J_{22}(x)\\
+\end{pmatrix}
+\end{equation}
+mit Anfangswerten
+\begin{equation}
+Y(x_0)
+=
+\begin{pmatrix}
+y_1(x_0)\\y_2(x_0)\\
+1\\0\\0\\1
 \end{pmatrix}.
 \end{equation}
 
@@ -622,7 +651,7 @@ Im Allgemeinen wird eine Differentialgleichung von Parametern abhängen,
 so dass die Lösung nicht nur von der Anfangsbedingung, sondern auch von den
 Werten dieser Parameter abhängen wird.
 Um dies explizit zu machen, fassen wir die Parameter in einen Vektor $c$
-zusammen, und machen die Abhängigkeit der Differentialgleichung
+zusammen und machen die Abhängigkeit der Differentialgleichung
 von $c$ durch ein zusätzliches Argument der Funktion $f$ explizit:
 \[
 \frac{d}{dx}y = f(x,y,c).
@@ -656,7 +685,7 @@ ist das Newton-Verfahren, welches aber die Ableitungen
 von $y(x,c)$ nach $c$ benötigt.
 
 Um die Abhängigkeit von $c$ zu berechnen, leiten wir die
-Differentialgleichung nach $c$ ab, und erhalten 
+Differentialgleichung nach $c$ ab und erhalten 
 \[
 \frac{\partial}{\partial c} \frac{d}{dx} y(x,c)
 =
@@ -683,4 +712,6 @@ werden, so dass eine Differentialgleichung für $C(x)$ entsteht:
 \end{align*}
 Dies ist eine lineare inhomogene Differentialgleichung erster Ordnung
 für die Matrix $C(x)$.
+Da die Parameter keinen Einfluss auf die Anfangswerte haben, hat $C(x)$ den
+Anfangswert $C(x_0)=0$.
 

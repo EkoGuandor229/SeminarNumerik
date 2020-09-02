@@ -6,6 +6,8 @@
 \subsection{Inverse der Normalverteilungsfunktion
 \label{buch:subsection:inversenormal}}
 Das Integral der Standardnormalverteilungsdichte
+\index{Standardnormalverteilungsdichte}%
+\index{Normalverteilung}%
 \[
 \Phi(x) = \int_{-\infty}^x e^{-t^2/2}\,dt
 \]
@@ -13,12 +15,17 @@ kann nicht in geschlossener Form berechnet werden und erst recht
 nicht invertiert werden.
 Für die Anwendung wird jedoch die Umkehrfunktion benötigt, zu einem Wert
 $p\in[0,1]$ ist dasjenige $x$ zu finden, für welches $F(x)=p$ gilt.
+\index{Umkehrfunktion}%
 Im Beispiel auf Seite~\pageref{buch:beispiel:erfc} wurde gezeigt,
 wie die Fehlerfunktion
+\index{Fehlerfunktion}%
+\index{erfx@$\operatorname{erf}(x)$}%
 \[
 \operatorname{erf}(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2}\,dt
 \]
 dazu verwendet werden kann, die Normalverteilungsfunktion
+\index{Verteilungsfunktion}%
+\index{Normalverteilungsfunktion}%
 \[
 \Phi(x)
 =
@@ -36,6 +43,7 @@ f(x)=\frac12+\frac12\operatorname{erf}\biggl(\frac{x}{\sqrt{2}}\biggr)-p=0
 gelöst werden.
 
 \subsubsection{Sekantenverfahren}
+\index{Sekantenverfahren}%
 Die mit dem Sekantenverfahren gewonnen Iterationsfolge ist in der rechten
 Spalte in Tabelle~\ref{buch:table:normalnewton} dargestellt.
 Da die erste Ableitung von $f$ relativ langsam ändert, ist die Konvergenz
@@ -43,15 +51,21 @@ zwar zunächst offenbar nur linear, beschleunigt sich dann aber auf fast
 quadratische Konvergenz, weil die Sekante die Tangente sehr gut approximiert,
 sich das Sekantenverfahren in ihrem Konvergenzverhalten also dem
 Newton-Verfahren anzunähern beginnt.
+\index{Sekante}%
+\index{Tangente}%
 Wegen der unvermeidbaren Auslöschung bei der Berechnung der Sekantensteigung
 wird das Verfahren dann aber instabil, die Iteration bricht ab.
+\index{Auslöschung}%
 Es können für den Typ \texttt{long double} nur etwa 18 signifikante
 Stellen gefunden werden, während das Newton-Verfahren noch drei weitere
 Stellen ermitteln kann.
+\index{Newton-Verfahren}%
+\index{long double@\texttt{long double}}%
 
 \subsubsection{Newton-Verfahren}
 Das Newton-Verfahren benötigt ausser dem Funktionswert auch noch die 
 Ableitung
+\index{Ableitung}%
 \[
 f'(x)
 =
@@ -60,6 +74,7 @@ f'(x)
 \frac{1}{\sqrt{2\pi}}e^{-x^2/2}.
 \]
 Damit wird die Iterationsformel für das Newton-Verfahren:
+\index{Iterationsfolge}%
 \begin{equation}
 x_{n+1}
 =
@@ -69,6 +84,7 @@ x_n - \sqrt{2\pi} e^{x_n^2/2}
 Wie erwartet konvergiert die Iterationsfolge quadratisch für geeignete
 Startwerte (siehe Tabelle~\ref{buch:table:normalnewton}).
 Der Startwert $x_0=0$ funktioniert für jedes beliebige $p$.
+\index{Startwert}%
 Bei weiter von $0$ entfernten Starwerten läuft man Gefahr, dass die Iteration
 zu betragsmässig grossen Werten $x$ springt, was dann zu einem Überlauf führt.
 

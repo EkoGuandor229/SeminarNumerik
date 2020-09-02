@@ -10,9 +10,10 @@ Das primäre direkte Verfahren zur Lösung linearer Gleichungssysteme ist
 der Gauss-Algorithmus, der allerdings
 zur Lösung linearer Gleichungssysteme im Allgemeinen $O(n^3)$
 Operationen braucht, was für grosse $n$ zu aufwendig ist.
+\index{Gauss-Algorithmus}%
 
 %
-% XXX Formelzusammenstellung für den Gaussalgorithmus
+% XXX Formelzusammenstellung für den Gauss-Algorithmus
 %
 
 \subsection{Thomas-Algorithmus für tridiagonale Matrizen
@@ -37,21 +38,28 @@ a_2   & b_2   & c_2   &  0    &\dots  &  0    &  0     \\
 \end{equation}
 deren Einträge alle $0$ sind ausser auf der Diagonalen und den unmittelbar
 benachbarten Nebendiagonalen.
+\index{Nebendiagonale}%
 Eine solche Matrix enstand auch im
 Abschnitt~\ref{buch:subsection:splineinterpolant}
 bei der Bestimmung der Steigungen für die Spline-Interpolationsfunktion.
+\index{Spline-Interpolationsfunktion}%
 
 Da die meisten Einträge der Matrix verschwinden, geben nur die wenigstens
-Zeilen-Operationen des Gauss-Algorithmus überhaupt etwas zu tun.
+Zeilenoperationen des Gauss-Algorithmus überhaupt etwas zu tun.
 Dadurch sinkt der Aufwand für die Durchführung des Algorithmus.
+\index{Gauss-Algorithmus}%
+\index{Zeilenoperation}%
 
 \subsubsection{Vorwärtsreduktion}
 Die Vorwärtsreduktion entfernt die Element unter der Diagonalen
-und macht die Pivot-Elemente zu $1$.
+und macht die Pivotelemente zu $1$.
+\index{Vorwärtsreduktion}%
+\index{Pivotelement}%
 Man muss also nur herausfinden, wie sich die Elemente $c_i$ über der
 Diagonalen verändern.
 Bei der Vorwärtsreduktion wird das ursprüngliche Gauss-Tableau daher
 wie folgt umgewandelt:
+\index{Gauss-Tableau}%
 \[
 \begin{tabular}{|>{$}c<{$}>{$}c<{$}>{$}c<{$}>{$}c<{$}>{$}c<{$}>{$}c<{$}|>{$}c<{$}|}
 \hline
@@ -123,6 +131,7 @@ c_k'=-\frac{k}{k+1}
 \end{equation}
 gilt.
 Tatsächlich lässt sich dies mit vollständiger Induktion beweisen.
+\index{vollständige Induktion}%
 Zunächst ist $c_1=-\frac12=-\frac1{1+1}$ korrekt.
 Jetzt muss man zeigen, dass aus der Formel \eqref{buch:equation:ck} für $k$
 die Formel für $k+1$ folgt.
@@ -142,6 +151,7 @@ Damit ist \eqref{buch:equation:ck} bewiesen.
 
 Wir führen die Vorwärtsreduktion für einen Vektor aus lauter Einsen
 als rechte Seite durch, also $d_i=1$.
+\index{Vorwärtsreduktion}%
 Die Formeln \eqref{buch:equation:thomasvorwaerts} gibt dann
 \begin{align*}
 d_1'
@@ -196,6 +206,7 @@ diese Vermutung mit vollständiger Induktion.
 \end{beispiel}
 
 \subsubsection{Rückwärtseinsetzen}
+\index{Rückwärtseinsetzen}%
 Das Rückwärtseinsetzen ist jetzt ebenfalls sehr einfach:
 \begin{equation}
 x_k = \begin{cases}
@@ -207,6 +218,7 @@ d_k'  - c_k' x_{k+1} &\quad k < n
 \end{equation}
 Auch das Rückwärtseinsetzen ist daher mit $O(n)$ Operationen machbar.
 Der Thomas-Algorithmus löst also ein tridiagonales Gleichungssystem in
+\index{Thomas-Algorithmus}%
 $O(n)$ Operationen oder berechnet die inverse Matrix einer 
 tridiagonalen Matrix in $O(n^2)$ Operationen.
 
@@ -304,19 +316,25 @@ zur Folge hat.
 Die Diskretisation des Poisson-Problems oder der Wärmeleitungsgleichung
 auf einem Ring liefert eine tridiagonale Matrix, in der zusätzlich die
 Einträge in den Ecken links unten und rechts oben von $0$ verschieden sind.
+\index{Poisson-Problem}%
+\index{Matrix!tridiagonal}%
+\index{tridiagonale Matrix}%
 Bei der Durchführung des Gauss-Algorithmus werden damit zusätzliche 
 Einträge im Tableau von $0$ verschieden sein, so dass zusätzliche Operationen
 notwendig werden:
+\index{Gauss-Algorithmus}%
+\index{Tableau}%
 \begin{itemize}
 \item 
-Zusätzlich zu der Zeilen-Operation, die die Element 
+Zusätzlich zu der Zeilenoperation, die die Element 
 $a_i$ zu $0$ macht braucht es jeweils noch eine Operation, welche das
 Element in der letzten Zeile annihiliert.
+\index{Zeilenoperation}%
 Dadurch wird aber ein neuer nicht verschwindender Eintrag erzeugt,
 so dass eine Operation für jedes Element der letzten Zeile nötig wird,
 also $O(n)$ zusätzliche Operation.
 \item
-Die Zeilen Operationen erzeugen aus dem Element in der rechten oberen
+Die Zeilenoperationen erzeugen aus dem Element in der rechten oberen
 Ecke nicht verschwindende Elemente in der Spalte ganz recht.
 Beim Rückwärtseinsetzen sind daher im ersten Schritt $O(n)$ 
 zusätzliche Operatione notwendig.
@@ -328,9 +346,12 @@ Operationen invertieren.
 Tatsächlich erfordert das Invertieren einer Matrix nur $O(n^2)$
 zusätzliche Operationen, wenn die Inverse einer Matrix bereits
 bekannt ist, die sich in nur einer Stelle unterscheidet.
+Dies ist der Inhalt der Sherman-Morrison-Woodbury-Formel, die
+im nächsten Abschnitt untersucht wird.
 
 \subsection{Sherman-Morrison-Woodbury-Formel
 \label{buch:subsection:sherman-morrison-woodbury-formel}}
+\index{Sherman-Morrison-Woodbury-Formel}%
 Eine zyklisch tridiagonale Matrix unterscheidet sich nur in zwei 
 Positionen von einer tridiagonalen Matrix.
 Diese kleine Änderung verdoppelt den Rechenaufwand für die Lösung
@@ -338,11 +359,12 @@ des Gleichungssystems.
 Es stellt sich die Frage, ob sich eine Matrix auf billige Art
 ändern lässt derart, dass die Invertierung mit dem weniger
 aufwendigen Thomas-Algorithmus möglich wird.
+\index{Thomas-Algorithmus}%
 Die {\em Sherman-Morrison-Woodbury-Formel} 
 
 \begin{satz}[Shermann-Morrison-Woodburry]
 \label{buch:satz:shermann}
-Ist $A$ eine Matrix mit der Inversen $A^{-1}$, und sind die Vektoren
+Ist $A$ eine Matrix mit der Inversen $A^{-1}$ und sind die Vektoren
 $u$ und $v$ gegeben derart, dass $v^tA^{-1}u\ne 1$ ist, dann gilt
 \begin{equation}
 (A-uv^t)^{-1}
@@ -431,6 +453,7 @@ unterscheiden sich nur durch ein einziges Element in der linken unteren
 Ecke.
 Dieses Element kann betrachtet werden als ein Produkt von
 Standardbasisvektoren
+\index{Standardbasisvektor}%
 \[
 E_{51}
 =
@@ -445,6 +468,7 @@ E_{51}
 e_5e_1^t.
 \]
 Ausserdem ist $A^{-1}$ mit Hilfe des Thomas-Algorithmus leicht berechenbar,
+\index{Thomas-Algorithmus}%
 sie ist
 \[
 \renewcommand\arraystretch{1.15}
@@ -506,20 +530,25 @@ mit Rechenaufwand $O(n^2)$ aus der Inversen $A^{-1}$ ermittelt werden kann.
 Dies bringt allerdings nur einen Nutzen, wenn der Aufwand zur Berechung
 von \eqref{buch:equation:shermann-morrison-woodburry} geringer ist als
 eine volle Durchführung des Gauss-Algorithmus.
+\index{Gauss-Algorithmus}%
 Dazu beachtet man, dass ein Produkt $\text{Matrix}\times\text{Vektor}$ 
 mit $O(n^2)$ Operationen möglich ist.
 Sowohl $A^{-1}u$ und $v^tA^{-1}$ lassen sich daher mit $O(n^2)$
 Operationen bestimmen.
 Das Produkt des Spaltenvektors $A^{-1}u$ mit dem Zeilenvektor $v^tA^{-1}$
 ist sogar in $O(n)$ Operationen möglich.
+\index{Spaltenvektor}%
+\index{Zeilenvektor}%
 Auf diese Weise lässt sich
 die Formel~\ref{buch:equation:shermann-morrison-woodburry} mit
 $O(n^2)$ Operationen durchführen und ist daher weniger aufwändig als
 der Gauss-Algorithmus.
  
 \subsection{Bandmatrizen}
+\index{Bandmatrix}%
 Tridiagonale Matrizen waren einfach zu invertieren, weil es nur wenige
 von $0$ verschiedene Einträge nahe der Diagonalen gab.
+\index{Diagonale}%
 Diese Bedingung erfüllen auch sogenannte {\em Bandmatrizen}.
 Eine $n\times n$-Matrix $A$ mit Einträgen $a_{ij}$ ist eine Bandmatrix
 der Breite $k$, wenn $a_{ij} = 0$ für $|i-j|>k$.
@@ -528,6 +557,7 @@ der Breite $k$, wenn $a_{ij} = 0$ für $|i-j|>k$.
 \includegraphics{chapters/60-linsys/images/bandmatrix.pdf}
 \caption{Eine Bandmatrix ist eine $n\times n$-Matrix, deren Einträge
 ausserhalb eines Bandes um die Diagonale verschwinden.
+\index{Band}%
 \label{buch:figure:bandmatrix}}
 \end{figure}
 Schematisch kann man eine solche Matrix wie in
@@ -537,19 +567,28 @@ Der Gauss-Algorithmus braucht auch in einer Bandmatrix nicht die
 volle Zahl von Operationen.
 Bei der Pivotdivision müssen höchstens $2k+1$ Divisionen ausgeführt
 werden.
+\index{Pivotdivision}%
 Danach sind genau $k$ Zeilenoperationen notwendig, um die Spalte
 unter dem Pivotelement zu $0$ zu machen.
+\index{Zeilenoperation}%
 Dabei werden nur die Elemente in $2k+1$ Spalten modifiziert,
 der Aufwand für jeden Schritt der Vorwärtsreduktion ist daher $(k^2)$.
+\index{Vorwärtsreduktion}%
 Nach $n$ Schritten wurde daher Rechenzeit $O(nk^2)$ aufgewendet.
+\index{Rechenzeit}%
 Beim Rückwärtseinsetzen werden in $n$ Iteration jeweils $k$ Zeilenoperationen
 in genau zwei Spalten durchgeführt, es fallen also nur $O(nk)$
 Operationen an.
+\index{Rückwärtseinsetzen}%
 Insgesamt sind also nur $O(nk^2)$ Operationen nötig, um ein Gleichungssystem
 zu lösen, oder $O(n^2k^2)$ für eine Matrixinvertierung.
+\index{Matrixinvertierung}%
 
 Die Diskretisation einer partiellen Differentialgleichung in der Ebene
+\index{partielle Differentialgleichung}%
+\index{Differentialgleichung!partiell}%
 mit finiten Differenzen
+\index{finite Differenzen}%
 (siehe auch Abschnitt~\ref{section:finite-differenzen})
 führt auf natürlich Weise zu einem linearen
 Gleichungssystem mit einer Bandmatrix mit $k\approx \sqrt{n}$.

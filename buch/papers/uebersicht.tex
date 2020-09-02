@@ -20,24 +20,35 @@ Kapitel~\ref{chapter:logistic}
 und zeigt das faszinierende
 Verhalten der Iterationsfolgen bei der Variation des Parameters in
 der logistischen Gleichung auf.
+\index{logistische Gleichung}%
+\index{Schneeberger, Michael}%
 Die Periodenverdoppelungen sind ein universelle Eigenschaft chaotischer
 Systeme.
+\index{chaotisch}%
+\index{Periodenverdoppelung}%
 
 Das Beispiel der Legendre-Polynome zeigt, dass selbst die Berechnung
 von Polynomen mit naheliegenden Formeln manchmal nicht einfach so 
 funktioniert.
+\index{Legendre-Polynom}%
 {\em Patrick Elsener} analysiert in Kapitel~\ref{chapter:legendre}
 die Gründe dafür, warum diese 
 Berechnung instabil werden kann und erklärt damit die Fehler 
 populärer Websites wie Wolfram Alpha.
+\index{instabil}%
+\index{Elsener, Patrick}%
+\index{Wolfram Alpha}%
 
 Integrale können natürlich auch mit Verfahren zur Lösung von
 gewöhnlichen Differentialgleichungen bestimmt werden.
+\index{Differentialgleichung!gewöhnliche}%
 Mit besonders wenigen Auswertungen des Integranden kommt jedoch
 ein ganzlich anderes Verfahren aus, welches sich aus der Interpolationstheorie
 von Kapitel~\ref{chapter:interpolation} entwickeln lässt.
 {\em Mike Schmid} stellt in Kapitel~\ref{chapter:quadratur} die
 Gauss-Quadratur vor.
+\index{Schmid, Mike}%
+\index{Gauss-Quadratur}%
 
 Ein mathematisches Modell für einen natürlichen Vorgang zu haben garantiert
 noch nicht, dass man diesen Vorgang exakt vorhersagen kann.
@@ -45,48 +56,73 @@ noch nicht, dass man diesen Vorgang exakt vorhersagen kann.
 in Kapitel~\ref{chapter:vanderpol} die
 Van der Pol-Differentialgleichung, die einen nichtlinearen Oszillator
 beschreibt.
+\index{Cattaneo, Manuel}%
+\index{Galliani, Niccol\`o}%
 Sie heben besonders hervor, wie für gewisse Parameterwerte chaotisches
 Verhalten auftritt.
+\index{chaotisch}%
 Dies bedeutet, dass die Rundungsfehler selbst so viel Unsicherheit in
 die Problemlösung injizieren, dass keine zuverlässigen Langzeitvorhersagen 
 mehr möglich sind.
+\index{Rundungsfehler}%
+\index{Langzeitvorhersage}%
 
 Das Beispiel der Van der Pol-Gleichung zeigt, dass es sich lohnt,
 etwas Aufwand in die Entwicklung guter numerischer Verfahren zu
 investieren.
+\index{Van der Pol-Gleichung}%
 {\em Fabio Marti} zeigt in Kapitel~\ref{chapter:taylor}, wie man auf der
 Basis der Taylor-Reihe im Prinzip ein Lösungsverfahren beliebig hoher Ordnung 
 entwickeln kann.
+\index{Marti, Fabio}%
+\index{Taylor-Reihe}%
 Die Wahl der Schrittweite hat einen entscheidenden Einfluss auf die
-Genauigkeit des Resultats. In Kapitel~\ref{chapter:steps} zeigt
+Genauigkeit des Resultats.
+\index{Schrittweite}%
+In Kapitel~\ref{chapter:steps} zeigt
 {\em Reto Fritsche}, wie ein Lösungsalgorithmus die Schrittweite
 anpassen und damit die Genauigkeit optimieren kann.
+\index{Fritsche, Reto}%
 Eine beliebte analytische Technik zur Lösung gewöhnlicher Differentialgleichung
 verwendet die Laplace-Transformation, die jedoch oft schwierig zu
 invertieren ist.
+\index{Laplace-Transformation}%
+\index{Laplace-Inverse}%
 {\em Severin Weiss} erklärt in Kapitel~\ref{chapter:laplace}, wie 
 das Verfahren von Talbot die Laplace-Inverse numerisch berechnen kann.
+\index{Weiss, Severin}%
 
 Der Aufwand für die Lösung einer Differentialgleichung, die alle
 messbaren Einflüsse beinhaltet, ist manchmal nur mit grossem Aufwand
 durchführbar.
 Die Bahn eines Satelliten um die Erde wird von Sonne, Mond, den grossen
 Planeten und vielen weiteren Kräften beeinflusst.
+\index{Satellit}%
 Eine CPU mit beschränkter Leistung kann diese Aufgabe nicht bewältigen.
 Die Störungstheorie ist in der Lage, alle diese Einflüsse in ein einfacheres
 Modell zusammenzufassen.
+\index{Störungstheorie}%
 {\em Daniel Bucher} und {\em Thomas Kistler} stellen diese interessante
 Technik an einem einfachen Beispiel in Kapitel~\ref{chapter:perturbation}.
+\index{Bucher, Daniel}%
+\index{Kistler, Thomas}%
 Die Störungsidee lässt sich auch auf andere Probleme anwenden.
 Von besonderer Bedeutung ist das Eigenwertproblem für lineare Operatoren,
 welches in der Quantenmechanik die Spektren von Atomen und Molekülen
 zu berechnen gestattet.
+\index{Quantenmechanik}%
+\index{Spektrum}%
+\index{Atom}%
+\index{Molekül}%
 Die vielfältigen Einflüsse sind jedoch in der Wellengleichung kaum
 alle zu berücksichtigen.
+\index{Wellengleichung}%
 Die von {\em Nicolas Tobler} in Kapitel~\ref{chapter:ew} ausgeführte
 Störungstheorie für das Eigenwertproblem löst dieses Problem mit
 spektakulärem Erfolg, so dass wir heute auch die Feinheiten der
-Spektrallinien zum Beispiel Wasserstoffs verstehen.
+Spektrallinien zum Beispiel des Wasserstoffatoms verstehen.
+\index{Tobler, Nicolas}%
+\index{Wasserstoff}%
 
 Polynome sind in manchen Fällen keine guten Approximationen,
 Brüche können in solchen Fällen gute Näherungsbrüche liefern.
@@ -94,40 +130,71 @@ Kettenbrüche, von {\em Benjamin Bouhafs-Keller} in
 Kapitel~\ref{chapter:kettenbruch} vorgestellt, liefern auf effiziente
 Weise Näherungsbrüche für irrationale Zahlen, die sogar eine
 Optimalitätseigenschaft besitzen.
+\index{Kettenbruch}%
+\index{Bouhafs-Keller, Benjamin}%
 Die Padé-Approximation versucht Funktionen durch rationale
 Funktionen, d.~h.~Brüche von Polynomen, anzunähern.
 {\em Cédric Renda} zeigt in Kapitel~\ref{chapter:pade}, wie das
 funktioniert.
+Es zeigt sich, dass Kettenbrüche auf Padé-Approximationen führen.
+Kapitel~\ref{chapter:arctan} rechnet nach, dass die Näherungsbrüche der
+in Kapitel~\ref{chapter:kettenbruch} vorgestellt Kettenbruchentwicklung
+der $\arctan x$-Funktion Padé-Approximanten sind.
+\index{Renda, Cédric}%
+\index{Polynom}%
+\index{Padé-Approximation}%
+\index{arctan@$\arctan x$}%
 
 Die Gleichung von Burgers ist eine besonders einfache nichtlineare
 partielle Differentialgleichung, die viele numerische Probleme
 illustrieren kann.
+\index{Burgers}%
+\index{Gleichung von Burgers}%
 {\em Michael Schmid} zeigt einige mögliche Ansätze in
 Kapitel~\ref{chapter:burgers}.
+\index{Schmid, Michael}%
 In Abschnitt~\ref{section:finite-elemente} wurden die wichtigsten Ideen
 der Methode der finiten Elemente an eindimensionalen Beispielen eingeführt.
 {\em Joël Rechsteiner} zeigt in Kapitel~\ref{chapter:fem}, was sich in
 zwei Dimensionen ändert.
+\index{Rechsteiner, Joël}%
+\index{finite Elemente}%
 
 Die lineare Algebra ist ein besonders wichtiges Betätigungsfeld für
 Numeriker.
 Grundaufgaben der lineare Algebra wie Lösung eines Gleichungssystems,
 Matrixzerlegungen oder das Eigenwertproblem werden in grossen
 Simulationen immer wieder verwendet.
+\index{Matrixzerlegung}%
+\index{Unterer, Raphael}%
 Entsprechend sind effiziente Algorithmen wichtig.
 Das Kapitel~\ref{chapter:cg} von {\em Raphael Unterer} erklärt
 ein besonderes erfolgreiches iteratives
 Lösungsverfahren für Gleichungssysteme mit symmetrischer, positiv
 definiter Koeffizienmatrix.
 Der QR-Algorithmus löst zum Beispiel Least-Squares-Optimierungsprobleme,
+\index{Least-Squares}%
 {\em Manuel Tischhauser} zeigt in Kapitel~\ref{chapter:qr}, wie man mit
 Givens-Drehungen eine effiziente Zerlegung finden kann.
+\index{Tischhauser, Manuel}%
+\index{QR-Algorithmus}%
 Für das Eigenwertproblem hat John Francis in den 1960er Jahren einen
 erfolgreichen Algorithmus formuliert, den {\em Tobias Grab} in
 Kapitel~\ref{chapter:francis} vorstellt.
+\index{Francis, John}%
+\index{Grab, Tobias}%
 
-
-
+Zum Trainieren von neuronalen Netzwerken mit Gradientabstieg muss 
+der Gradient der Zielfunktion berechnet werden können.
+{\em Martin Stypinsky} versucht in Kapitel~\ref{chapter:ableitung},
+statt der üblichen Backpropagation
+die Zielfunktion als Black-Box zu behandeln und mit numerischen
+Ableitungsmethoden den Gradienten zu schätzen.
+\index{Stypinsky, Martin}%
+Alternativ zu dem auf der Taylor-Reihe abgeleitete Differetiationsverfahren
+von Kapitel~\ref{chapter:ableitung} kann man auch versuchen, ähnliche
+Verfahren aus der Interpolationstheorie abzuleiten, dies ist in
+Kapitel~\ref{chapter:interdiff} durchgeführt.
 
 
 

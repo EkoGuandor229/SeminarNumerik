@@ -6,12 +6,16 @@
 
 \subsection{Bézier-Kurven und Splines in der Ebene
 \label{buch:subsection:bezier}}
+\index{Bézier-Kurve}%
+\index{Spline}%
 Spline-Interpolation kann auch verwendet werden, um Kurven in der Ebene
 oder im Raum zu approximieren.
 In der Computergraphik ist dabei besonders wichtig, dass sich Kurvenpunkte
 mit einfachen Operationen aus einer kleinen Zahl von Parametern berechnen
 lassen, damit sie zum Beispiel von einem Graphikprozessor berechnet
 werden können.
+\index{Graphikprozessor}%
+\index{Computergraphik}%
 Dieser Abschnitt soll daher den Zusammenhang zwischen Bézier-Kurven und
 Splines aufzeigen.
 
@@ -24,10 +28,13 @@ Eine Kurve in der Ebene ist eine Abbildung
 \gamma \colon \mathbb R \to \mathbb R^2 : t \mapsto \gamma(t) = (x(t),y(t)),
 \]
 genannt die Parameterdarstellung der Kurve.
+\index{Kurve}%
+\index{Parameterdarstellung}%
 Man kann sich den Parameter $t$ als die Zeit vorstellen und die Funktionen
 $x(t)$ bzw.~$y(t)$ als die Koordinaten eines sich auf der Kurve bewegenden
 Punktes zur Zeit $t$.
 Der Tangentialvektor
+\index{Tangentialvektor}%
 \[
 \dot{\gamma}(t)
 =
@@ -39,6 +46,8 @@ Der Tangentialvektor
 \]
 kann entsprechend auch als der Geschwindigkeitsvektor zur Zeit $t$ 
 intepretiert werden.
+\index{Geschwindigkeit}%
+\index{Geschwindigkeitsvektor}%
 
 \begin{beispiel}
 Ein Kreis in der Ebene kann beschreiben weren mit der Parameterisierung
@@ -78,6 +87,7 @@ im Allgemeinen nicht konstant.
 Das Beispiel zeigt, dass Graphen von Funktionen zwar als Kurven aufgefasst
 werden können, als Bahnbeschreibung zum Beispiel für einen Roboter taugen
 sie dagegen kaum.
+\index{Roboter}%
 Andererseits haben die Spline-Interpolationsfunktionen die schöne
 Eigenschaft, dass die mittlere zweite Ableitung minimiert wird.
 Sie sind daher ``die am wenigsten gekrümmten'' Kurven, die durch die
@@ -89,6 +99,9 @@ kann nicht grösser sein als die Haftreibung.
 Je grösser die Bahnkrümmung, desto grösser auch die Zentripetalkraft und
 desto langsamer muss der Roboter durch die Kurve fahren, um nicht ins
 Rutschen zu geraten.
+\index{Zentripetalkraft}%
+\index{Haftreibung}%
+\index{Bahnkrümmung}%
 
 Wir betrachten also eine Kurve, die durch die vorgegebene Punkte
 \[
@@ -119,14 +132,16 @@ eine mögliche Lösung liefern, wobei sich die Spline-Interpolation wegen
 der genannten Minimaleigenschaft besonders aufdrängt.
 Dabei müssen zuerst die Steigungen und den Knotenstellen $t_i$ ermittelt
 werden,
-aus denen sich dann mittels Hérmite-Interpolation die Kurvenstücke
+aus denen sich dann mittels Hermite-Interpolation die Kurvenstücke
 zwischen den Punkten $P_i$ als kubische Kurven berechnen lassen.
+\index{Hermite-Interpolation}%
 Die Steigungen in den Knotenstellen $t_i$ sind die Ableitungen
 $\dot{x}(t_i)$ und $\dot{y}(t_i)$, d.~h.~es wir müssen zwischen
 $P_i$ und $P_{i+1}$ eine kubische Kurve in der Ebene berechnen, die
 Tangentialvektor $(\dot{x}(t_i),\dot{y}(t_i))^t$
 bzw.~$(\dot{x}(t_{i+1}),\dot{y}(t_{i+1}))^t$ haben.
 Eine besonders elegante Lösung für dieses Problem sind die Bézier-Kurven.
+\index{Bézier-Kurve}%
 
 %
 % Bézier-Kurven
@@ -154,6 +169,8 @@ ihn nicht mehr frei wählen.
 Kann man eine einfach zu berechnende Kurve finden, die den Punkt $P_0$
 mit einem vorgegebenen Geschwindigkeitsvektor verlässt?
 Paul de Casteljau hat vorgeschlagen, drei Punkte $P_0$, $P_1$ und $P_2$
+%\index{Paul de Casteljau}%
+\index{de Casteljau, Paul}%
 zu verwenden und zunächst wie vorhin die Strecken 
 \begin{align*}
 q_0(t) &= (1-t) p_0 + t p_1 \\
@@ -202,12 +219,16 @@ der Forderungen erfüllt.
 Man nennt diese Kurve, dargestellt in
 Abbildung~\ref{buch:interpolation:figure:bezier} Mitte,
 eine quadratische {\em Bézier-Kurve} mit
-\index{Bézier-Kurve}
+\index{Bézier-Kurve}%
 {\em Kontrollpunkten} $P_0$, $P_1$ und $P_2$.
-\index{Kontrollpunkte}
+\index{Kontrollpunkt}%
 Der Punkt $P_1$ kontrolliert die Start- und Ankunftsrichtung.
+\index{Startrichtung}%
+\index{Ankunftsrichtung}%
 
 \subsubsection{Kubische Bézier-Kurven}
+\index{kubische Bézier-Kurve}%
+\index{Bézier-Kurve!kubisch}%
 Die beiden Richtungen in Anfangs- und Endpunkten müssen unabhängig
 voneinander vorgegeben werden können, wir versuchen daher, die
 gleiche Konstruktion mit vier Kontrollpunkten durchzuführen.
@@ -277,11 +298,15 @@ berechnet als Bézier-Kurven der Ordnung 3.
 \end{figure}
 Man kann auch die Spline-Funktionen wieder aus der zweidimensionalen
 Kurve $s(t)$ rekonstruieren.
+\index{Bézier-Kurve}%
+\index{Hermite-Interpolation}%
+\index{Spline-Funktion}%
 Gegeben sind dafür zwei Werte $y_0$ und $y_1$ und die Steigungen $m_0$ und
 $m_1$ in den Punkten $x=0$ und $x=1$.
 Der Graph des kubischen Polynoms $p(x)$ mit $p(0)=y_0$, $p(1)=y_1$,
 $p'(0)=m_0$ und $p'(1)=m_1$ soll jetzt als Bézier-Kurve geschrieben werden.
 Dazu müssen die Kontrollpunkte gefunden werden.
+\index{Kontrollpunkt}%
 Es ist klar, dass $P_0=(0,y_0)$ und $P_3=(1,y_1)$.
 Für die inneren Kontrollpunkte muss ein geeigneter $x$-Wert gewählt werden,
 also
@@ -370,6 +395,7 @@ die in \eqref{buch:equation:hermite:h} gefunden worden sind.
 % Bézier-Kurven höherer Ordnung
 %
 \subsubsection{Bézier-Kurven höherer Ordnung}
+\index{Bézier-Kurve!höhere Ordnung}%
 Der Prozess, der die kubischen Bézier-Kurven produziert hat, kann natürlich
 iteriert werden, um Kurven beliebiger Ordnung zu erzeugen.
 Ausgehend von $n+1$ Kontrollpunkten $P_0,\dots,P_n$, konstruiert man eine
@@ -431,7 +457,8 @@ p_{n0}(t)
 \sum_{k=0}^n B_{k,n}(t) p_k
 \]
 wobei $B_{k,n}(t) = \binom{n}{k}t^k(1-t)^{n-k}$
-die sogenannten {\em Bernsteinpolynome} sind.
+die sogenannten {\em Bernstein-Polynome} sind.
+\index{Bernstein-Polynom}
 \end{satz}
 
 Man braucht immer die Werte aller Bernsteinpolynome.

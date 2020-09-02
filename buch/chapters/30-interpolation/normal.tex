@@ -6,13 +6,18 @@
 \subsubsection{Vergleich der Fehler}
 In diesem Abschnitt vergleichen wir die Fehler der Interpolationspolynome
 für die Funktion
+\index{Standardnormalverteilungsdichte}%
+\index{Normalverteilung}%
 \[
 f(x)
 =
 \frac{1}{\sqrt{2\pi}} e^{-x^2/2}
 \]
 nach Lagrange mit äquidistanten Stützstellen und mit
+\index{aquidistante stutzstellen@äquidistante Stützstellen}%
+\index{Stützstellen!äquidistant}%
 Tschebyscheff-Stützstellen.
+\index{Tschebyscheff-Stützstellen}%
 
 \begin{figure}
 \centering
@@ -21,6 +26,7 @@ Tschebyscheff-Stützstellen.
 $f(x)=e^{-x^2/2}/\sqrt{2\pi}$.
 Der Fehler nimmt mit der Anzahl der Stützstellen bis $n=30$ ab, danach
 wird die Berechnung instabil und der Fehler nimmt wieder zu.
+\index{instabil}%
 \label{buch:figure:lagrangefehler}}
 \end{figure}
 
@@ -32,19 +38,18 @@ wird die Berechnung instabil und der Fehler nimmt wieder zu.
 $f(x)=e^{-x^2/2}/\sqrt{2\pi}$ mit Stützstellen nach Tschebyscheff.
 Der Fehler bleibt über das ganze Intervall gleichmässig.
 Für eine grosse Zahl von Stützstellen erreicht die Interpolation die
-Maschienengenauigkeit.
+Maschinengenauigkeit.
 \label{buch:figure:tschebyschefffehler}}
 \end{figure}
 
 Die Resultate sind in Abbildung~\ref{buch:figure:lagrangefehler}
 für das Lagrange-Interpolationspolynom und
 Abbildung~\ref{buch:figure:tschebyschefffehler}
-für das Tschebyscheff-Interpolationspolynom
-dargestellt.
+für das Tschebyscheff-Interpolationspolynom dargestellt.
 In beiden Abbildungen wird die gleiche Anzahl Stützstellen verwendet.
 Beim Lagrange-Interpolationspolynom nimmt der Fehler zunächst schnell ab.
 Er ist, wie das Runge Phänomen erwarten lässt, immer am grössten im
-äussersten Teilinterval.
+äussersten Teilintervall.
 Für grösser werdende Anzahl von Stützstellen wird die Berechnung des 
 Interpolationspolynoms in diesen äussersten Teilintervallen instabil
 und wächst zum Beispiel von $n=30$ zu $n=34$ um eine Grössenordnung an.
@@ -53,7 +58,7 @@ also mindestens am Rand des Intervalls keine zuverlässigen Approximation sein.
 
 Die Verwendung von Tschebyscheff-Stützstellen verbessert die Genauigkeit
 schon bei $n=16$ Stützstellen um zwei Grössenordnungen.
-Aussserdem sind die Fehler über das ganze Interval gleichmässig
+Aussserdem sind die Fehler über das ganze Intervall gleichmässig
 verteilt.
 Bei einer grösseren Anzahl von Stützstellen scheint der Fehler 
 vor allem linken Rand stark anzuwachsen.

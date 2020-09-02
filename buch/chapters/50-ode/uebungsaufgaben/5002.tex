@@ -2,10 +2,10 @@ Die Differentialgleichung $y'=e^y$ soll für die Anfangsbedingung $y(0)=0$
 gelöst werden.
 \begin{teilaufgaben}
 \item
-Berechnen Sie $y(1)$, indem Sie $2^k$ Eulerschritte der Länge $h=2^{-k}$ 
+Berechnen Sie $y(1)$, indem Sie $2^k$ Euler-Schritte der Länge $h=2^{-k}$ 
 durchführen mit $k=0,1,2$.
 \item
-Berechnen Sie $y(1)$, indem Sie $2^k$ verbesserte Eulerschritte der Länge
+Berechnen Sie $y(1)$, indem Sie $2^k$ verbesserte Euler-Schritte der Länge
 $h=2^{-k}$ machen mit $k=0,1$.
 \item
 Berechnen Sie $y(1)$, indem Sie $2^k$ vereinfachte Runge-Kutta-Schritte 
@@ -24,7 +24,7 @@ $x=1-10^{-k}$.
 \begin{loesung}
 \begin{teilaufgaben}
 \item
-Mit einem einzigen Eulerschritt der Länge $1$ erhält man
+Mit einem einzigen Euler-Schritt der Länge $1$ erhält man
 \[
 y(1)
 =
@@ -89,8 +89,8 @@ Es sind keine Anzeichen von Konvergenz sichtbar.
 \label{5002:tabelle}}
 \end{table}
 \item
-Ein verbesserter Eulerschritt besteht in einem halben Eulerschritt
-zur Ermittellung der Steigung, mit der der Eulerschritt ausgeführt
+Ein verbesserter Euler-Schritt besteht in einem halben Euler-Schritt
+zur Ermittellung der Steigung, mit der der Euler-Schritt ausgeführt
 werden soll:
 \[
 y_{i+1}
@@ -104,7 +104,7 @@ Tabelle~\ref{5002:tabelle}.
 Auch in diesem Verfahren ist keine Konvergenz erkennbar.
 \item
 Ein vereinfachter Runge-Kutta-Schritt verwendet Steigungen am Anfang
-und nach einem ganzen Eulerschritt:
+und nach einem ganzen Euler-Schritt:
 \[
 y_{i+1}
 =

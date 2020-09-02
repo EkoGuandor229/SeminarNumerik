@@ -9,31 +9,38 @@
 Die meisten numerischen Problemlösungen mit einem Computer nutzen deren
 Fähigkeit aus, dieselbe Rechnung immer wieder zu wiederholen, bis zum
 Beispiel die gewünschte Genauigkeit erziehlt ist.
+\index{Iteration}%
 Es lohnt sich daher ganz unabhängig irgendwelchen Einschränkungen 
 der Computer-Hardware zu überlegen, was passiert, wenn man eine
 Funktion $f\colon \mathbb R\to\mathbb R$ immer wieder auf ihren eigenen
 Output anwendet, wie das zum Beispiel der Code in einer Schleife
 bei jedem Durchlauf macht.
+\index{Hardware}%
 
 In diesem Abschnitt ist also
 \[
 f\colon \mathbb{R}\to\mathbb{R} : x\mapsto f(x)
 \]
 eine differenzierbare Funktion.
+\index{Funktion!differenzierbar}%
+\index{differenzierbare Funktion}%
 Mit einem gegebenen Startwert $x_0\in\mathbb R$ lässt sich durch
 wiederholte Anwendung von $f$ die Folge
 \[
 x_0,\; x_1 = f(x_0),\; x_2 = f(x_1),\; x_3 = f(x_2),\; x_4 = f(x_3),\dots
 \]
 konstruieren.
+\index{Iterationsfolge}%
 
 Ist der Punkt $x^*$ ein {\em Fixpunkt} der Funktion $f(x)$, ist also
 $f(x^*)=x^*$,
 \index{Fixpunkt}%
 dann ist die mit $x_0=x^*$ gebildete Iterationsfolge konstant.
 Es stellt sich damit automatisch die Frage, was mit einem von $x^*$
-abweichenden Startwert passiert. Entfernen sich die Werte $x_k$ von $x^*$
+abweichenden Startwert passiert.
+Entfernen sich die Werte $x_k$ von $x^*$
 oder konvergiert die Folge am Ende gegen $x^*$?
+\index{Konvergenz}%
 
 %
 % Beispiele
@@ -50,6 +57,7 @@ f\colon \mathbb{R}\to\mathbb{R} : x\mapsto \sqrt{x+2}
 \]
 Die Iterationsfolge ausgehend vom Startwert $x_0=0$ ist in
 Tabelle~\ref{buch:table:sqrtiteration} dargestellt.
+\index{Startwert}%
 
 \begin{table}
 \centering
@@ -95,8 +103,10 @@ Wir betrachten die Funktion
 \[
 f(x) = 3x(1-x).
 \]
+\index{logistische Funktion!mit $\lambda=3$}%
 Sie hat zwei Fixpunkte, die man durch Lösen der quadratischen
 Gleichung
+\index{quadratische!Gleichung}%
 \[
 f(x^*)=x^*
 \quad\Rightarrow\quad
@@ -139,6 +149,7 @@ f({\textstyle\frac23}+\delta)
 \end{equation}
 Der Fehler $\delta$ wird zu $ -\delta(1-9\delta) $, er ändert also sein
 Vorzeichen.
+\index{Fehler}%
 Ist $\delta>0$ wird der Fehlerbetrag wird nur um den Faktor $1-9\delta < 1$
 reduziert.
 Ist aber $\delta <0$, dann ist $1-9\delta>0$, der Fehlerbetrag wird wieder
@@ -162,9 +173,12 @@ geworden ist.
 \includegraphics{chapters/10-arithmetik/figures/iteration.pdf}
 \caption{Ein Fixpunkt $x^*$ der Funktion $f(x)$ manifestiert sich als
 Schnittpunkt des Graphen $y=f(x)$ mit der $45^\circ$-Geraden.
+\index{Schnittpunkt}%
+\index{Graph}%
 Die Iterationsfolge ausgehend von einem Startwert $x_0$ wird als
 Treppenkurve zwischen dem Graphen von $f$ und der $45^\circ$-Geraden
 sichtbar.
+\index{Iterationsfolge}%
 \label{buch:figure:iterationprinzip}}
 \end{figure}
 
@@ -179,6 +193,7 @@ den Schritten $k$ und $k+2$ gemäss
 \]
 um den Faktor $(1-18\delta_k)$ ab.
 Es ist übersichtlicher, mit dem Logarithmus des Fehlers zu rechnen.
+\index{Logarithmus}%
 Dieser verändert sich gemäss
 \[
 \log \delta_{k+2}
@@ -189,6 +204,9 @@ Dieser verändert sich gemäss
 \]
 wobei wir für den zweiten Term die lineare Approximation aus der
 Taylor-Reihe
+\index{Taylor-Reihe}%
+\index{lineare!Approximation}%
+\index{Approximation!linear}%
 \[
 \log (1+x) = x - \frac{x^2}2 + \frac{x^3}3 -\dots
 \]
@@ -208,6 +226,7 @@ Zwischen $\delta_0$ und $\delta_{2n}$ bedeutet dies
 \sum_{k=0}^{n-1}\delta_{2k}.
 \]
 Da der Fehler immer kleiner wir, kann man für eine erste grobe Abschätzung
+\index{Abschätzung}%
 der Summe auf der rechten Seite die grössten und kleinsten Terme
 verwenden, um die Summe nach und unten und oben durch
 \[
@@ -215,9 +234,9 @@ n\delta_{2n-2}
 \le
 \sum_{k=0}^{n-1}\delta_{2k}
 \le
-n\delta_0.
+n\delta_0
 \]
-abzuschätzen
+abzuschätzen.
 Einsetzen ergibt
 \[
 n\delta_{2n-2}
@@ -247,11 +266,17 @@ braucht also zwischen $25$ und $2558$ Iterationen.
 %
 \subsection{Graphische Analyse
 \label{buch:section:graphischeanalyse}}
+\index{graphische Analyse einer Iterationsfolge}%
+\index{Iterationsfolge!graphische Konvergenzanalyse}%
 Ein Fixpunkt der Funktion $f(x)$ manifestiert sich in einem 
 Schnittpunkte des Graphen von $f$ mit der $45^\circ$-Geraden
 $y=x$ wie in Abbildung~\ref{buch:figure:iterationprinzip}.
+\index{Graph}%
+\index{45grad@$45^\circ$-Gerade}%
+\index{Schnittpunkt}%
 Die Iterationsfolge $x_n$ kann graphisch wie folgt dargestellt
 werden.
+\index{Iterationsfolge}%
 Ausgehend vom Wert $x_n$ auf der $x$-Achse folgt man der Vertikalen,
 bis man auf den Graphen der Funktion $f$ trifft, dies liefert den
 Wert $y_n=f(x_n)$.
@@ -259,12 +284,13 @@ Dieser soll jetzt als neuer $x$-Wert verwendet werden.
 Dazu folgt man der Horizontalen bis zur $45^\circ$-Geraden,
 die $x$-Koordinate des Schnittpunktes ist $x_{n+1}$.
 So entsteht Treppenlinie in Abbildung~\ref{buch:figure:iterationprinzip}.
+\index{Treppenlinie}%
 
 %
 % Konvergenzbedingung
 %
 \subsection{Konvergenzbedingung
-\label{buch:subsection:konvergenzbedingung}}
+\label{buch:iteration:subsection:konvergenzbedingung}}
 \input{chapters/10-arithmetik/graphisch0.tex}
 \input{chapters/10-arithmetik/graphisch1.tex}
 Aus der graphischen Analyse von Abschnitt~\ref{buch:section:graphischeanalyse}
@@ -303,8 +329,8 @@ x_{n+1} = f(x_n)
 In beiden Fällen ist $x_{n+1}$ weiter vom Fixpunkt $x^*$ entfernt
 als $x_n$, die Folge kann also nicht konvergieren.
 Die beiden Situationen sind in den Abbildungen
-\label{buch:figure:fixpunkt:normal} und
-\label{buch:figure:fixpunkt:divergent}
+\ref{buch:figure:fixpunkt:normal} und
+\ref{buch:figure:fixpunkt:divergent}
 dargestellt.
 
 Allerdings ist die Bedignung \ref{buch:equation:konvergenzbedingung}
@@ -326,6 +352,8 @@ Wir fassen diese Resultate im folgenden Satz zusammen.
 
 \begin{satz}
 \label{buch:satz:konvergenzkriterium}
+\index{Konvergenzkriterium}%
+\index{Iterationsfolge!Konvergenzkriterium}%
 Die Iterationsfolge $x_{n+1}=f(x_n)$ der Funktion $f(x)$ mit Fixpunkt
 $x^*=f(x^*)$ konvergiert für einen Startwert $x_0$ nahe genug bei $x^*$,
 wenn $|f'(x^*)|<1$, sie divergiert, wenn $|f'(x^*)|>1$.
@@ -337,7 +365,7 @@ wenn $|f'(x^*)|<1$, sie divergiert, wenn $|f'(x^*)|>1$.
 \subsection{Die logistische Gleichung
 \label{buch:subsection:logistisch}}
 Die logistische Gleichung ist 
-\index{logistische Gleichung}
+\index{logistische Gleichung}%
 \[
 f_\lambda(x) = \lambda x(1-x)
 \]
@@ -350,12 +378,13 @@ dieser Funktionen ist im Kapitel~\ref{chapter:logistic} zu finden.
 
 Der Graph von $f_\lambda(x)$ ist eine Parabel, die die $x$-Achse
 in den Punkten $(0,0)$ und $(1,0)$ schneidet.
+\index{Parabel}%
 Das Maximum wird bei $x=\frac12$ angenommen und ist
 $f_\lambda(\frac12)=\lambda/4$.
-Die Funktion bildet also das Interval $[0,1]$ wieder in das selbe Interval
+Die Funktion bildet also das Intervall $[0,1]$ wieder in das selbe Intervall
 ab, wenn $0\le \lambda\le 4$.
 
-Wir berechnen die Fixpunkte von $f_\lambda(x)$ im Interval $[0,1]$, also
+Wir berechnen die Fixpunkte von $f_\lambda(x)$ im Intervall $[0,1]$, also
 die Lösungen der quadratischen Gleichung
 \[
 x^*  = \lambda x^* (1-x^*)
@@ -372,8 +401,8 @@ x^*
 \displaystyle \frac{\lambda-1}{\lambda}.&
 \end{cases}
 \]
-Für $\lambda<1$ gibt es keinen weitere Fixpunkt im Interval $[0,1]$, für
-$\lambda>1$ ist $(\lambda-1)/\lambda<1$ immer im Interval.
+Für $\lambda<1$ gibt es keinen weitere Fixpunkt im Intervall $[0,1]$, für
+$\lambda>1$ ist $(\lambda-1)/\lambda<1$ immer im Intervall.
 
 Zur Beurteilung der Konvergenz der Iterationsfolge müssen wir die Ableitung
 von $f_\lambda$ im Fixpunkt berechnen.
@@ -395,9 +424,10 @@ f_\lambda\biggl(\frac{\lambda-1}{\lambda}\biggr)
 Daraus liest man mit dem Konvergenzkriterium von
 Satz~\ref{buch:satz:konvergenzkriterium} ab, dass Konvergenz zum Punkte
 $(\lambda-1)/\lambda$ vorliegt für $\lambda \in (1,3)$.
+\index{Konvergenzkriterium}%
 Für $\lambda>3$ divergiert die Iterationsfolge.
 
-Im Beispiel auf Seite Seite~\pageref{buch:beispiel:logistisch3} haben wir
+Im Beispiel auf Seite~\pageref{buch:beispiel:logistisch3} haben wir
 wir den Grenzfall $\lambda=3$ untersucht und festgestellt, dass die
 Iterationsfolge gerade noch konvergiert, allerdings sehr langsam.
 Man beachte, dass das Kriterium \eqref{buch:equation:konvergenzbereich}
@@ -417,7 +447,6 @@ Allerdings ist die Konvergenz wieder ähnlich langsam wie im Falle
 $\lambda=3$.
 Für einen Wert $x_n<0$ ist allerdings $x_{n+1} = x_n - x_n^2 < x_n$,
 d.~h.~die Folge divergiert.
-
 Dieses Verhalten lässt sich auch allgemein formulieren.
 
 \begin{satz}
@@ -432,6 +461,7 @@ $f''(x^*)>0$.
 
 \begin{proof}[Beweis]
 Wir entwickeln die Funktion $f$ im Punkt $x^*$ die Potenzreihe
+\index{Potenzreihe}%
 \begin{align*}
 f(x^*+\delta)
 &=
@@ -531,6 +561,9 @@ Fall zeigen, dass die Konvergenz der Folge sehr langsam ist.
 %
 \subsection{Dritte Ableitung im Fixpunkt
 \label{buch:subsection:dritteableitungfixpunkt}}
+\index{fstrich@$f'''(x)$}%
+\index{dritte Ableitung}%
+\index{Ableitung!dritte}%
 Die bisher zusammengetragenen Sätze decken die Fälle $|f'(x^*)|=1$ mit
 nicht verschwindender zweiter Ableitung $f''(x^*)\ne 0$ ab.
 In einigen Fällen ist Konvergenz nicht gesichert, doch wenn Konvergenz
@@ -542,6 +575,7 @@ das Vorzeichen in einer Umgebung von $x^*$ nicht wechselt.
 Noch nicht untersucht wurde der Fall $f''(x^*)=0$.
 Es ist klar, dass die Konvergenzgeschwindigkeit nicht schneller
 werden kann.
+\index{Konvergenzgeschwindigkeit}%
 Für $f'''(x^*)\ne $ folgt zudem, dass in diesem Fall
 $f(x)-(x^* + f'(x^*)(x-x^*))$
 das Vorzeichen in einer Umgebung von $x^*$ wechselt.

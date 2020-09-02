@@ -7,123 +7,120 @@
 \label{pade:section:Anwendungen}}
 \rhead{Anwendungen}
 
-In diesem Kapitel werden ein paar Anwendungsmöglichkeiten der Padé-Approximation gezeigt.
+In diesem Abschnitt werden ein paar Anwendungsmöglichkeiten der Padé-Approximation gezeigt.
 
 
 
 \subsection{Totzeit Approximation
 \label{pade:subsection:totzeit}}
 
-In der Elektrotechnik werden des öfteren mathematische Probleme im Frequenzbereich gelöst da dies oft einfacher ist.
-Bei der Totzeit spricht man dabei von einer Verzögerung im Zeitbereich, welcher zum Beispiel in einem Regelkreis vorkommen kann.
-Solche Lineare zeitinvariante Systeme (LZI) oder besser bekannt unter dem englischen Begriff linear time-invariant system (LTI), sind unabhängig von zeitlichen Verschiebungen. 
-Jeder der sich mit LTI Systemen auseinander gesetzt hat weiss das eine Totzeit $T$ im Bildbereich
+In der Elektrotechnik werden des öfteren mathematische Probleme im Frequenzbereich gelöst, da dies oft einfacher zu berechnen ist.
+Bei der Totzeit spricht man von einer Verzögerung im Zeitbereich, welche zum Beispiel in einem Regelkreis vorkommen kann.
+Solche lineare zeitinvariante (LZI) Systeme oder besser bekannt unter dem englischen Begriff linear time-invariant (LTI) system, sind unabhängig von zeitlichen Verschiebungen. 
+Jeder, der sich mit LTI Systemen auseinander gesetzt hat, weiss, dass eine Totzeit $T$ im Frequenzbereich
 \begin{equation*}
 H(s) = e^{-sT}
 \end{equation*}
 durch eine Exponentialfunktion ausgedrückt wird.
-Die meisten Übertragungsfunktionen hingegen kommen als gebrochene Polynome, eine Form welche einer rationalen Funktion
+Verschiedene Methoden wie z.B. die Wurzelortskurven können nicht mit Totzeiten umgehen, sondern nur mit Übertragungsfunktionen, welche als gebrochen rationale Funktionen vorliegen.
+Weshalb die Übertragungsfunktion eines Systems typischerweise als gebrochene Polynome, eine Form welche einer rationalen Funktion
 \begin{equation*}
 H(s)=\frac{P(s)}{Q(s)}
 \end{equation*}
-entspricht.
-Diese gebrochenen Polynome verwendet man dann um Pol- und Nullstellen zu finden um damit dann weitere Analysen durchzuführen. 
-Mit $e^{-sT}$ haben wir jedoch keine Polstellen welche wir Analysieren können.
-Dies kann jedoch gefordert sein wenn man eine zeit kontinuierliche Analyse machen möchte.
-Eine Lösung dafür könnte nun sein $e^{-sT}$ zu approximieren und die Approximation für die weiteren Rechnungen zu verwenden.
-Die Padé-Approximation der Exponentialfunktion ist glücklicherweise schon sehr gut bekannt \cite{pade:moler}
+entspricht, vorkommt.
 
-\begin{equation}
-R_{L, M}(x)
-=
-\frac{P_{L, M}(x)}{Q_{L, M}(x)} \approx e^{-x}
-\end{equation}
-wobei $P_{L, M}(x)$ das Zählerpolynom ist
-\begin{equation}
-P_{L, M}(x)
-=
-\sum_{j=0}^{L} \frac{(L+M-j) ! L !}{(L+M) ! j !(L-j) !}(-x)^{j}
-\end{equation}
-und $Q_{L, M}(x)$ das Nennerpolynom der Padéapproximation
-\begin{equation}
-Q_{L, M}(x)
-=
-\sum_{j=0}^{M} \frac{(L+M-j) ! M !}{(L+M) ! j !(M-j) !} x^{j}.
-\end{equation}
-Diesen beide Polynome können verwendet werden um die dazugehörige Padé-Liste 
+Diese gebrochenen Polynome verwendet man, um Pol- und Nullstellen zu finden und damit weitere Analysen durchzuführen. 
+Mit $e^{-sT}$ haben wir jedoch keine brauchbaren Pol- Nullstellen welche wir analysieren können.
+Dies kann jedoch gefordert sein, wenn man eine zeit kontinuierliche Analyse machen möchte.
+Eine Lösung dafür könnte nun sein, $e^{-sT}$ zu approximieren und die Approximation für weitere Rechnungen zu verwenden.
+Die Padé-Approximation der Exponentialfunktion ist glücklicherweise schon bekannt und kann mit den Formeln \eqref{pade:expP} und \eqref{pade:expQ} für eine beliebig hohe Ordnung ermittelt werden.
 
-\begin{equation}\begin{array}{lll}
-R_{[1,1]}(x)=\frac{1-\frac{1}{2} x}{1+\frac{1}{2} x} & 
-R_{[1,2]}(x)=\frac{1-\frac{1}{3} x}{1+\frac{2}{3} x+\frac{1}{6} x^{2}} & 
-R_{[1,3]}(x)=\frac{1-\frac{1}{4} x}{1+\frac{3}{4} x+\frac{1}{4} x^{2}+\frac{1}{24} x^{3}} \\
-R_{[2,1]}(x)=\frac{1-\frac{2}{3} x+\frac{1}{6} x^{2}}{1+\frac{1}{3} x} & 
-R_{[2,2]}(x)=\frac{1-\frac{1}{2} x+\frac{1}{12} x^{2}}{1+\frac{1}{2} x+\frac{1}{12} x^{2}} &
-R_{[2,3]}(x)=\frac{1-\frac{2}{5} x+\frac{1}{20} x^{2}}{1+\frac{3}{5} x+\frac{3}{20} x^{2}+\frac{1}{60} x^{3}} \\
-R_{[3,1]}(x)=\frac{1-\frac{3}{4} x+\frac{1}{4} x^{2}-\frac{1}{24} x^{3}}{1+\frac{1}{4} x} &
-R_{[3,2]}(x)=\frac{1-\frac{3}{5} x+\frac{3}{20} x^{2}-\frac{1}{60} x^{3}}{1+\frac{2}{5} x+\frac{1}{20} x^{2}} &
-R_{[3,3]}(x)=\frac{1-\frac{1}{2} x+\frac{1}{10} x^{2}-\frac{1}{120} x^{3}}{1+\frac{1}{2} x+\frac{1}{10} x^{2}+\frac{1}{120} x^{3}}
-\end{array}\end{equation}
-zu berechnen.
+Die Qualität dieser Approximation können wir nun in einer logarithmischen Skala mit der originalen Funktion vergleichen.
+In der Grafik \ref{pade:totzeitexp} ist ersichtlich, dass die Padé-Approximation mit steigendem Grad bessere Resultate liefert und sich der Exponentialfunktion mehr und mehr annähert.
 
-In der Grafik \ref{pade:totzeitexp} ist ersichtlich das die Approximation mit steigendem Grad bessere Resultate liefert.
-Die Grade werden dabei im Nenner und Zähler unterteilt aufgezeigt.
-In diesem Beispiel mit der Exponentialfunktion erweisen sich die Polynome des selben Grades im Nenner und Zähler als die geeignetsten.
-Wobei mit steigendem Grad eine stetige Verbesserung zugrunde liegt.
-\begin{figure}
+\begin{figure}[!h]
 	\centering
 	\includegraphics[width=1\linewidth]{./papers/pade/python/bilder/totzeit.pdf}
-	\caption{Aufzeigen der Padé-Approximationen der Exponentialfunktion im Vergleich zu der Originalfunktion \label{pade:totzeitexp}}
+	\caption{Plot der Padé-Approximanten der Exponentialfunktion im Vergleich zu der Originalfunktion in einer logarithmischen Skala vergleichend mit der Taylor-Reihe sechster Ordnung der Exponentialfunktion.\label{pade:totzeitexp}}
 \end{figure}
 
-Nehmen wir nun diese Polynome und welche sich noch im Bildbereich befinden und transformieren diese wieder zurück in den Zeitbereich, erhalten wir die in der Grafik \ref{pade:totzeitexp2} Kurven.
-\begin{figure}
+Die Grade werden dabei im Nenner und Zähler unterteilt aufgezeigt.
+Im Beispiel \ref{pade:totzeitexp} mit der Exponentialfunktion, erweisen sich die Polynome des selben Grades im Nenner und Zähler als die genauesten Approximationen.
+Wobei mit steigendem Grad der Approximation eine stetige Verbesserung erzielt wird.
+Zum Vergleich wurde noch die Taylor-Reihe von $e^{-x}$ der sechsten Ordnung in der Grafik \ref{pade:totzeitexp} dargestellt. 
+Diese ist im negativen Bereich der Funktionsachse deutlich schlechter als die Padé-Approximanten, jedoch verhält sie sich im positiven Bereich besser.
+
+
+Nehmen wir nun diese Polynome, welche sich noch im Frequenzbereich befinden und transformieren diese wieder zurück in den Zeitbereich, erhalten wir die in der Grafik \ref{pade:totzeitexp2} dargestellten Kurven.
+
+\begin{figure}[!h]
 	\centering
 	\includegraphics[width=1\linewidth]{./papers/pade/python/bilder/padelow33.pdf}
 	\caption{In den Zeitbereich zurück transformierte Polynome tieferer Ordnung\label{pade:totzeitexp2}.}
 \end{figure}
 
-Die Polynome unterer Ordnung sind dabei noch weit von einem brauchbaren Ergebnis entfernt.
+Die Polynome unterer Ordnung sind dabei noch weit von einem brauchbaren Ergebnis des gesuchten verzögerten Einheitssprunges entfernt.
 Man kann nun die Ordnung der Polynome weiter erhöhen bis man eine zufriedenstellende Approximation erhält.
-Dabei muss man jedoch aufpassen welche Funktion für die Rücktransformation verwendet wird, da nicht alle Implementationen nummerisch stabil sind bei Polynomen grosser Ordnung.
+Dabei muss man jedoch aufpassen welche Methode für die Rücktransformation verwendet wird.
+Nicht alle Implementationen der Rücktransformation von Übertragungsfunktionen in ein Zustandsraummodell sind nummerisch stabil. 
+Bei Polynomen grosser Ordnung oder wenn das Nenner- und Zähler- Polynom nicht gleicher Ordnung sind, können bei einer Rücktarnformation Fehler auftauchen.
+Dies ist jedoch ein anderes Thema, welches den Rahmen dieses Papers sprengen würde und wird deshalb nicht weiter beschrieben.
 
-\todo{Polstellen und Nullstellen erklären mit unstabilität}
 
-\begin{figure}
+\begin{figure}[h]
 	\centering
-	\subfigure[Pole und Nullstellen im Bildbereich geplottet wenn $L=M$ ist.\label{pade:poles1}]{\includegraphics[width=0.50\linewidth]{./papers/pade/python/bilder/poles1.pdf}}
-	\subfigure[Pole und Nullstellen im Bildbereich geplottet wenn $L>M$ ist.\label{pade:poles2}]{\includegraphics[width=0.45\linewidth]{./papers/pade/python/bilder/poles2.pdf}}
-	\subfigure[Pole und Nullstellen im Bildbereich geplottet wenn $L<M$ ist.\label{pade:poles3}]{\includegraphics[width=0.45\linewidth]{./papers/pade/python/bilder/poles3.pdf}}
+	\subfigure[Pole und Nullstellen im Bildbereich geplottet wenn $P=Q$ ist.\label{pade:poles1}]{\includegraphics[width=0.40\linewidth]{./papers/pade/python/bilder/poles1.pdf}}
+	\subfigure[Pole und Nullstellen im Bildbereich geplottet wenn $P>Q$ ist.\label{pade:poles2}]{\includegraphics[width=0.40\linewidth]{./papers/pade/python/bilder/poles2.pdf}}
+	\subfigure[Pole und Nullstellen im Bildbereich geplottet wenn $P<Q$ ist.\label{pade:poles3}]{\includegraphics[width=0.40\linewidth]{./papers/pade/python/bilder/poles3.pdf}}
 	\caption{Visualisierung der Stabilität der Padé-Polynome bei ungleicher $[L/M]$ Ordnung. \label{pade:prole}}
 \end{figure}
 
+In der Grafik \ref{pade:prole} sind nun die Pol- und Nullstellen von höheren Ordnungen dargestellt. 
+Auffallend ist die schöne Symmetrie der Pol- und Nullstellen welche bei gleicher Ordnung der Nenner- und Zähler- Polynome um den Nullpunkt verteilt sind.
+Diese Symmetrie verschwindet wenn der Grad des Nenner- oder des Zähler- Polynoms grösser gewählt wird.
+Dies kann man soweit treiben, bis eine Polstelle in den rechten Bereich der komplexen Halbebenen reicht \ref{pade:poles2},
+was ein instabiles System zur folge hat.
+Ein instabiles System beutetet hier, dass der rücktransformierte Einheitssprung eine immer grösser werdende Schwingung ist.
+ 
 \begin{figure}
 	\centering
-	\includegraphics[width=1\linewidth]{./papers/pade/python/bilder/padehigh1.pdf}
-	\caption{In den Zeitbereich zurück transformierte Polynome höherer Ordnungen \label{pade:totzeit}.}
+	\subfigure[Pole und Nullstellen im Bildbereich geplottet wenn $P=Q$ ist.\label{pade:totzeit1}]{\includegraphics[width=1\linewidth]{./papers/pade/python/bilder/padehigh1.pdf}}
+	\subfigure[Pole und Nullstellen im Bildbereich geplottet wenn $P=Q-10$ ist.\label{pade:totzeit2}]{\includegraphics[width=1\linewidth]{./papers/pade/python/bilder/padehigh2.pdf}}
 \end{figure}
+Verwendet man nun die Approximanten höherer und gleicher Ordnung für die Rücktransformation in Grafik \ref{pade:totzeit1}, erhält man einen immer besser werdenden Einheitssprung mit einem kleinen Überschwinger vor und nach dem Sprung. 
+Auffallend ist hier, dass der Padé-Approximant höchster Ordnung zu beginn den grössten Fehlerpeak hat.
+Dieser ist sogar so hoch wie der Einheitssprung selbst.
 
-\todo{Abschluss welche Methoden bei der Rücktransformation nicht funktionieren und wie man das umgehen kann}
+Um diesen Fehlerpeak zu Beginn ein wenig zu vermindern, können nun die Pole in der komplexen Ebene ein wenig näher zur positiven Halbebene gebracht werden.
+Wie schon in  dem Pol- Nullstellendiagramm \ref{pade:poles2} erkennbar, ist das mit einer Differenz von der Ordnung des Zählerpolynoms $p$ und Nennerpolynom $q$ möglich.
+Mit einer Differenz von 190 zu 200 der Polynom Ordnung wurde die Rücktransformierte des Padé-Approximanten der Grafik \ref{pade:totzeit2} dargestellt.
+Deutlich zu sehen ist dabei, dass der Überschwinger, welcher bei dem Padé-Approximanten gleicher Ordnung in derselben Grafik \ref{pade:totzeit2} noch vorhanden ist, verschwindet.
+Jedoch besitzt der Approximant ungleicher Ordnung eine längere Einschwingzeit als der mit gleicher Ordnung. 
+Mit diesen Werten der Ordnungen kann in der Praxis solange optimiert werden, bis man die beste Lösung für sein Problem gefunden hat.
+Es gäbe dabei noch die Möglichkeit, weitere Filter einzubauen, um diese Schwingungen zu dämpfen und ein noch besseres Resultat zu erzielen.
 
+
+\newpage
 
 \subsection{Signal Modellierung
 	\label{pade:subsection:SignalMod}}
 
-Das Ziel einer Signalmodellierung ist dass eine parametrische Beschreibung eines Signales gefunden wird.
+Das Ziel einer Signalmodellierung ist, dass eine parametrische Beschreibung eines Signales gefunden wird.
 Dies kann für die Filterentwicklung, Interpolation, Extrapolation oder Kompression verwendet werden.
-Dabei kann man immer das gleiche Modell verwenden, welches der Ausgang eines linearen verschiebungsinvarianten Filters zu einem Eingang $v(n)$ darstellt. 
-\begin{figure}
-	\centering
-	\tikzset{>=latex}
+Dabei kann man immer das gleiche Modell verwenden, welches der Ausgang $x(n)$ eines linearen verschiebungsinvarianten Filters zu einem Eingang $v(n)$ darstellt. 
+ 
+\begin{center}
 \begin{tikzpicture}
+\tikzset{>=latex}
 \node at (-1,1.2)  {$v(n)$}; 
 \draw[thick,->] (-2,1)--(0,1);
 \draw[thick] (0,0) rectangle (3,2) node[pos=.5] {$H(z)=\frac{B_q (z)}{A_p (z)}$};
 \draw[thick,->] (3,1)--(5,1);
-\node at (4,1.2)  {$\widehat{x}(n)$}; 
+\node at (4,1.2)  {$\hat{x}(n)$}; 
 \end{tikzpicture}
-\end{figure}
-Dieses Modell wird mit
+\end{center}
 
+Dieses Modell wird mit
 \begin{equation}
 H(z)
 =
@@ -132,61 +129,10 @@ H(z)
 \frac{\sum_{k=0}^{q} b_{q}(k) z^{-k}}{1+\sum_{k=1}^{p} a_{p}(k) z^{-k}}
 \end{equation}
 als eine rationale Funktion beschrieben.
-Das Eingangssignal welches auf den Filter wirkt ist meist ein diskreter Impuls $\delta(n)$.
-Der Modellierungsfehler setzt sich dabei aus der Einheitssprungantwort $h(n)$ und dem diskreten Signal $x(n)$ zusammen.
-Dabei ist das Ziel den quadratischen Fehler (Least Squares Method)
-\begin{equation}
-\mathcal{E}_{L S}
-=
-\sum_{n=0}^{\infty}\left|e^{\prime}(n)\right|^{2}
-\end{equation}
-des Systems zu minimieren.
-Um dies zu erreichen   
-\begin{equation}\begin{array}{ll}
-\frac{\partial \mathcal{E}_{L S}}{\partial a_{p}^{*}(k)}
-=
-0 
-& 
-; k=1,2, \ldots, p \\
-\frac{\partial \mathcal{E}_{L S}}{\partial b_{q}^{*}(k)}
-=
-0 ; 
-&
- k=0,1, \ldots, q
-\end{array}\end{equation}
-werden die Ableitungen gleich 0 gesetzt.
-Aus diesen Bedienungen resultiert eine Menge von nichtlinearen Gleichungen 
-
-\begin{equation}
-\frac{\partial \mathcal{E}_{L S}}{\partial a_{p}^{*}(k)}
-=
-\frac{1}{2 \pi} 
-\int_{-\pi}^{\pi}
-\left[X\left(e^{j \omega}\right)-\frac{B_{q}\left(e^{j \omega}\right)}{A_{p}\left(e^{j \omega}\right)}\right] 
-\frac{B_{q}^{*}\left(e^{j \omega}\right)}{\left[A_{p}^{*}\left(e^{j \omega}\right)\right]^{2}} 
-e^{j k \omega} d \omega
-=
-0
-\end{equation}
-\begin{equation}
-\frac{\partial \mathcal{E}_{L S}}{\partial b_{q}^{*}(k)}
-=
--\frac{1}{2 \pi} 
-\int_{-\pi}^{\pi}
-\left[X\left(e^{j \omega}\right)-\frac{B_{q}\left(e^{j \omega}\right)}{A_{p}\left(e^{j \omega}\right)}\right] 
-\frac{e^{j k \omega}}{A_{p}^{*}\left(e^{j \omega}\right)} d \omega
-=
-0
-\end{equation}
-
-\todo{Zitieren}
-
-welche möglicherweise sehr schwierig lösbar sind.
-Aus diesem Grund wird in der Praxis der Ansatz des kleinsten quadratischen Fehlers vermieden. 
-
-
-\begin{figure}
-	\centering
+Das Ziel ist es einen Filter $H(z)$ und ein Input $v(n)$, welche $\hat{x}(n)$ so nahe wie möglich an $x(n)$ bringen, zu finden.
+Das Eingangssignal, welches auf den Filter wirkt, ist meist ein diskreter Impuls $\delta(n)$.
+Der Modellierungsfehler $e^{\prime}(n)$ setzt sich aus der Differenz der Einheitssprungantwort $h(n)$ und dem diskreten Signal $x(n)$ zusammen.
+\begin{center}
 	\tikzset{>=latex}
 	\begin{tikzpicture}
 	\node at (-1,1.2)  {$\delta(z)$}; 
@@ -200,11 +146,261 @@ Aus diesem Grund wird in der Praxis der Ansatz des kleinsten quadratischen Fehle
 	\node at (5.8,2.5)  {$x(n)$}; 
 	\node at (6.5,1.2)  {$e^{\prime}(n)$}; 
 	\end{tikzpicture}
-\end{figure}
+\end{center}
+Ziel ist es den quadratischen Fehler 
+\begin{equation}
+E_{L S}
+=
+\sum_{n=0}^{\infty}\left|e^{\prime}(n)\right|^{2}
+\end{equation}
+des Systems zu minimieren (Least Squares Method).
+Um dies zu erreichen, werden die Ableitungen   
+\begin{equation}\begin{array}{ll}
+\frac{\partial E_{L S}}{\partial a_{p}^{*}(k)}
+=
+0 
+& 
+\text{mit } k=1,2, \ldots, p \\
+&\\
 
-\todo{Beispiel Signal Modellierung mit Padé-Approximation Zeigen}
+\frac{\partial E_{L S}}{\partial b_{q}^{*}(k)}
+=
+0  
+&
+ \text{mit } k=0,1, \ldots, q
+\end{array}\end{equation}
+gleich 0 gesetzt.
+Aus diesen Bedienungen resultiert eine Menge von nichtlinearen Gleichungen 
 
-\todo{Folgerung schreiben}
+\begin{align*}
+\frac{\partial E_{L S}}{\partial a_{q}^{*}(k)}
+&=
+\frac{1}{2 \pi} 
+\int_{-\pi}^{\pi}
+\left[X\left(e^{j \omega}\right)-\frac{B_{q}\left(e^{j \omega}\right)}{A_{p}\left(e^{j \omega}\right)}\right] 
+\frac{B_{q}^{*}\left(e^{j \omega}\right)}{A_{p}^{*}\left(e^{j \omega}\right)^{2}} 
+e^{j k \omega} d \omega
+=
+0\\
+\frac{\partial E_{L S}}{\partial b_{q}^{*}(k)}
+&=
+-\frac{1}{2 \pi} 
+\int_{-\pi}^{\pi}
+\left[X\left(e^{j \omega}\right)-\frac{B_{q}\left(e^{j \omega}\right)}{A_{p}\left(e^{j \omega}\right)}\right] 
+\frac{e^{j k \omega}}{A_{p}^{*}\left(e^{j \omega}\right)} d \omega
+=
+0
+\end{align*}
+welche möglicherweise sehr schwierig lösbar sind.
+Aus diesem Grund wird in der Praxis der Ansatz des kleinsten quadratischen Fehlers vermieden. 
+Um diese nichtlinearen Gleichungen zu vermeiden und dennoch eine Lösung zu finden, welche uns eine passende Anzahl von $x[n]$ Werten mit der Einheitssprungantwort verbindet, kann ein eleganter Trick, der zur Padé-Approximation führt verwendend werden. 
+\begin{equation}
+H(z) A_{p}(z)=B_{q}(z)
+\end{equation}
+In der Zeitebene betrachtet handelt es sich in bei dieser Gleichung um eine Faltung.
+\begin{equation}
+h(n)+\sum_{k=1}^{p} a_{p}(k) h(n-k)=b_{q}(n)
+\end{equation}
+Die rechte Seite der Gleichung für $n>q$ ist dabei gleich null.
+Diese Fallunterscheidung
+\begin{equation}
+x(n)+\sum_{k=1}^{p} a_{p}(k) x(n-k)
+=
+\left\{\begin{array}{cc}
+b_{q}(n) & 
+\quad \text{mit } \quad n=0,1, \ldots, q \\
+0 & 
+\quad \quad \quad\text{mit } \quad n=q+1, \ldots, q+p
+\end{array}\right.\end{equation}
+kann in die Matrixform 
+\begin{equation}
+\left[\begin{array}{cccc}
+x(0) & 0 & \cdots & 0 \\
+x(1) & x(0) & \cdots & 0 \\
+x(2) & x(1) & \cdots & 0 \\
+\vdots & \vdots & & \vdots \\
+x(q) & x(q-1) & \cdots & x(q-p) \\
+x(q+1) & x(q) & \cdots & x(q-p+1) \\
+\vdots & \vdots & & \vdots \\
+x(q+p) & x(q+p-1) & \cdots & x(q)
+\end{array}\right]
+\left[\begin{array}{c}
+1 \\
+a_{p}(1) \\
+a_{p}(2) \\
+\vdots \\
+a_{p}(p) \\
+\end{array}\right]
+=
+\left[\begin{array}{c}
+b_{q}(0) \\
+b_{q}(1) \\
+b_{q}(2) \\
+\vdots \\
+b_{q}(q) \\
+0 \\
+\vdots \\
+0
+\end{array}\right]
+\end{equation}
+gebracht werden.
+Diese Matrix ist uns schon aus dem Abschnitt \ref{pade:subsection:Pade_erstellen} bekannt. Es handelt sich nämlich um eine Padé-Approximation,
+welche wir nun für das Signal mit einer vorgegebener Ordnung berechnen können.
+
+\begin{beispiel}
+
+Die ersten sechs Signale eines Signales sind vorgegeben.
+\begin{equation*}
+\bm x=\left[
+\begin{array}{l}
+1.0000\\
+1.5000\\
+0.7500\\
+0.3750\\
+0.1875 \\
+0.0938
+\end{array}\right]
+\end{equation*}
+Das Ziel ist drei verschiedene Padé-Approximanten mit drei verschiedenen Freiheitsgraden zu finden.
+\begin{equation*}\begin{aligned}
+&\begin{array}{ll}
+\text { All pole } & (q=0, p=2) \\
+\text { FIR } & (q=2, p=0)\\
+\text { IIR } &(\mathrm{q}=1, \mathrm{p}=1)
+\end{array}\\
+\end{aligned}\end{equation*}
+
+Das All pole Modell $(q=0,p=2)$ wird in die Matrixform
+\begin{equation}\left[\begin{array}{ccc}
+x(0) & 0 & 0 \\
+x(1) & x(0) & 0 \\
+x(2) & x(1) & x(0)
+\end{array}\right]\left[\begin{array}{c}
+1 \\
+a_1 \\
+a_2
+\end{array}\right]=\left[\begin{array}{c}
+b_0 \\
+0 \\
+0
+\end{array}\right]\end{equation}
+gebracht. 
+Von der ersten Gleichung folgt, dass der Wert $b_0 = x(0)=1$ ergeben muss. 
+Weiter können nun die letzten zwei Gleichungen
+\begin{equation}\left[\begin{array}{ll}
+x(0) & 0 \\
+x(1) & x(0)
+\end{array}\right]\left[\begin{array}{l}
+a_1 \\
+a_2
+\end{array}\right]=-\left[\begin{array}{l}
+x(1) \\
+x(2)
+\end{array}\right]\end{equation}
+eingesetzt und gelöst werden.
+\begin{equation}\left[\begin{array}{cc}
+1 & 0 \\
+1.5 & 1
+\end{array}\right]\left[\begin{array}{l}
+a_1 \\
+a_2
+\end{array}\right]=-\left[\begin{array}{c}
+1.50 \\
+0.75
+\end{array}\right]\end{equation}
+\begin{equation}
+a_1=-1.50 \quad  \quad a_2=1.50
+\end{equation}
+
+Somit haben wir das Ergebnis für unser $x(n)$ 
+\begin{equation}
+H(z)=\frac{1}{1-1.50 z^{-1}+1.50 z^{-2}}
+\end{equation}
+berechnet.
+Man sollte beachten, dass sich die Pole nicht im Einheitskreis befinden und somit das Resultat kein stabiles Modell sein wird.
+
+Für das FIR-Modell $(q=2,P=0)$ ist das Resultat einfach mit $A(z)=1$ berechenbar.
+
+\begin{equation}\begin{array}{r}
+
+{\left[\begin{array}{l}
+	x(0) \\
+	x(1) \\
+	x(2)
+\end{array}\right]
+=
+\left[\begin{array}{l}
+	b_0 \\
+	b_1 \\
+	b_2
+	\end{array}\right]}
+\end{array}\end{equation} 
+Somit erhalten wir 
+\begin{equation}
+H(z)=1+1.50 z^{-1}+0.75 z^{-2}
+\end{equation}
+als unser Modell.
+
+Für das IIR-Modell mit $(q=1,p=1)$ welches die Form
+\begin{equation}
+H(z)=\frac{b(0)+b(1) z^{-1}}{1+a(1) z^{-1}}
+\end{equation}
+erhalten wird, sind die Padé-Gleichungen
+
+\begin{equation}\left[\begin{array}{ll}
+x(0) & 0 \\
+x(1) & x(0) \\
+x(2) & x(1)
+\end{array}\right]\left[\begin{array}{c}
+1 \\
+a_1
+\end{array}\right]=\left[\begin{array}{c}
+b_0 \\
+b_1\\
+0.
+\end{array}\right]\end{equation}
+Der Pol in der letzten Gleichung 
+\begin{equation}
+x(2)+a_1 x(1)=0
+\end{equation}
+kann damit gerechnet werden.
+Eingesetzt und nach $a_1$ aufgelöst erhalten wir
+\begin{equation}
+a_1=-\frac{x(2)}{x(1)}=
+-\frac{0.75}{1.5}=
+-0.5.
+\end{equation}
+Mit den bekannten Polen können nun die Nullstellen mit den oberen zwei Gleichungen 
+\begin{equation}\left[\begin{array}{c}
+b_0 \\
+b_1
+\end{array}\right]=\left[\begin{array}{cc}
+1 & 0 \\
+1.5 & 1
+\end{array}\right]\left[\begin{array}{c}
+1 \\
+-0.5
+\end{array}\right]=\left[\begin{array}{l}
+1 \\
+1
+\end{array}\right]\end{equation}
+berechnet werden.
+Die Koeffizienten können nun in das Modell eingesetzt werden, womit wir
+\begin{equation}
+H(z)=\frac{1+z^{-1}}{1-0.5 z^{-1}}
+\end{equation}
+erhalten.
+Dieses Modell hat eine identische Einheitssprungantwort 
+\begin{equation}
+h(n)=(0.5)^{n} u(n)+(0.5)^{n-1} u(n-1)
+=
+\delta(n)+1.5(0.5)^{n-1} u(n-1)\end{equation}
+wie $x(n)$.
+Dies ist jedoch ein Spezialfall und kommt nicht immer vor.
+\end{beispiel}
+
+
+
 
 
 

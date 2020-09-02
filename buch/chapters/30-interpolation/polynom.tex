@@ -7,7 +7,8 @@
 \label{buch:section:interpolationspolynom}}
 \rhead{Lagrange-Interpolationspolynome}
 In diesem Abschnitt wird die folgende Aufgabe gelöst.
-\begin{aufgabe}[Interplations-Polynom]
+\begin{aufgabe}[Interpolationspolynom]
+\index{Interpolationspolynom}%
 Gegeben Stützstellen
 \[
 a=x_0<x_1<x_2<\dots < x_{n-1}<x_n=b
@@ -19,6 +20,7 @@ Gegeben sind also $n+1$ Bedingungen, die das Polynom erfüllen muss.
 Abgesehen von trivialen Fällen wie dem Null-Polynom, muss ein Polynom
 im Allgemeinen mindestens den Grad $n$ haben, damit alle 
 Bedingungen durch geeignete Wahl der $n+1$ Koeffizienten erfüllt werden können.
+\index{Nullpolynom}%
 Man könnte das Polynom nämlich in der Form
 \[
 p(x)
@@ -26,7 +28,9 @@ p(x)
 a_nx^n + a_{n-1}x^{n-1}+\dots+a_1x+a_0
 \]
 ansetzen und die Stützstellen einsetzen.
+\index{Stützstellen}%
 Lösung des Gleichungssystem
+\index{Gleichungssystem!für das Interpolationspolynom}%
 \begin{equation}
 \begin{linsys}{5}
 {\color{red}a_N}x_0^N &+& {\color{red}a_{N-1}}x_0^{N-1} &+& \dots &+& {\color{red}a_1}x_0 &+& {\color{red}a_0}x_0 &=& f_0 \\[5pt]
@@ -37,8 +41,10 @@ Lösung des Gleichungssystem
 \end{equation}
 für die Koeffizienten $\color{red}a_k$
 liefert dann die gesuchten Koeffizienten.
+\index{Koeffizient}%
 Dieser Weg ist allerdings sehr aufwendig, die Lösung eines linearen
 Gleichungssystems mit dem Gauss-Algorithmus benötigt $O(n^3)$ Operationen.
+\index{Gauss-Algorithmus}%
 Die sehr spezielle Struktur des Gleichungssystems sollte ermöglichen,
 das Polynom $l(x)$ auf direkterem Weg zu ermitteln.
 
@@ -49,6 +55,8 @@ das Polynom $l(x)$ auf direkterem Weg zu ermitteln.
 \label{buch:section:interpolation:bestimmung}}
 Das allgemeine Interpolationsproblem kann leicht gelöst werden, wenn
 das folgende spezielle Interpolationsproblem gelöst ist.
+\index{Interpolationspolynom!spezielles}%
+\index{spezielles Interpolationspolynom}%
 
 \begin{aufgabe}[Spezielle Interpolationspolynome]
 \label{buch:aufgabe:speziellesinterpolationsproblem}
@@ -76,6 +84,7 @@ lösen.
 
 Jedes der Interpolationspolynome $l_j$ hat Grad $n$, also hat auch eine
 beliebige Linearkombination den Grad höchstens $n$.
+\index{Linearkombination}%
 Die Linearkombination
 \[
 p(x) = \sum_{j=0}^n f_j l_j(x)
@@ -103,7 +112,7 @@ l_0(x) = \frac{x_1-x}{x_1-x_0}
 l_1(x) = \frac{x-x_0}{x_1-x_0}
 \]
 haben die geforderten Eigenschaften.
-Die gesuchte Interplationsfunktion ist daher
+Die gesuchte Interpolationsfunktion ist daher
 \[
 p(x)
 =
@@ -122,6 +131,7 @@ l(x)
 =
 (x-x_0)(x-x_1)(x-x_2)\cdots (x-x_{n-1})(x-x_n).
 \]
+\index{lx@$l(x)$}%
 Ein Polynom, welches nur an der Stützstelle $x_j$ {\em nicht} verschwindet,
 ensteht, indem man den Faktor $(x-x_j)$ weglässt, es hat den Grad $n$.
 Wir führen dafür die Notation
@@ -142,6 +152,7 @@ Einsetzen von $x_j$ ergibt
 l_j(x_j) = 1 = 
 c_j(x_j-x_0)(x_j-x_1)(x_j-x_2)\cdots \widehat{(x_j-x_j)}\cdots(x_j-x_{n-1})(x_j-x_n),
 \]
+\index{ljx@$l_j(x)$}%
 die Konstante $c_j$ ist daher
 \[
 c_j = \prod_{i=0\atop i\ne j}^n \frac{1}{x_j-x_i}.
@@ -171,34 +182,41 @@ l(x) = l_1(x)
 Getreu der Maxime, dass wir zu jeder numerischen Lösungsformel auch
 Informationen über die zu erwartenden Fehler brauchen, entwickeln
 wir in diesem Abschnitt die Theorie des Fehlers der Approximationspolynome.
+\index{Fehler des Approximationspolynoms}%
 Wir müssen zu diesem Zweck einen kleinen Ausflug in die Analysis unternehmen
 in einen Bereich, der im Unterricht manchmal etwas zu kurz kommt.
 
-Wenn die Ableitung einer Funktion in einem Interval klein ist,
-dann werden auch die Funktionswerte im Inneren dieses Intervals
+Wenn die Ableitung einer Funktion in einem Intervall klein ist,
+dann werden auch die Funktionswerte im Inneren dieses Intervalls
 nicht gross von den Werten am Rand abweichen können.
 Eine grosse Abweichung würde ja automatisch eine Steigung einer Sekanten
 und damit auch eine grosse Steigung einer Tangenten zur Folge haben.
+\index{Sekante}%
+\index{Tangente}%
 Dies ist die Idee, die den nachfolgend entwickelten Fehlerabschätzungen
 zu Grunde liegt.
+\index{Fehlerabschätzung}%
 
 \subsubsection{Der Zwischenwertsatz}
+\index{Zwischenwertsatz}%
 Der Ausgangspunkt aller nachfolgenden Überlegungen ist die intuitiv
 anschauliche Tatsache, dass eine stetige Funktion keine Sprünge macht.
 
-\begin{satz}
+\begin{satz}[Zwischenwertsatz]
 Eine auf dem Intervall $[a,b]$ stetige Funktion nimmt jeden Wert im
-Interval $[f(a),f(b)]$ an.
+Intervall $[f(a),f(b)]$ an.
 Anders ausgedrückt, für jedes $y$ zwischen $f(a)$ und $f(b)$ gibt es ein 
 $x$ zwischen $a$ und $b$ derart, dass $y=f(x)$.
 \end{satz}
 
 Dieser Satz war natürlich bereits die Grundlage des Verfahrens der
-Interval-Halbierung, mit welchem wir in
+Intervallhalbierung, mit welchem wir in
 Abschnitt~\ref{buch:subsection:intervallhalbierung}
 Gleichungen gelöst haben.
+\index{Intervallhalbierung}%
 Wenn die Funktion an den Intervallenden verschiedene Vorzeichen hat,
 dann muss es eine Nullstelle im Inneren des Intervalls geben.
+\index{Nullstelle}%
 Die Intervallhalbierung hat in jedem Schritt ein neues Intervall
 konstruiert, das die Nullstelle enthielt.
 
@@ -207,8 +225,8 @@ konstruiert, das die Nullstelle enthielt.
 \centering
 \includegraphics{chapters/30-interpolation/figures/rolle.pdf}
 \caption{Satz von Rolle: eine nicht konstante differenzierbare Funktion,
-die an den Enden eines Intervals den gleichen Funktionswert hat, hat im 
-Inneren des Intervals eine Stelle $\xi$ mit Ableitung $0$.
+die an den Enden eines Intervalls den gleichen Funktionswert hat, hat im 
+Inneren des Intervalls eine Stelle $\xi$ mit Ableitung $0$.
 \label{buch:figure:rolle}}
 \end{figure}
 Der Satz von Rolle erweitert den Zwischenwertsatz auf die Ableitung einer
@@ -216,7 +234,9 @@ differenzierbaren Funktion an (Abbildung~\ref{buch:figure:rolle}).
 
 \begin{satz}[Rolle]
 \label{buch:satz:rolle}
-Sei $f$ eine auf dem Interval $[a,b]$ nicht konstante,
+\index{Satz von Rolle}%
+\index{Rolle, Satz von}%
+Sei $f$ eine auf dem Intervall $[a,b]$ nicht konstante,
 stetig differenzierbare Funktion
 mit $f(a)=f(b)$, dann gibt es einen Punkt $\xi\in(a,b)]$ im Inneren
 des derart, dass $f'(\xi)=0$.
@@ -226,16 +246,16 @@ Der Satz von Rolle ist eine Selbstverständlichkeit, wenn die Ableitung
 $f'(x)$ stetig ist, doch dies wird nicht vorausgesetzt, es wird nur
 verlangt, dass die Ableitung existiert.
 Ausserdem macht der Satz eine Aussage darüber, dass die Zwischenstelle
-$\xi$ im Inneren des Intervals sei.
+$\xi$ im Inneren des Intervalls sei.
 
 \begin{proof}[Beweis]
-Eine stetige Funktion hat auf dem kompakten Interval $[a,b]$ mindestens
+Eine stetige Funktion hat auf dem kompakten Intervall $[a,b]$ mindestens
 ein Maximum und ein Minimum.
 Da die Funktion nicht konstant ist, ist das Maximum oder das Minimum
 von $f(a)$ verschieden.
 Wir nehmen an $\xi\in[a,b]$ sei ein Maximum mit dieser Eigenschaft,
 das Argument für das Minimum ist völlig analog.
-Wegen $f(\xi)>f(a)$ ist $\xi$ ein Punkt im Inneren des Intervals,
+Wegen $f(\xi)>f(a)$ ist $\xi$ ein Punkt im Inneren des Intervalls,
 also kann $\xi$ nicht $=a$ sein, folglich ist $\xi\in(a,b)$.
 
 Wegen $f(\xi) \ge f(x)\forall x\in[a,b]$
@@ -305,8 +325,11 @@ Die $n$-te Ableitung ist konstant und hat keine Nullstellen.
 %\end{figure}
 
 \subsubsection{Der Mittelwertsatz der Differentialrechnung}
+\index{Mittelwertsatz}%
+\index{Mittelwertsatz!der Differentialrechnung}%
 Der Satz von Rolle sagt etwas über die Nullstellen von der Ableitung
 einer differenzierbaren Funktion.
+\index{Ableitung}%
 Zwischen zwei Argumentwerten mit gleichem Funktionswert gibt es immer
 eine Nullstelle der Ableitung.
 Der Mittelwertsatz der Differentialrechnung verallgemeinert diese
@@ -359,6 +382,8 @@ f'(\xi) = \frac{f(b)-f(a)}{b-a}.
 \end{proof}
 
 \subsubsection{Mittelwertsatz und ebene Kurven}
+\index{ebene Kurve}%
+\index{Kurve, ebene}%
 Die von Abbildung~\ref{buch:polynome:figure:mittelwertsatz} vermittelte
 Intuition lässt sich auch für beliebige parametrisierte Kurven
 $\gamma\colon[a,b]\to\mathbb R:\to\mapsto (x(t),y(t))$ in der Ebene
@@ -366,6 +391,7 @@ verallgemeinern (Abbildung~\ref{buch:polynome:figure:mittelwertsatz} rechts).
 Sind die Punkte $A=(x(a),y(a))$ und $B=(y(a),y(b))$ verschieden,
 so dass die Richtung von $A$ nach $B$ wohldefiniert ist, dann erwarten
 wir einen Zwischenstelle $\xi$ mit einer Tangente mit derselben Richtung.
+\index{Tangente}%
 
 \begin{satz}
 \label{buch:satz:mittelwertsatz2d}
@@ -379,6 +405,7 @@ Richtung hat wie $\overrightarrow{AB}$.
 \begin{proof}[Beweis]
 Zwei Vektoren haben die gleiche Richtung, wenn die Determinante
 mit den Vektoren als Spaltenvektoren verschwindet.
+\index{Determinante}%
 Der Mittelpunkt der Strecke $AB$ ist
 $M=(x_M,y_M) = (\frac12(x(a)+x(b)),\frac12(y(a)+y(b)))$.
 Wir definieren die Funktion
@@ -409,6 +436,7 @@ h(b)
 0.
 \]
 Nach dem Satz von Rolle muss es daher ein $\xi\in[a,b]$ geben mit
+\index{Satz von Rolle}%
 \begin{equation}
 0
 =
@@ -434,7 +462,7 @@ parallel ist zur Strecke $AB$.
 
 \begin{satz}[Verallgemeinerter Mittelwertsatz]
 \label{buch:satz:vmittelwertsatz}
-Sind $x(t)$ und $y(t)$ stetig differenzierbare Funktionen auf dem Interval
+Sind $x(t)$ und $y(t)$ stetig differenzierbare Funktionen auf dem Intervall
 $[a,b]$ derart, dass $x(a)\ne x(b)$ oder $y(a)\ne x(b)$ und ausserdem
 $y'(t)\ne 0$ für $t\in[a,b]$.
 Dann gibt es ein $\xi\in[a,b]$ mit
@@ -451,7 +479,7 @@ den Voraussetzungen des Satzes~\ref{buch:satz:mittelwertsatz2d}
 genügt.
 Es gibt daher einen Punkten $\xi\in[a,b]$ wo die Tangente
 parallel zur Strecke $AB$ ist.
-Nach~\label{buch:polynome:eqn:mittelwertsatz2d} bedeutet dies
+Nach~\ref{buch:polynome:eqn:mittelwertsatz2d} bedeutet dies
 \[
 y'(\xi) \cdot (x(b)-x(a))
 -
@@ -466,6 +494,7 @@ x'(\xi) \cdot (y(b)-y(a))
 \end{proof}
 
 \subsubsection{Mittelwertsatz in $\mathbb R^n$}
+\index{Mittelwertsatz in $\mathbb R^n$}
 Der Mittelwertsatz verspricht die Existenz eines Arguments $\xi\in[a,b]$,
 gibt aber keinerlei Hinweise darauf, wie $\xi$ berechnet werden könnte. 
 Ausserdem lässt sich der Satz in dieser Form nicht auf höherdimensionale
@@ -474,6 +503,7 @@ In vielen Anwendungen des Mittelwertsatzes ist der genaue Wert von $\xi$
 gar nicht nötig.
 Meistens wird nur verwendet, dass die Ableitung eine Abschätzung dafür
 gibt, wie gross der Unterschied zwischen $f(b)$ und $f(a)$ sein kann.
+\index{Ableitung}%
 Dies kann zum Beispiel wie im folgenden Satz formuliert werden.
 
 \begin{satz}
@@ -490,8 +520,11 @@ $f\colon [a,b]\to\mathbb R^n$ gibt es ein $\xi\in[a,b]$ mit
 
 Diese Form ist ausreichend, um zum Beispiel Fehlerabschätzungen in der
 Numerik durchzuführen.
+\index{Fehlerabschätzung}%
 
 \subsubsection{Taylor-Reihe mit Lagrange-Restterm}
+\index{Taylor-Reihe}%
+\index{Lagrange-Restterm}%
 Die Ableitung $f'(a)$ einer Funktion $f(x)$ an der Stelle $a$ ist definiert
 als die beste lineare Approximation
 \[
@@ -530,6 +563,7 @@ f''(a)=T_{a,n}f''(a),\quad
 f^{(n)}(a)=T_{a,n}f^{(n)}(a).
 \]
 Ausserdem gibt es einen Wert $\xi\in[a,x]$ derart, dass der Fehler
+\index{Fehler}%
 \[
 R_{n,a}f(x)
 =
@@ -539,12 +573,14 @@ f^{(n+1)}(\xi)\frac{(x-a)^{n+1}}{(n+1)!}
 \]
 ist.
 \end{satz}
-\index{Taylor-Polynom}
+\index{Taylor-Polynom}%
 $R_{n,a}f(x)$ heisst das {\em Lagrange-Restglied} des Taylor-Polynoms.
+\index{Lagrange-Restglied}%
 
 \begin{proof}[Beweis]
 Zunächst kann die Behauptung über die Ableitungen von $T_{n,a}f(x)$ durch
 die Rechnung
+\index{Ableitung}%
 \begin{align*}
 T_{n,a}f'(x)
 &=
@@ -586,8 +622,11 @@ g(x) = g^{(n+1)}(\xi)\frac{(x-a)^{n+1}}{(n+1)!}
 \]
 gilt.
 Der Fall $n=0$ ist der Mittelwertsatz~\ref{buch:satz:mittelwertsatz}.
+\index{Mittelwertsatz}.
 
 Für $n>0$ kann die Behauptung mit vollständiger Induktion bewiesen werden.
+\index{Induktion, vollständige}%
+\index{vollständige Induktion}%
 Sei also bereits bewiesen, dass für eine Funktion, deren Ableitungen bis
 zur Ordnung $n-1$ an der Stelle $a$ verschwinden, eine Zahl $\xi\in[a,x]$
 existiert mit
@@ -611,6 +650,7 @@ Quotient
 zu berechnen.
 Nach dem verallgemeinerten Mittelwertsatz~\ref{buch:satz:vmittelwertsatz}
 gibt es $\xi_1\in[a,x]$ mit
+\index{Mittelwertsatz}%
 \[
 \frac{g'(\xi_1)}{h'(\xi_1)}
 =
@@ -630,6 +670,7 @@ Da die Ableitung $h'(x)=(n+1)(x-a)^n$ ist, folgt
 Die Ableitungen der Ordnung $\le n-1$ der Funktion $g'(x)$ verschwinden
 im Punkt $a$, nach Induktionsvoraussetzung gibt es also ein $\xi$ derart,
 dass
+\index{Induktionsvoraussetzung}%
 \[
 g'(\xi_1)
 =
@@ -653,6 +694,7 @@ Durch Multiplikation mit $(x-a)^{n+1}$ erhalten wir
 g(x) = g^{(n+1)}(\xi)\frac{(x-a)^{n+1}}{(n+1)!}.
 \]
 Damit ist der Induktionsschritt vollzogen und die Restformel bewiesen.
+\index{Induktionsschritt}%
 \end{proof}
 
 \begin{beispiel}
@@ -660,6 +702,7 @@ Die Funktion $f(x)=x^N$ hat an der Stelle $a=0$ verschwindende
 Ableitungen bis zur Ordnung $N-1$.
 Das Taylor-Polynom $T_{0,n}f(x)$ der Ordnung $n$ dieser Funktion
 verschwindet daher für $n<N$.
+\index{Taylor-Polynom}%
 Nach der Restformel für das Taylor-Polynom gibt es Zahlen $\xi_n$ derart
 \begin{align*}
 R_{n,0}f(x)
@@ -689,6 +732,7 @@ N\cdot(N-1)\cdot(N-2)\cdot\dots\cdot(N-n)
 \end{beispiel}
 
 \subsubsection{Fehlerabschätzungen}
+\index{Fehlerabschätzung}%
 Im Hinblick auf die nachfolgende Diskussion des Fehlers des
 Interpolationspolynoms formulieren wir dies noch als eine
 Fehlerabschätzung.
@@ -717,8 +761,10 @@ er ist also beschränkt einerseits durch ein Polynom mit Grad $n+1$
 und den grössten Wert der $(n+1)$-te Ableitung im Intervall $[a,x]$.
 Die Fehlerformel für das Interpolationspolynom wird von der genau
 gleichen Art sein.
+\index{Interpolationspolynom}%
 
 \subsubsection{Fehler des Lagrange-Interpolationspolynoms}
+\index{Lagrange-Interpolationspolynom}%
 Der folgende Satz gibt vollständige Auskunft über den Fehler des
 Interpolationspolynoms.
 
@@ -847,15 +893,18 @@ vom Funktionswert abweichen kann.
 %
 \subsection{Runges Phänomen
 \label{buch:section:interpolation:runge}}
+\index{Runge}%
+\index{Runges Phänomen}%
 Das Korollar~\ref{buch:korollar:interpolationsfehler} besagt, dass der
-Fehler des Interplationspolynom unter anderem durch den Betrag von $l(x)$
+Fehler des Interpolationspolynom unter anderem durch den Betrag von $l(x)$
 begrenzt ist.
 Für äquidistante Stützstellen mit Abstand $h$ kann man beobachten,
 dass die Oszillationen des Polynoms $l(x)$ gegen den Rand des Intervalls
 immer grösser werden.
+\index{Oszillation}%
 Für einen Punkte in der Mitte jedes Teilintervalls ist $h/2$ der kleinste
 mögliche Faktor in $l(x)$. 
-Den grössten Faktor findet man für $x$ im ersten oder letzten Teilinterval,
+Den grössten Faktor findet man für $x$ im ersten oder letzten Teilintervall,
 er ist $b-a-h$.
 Ausserdem treten mehrere ähnlich grosse Faktoren auf.
 Für $x$ in einem Intervall nahe $(a+b)/2$ sind die Faktoren
@@ -863,7 +912,6 @@ dagegen nur halb so gross.
 Diese Phänomen, dass das die Amplitude der Oszillationen des
 Interpolationspolynoms $l(x)$ gegen den Rand des Intervalls immer
 grösser wird, ist auch als {\em Runges Phänomen} bekannt.
-\index{Runges Phänomen}
 
 %
 % Tschebyscheff Interpolation
@@ -874,6 +922,8 @@ Die als Runges Phänomen beschriebenen Oszillationen am Rande des Intervalls
 können verkleinert werden, wenn man dafür sorgt, dass
 mit grösserem Abstand von der Mitte des Intervalls der Abstand der
 Stützstellen untereinander ebenfalls verkleinert.
+\index{Runges Phänomen}%
+\index{Oszillation}%
 Dies garantiert, dass neben den grossen Faktoren in der Nähe von $b-a$ 
 auch wesentlich kleinere Faktoren auftreten, so dass die extremen Werte
 nahe den Intervallenden vergleichbar mit den Werten im Inneren des
@@ -884,8 +934,9 @@ Intervalls werden.
 \includegraphics[width=\hsize]{chapters/30-interpolation/figures/lissajous.pdf}
 \caption{Diese Lissajous-Figur suggeriert eine mögliche Lösung für eine 
 Interpolationspolynom mit besonders kleinem Fehler.
+\index{Lissajous-Figur}%
 Wenn sich diese Kurve als Polynom ausdrücken lässt, bleibt der Fehler über
-das ganze Definitionsinterval gleichmässig beschränkt.
+das ganze Definitionsintervall gleichmässig beschränkt.
 \label{buch:figure:lissajous}}
 \end{figure}
 
@@ -895,27 +946,34 @@ das ganze Definitionsinterval gleichmässig beschränkt.
 \caption{Lissajous-Figur von Abbildung~\ref{buch:figure:lissajous}
 mit eingezeichnetem Tschebyscheff-Polynom und Nullstellen
 desselben.
+\index{Tschebyscheff-Polynom}%
+\index{Nullstelle}%
 Das Maximum des Betrags des Tschebyscheff-Polynoms ist 1 und liefert 
 damit eine obere Schranke für den Fehler des zugehörigen
 Interpolationspolynoms.
+\index{Fehler}%
 \label{buch:figure:lissajous-chebyshef}}
 \end{figure}
 
 Die beste Approximation durch ein Interpolationspolynom kann man also
-erwarten, wenn $l(x)$ im Interval $[a,b]$ keine besonders grossen Werte
+erwarten, wenn $l(x)$ im Intervall $[a,b]$ keine besonders grossen Werte
 annimmt.
+\index{Approximation}%
 Eine Funktion ähnlich wie $\sin x$ oder $\cos x$, die unendlich viele
 Extremewerte $\pm 1$ haben, würde dieses Kriterium erfüllen, aber
 $\sin x$ und $\cos x$ sind keine Polynome.
-Sie sind auch auf auf einem viel grösseren Interval als nötig definiert,
+Sie sind auch auf auf einem viel grösseren Intervall als nötig definiert,
 nämlich ganz $\mathbb R$.
 Ein verwandtes Beispiel sind Lissajous-Figuren.
+\index{Lissajous-Figur}%
 Abbildung~\ref{buch:figure:lissajous} suggeriert, dass eine geeignete
 Lissajous-Figur als Graph für ein Interpolationspolynom mit sehr
 geringem Fehler dienen könnte, wenn man sie als Polynom darstellen kann.
 Eine solche Lissajous-Figur entsteht als Kurve
 $\gamma_n\colon t\mapsto (\cos t, \cos nt)$ oder eine anderes trigonometrisches
 Polynom als zweite Komponente.
+\index{trigonometrisches Polynom}%
+\index{Polynom!trigonometrisch}%
 Die Abbildung~\ref{buch:figure:lissajous-chebyshef} zeigt diese Kurve
 $\gamma_n(t)$
 für den Fall $n=13$ der Lissajous-Figur von
@@ -953,9 +1011,11 @@ Wir benötigen eine Formel, mit der sich Werte der Polynome $T_n(x)$
 effizient berechnen lassen, ohne dass das Polynom in expliziter
 Form ermittelt werden muss.
 Im Folgenden soll dazu eine Rekursionsformel hergeleitet werden.
+\index{Rekursionsformel}%
 
 Aus den Additionstheoremen für den Kosinus folgt die Formel für die
 Summe von zwei Konsinus-Funktionen
+\index{Additionstheorem}%
 \begin{align}
 \cos (n+1)t + \cos(n-1)t
 &=
@@ -975,8 +1035,10 @@ ein Polynom.
 Aus den bereits bekannten Polynomen~\eqref{buch:tschebyscheff:erste} und
 der Rekursionsformel~\eqref{buch:tschebyscheff:rekursion} folgt jetzt mit
 vollständiger Induktion, dass alle $T_n(x)$ Polynome sind.
+\index{Induktion}%
+\index{vollständige Induktion}%
 Sie heissen {\em Tschebyscheff-Polynome}.
-\index{Tschebyscheff-Polynome}
+\index{Tschebyscheff-Polynom}%
 Die Rekursionsformel kann dazu verwendet werden, die Polynome explizit
 zu berechnen.
 Zum Beispiel folgt für die nächsten drei Polynome
@@ -991,6 +1053,7 @@ Da das Interpolationspolynom den führenden Koeffizienten $1$ haben muss,
 muss $l(x) = 2^{1-n}T_n(x)$ gewählt werden.
 
 \subsubsection{Tschebyscheff-Stützstellen}
+\index{Tschebyscheff-Stützstellen}%
 Die Polynome $T_n(x)$ sind eigentlich nicht nötig, da für die Konstruktion
 des Interpolationspolynoms nur die Nullstellen nötig sind.
 Wegen $T_n(x)=\cos nt$ liegt eine Nullstelle genau dann vor, wenn
@@ -1006,6 +1069,7 @@ die Polynome $2^{n-1}l(x)$ vom Grad $n$ oben für äquidistante Stützstellen
 und unten für Tschebyscheff-Stützstellen im Vergleich dargestellt.
 Wie in der Einleitung zu diesem Abschnitt angekündigt, oszillieren die
 Polynome für äquidistante Stütztstellen nahe den Intervallenden.
+\index{Oszillation}%
 Für Tschebyscheff-Stützstellen wird $2^{n-1}l(x)$ betragsmässig nie
 grösser als $1$.
 \begin{figure}

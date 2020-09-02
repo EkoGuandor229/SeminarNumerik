@@ -3,9 +3,10 @@
 %
 % (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
 %
-\section{Numerische Probleme des Gram-Schmidt Verfahrens
+\section{Numerische Probleme des Gram-Schmidt-Verfahrens
 \label{qr:section:problemstellung}}
 \rhead{Problemstellung}
+\index{Gram-Schmidt-Verfahren}%
 In Abschnitt \ref{buch:subsection:gram-schmidt} wurde das Gram-Schmidt-Orthonormalisierungsverfahren vorgestellt.
 Es liefert zwar eine sehr anschauliche Methode zur $QR$-Zerlegung, ist aber numerisch nicht stabil wenn die die Spaltenvektoren von $A$ nahezu parallel sind.
 
@@ -39,7 +40,7 @@ Die zweite Spalte von $Q$ berechnet sich als
 \begin{equation*}
 q_2=\frac{a_2-(q_1\cdot a_2)q_1}{|a_2-(q_1\cdot a_2)q_1|}=\frac{z_1}{|z_1|}.
 \end{equation*} 
-Dies kann in zwei Schritten ausgeführt werden. Zuerst wird $z_1$ ausgerechnet und dann nach dessen Betrag normiert um auf $q_2$ zu kommen.
+Dies kann in zwei Schritten ausgeführt werden. Zuerst wird $z_1$ ausgerechnet und dann nach dessen Betrag normiert, um auf $q_2$ zu kommen.
 Im ersten Schritt also:
 \begin{equation*}
 z_1=
@@ -133,7 +134,7 @@ q_1&q_2&q_3
 \end{pmatrix}\label{qr:qsol}.
 \end{equation}
 
-$Q$ sollte nach dieser Konstruktion orthonormiert sein.
+$Q$ sollte nach dieser Konstruktion orthogonal sein.
 Die Spalten müssen also einen Betrag von jeweils 1 aufweisen. 
 Dies stimmt immer, da ja im letzten Schritt eine Normierung durchgeführt wird.
 Betrachtet man unter Vernachlässigung von $\epsilon$ die Winkel zwischen den Spalten (angegeben im jeweiligen Index), kommt man auf

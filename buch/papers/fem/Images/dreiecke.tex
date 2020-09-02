@@ -1,0 +1,49 @@
+%
+% dreiecke.tex -- Dreiecke Kombination der Matrizen
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\definecolor{farbe1}{rgb}{1,0,0}
+\definecolor{farbe2}{rgb}{0,0,1}
+
+\coordinate (C1) at (0,0);
+\coordinate (C2) at (2,0);
+\coordinate (C3) at (4,1);
+\coordinate (C4) at (1,2);
+
+\coordinate (S1) at (1,0.6666);
+\coordinate (S2) at (2.333,1);
+
+\fill[color=farbe1!20] (C1) -- (C2) -- (C4) -- cycle;
+\fill[color=farbe2!20] (C2) -- (C3) -- (C4) -- cycle;
+
+\draw[color=farbe1] (C1)--(C2)--(C4)--cycle;
+\draw[color=farbe2] (C2)--(C3)--(C4)--cycle;
+
+\node at (S1) {$\Delta_1$};
+\node at (S2) {$\Delta_2$};
+
+\fill (C1) circle[radius=0.08];
+\fill (C2) circle[radius=0.08];
+\fill (C3) circle[radius=0.08];
+\fill (C4) circle[radius=0.08];
+
+\node at (C1) [below left] {$c_1$};
+\node at (C2) [below] {$c_2$};
+\node at (C3) [right] {$c_3$};
+\node at (C4) [above] {$c_4$};
+
+\end{tikzpicture}
+\end{document}
+

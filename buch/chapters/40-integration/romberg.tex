@@ -6,6 +6,7 @@
 \section{Romberg-Algorithmus
 \label{buch:section:romberg}}
 \rhead{Romberg-Algorithmus}
+\index{Romberg-Algorithmus}%
 Die bisher betrachteten Methoden zur Berechnung von Integralen zeichnen
 sich dadurch aus, dass die Fehler bei einer gegebenen Schrittweite 
 sehr genau bekannt sind.
@@ -15,18 +16,25 @@ anzuwenden und die Konvergenz des Verfahrens zu beschleunigen, ohne
 dass weitere Funktionswerte berechnet werden müssen.
 
 \subsubsection{Elmination des Fehlers}
+\index{Elimination}%
+\index{Fehler}%
 Wir kehren zurück zur Berechnung des Integrals
+\index{Integral}%
 \[
 I=\int_a^b f(x)\,dx
 \]
 mit Hilfe der Trapezregel und bezeichnen wieder mit $T(h)$
 die Approximation mit der Trapezregel mit Schrittweite $h$.
+\index{Approximation}%
+\index{Trapezregel}%
 In \eqref{buch:equation:trapezfehler} haben wir den Fehler von $T(h)$
 bestimmt.
 Wir nehmen an, dass der Fehler vierter Ordnung im Vergleich zum Term
 $Ch^2$ vernachlässigbar ist.
 Wenn wir die Schrittweite immer wieder halbieren, erhalten wir immer bessere
 Approximationen
+\index{Schrittweite}%
+\index{Halbierung}%
 \begin{align*}
 I&=T(h) + Ch^2
 \\
@@ -68,7 +76,8 @@ T^{**}(h/2) = I = \frac{16T^*(h/2)-T^*(h)}{15}.
 \]
 Dieses Verfahren der fortlaufenden Verbesserung der Konvergenz durch
 Elimination des Fehlers ist bekannt als {\em Romberg-Algorithmus}.
-\index{Romberg-Algorithmus}
+\index{Romberg-Algorithmus}%
+\index{Konvergenz}%
 
 \subsubsection{Ein Beispiel}
 Wir berechnen das Integral
@@ -77,6 +86,8 @@ I = \int_0^{\pi} \sin x\,dx = 2
 \]
 mit Hilfe der Trapezregel und wenden das Beschleunigungsschema von Romberg
 auf die erhaltenen Werte an.
+\index{Konvergenzbeschleunigung}%
+\index{Beschleunigung}%
 
 \begin{table}
 \def\u#1{\underline{#1}}
@@ -141,6 +152,7 @@ sofern die Ableitungen von $f(x)$ bis zur Ordnung $2l$ ausreichend glatt
 und beschränkt sind.
 
 \subsubsection{Wieviele Stellen Genauigkeit lassen sich erreichen?}
+\index{Romberg-Verfahren}%
 Das Romberg-Verfahren basiert darauf, dass man die Trapezsummen 
 für sukzessiv halbiert Schrittlänge berechnet.
 In jeder Iteration wird die Schrittweite also halbiert.
@@ -154,11 +166,12 @@ dies entspricht einem Gewinn von zwei Binärstellen oder
 $2(l+1)\log_{10}2=0.60206(l+1)$ Dezimalstellen.
 Man kann dies auch in der Tabelle~\ref{buch:table:sinromberg}
 verfolgen.
-In der ersten Spalte mit $l=0$ braucht es etwa 10 Zeilen, um 6 Dezimalstellen
-zu gewinnen, in der zweiten Spalte mit $l=1$ sind 6 Dezimalstellen
-bereits nach 5 Zeilen erreicht, 12 Dezimalstellen nach 10 Zeilen.
+In der ersten Spalte mit $l=0$ braucht es etwa 10 Zeilen,
+um sechs Dezimalstellen
+zu gewinnen, in der zweiten Spalte mit $l=1$ sind sechs Dezimalstellen
+bereits nach fünf Zeilen erreicht, 12 Dezimalstellen nach 10 Zeilen.
 In der dritten Spalte mit $l=2$ erreicht man 12 Stellen bereits ungefähr
-nach 5 Zeilen.
+nach fünf Zeilen.
 
 
 

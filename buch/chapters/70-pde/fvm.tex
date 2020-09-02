@@ -6,8 +6,10 @@
 \section{Finite Volumina
 \label{section:finite-volumina}}
 \rhead{Finite Volumina}
+\index{finite Volumina}%
 Die Diskretisierung mit Hilfe eines Gitters hat auf Variablen $u_{ik}$
 geführt, die Werte der Funktion $u$ an den Gitterpunkten waren.
+\index{Gitterpunkte}%
 Die Werte der Funktion zwischen diesen Punkten haben für die
 diskretisierten Gleichungen keine Rolle gespielt.
 Ausserdem hat sich gezeigt, dass Gleichungen erster Ordnung
@@ -17,24 +19,30 @@ Am Beispiel der zweidimensionalen Kontinuitätsgleichung soll
 in diesem Abschnitt illustriert werden, wie die gleiche Information,
 die in der Differentialgleichung steckt, auch in einer Integralform
 dargestellt werden kann.
+\index{Kontinuitätsgleichung}%
 Dies führt auf eine alternative Diskretisation, in der wir nicht
 auf Differenzenquotienten angewiesen sind.
+\index{Differenzenquotient}%
 
 \subsection{Die Kontinuitätsgleichung}
 Die Kontinuitätsgleichung beschreibt die Tatsache, dass in einem
 strömenden Fluid Materie nicht einfach aus dem Nichts entstehen kann
 oder verschwinden kann.
+\index{Fluid}%
+\index{Materie}%
 Sie stellt eine Beziehung her zwischen der Dichte $\varrho$ und der
 Strömungsgeschwindigkeit $v$.
+\index{Strömungsgeschwindigkeit}%
 Der Einfachheit halber untersuchen wir das Problem nur in einer
 Dimension.
 Die Dichte $\varrho(x,t)$ wie auch die Geschwindigkeit $v(x,t)$
 ist eine Funktion von Ort und Zeit.
+\index{Geschwindigkeit}%
 
 Zur Herleitung der Kontinuitätsgleichung betrachten wir ein
-Interval $[x,x+\Delta x]$.
+Intervall $[x,x+\Delta x]$.
 Zur Zeit $t$ enthält es ungefähr die Masse $\varrho(x,t)\cdot\Delta x$.
-Die Masse kann sich während eines Zeitintervals $\Delta t$ dadurch
+Die Masse kann sich während eines Zeitintervalls $\Delta t$ dadurch
 ändern, dass Materie durch das linke und rechte Intervallende strömt.
 Die Menge, die durch das rechte Ende strömt ist
 $\varrho(x+\Delta x,t)\cdot v(x+\Delta x,t)\cdot \Delta t$,
@@ -98,21 +106,24 @@ eines Vektorfeldes $\vec{a}$ durch
 gegeben ist.
 
 \subsection{Integralform}
+\index{Integralform}
 Die Herleitung der Kontinuitätsgleichung basiert auf dem Vergleich
 von Funktionswerten von $\varrho$ und $j$ in den Eckpunkten eines
 Rechtecks mit Kantenlänge $\Delta x$ und $\Delta t$ in der $x$-$t$-Ebene.
 Alternativ hätten wir aber auch Integrale entlang der Kanten verwenden
-können, um die Veränderung der Masse im Interval $[x,x+\Delta x]$ 
+können, um die Veränderung der Masse im Intervall $[x,x+\Delta x]$ 
 zu berechnen.
 
-Die Masse im Interval $[x,x+\Delta x]$ ist gegeben durch das Integral
+Die Masse im Intervall $[x,x+\Delta x]$ ist gegeben durch das Integral
 \[
 m(t) = \int_x^{x+\Delta x} \varrho(\xi, t) \,d\xi
 \]
 der Dichte über das Interval.
+\index{Dichte}%
 Die Änderung der Masse zwischen den Zeiten $t$ und $t+\Delta t$ entsteht
 durch den Fluss durch die Endpunkte.
-Durch den linken und rechten Endpunkt des Intervalls fliesst im Zeitinterval
+\index{Masse}%
+Durch den linken und rechten Endpunkt des Intervalls fliesst im Zeitintervall
 $[t,t+\Delta t]$ die Masse
 \[
 \int_t^{t+\Delta t} j(x,\tau)\,d\tau
@@ -165,6 +176,8 @@ berechnen können, was das Flussintegral
 \oint_{\partial V} \vec{\jmath}(x,y,z,t) \,d\vec{n}
 \]
 tut.
+\index{Materiefluss}%
+\index{Flussintegral}%
 Die Integralform der Kontinuitätsgleichung wird damit
 \[
 \iiint_V \varrho(x,y,z,t+\Delta t) \,dV
@@ -179,6 +192,12 @@ Die Integralform der Kontinuitätsgleichung wird damit
 Die Integralsätze von Green, Gauss und Stokes ermöglichen ganz allgemein,
 viele der Differentialgleichungen, die Naturphänomene beschreiben, in
 eine Integralform zu bringen.
+\index{Gauss!Divergenzsatz}%
+\index{Divergenzsatz von Gauss}%
+\index{Stokes!Integralsatz}%
+\index{Satz von Stokes}%
+\index{Green!Satz von}%
+\index{Satz von Green}
 
 \subsection{Diskretisation}
 \begin{figure}
@@ -186,8 +205,8 @@ eine Integralform zu bringen.
 \includegraphics{chapters/70-pde/images/kont.pdf}
 \caption{Diskretisation der Kontinuitätsgleichung~\eqref{pde:fvm:1dim}
 mit Hilfe diskreter Volumina. 
-Die Variablen $m_{ik}$ stehen für die im Interval $[ih_x,(i+1)h_x]$
-enthaltene Masse, $j_{ik}$ steht für die im Zeitinterval $[kh_t,(k+1)h_t]$
+Die Variablen $m_{ik}$ stehen für die im Intervall $[ih_x,(i+1)h_x]$
+enthaltene Masse, $j_{ik}$ steht für die im Zeitintervall $[kh_t,(k+1)h_t]$
 durch das Intervallende $ih_x$ fliessende Masse.
 \label{buch:pde:fvdisk}}
 \end{figure}
@@ -195,7 +214,6 @@ Die Integralform~\eqref{pde:eqn:integralform}
 der Kontinuitätsgleichung suggeriert, dass die Integrale
 in dieser Gleichung bessere Variablen für eine Diskretisation
 sein könnten.
-
 
 \subsubsection{Eine Raumdimension}
 Wir verwenden wieder ein Gitter in der $x$-$t$-Ebene, aber 
@@ -261,9 +279,11 @@ Die Gleichungen \eqref{pde:fvm:1dim} und \eqref{pde:fvm:ndim} für
 sich alleine reichen nicht, weitere Gleichungen wie die
 Navier-Stokes-Gleichung werden zusätzlich benötigt, um ein Strömungsfeld
 vollständig zu beschreiben.
+\index{Navier-Stokes-Gleichung}%
 Es ist allerdings nicht das Ziel dieses Abschnitts, die so
 begründete Methode
 der {\em finiten Volumina} in voller Allgemeinheit zu entwickeln.
+\index{finite Volumina}%
 
 
 

@@ -6,10 +6,13 @@
 \section{Konvergenzgeschwindigkeit
 \label{buch:section:geschwindigkeit}}
 \rhead{Konvergenzgeschwindigkeit}
+\index{Konvergenzgeschwindigkeit}%
 Sind die Fehler einer iterativen numerischen Berechnungsmethoden
 bekannt, kann die Gesetzmässigkeit der Fehler ausgenutzt werden,
 sie weitgehend zu eliminieren, und so die Konvergenz des Verfahrens
 zu beschleunigen.
+\index{Fehler eliminieren}%
+\index{Fehlergesetz}%
 In diesem Abschnitt wollen wir das Prinzip veranschaulichen, es
 soll später im Abschnitt~\ref{buch:section:romberg}
 bei der Berechnung von Integralen systematisch angewendet werden.
@@ -25,6 +28,8 @@ Ziel ist, diesen Unterschied zu quantifizieren und ein Kriterium
 zu finden, welches schnelle Konvergenz von Iterationsfolgen garantiert.
 
 \subsubsection{Lineare Konvergenz}
+\index{lineare!Konvergenz}%
+\index{Konvergenz!linear}%
 Am Beispiel der Iterationsfolge der Funktion $f(x)=\sqrt{x+2}$
 von Seite~\pageref{section:beispiel:sqrtiteration}
 wurde berechnet, wie sich der Fehler von einer Iteration zur nächsten
@@ -39,8 +44,10 @@ sein.
 In jeder Iteration werden also $\log_2f'(x^*)$ Binärstellen Genauigkeit
 gewonnen.
 
-Man sagt, eine Folge ist {\em linear} konvergent, wenn die Anzahl
+Man sagt, eine Folge ist {\em linear konvergent}, wenn die Anzahl
 korrekter Stellen in jeder Iteration um die gleiche Anzahl zunimmt.
+\index{konvergent!linear}%
+\index{linear konvergent}%
 Die Anzahl korrekter Stellen wächst in diesem Fall linear mit der
 Anzahl Iterationen.
 
@@ -52,6 +59,8 @@ Falls die Ableitung $f'(x^*)$ verschwindet liegt offenbar ein
 Spezialfall vor, er wird im übernächsten Abschnitt genauer untersucht.
 
 \subsubsection{Quadratische Konvergenz}
+\index{quadratische!Konvergenz}%
+\index{Konvergenz!quadratisch}%
 Ist $x=\sqrt{a}$, dann muss $x = a/x$ gelten, also auch
 \[
 x = \frac12\biggl(x+\frac{a}x\biggr) = f_a(x).
@@ -70,6 +79,7 @@ x^*=\sqrt{a}
 von $f_a(x)$ konvergiert.
 Wir untersuchen die Konvergenzgeschwindigkeit, indem wir $f_a(x)$
 mit Hilfe der Taylor-Reihe approximieren:
+\index{Taylor-Reihe}%
 \[
 f_a(x^*+\delta)
 \approx
@@ -110,10 +120,13 @@ verdoppelt.
 Man sagt, eine Folge konvergiert {\em quadratisch} gegen $x^*$,
 wenn der Fehler $x_n-x^*$ für $n\to n+1$ quadriert wird, die Anzahl
 korrekter Stellen also verdoppelt wird.
+\index{konvergent!quadratisch}%
+\index{quadratisch konvergent}%
 Konvergiert eine Folge quadratisch, werden $N$ korrekte Stellen
 innert $\log_2N$ Iterationen erreicht.
 Quadratische Konvergenz ist also im Vergleich zu linearer Konvergenz
 exponentiell schneller und wird daher in Anwendungen angestrebt.
+\index{exponentiell schneller}%
 
 \subsubsection{Konvergenzgeschwindigkeit von Iterationsfolgen}
 \input{chapters/10-arithmetik/graphisch2.tex}
@@ -134,15 +147,17 @@ Sofern $f'(x^*)\ne 0$ ist, ist der zweite Term dominant, der Fehler
 wird in jeder Iteration mit $f'(x^*)$ multipliziert, es werden in
 jeder Iteration $\log_2 f'(x^*)$ Genauigkeit gewonnen.
 Es liegt also {\em lineare Konvergenz} vor.
-\index{lineare Konvergenz}%
+\index{lineare!Konvergenz}%
 \index{Konvergenz!linear}%
+\index{Iterationsfolge!lineare Konvergenz}%
 
 Verschwindet die Ableitung $f'(x^*)=0$, dann fällt der zweite Term
 auf der rechten Seite von~\eqref{buch:equation:iterkonv} weg, der
 Fehler ist im wesentlich quadratisch kleiner, es liegt {\em quadratische
 Konvergenz} vor.
-\index{quadratische Konvergenz}%
+\index{quadratische!Konvergenz}%
 \index{Konvergenz!quadratisch}%
+\index{Iterationsfolge!quadratische Konvergenz}%
 Diese Situation ist in Abbildung~\ref{buch:figure:fixpunkt:quadratisch}
 Wenden wir das Kriterium auf das Beispiel 
 \[
@@ -159,6 +174,7 @@ im vorangegangenen Abschnitt auch direkt nachgerechnet haben.
 %
 \subsection{Konvergenzbeschleunigung
 \label{buch:subsection:konvergenzbeschleunigung}}
+\index{Konvergenzbeschleunigung}%
 Die genaue Kenntnis des Fehlers kann auch ermöglichen, einen Teil
 des Fehlers zu eliminieren.
 Wir illustrieren dieses Prinzip wieder am Beipsiel der Iterationsfolge
@@ -167,7 +183,7 @@ x_0,\; x_1=f(x_0),\; x_2=f(x_1),\;x_3=f(x_2),\dots
 \]
 mit der Funktion $f(x)=\sqrt{x+a}$.
 Die Folge konvergiert gegen den Fixpunkt $x^* = f(x^*)$, der
-sich durch quadrieren und lösen der quadratische
+sich durch Quadrieren und Lösen der quadratische
 Gleichung
 \begin{align*}
 x^{*2} &= x^*+a\\
@@ -183,19 +199,22 @@ positive Werte hat.
 Wie im früheren Beispiel mit $a=2$ können wir das Verhalten des Fehlers
 $\delta_n = x_n-x^*$
 mit Hilfe der linearen Approximation
+\index{Approximation}%
 \[
 x_n = x^* + \delta_n
 \qquad\Rightarrow\qquad
 x_{n+1} = f(x_n) = f(x^* + \delta_n) = f(x^*) + f'(x^*)\cdot \delta_n
 =
-x^* + \underbrace{f'(x^*)\cdot \delta_n}_{\displaystyle\approx\delta_{n+1}}.
+x^* + \underbrace{f'(x^*)\cdot \delta_n}_{\displaystyle\approx\delta_{n+1}}
 \]
+ermitteln.
 Der Fehler wird also in jeder Iteration um den Faktor
 \[
 f'(x^*) = \frac1{2\sqrt{x^*+a}}=\frac1{2x^*}
 \]
 kleiner.
-Wir wissen somit, dass der Fehler in jeder Iteration um den gleichen Faktor
+Wir wissen somit, dass der Fehler in jeder Iteration um den
+{\em gleichen} Faktor
 kleiner wird, aber da wir $x^*$ noch nicht kennen, kennen wir den Wert $q$
 des Faktors noch nicht.
 
@@ -217,6 +236,7 @@ x_{n\phantom{\mathstrut-0}} - x_{n-1} &= \delta(q-1)                  \\
 x_{n+1}-x_{n\phantom{\mathstrut -0}}  &= \delta(q^2-q) =\delta q(q-1).
 \end{align*}
 Der Differenzenquotient
+\index{Differenzenquotient}%
 \[
 \frac{
 x_{n+1}-x_{n\phantom{\mathstrut -0}}
@@ -263,17 +283,19 @@ k&\text{Fixpunkt}&\text{Fehler}&q\\
 \end{tabular}
 \caption{Resultate des beschleunigten Verfahrens zur Bestimmung eines
 Fixpunktes der Iterationsfolge der Funktino $f(x)=\sqrt{x+a}$ mit $a=2$.
+\index{Fixpunkt}%
 \label{buch:table:sqrtbeschl}}
 \end{table}
 
 Das neue Verfahren zur Berechnung des Fixpunktes konvergiert jetzt
 viel schneller, wie die Resulate in Tabelle~\ref{buch:table:sqrtbeschl}
 zeigen.
+\index{Fixpunkt}%
 Die Konvergenz ist sehr rasch, es scheint als ob sich in jeder
 Iteration die Anzahl der korrekten Stellen verdoppelt, dass also
 quadratische Konvergenz vorliegt.
 Dies lässt sich auch mit Hilfe einer analytischen Rechnung
-besetätigen.
+bestätigen.
 Dazu approximiert man $f(x^*+\delta)$ bis zu Termen zweiter Ordnung,
 also als
 \[
@@ -365,6 +387,8 @@ Damit ist die quadratische Konvergenz bestätigt.
 Ein fairer Vergleich der Konvergenzgeschwindigkeit der usprünglichen
 Iterationsfolge mit dem neuen Algorithmus sollte die Anzahl der
 Auswertungen der Funktion $f$ mit zählen. 
+\index{Auswertungen}%
+\index{Funktionsauswertungen}%
 In der ursprünglichen Iterationsfolge wird in jeder Iteration die 
 Funktion einmal ausgewertet, der neue Algorithmus braucht zwei
 Funktionsauswertungen pro Iteration.
@@ -381,6 +405,7 @@ Da die Folge gegen $x^*$ konvergiert, werden
 die Werte $x_0$, $x_1$ und $x_2$ fast gleich gross sein, so dass es
 zu Auslöschung und damit zu Werten sehr geringer Genauigkeit für $q$
 kommen kann.
+\index{Auslöschung}%
 Ein solcher Fehler in $q$ schlägt sich wegen
 \eqref{buch:equation:sqrtnext}
 sofort auch im nächsten Approximationswert für $x^*$ nieder.
@@ -388,6 +413,8 @@ sofort auch im nächsten Approximationswert für $x^*$ nieder.
 Im Abschnitt~\ref{buch:section:romberg} wird am Beispiel des
 Romberg-Integrationsverfahrens gezeigt, wie die Konvergenz der
 Integralberechnung mit der Trapezregel beschleunigt werden kann.
+\index{Romberg-Integration}%
+\index{Trapezregel}%
 
 
 

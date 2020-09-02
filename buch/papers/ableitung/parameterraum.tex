@@ -1,0 +1,36 @@
+\subsection{Der Parameterraum}
+Das neuronale Netzwerk besteht einer sehr hohen Anzahl an Parametern welche im Verlauf des Lernprozesses optimiert werden müssen. Um zu verstehen woher diese Parameter stammen, muss nun der innere Aufbau eines neuronalen Netzwerks betrachtet werden.
+\begin{figure}
+	\begin{center}
+		\input{papers/ableitung/neuronal_network.tex}
+		\caption{Übersicht eines Neuronalen Netzwerks}
+		\label{ableitung:fig:neuronal_network}
+	\end{center}
+\end{figure} 
+Anhand eines einfachen neuronalen Netzwerks gemäss Abbildung \ref{ableitung:fig:neuronal_network} können die Komponenten eingeführt werden. $W$ entspricht dem Gewicht, $b$ dem Offset, oft auch \textit{bias} genannt, und $\sigma$ ist die Aktivierungsfunktion. Die Aktivierungsfunktion wird benötigt um die Linearität der verschiedenen Schichten zu brechen. In der letzten Schicht wird die Aktiverungsfunktion $\sigma$ weiter noch dazu verwendet um den Output auf das vorliegende Problem abzubilden. Eine lineare Ausgabe zwischen $[-\infty, \infty]$ ist erwünscht sofern ein Regressionsproblem vorliegt, bei einem stochastischen Problem soll die Ausgabe dem Abbildungsbereich $[0, 1]$ entsprechen. Die Gleichung
+\begin{equation}
+a^{l}_{j} = \sigma \left( \sum\limits_{k}w^{l}_{jk} \cdot a^{l-1}_{k}+b^{l}_{j} \right)
+\label{ableitung:eqn:simple_neuron_eqn}
+\end{equation}
+kann somit für jedes Neuron $a^{l}_{j}$ aus Abbildung \ref{ableitung:fig:neuronal_network} den Zusammenhang zwischen den Gewichten und den vorhergehenden Neuronen $a^{l-1}_{k}$ beschreiben.
+Da die Neuronen mit den den vorangegangenen Schichten gekoppelt sind, kann man die Gleichung \eqref{ableitung:eqn:simple_neuron_eqn} so erweitern, dass sie für das gesammte neuronale Netzwerk
+\begin{equation}
+\hat{y}(x) = \sigma^{l}(W^{l}\sigma^{l-1}(W^{l-1}\cdots \sigma^{1}(W^{1}x+b^{1}) + b^{l-1} \cdots )
+\label{ableitung:eqn:full_net}
+\end{equation}
+gilt. Dementsprechend kann dies in Ausdruck \eqref{ableitung:eqn:min_loss} eingesetzt werden und resultiert in
+\begin{equation}
+	\min \{ \Lb(y_{i}, \sigma^{l}(W^{l}\sigma^{l-1}(W^{l-1}\cdots \sigma^{1}(W^{1}x+b^{1}) + b^{l-1} \cdots ) \}
+\end{equation}
+als Ausdruck für das zu lösende Problem. Wobei $w$ und $b$ variabel sind und $x$ und $y$ durch den Datensatz gegeben.
+Um die Nomenklatur nocheinmal zusammen zu fassen gelten folgende Variabeln und Parameter in einem neuronalen Netzwerk: 
+\begin{itemize}
+	\item{$x$: Input ins Neuronale Netzwerk}
+	\item{$y$: Erwarteter Output aus dem Neuronalen Netzwerk gem. dem Trainingsdatensatz}
+	\item{$\hat{y}$: Effektiver gerechneter Output aus den neuronalen Netzwerk}
+	\item{$\Lb$: Die Verlustfunktion (\textit{loss}) welche den Fehler zwischen dem gerechenten und tatsächlechen Output berechnet.}
+	\item{$w_{jk}^{l}$: Das Gewicht des $k$-ten Neurons in der Schicht $(l-1)$ zum $j$-ten Neuron.}
+	\item{$b_{j}^{l}$: Das Offset-Gewicht (bias) für das $j$-te Neuron in der Schicht $l$.}
+	\item{$\sigma$: Die Aktivierungsfunktion zur Brechnung der Linearität.}
+\end{itemize}
+Das Trainieren oder Lernen eines neuronalen Netzwerks ist im Grunde nichts anderes als das bestimmen des Minimums des Fehlers mit Hilfe der Paramter $w$ und $b$ für die gegebenen Problemstellung. 

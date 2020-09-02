@@ -15,6 +15,7 @@ In diesem Abschnitt soll daher die folgende Aufgabe gelöst werden.
 \begin{aufgabe}
 \label{buch:aufgabe:basicinterpolation}
 Gegeben $n+1$ sogenannte {\em Stützstellen}
+\index{Stützstelle}%
 \[
 a=x_0<x_1<x_2<\cdots<x_{n-1}<x_n=b
 \]
@@ -27,6 +28,8 @@ $f(x_j)=f_j$ für $0\le j\le n$.
 \label{buch:subsection:lineareinterpolation}}
 Die Aufgabe~\eqref{buch:aufgabe:basicinterpolation} ist zu wenig präzise
 gestellt, es gibt unendlich viele Lösungen.
+\index{lineare!Interpolation}%
+\index{Interpolation!linear}%
 Es müssen daher zusätzliche Bedingungen an die gesuchte Funktion $f$
 gestellt werden, damit die Lösung eindeutig bestimmt wird.
 Ein mögliche solche Bedingung ist, dass die Funktion $f$ in jedem
@@ -38,6 +41,8 @@ also das Problem mit nur zwei Stützstellen zu lösen.
 \begin{satz}
 \label{buch:satz:lineareinterpolation}
 Die einzige auf dem Intervall $[x_i,x_{i+1}]$ definierte lineare Funktion 
+\index{lineare!Funktion}%
+\index{Funktion!linear}%
 $f(x)$ mit Funktionswerten $f(x_i)=f_i$ und $f(x_{i+1}) = f_{i+1}$
 hat im Punkt $x\in[x_i,x_{i+1}]$
 den Wert
@@ -78,7 +83,7 @@ ist daher als Linearkombination
 f(x)=f_il_i(x) + f_{i+1}l_{i+1}(x)
 \]
 linearer Funktionen wieder
-linear, und dank der speziellen Werte von $l_i$ und $l_{i+1}$ folgt
+linear und dank der speziellen Werte von $l_i$ und $l_{i+1}$ folgt
 unmittelbar, dass
 \begin{align*}
 f(x_i)&=f_il_i(x_i) + f_{i+1}l_{i+1}(x_i) = f_i\cdot 1 + f_{i+1}\cdot 0= f_i\\
@@ -87,16 +92,19 @@ f(x_{i+1})&=f_il_i(x_{i+1}) + f_{i+1}l_{i+1}(x_{i+1})= f_i\cdot 0 + f_{i+1}\cdot
 gilt.
 
 Der Bruch
+\index{Bruch}%
 \[
 m = \frac{f_{i+1}-f_i}{x_{i+1}-x_i}
 \]
 ist die Steigung der Geraden durch die Punkte $(x_i,f_i)$ und
 $x_{i+1},f_{i+1})$.
+\index{Steigung}%
 Der erste Ausdruck auf der rechten Seite in
 \eqref{buch:eqn:lineareinterpolation} ist
 also $f(x)=m(x-x_i)+f_i$, dies ist die Gleichung einer Geraden
 mit Steigung $m$ durch den Punkt $(x_i,f_i)$, sie verläuft natürlich
 auch durch den Punkt $(x_{i+1},f_{i+1})$.
+\index{Gerade}%
 \end{proof}
 
 
@@ -113,6 +121,9 @@ Funktion $f\colon[0,6]\to\mathbb R$ mit Stützstellen $0,1,\dots,6$
 Wendet man das Resultate von Satz~\ref{buch:satz:lineareinterpolation}
 auf jedes Teilintervall an, entsteht eine Interpolationsfunktion, deren
 Graph ein Polygonzug ist.
+\index{Interpolationsfunktion}%
+\index{Graph}%
+\index{Polygonzug}%
 Eine solche Funktion lässt sich einfacher beschreiben mit Hilfe
 der Interpolationsfunktionen mit den speziellen Werten
 \begin{equation}
@@ -153,6 +164,7 @@ Interpolationsfunktion, die nach
 gebildet wird.
 In diesem Abschnitt waren die $l_j$ stückweise lineare Funktionen,
 also auch die Funktion $f(x)$.
+\index{stückweise linear}%
 Im nächsten Abschnitt sollen die Funktionen Polynome sein,
 also wird die Interpolationsfunktion ebenfalls ein Polynom sein.
 

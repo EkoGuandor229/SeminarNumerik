@@ -12,6 +12,7 @@ $Q$ ist dabei wieder eine $l\times n$-Matrix, diesmal aber mit orthonormierten S
 $R$ ist eine obere Dreiecksmatrix der Grösse $n\times n$.
 
 \subsection{Anwendungsbeispiel Least-Squares\label{qr:section:ls}}
+\index{Least-Squares}%
 Die $QR$-Zerlegung kann unter anderem beim Lösen von Gleichungssystemen angewendet werden.
 Ein lineares Gleichungssystem
 \begin{equation}
@@ -20,11 +21,13 @@ Ax=b\label{qr:sle}
 hat in praktischen Fällen keine Lösung, wenn die $l\times n$-Matrix $A$ mehr Zeilen als Spalten hat, bzw. überdefiniert ist.
 
 Mit der Methode der kleinsten Quadrate kann aber ein Vektor $\hat{x}$ gefunden werden welcher die $L^2$-Norm
+\index{Methode der kleinsten Quadrate}%
+\index{kleinsten Quadrate Methode der}%
 \begin{equation*}
 ||A\hat{x}-b||_2
 \end{equation*}
 minimiert.
-Dies ist das gleiche, wie wenn man einen Lösungsvektor $\hat{x}$ sucht, sodass
+Dies ist das Gleiche, wie wenn man einen Lösungsvektor $\hat{x}$ sucht, sodass
 \begin{equation*}
 A\hat{x}=b-b_{\perp}.
 \end{equation*}
@@ -38,7 +41,7 @@ A^TA\hat{x}=A^Tb-\underbrace{A^Tb_{\perp}}_{\displaystyle=0}
 wobei der letzte Term verschwindet, da alle Spalten von $A$ und $b_{\perp}$ orthogonal zueinander stehen und somit alle Skalarprodukte verschwinden.
 Das Matrixprodukt $A^TA$ ist unter Umständen aufwändig zu berechnen und muss auch noch invertiert werden, um $\hat{x}$ zu erhalten.
 
-Geht man nun aber den Umweg über die $QR$-Zerlegung, bzw. $A=QR$ kann die Gleichung \ref{qr:ls1} umgeschrieben werden:
+Geht man nun aber den Umweg über die $QR$-Zerlegung, bzw. $A=QR$ kann die Gleichung \eqref{qr:ls1} umgeschrieben werden:
 \begin{equation*}
 (QR)^TQR\hat{x}=(QR)^Tb \quad \Leftrightarrow \quad R^T\underbrace{Q^TQ}_{\displaystyle=E}R\hat{x}= R^TQ^Tb \quad \Leftrightarrow \quad
 R^TR\hat{x}=R^TQ^Tb,

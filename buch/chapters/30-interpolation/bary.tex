@@ -5,6 +5,7 @@
 %
 \section{Baryzentrische Formeln für Interpolationspolynome
 \label{buch:section:baryzentrisch}}
+\index{baryzentrische Formel}%
 Die Interpolationspolynome von Lagrange und Hermite haben 
 in der bis jetzt gezeigten Form das folgende grundlegende Problem.
 Sie sind definiert über das Produkt
@@ -17,6 +18,7 @@ Ist die Zahl der Stützstellen gross und erstrecken sich die
 Stützstellen über einen grossen Bereich, dann sind einzelne Faktoren
 $(x-x_i)$ immer gross, wie wir bei der Diskussion von Runges Phänomen
 bereits diskutiert haben.
+\index{Runges Phänomen}%
 Zudem tritt bei der Berechnung eines Wertes in inmittelbarer 
 Nähe der Stützstelle $x_j$ in dem Faktor $(x-x_j)$ Auslöschung auf.
 Der grosse relative Fehler dieses Faktors wird durch die anderen Faktoren
@@ -117,8 +119,11 @@ p(x)
 \end{equation}
 Diese Form des Interpolationspolynoms ist ein gewichtetes Mittel 
 der Werte $f_j$, gewichtet mit den Gewichten $w_j/(x-x_j)$.
+\index{Mittel!gewichtet}%
 Diese Gewichte sind klein für $x$ weit weg von $x_j$, die grössten
 Gewichte haben die Funktionswerte $f_j$ nahe bei $x$.
+\index{Gewicht}%
+\index{wj@$w_j$}%
 Die Formel~\eqref{buch:bary:pfinal} ist daher eine numerisch besonders
 vorteilhafte Form der Auswertung eines Interpolationspolynoms.
 

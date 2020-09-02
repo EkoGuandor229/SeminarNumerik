@@ -16,6 +16,7 @@ Approximiert man die gesuchte Funktion anschliessend durch geeignete
 Interpolationspolynome, wird das Minimalproblem zu einem quadratischen
 Minimalproblem für die Koeffizienten der Interpolationspolynome,
 welches mit Methoden der linearen Algebra gelöst werden kann.
+\index{Minimalproblem}%
 
 \subsection{Das äquivalente Minimalproblem}
 Zur Illustration des Prinzips soll in diesem Abschnitt das Eigenwertproblem
@@ -44,6 +45,8 @@ Eine Funktion $u(x)$ ist genau dann eine Lösung der Differentialgleichung
 \eqref{pde:fem:1dgl}, wenn sie das Funktional
 $I(u)$ von \eqref{pde:fem:1minimal} minimiert.
 \end{satz}
+\index{Funktional}%
+\index{Variation}%
 
 \begin{proof}[Beweis]
 Ein Minimum der Funktion $I(u)$ erfüllt die Bedingung, dass jede 
@@ -85,6 +88,7 @@ u'(x)h'(x)
 \notag
 \intertext{Um das Integralprinzip von Lemma~\ref{buch:lemma:integralprinzip}
 anwenden zu können, darf nur $h(x)$ vorkommen.
+\index{Integralprinzip}%
 Wir können die Ableitung $h'(x)$ mit Hilfe von partieller Ableitung zum
 Verschwinden bringen.}
 &=
@@ -131,6 +135,8 @@ Da die Funktion von zwei Variablen abhängt, gibt es jetzt nicht nur
 eine erste Ableitung sondern deren zwei.
 Statt dem Quadrat der ersten Ableitung $u'(x)^2$ werden daher
 einen analogen Terme für beide ersten Ableitungen benötigen.
+\index{Quadrant}%
+\index{Quadratsumme}%
 Die Quadratsumme der Ableitungen
 \[
 (\nabla u)^2
@@ -142,6 +148,7 @@ Die Quadratsumme der Ableitungen
 liegt auf der Hand.
 In Analogie zum eindimensionalen Problem verwenden wir daher
 als Minimalproblem das Funktional
+\index{Funktional}%
 \[
 I(u)
 =
@@ -197,6 +204,8 @@ Ist $v(x,y)$ eine beliebige Funktion $v\colon\Omega\to\mathbb R^2$ und
 $h\colon\Omega\to\mathbb R$. 
 Dann gilt für das Integral von $v\cdot\nabla u$ die partielle
 Integrationsformel
+\index{partielle Integration}
+\index{Integration!partiell}
 \begin{align}
 \int_a^b\int_c^d v(x,y)\cdot \nabla h(x,y)\,dy\,dx
 &=
@@ -302,7 +311,8 @@ v_x(a,y) h(a,y)}
 \label{buch:pde:part2dI1}
 \intertext{%
 Die zweite Summe ist noch einfacher, weil es gar nicht erst notwendig ist,
-die Integrationsreihenfolge zu ändern:}
+die Integrationsreihenfolge zu ändern:
+\index{Integrationsreihenfolge}}
 I_2
 &=
 \int_a^b\int_c^d v_y(x,y)\frac{\partial h}{\partial y}\,dy\,dx
@@ -341,6 +351,7 @@ Die beiden Terme zusammen geben genau die im Lemma behauptete Formel.
 \includegraphics{chapters/70-pde/images/2dpart.pdf}
 \caption{Die Randterme des Integrals \eqref{pde:fem:part2d}  können
 als ein Flussintegral über den Rand des Rechtecks geschrieben werden.
+\index{Flussintegral}%
 Dazu müssen die Integrale über die einzelnen Kanten des Rechtecks einzeln
 als Flussintegrale über die Kante geschrieben werden.
 Die Terme werden auch in den Gleichungen
@@ -408,6 +419,7 @@ I(u)
 \int_{\Omega} \nabla u(x,y)^2 + \lambda u(x,y)^2 \,dx\,dy
 \]
 minimiert.
+\index{Funktional}%
 \end{satz}
 
 \begin{proof}[Beweis]
@@ -446,6 +458,7 @@ Dies gilt genau dann für jede Funktion $h$, wenn
 \Delta u = \lambda u,
 \]
 wenn also $u$ eine Lösung des Eigenwertproblems ist.
+\index{Eigenwertproblem}%
 \end{proof}
 
 \input{chapters/70-pde/approximation.tex}

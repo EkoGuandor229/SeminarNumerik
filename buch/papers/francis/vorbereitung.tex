@@ -1,6 +1,6 @@
 \section{Vorbereitung der Matrix\label{francis:section:vorbereitung}}
 \rhead{Vorbereitung}
-Um den Francis Algorithmus effizient ausführen zu können, muss die Matrix zuerst auf Hessenberg Form gebracht werden.
+Um den Francis-Algorithmus effizient ausführen zu können, muss die Matrix zuerst auf Hessenberg-Form gebracht werden.
 \begin{equation}
 	\begin{bmatrix}
 	* & * & * & * & * \\
@@ -19,120 +19,122 @@ Um den Francis Algorithmus effizient ausführen zu können, muss die Matrix zuer
 \end{equation}
 
 \begin{satz}
-	Jede Matrix $ A \subset \mathbb{R} ^{n \times n} $ ist orthogonal ähnlich zu einer Matrix H in der oberen Hessenberg Form: $ H=Q^{-1}AQ $, wobei $Q$ ein Produkt von $n-2$ Reflektoren ist.
+	Jede Matrix $ A \subset \mathbb{R} ^{n \times n} $ ist orthogonal ähnlich zu einer Matrix H in der oberen Hessenberg-Form: $ H=Q^{-1}AQ $, wobei $Q$ ein Produkt von $n-2$ Reflektoren ist.
 \end{satz}
 
-Gegeben sei eine Matrix A mit einer Submatrix $\hat{A}$  und einer ersten Spalte $a_{11}$ und einem Vektor b.
-Ziel ist es, alle Einträge dieses Vektors, ausser den ersten auf null zu setzen.
-Dies kann mit einer Multiplikation mit einer geeigneten Matrix $Q$ gemacht werden. $\hat{Q}$ muss so gewählt werden, dass bei einer Multiplikation mit $b$ alle Werte bis auf den ersten verschwinden.
-Die Matrix $Q$ soll so gewählt werden, dass die Länge des neuen Vektors, bzw. dieser einzelne Eintrag, der Länge des Vektors $b$ entspricht.
+Gegeben sei eine Matrix A mit einer Submatrix $\hat{A}$, einer ersten Spalte $a_{11}$ und einem Vektor $b$.
 \begin{equation}
-	A=
-	\begin{bmatrix}
-	a_{11} & *\\
-	b & \hat{A}
-	\end{bmatrix},
-	Q_{1}=
-	\begin{bmatrix}
-	1 & 0\\
-	0 & \hat{Q_1}
-	\end{bmatrix},
-	\text{mit } \hat{Q_1}b=
-	\begin{bmatrix}
-	-y\\
-	0\\
-	.\\
-	.\\
-	0
-	\end{bmatrix}
+A=
+\begin{bmatrix}
+a_{11} & *\\
+b & \hat{A}
+\end{bmatrix}.
 \end{equation}
-
-
-Wird $\hat{Q}$ richtig gewählt entsteht bei einer Multiplikation von links mit der Matrix Q der gewünschte Vektor in der ersten Spalte.
-$\hat{Q}$ kann dabei zum Beispiel mit Givens Rotationsmatrizen \ref{francis:section:grundlagen:givens} oder einer Householder-Transformationsmatrix \ref{francis:section:grundlagen:householder} gebildet werden.
-
+Ziel ist es, alle Einträge dieses Vektors bis auf den Ersten auf Null zu setzen.
+Dies kann mit einer Multiplikation mit einer geeigneten Matrix
 \begin{equation}
-	A_{\text{Half}}=Q_{1}A=
-	\begin{bmatrix}
-	a_{11} & * & ... & *\\
-	-y & \\
-	0 & & & &\\
-	. & &\hat{Q_1}\hat{A} & &\\
-	. & & & &\\
-	0 & & & &
-	\end{bmatrix}
+Q_{1}=
+\begin{bmatrix}
+	1 & *\\
+	0 & \hat{Q}_1
+\end{bmatrix}
 \end{equation}
+gemacht werden.
+$\hat{Q}_1$ muss so gewählt werden, dass bei einer Multiplikation mit $b$ alle Werte bis auf den Ersten verschwinden.
+Zusätzlich soll die Länge des neuen Vektors $\hat{Q}_1b$, bzw. dieser einzelne Eintrag, der Länge des Vektors $b$ entsprechen:
+\begin{equation}
+\hat{Q}_1b=
+\begin{bmatrix}
+-y\\
+0\\
+.\\
+.\\
+0
+\end{bmatrix}.
+\end{equation}
+Wird $\hat{Q}_1$ so gewählt, entsteht bei einer Multiplikation von links mit der Matrix $Q_1$ der gewünschte Vektor in der ersten Spalte.
+\begin{equation}
+A_{\text{Half}}=Q_{1}A=
+\begin{bmatrix}
+a_{11} & * & \dots & *\\
+-y & \\
+0 & & & &\\
+\vdots & &\hat{Q}_1\hat{A} & &\\
+ & & & &\\
+0 & & & &
+\end{bmatrix}
+\end{equation}
+$\hat{Q}_1$ kann dabei zum Beispiel mit Givens Rotationsmatrizen \ref{francis:section:grundlagen:givens} oder einer Householder-Trans\-for\-ma\-tions\-ma\-trix \ref{francis:section:grundlagen:householder} gebildet werden.
 
-Damit wir aber die Eigenwerte unserer Matrix nicht verändern, müssen wir die $Q$ Matrix nun auch von der rechten Seite hinzu multiplizieren.
-Da unsere erste Spalte von $Q$ nur eine 1 und nullen hat, wird dabei die vorher erzeugte Spalte nicht beeinflusst.
-Das Resultat ist also eine ähnliche Matrix, welche an den gewünschten Stellen in der ersten Spalte nullen hat.
-
+Damit wir die Eigenwerte unserer Matrix nicht verändern, müssen wir die Matrix $Q_1$ nun auch von der rechten Seite hinzu multiplizieren.
+Da die erste Spalte von $Q_1$ nur eine Eins und sonst Nullen hat, wird dabei die vorher erzeugte Spalte nicht beeinflusst.
+Das Resultat ist also eine ähnliche Matrix
 \begin{equation}
 	A_{1}=A_{\text{Half}}Q_{1}=
 	\begin{bmatrix}
-	a_{11} & * & ... & *\\
+	a_{11} & * & \dots & *\\
 	-y & \\
 	0 & & & &\\
-	. & &\hat{Q_1}\hat{A}\hat{Q_1}^{-1} & &\\
-	. & & & &\\
+	\vdots & &\hat{Q}_1\hat{A}\hat{Q}_1^{-1} &\\
+	 & & & &\\
 	0 & & & &
 	\end{bmatrix}
 	=
 	\begin{bmatrix}
-	a_{11} & * & ... & *\\
+	a_{11} & * & \dots & *\\
 	-y & \\
 	0 & & & &\\
-	. & &\hat{A}_{-1} & &\\
-	. & & & &\\
+	\vdots & &\hat{A}_{-1} &\\
+	 & & & &\\
 	0 & & & &
-	\end{bmatrix}
+	\end{bmatrix},
 \end{equation}	
+welche an den gewünschten Stellen in der ersten Spalte Nullen hat.
 
-Das gleiche Prinzip wird wieder angewendet.
-Durch den zweiten Reflektor entstehen Nullen in der zweiten Spalte.
-Mit einem weiteren Schritt ebenfalls in der dritten Spalte usw.
+Das gleiche Prinzip wird jetzt auf die Submatrix angewendet.
+Durch den zweiten Reflektor entstehen Nullen in der zweiten Spalte:
 
-\begin{equation}
-	Q_{2}=
+\begin{align*}
+	Q_{2}&=
 	\begin{bmatrix}
 	1 & 0 & 0 & ... & 0\\
 	0 & 1 & 0 & ... & 0\\
 	0 & 0 &\\
-	. & . & &\hat{Q_2} &\\
-	. & . &\\
+	\vdots & \vdots & &\hat{Q}_2 &\\
+	 &  &\\
 	0 & 0 &
-	\end{bmatrix}
-\end{equation}	
-\begin{equation}
-	A_{2}=
+	\end{bmatrix},
+&&&
+	A_{2}&=
 	\begin{bmatrix}
-	a_{11} & * & * & ... & *\\
-	-y_{1} & * & * & ... & *\\
+	a_{11} & * &  & \dots & *\\
+	-y_{1} & * &  & \dots & *\\
 	0 & -y_{2} &\\
-	. & . & &\hat{Q_2}\hat{A_{2}}\hat{Q_2}^{-1} &\\
-	. & . &\\
+	\vdots & \vdots  & &\hat{Q}_2\hat{A}_{2}\hat{Q}_2^{-1} &\\
+	 &  &\\
 	0 & 0 &
-	\end{bmatrix}
-\end{equation}
-
-Das Resultat ist eine Matrix in der Hessenberg Form, welche ähnlich zu $A$ ist.
+	\end{bmatrix}.
+\end{align*}
+Mit einem weiteren Schritt ebenfalls in der dritten Spalte usw.
+Das Resultat ist eine Matrix in der Hessenberg-Form, welche ähnlich zu $A$ ist.
 Das heisst für uns, sie besitzt dieselben Eigenwerte wie die Matrix $A$.
-Die ganzen Multiplikation der Reflektoren kann zusammengefasst werden, sodass sich eine einzige Ähnlichkeitstransformation ergibt.
-
+Die ganzen Multiplikation der Reflektoren kann zusammengefasst werden, sodass sich eine einzige Ähnlichkeitstransformation
 \begin{equation}
 	H=Q_{n-2}Q_{n-1}...Q_{1}AQ_{1}^{-1}...Q_{n-1}^{-1}Q_{n-2}^{-1}
 \end{equation}
-mit 
+ergibt.
+Mit 
 \begin{equation}
-	Q=Q_{1}...Q_{n-1}Q_{n-2}
+	Q=Q_{1}\dots Q_{n-1}Q_{n-2}
 \end{equation}
 erhalten wir
 \begin{equation}
-	Q^{-1} = Q_{n-2}^{-1}Q_{n-1}^{-1}...Q_{1}^{-1}
+	Q^{-1} = Q_{n-2}^{-1}Q_{n-1}^{-1}\dots Q_{1}^{-1}
 \end{equation}
+und schlussendlich
 \begin{equation}
-H=Q^{-1}AQ
+H=Q^{-1}AQ.
 \end{equation}
 
-Im Falle einer symmetrischen Matrix $A$, werden durch die Multiplikation von rechts dieselben Elemente im oberen Teil der Matrix eliminiert und das Ergebnis der Transformation tridiagonal.
-Durch die Reduzierung werden die Kosten des anschliessenden Algorithmus stark reduziert.
+Im Falle einer symmetrischen Matrix $A$ werden durch die Multiplikation von rechts dieselben Elemente im oberen Teil der Matrix eliminiert und das Ergebnis der Transformation ist tridiagonal.
+Durch die Reduzierung der ursprünglichen Matrix auf Hessenberg-Form, werden die Kosten des anschliessenden Algorithmus stark reduziert.

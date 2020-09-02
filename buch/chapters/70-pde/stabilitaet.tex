@@ -12,12 +12,16 @@ untersucht werden soll.
 Es wird sich zeigen, dass symmetrische Differenzen zusätzliche instabile
 Lösungen erzeugen können, die nichts mit realen Lösungen der
 Differentialgleichung zu tun haben.
+\index{instabil}%
+\index{instabile Lösung}%
 Dieser sogenannte {\em Computational Mode}
-\index{Computational Mode}
+\index{Computational Mode}%
 führt auf nutzlose Resultate und dürfte mit ein Grund für die Misserfolge
 von Lewis Fry Richardson in seinen Pionierversuchen zur numerischen
 Wettervorhersage gewesen sein
 \cite{buch:richardson}.
+\index{Lewis Fry Richardson}%
+\index{Richardson, Lewis Fry}%
 
 \subsubsection{Vorwärtsdifferenzen}
 Zur Illustration des Problem verwenden wir die einfache Differentialgleichung
@@ -27,7 +31,8 @@ y' = -y,\quad y(0)=y_0
 welche die wohlbekannte Lösung $y(x)=y_0e^{-x}$ hat.
 Zur Diskretisation verwenden wir die Gitterpunkte $x_i=ih$, $i\in\mathbb Z$
 und versuchen die Werte $y_i = y(x_i)$ zu berechnen.
-Diskretisation mit Vorwärts-Differenzen führt auf 
+Diskretisation mit Vorwärtsdifferenzen führt auf 
+\index{Vorwärtsdifferenz}
 \[
 y'(x_i) \approx \frac{y_{i+1}-y_i}{h} = -y(x_i) = -y_i
 \quad\Rightarrow\qquad
@@ -47,6 +52,7 @@ y_0e^{-x}
 für $n\to\infty$.
 Dieses Verfahren konvergiert also, wenn auch nicht besonders schnell,
 da das Euler-Verfahren nur ein Verfahren erster Ordnung ist.
+\index{Euler-Verfahren}%
 
 \subsubsection{Symmetrische Differenzen}
 Eine Schwierigkeit der Verwendung von Vorwärts-Differenzen ist, dass
@@ -79,6 +85,8 @@ mit den Lösungen
 \lambda_\pm = -h \pm \sqrt{h^2+1}.
 \]
 Die Quadratwurzel kann in die Taylor-Reihe
+\index{Taylor-Reihe}%
+\index{Quadratwurzel}%
 \[
 \sqrt{1+h^2}
 \approx
@@ -130,6 +138,7 @@ Diese zweite Lösung heisst der {\em Computational Mode}.
 \index{Computational Mode}
 
 \subsubsection{Numerische Anregung des Computational Mode}
+\index{Computational Mode!numerische Anregung}%
 Man muss sich fragen, warum man sich über die zweite Lösung überhaupt
 Gedanken machen soll, immerhin wird ja für die Lösung der
 Differentialgleichung nur die Lösung $\lambda_+$ benötigt.
@@ -145,8 +154,10 @@ Aber selbst wenn man $y_1 = \lambda+y_0$ setzt, wird die numerische
 Rechnung Rundungsfehler einführen, so dass der Wert $y_1$, der für die
 Rekursion verwendet wird, nicht mit dem exakten Wert $\lambda_+y_0$
 übereinstimmt.
+\index{Rekursion}%
 Wir nehmen an, dass dieser Rundungsfehler $\delta$ der einzige
 Fehler ist, der im Laufe der Berechnung eingeführt wird.
+\index{Rundungsfehler}%
 Wir müssen also die exakte Lösung für die Startwerte $y_0$ und
 $\lambda_+y_0+\delta$ bestimmen.
 Es sind also Koeffizienten $a_\pm$ zu finden mit
@@ -219,11 +230,13 @@ Ganz zu Beginn, für $x<1$, scheint die Lösung einigermassen genau dem
 theoretisch zu erwartenden Verlauf zu entsprechen.
 Dann beginnt jedoch der Computational Mode überhand zu nehmen,
 die Lösung wächst exponentiell schnell an und wird unbrauchbar.
+\index{exponentiell}%
 
 Mehr Information zum Computational Mode insbesondere auch zu einer
 Filtertechnik, mit der der Computational Mode auch wieder gedämpft
 werden kann, ist im Kapitel~\ref{chapter:burgers} zu finden.
-
+\index{Burgers}%
+\index{Filter}%
 
 
 

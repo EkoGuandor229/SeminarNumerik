@@ -69,13 +69,13 @@ erzeugen. Daher werden nur die ersten Brüche (Zahlen) betrachtet.
 Wenn wir den periodischen Kettenbruch so verändern das die Kettenbruchentwicklung 
 immer mit 6 vortläuft dann können wir unser Kettenbruch als $x$ bezeichnen 
 und darauf 3 addieren. Anders formuliert ist wie in einem periodischen Kettenbruch 
-ein {\color{red}Teil oder inneren kettenbruch} der similär ist wie der ganze Kettenbruch. Dies ergibt 
+ein {\color{red}Teil oder inneren kettenbruch} der ähnlich ist wie der ganze Kettenbruch. Dies ergibt 
 folgendes Muster das wir infolge quadratische
 Gleichungen lösen können:
 \begin{align*}
 y = x+3 &= 6 + \cfrac{1}{\color{red}6+\cfrac{1}{6+\dots}} = [6;\bar{6}]
 \\
-\Rightarrow y &= 6 + \frac{1}{y}	&&\vert\;\cdot y
+\Rightarrow y &= 6 + \frac{1}{{\color{red}y}}	&&\vert\;\cdot y
 \\
 \Rightarrow y^2 &= 6y + 1
 \\
@@ -84,6 +84,7 @@ y = x+3 &= 6 + \cfrac{1}{\color{red}6+\cfrac{1}{6+\dots}} = [6;\bar{6}]
 3.16227766
 \end{align*}
 \end{beispiel}
+
 Mit dieser Gleichung haben wir die Menge der Zahlen mit periodischer 
 Kettenbruchentwicklung bestimmt. 
 
@@ -100,7 +101,7 @@ x
 \end{equation}
 Dies führt auf die quadratische Gleichung 
 \begin{align*}
-x &= 2 + \cfrac{1}{3+\frac{1}{x}}
+x &= 2 + \cfrac{1}{3+\frac{1}{{\color{red}x}}}
 \\
 x - 2 &= \cfrac{1}{3+\frac{1}{x}}
 \\
@@ -122,13 +123,16 @@ dann ist die Kettenbruchentwicklung von $x$ periodisch, das bedeutet
 die Existenz einer Schranke $n_0$ und einer Periode $k \in \mathbb{N}$
 mit $x_n+k = x_n$ für alle $n\ge n_0$.
 \end{beispiel}
+
+
+
 \subsubsection{Satz von Euler-Lagrange}
 Jeder periodische regulärer Kettenbruch ist eine quadratische
 Irrationalzahl und umgekehrt. $x \in \mathbb{R}$ hat genau dann eine 
 Darstellung als unendlicher, periodischer Kettenbruch, wenn $x$ eine
 reell-quadratische Irrationalzahl ist (d.h. $x \notin \mathbb{Q}$ ist Lösung
 einer quadratischen Gleichung $aX^2 + bX + c = 0, a \neq 0$ mit rationalen 
-Koeffizienten $a,b,c$).
+Koeffizienten $a,b,c$) \cite{kettenbruch:perron}.
 
 \subsection{Nicht periodische Kettenbrüche}
 Es stellen sich dieselben Fragen wie im vorangegangenen Abschnitt.
@@ -155,22 +159,34 @@ $[x_0;x_1,x_2,\dots,x_n]$ gegen $\omega$ konvergieren.
 \begin{beispiel}
 Betrachten wir folgenden Kettenbruch
 \begin{align*}
-\frac{19}{51} &= [0;2,1,2,6]
+\frac{1351}{3625} &= [0;2,1,2,6,2,1,1,2,1,3] = 0.372689655172
 \\
 	K_0 &= [0] = 0
 \\
-	K_1 &= [0;2] = 0 + \frac{1}{2} = \frac{1}{2}
+	K_1 &= [0;2] = 0 + \frac{1}{2} = \frac{1}{2} = 0.5
 \\
-	K_2 &= [0;2,1] = 0 + \cfrac{1}{2+\frac{1}{1}} = \frac{1}{3}
+	K_2 &= [0;2,1] = 0 + \cfrac{1}{2+\frac{1}{1}} = \frac{1}{3} = 0.\bar{3}
 \\
-	K_3 &= [0;2,1,2] = 0 + \cfrac{1}{2+\cfrac{1}{1+\frac{1}{2}}} = \frac{3}{8}
+	K_3 &= [0;2,1,2] = 0 + \cfrac{1}{2+\cfrac{1}{1+\frac{1}{2}}} = \frac{3}{8} = 0.375
 \\
-	K_4 &= [0;2,1,2,6] = \frac{19}{51}
+	K_4 &= [0;2,1,2,6] = 0 + \cfrac{1}{2+\cfrac{1}{1+\cfrac{1}{2+\frac{1}{6}}}} = \frac{19}{51} =0.37254
+\\
+	K_5 &= [0;2,1,2,6,2] = 0 + \cfrac{1}{2+\cfrac{1}{1+\cfrac{1}{2+\cfrac{1}{6+\frac{1}{2}}}}} = \frac{41}{110} = 0.37\bar{27}
+\\
+	K_6 &= [0;2,1,2,6,2,1] = 0 + \cfrac{1}{2+\cfrac{1}{1+\cfrac{1}{2+\cfrac{1}{6+\cfrac{1}{2+\frac{1}{1}}}}}} = \frac{60}{161} = 0.37267
+\\
+	K_7 &= [0;2,1,2,6,2,1,1] = 0 + \cfrac{1}{2+\cfrac{1}{1+\cfrac{1}{2+\cfrac{1}{6+\cfrac{1}{2+\cfrac{1}{1+\frac{1}{1}}}}}}} = \frac{101}{271} = 0.37269
+\\
+	K_8 &= [0;2,1,2,6,2,1,1,2] = 0 + \cfrac{1}{2+\cfrac{1}{1+\cfrac{1}{2+\cfrac{1}{6+\cfrac{1}{2+\cfrac{1}{1+\cfrac{1}{1+\frac{1}{2}}}}}}}} = \frac{262}{703} = 0.372688
+\\
+	K_9 &= [0;2,1,2,6,2,1,1,2,1] = 0 + \cfrac{1}{2+\cfrac{1}{1+\cfrac{1}{2+\cfrac{1}{6+\cfrac{1}{2+\cfrac{1}{1+\cfrac{1}{1+\cfrac{1}{2+\frac{1}{1}}}}}}}}} = \frac{363}{974} = 0.3726899
+\\
+	K_10 &= [0;2,1,2,6,2,1,1,2,1,3] = 0 + \cfrac{1}{2+\cfrac{1}{1+\cfrac{1}{2+\cfrac{1}{6+\cfrac{1}{2+\cfrac{1}{1+\cfrac{1}{1+\cfrac{1}{2+\cfrac{1}{1+\frac{1}{3}}}}}}}}}} = \frac{1351}{3625} = 0.372689655172
 \end{align*}
 Mit diesem Beispiel werden die Teilkettenbrüche und Näherung zum Endresultat ersichtlich.
 Folge der Näherungsbrüche mit geradem (bzw. ungeradem) Index
 ist streng monoton steigend (bzw. fallend) und jeder Näherungsbruch
-mit geradem Index ist kleiner als jeder Näherungsbruch mit ungeradem Index.
+mit geradem Index ist kleiner als jeder Näherungsbruch mit ungeradem Index\cite{kettenbruch:proseminar}.
 \begin{enumerate}
 \item
 $K_0 < K_2 < K_4 < \cdots$
@@ -183,7 +199,7 @@ $K_{2s} < K_{2r+1}, r,s \in \mathbb{N}$
 Es gilt offensichtlich
 $K_0 < K_2 < K_4 < \cdots < K_{2n} < \cdots < K_{2n+1} < \cdots < K_5
 < K_3 < K_1$
-und $\frac{19}{51}$ wird von jeweils zwei aufeinanderfolgenden
+und $\frac{1351}{3625}$ wird von jeweils zwei aufeinanderfolgenden
 Näherungsbrüchen eingeschlossen.
 \end{beispiel}
 
@@ -195,7 +211,8 @@ Index nach unten begrenzt. Somit sind beide Folgen monoton und beschränkt
 und konvergieren in $\alpha$. Den erwähnten Ansatz gilt nur für reguläre Kettenbrüche, es 
 wäre zum Beispiel nicht der Fall, wenn als Teilnenner beliebige positive reelle Zahlen 
 zugelassen wären. Der Kettenbruch $[b_0;b_1,\dots]$ konvergiert genau dann, wenn die Summe
-$\sum\limits_{i=0}^\infty b_i $ divergiert.
+$\sum\limits_{i=0}^\infty b_i $ divergiert.\\
+Hiermit haben wir beobachtet wie die $k_i$ den Grenzwert von oben und unten her approximieren.
 
 Es gibt auch Zahlen, deren Kettenbruchdarstellung gewisse
 Regelmässigkeiten aufweisen, ohne periodisch zu sein. Zum Beispiel

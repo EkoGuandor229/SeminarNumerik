@@ -51,6 +51,8 @@
 \pgfmathparse{atan(\y/\x)}
 \xdef\winkel{\pgfmathresult}
 
+\node[color=red] at (\x,0.3) [above right] {$\gamma$};
+
 \begin{scope}
 \clip (-2.1,-4.1) rectangle (10.1,4.1);
 \draw[color=red,line width=2pt]

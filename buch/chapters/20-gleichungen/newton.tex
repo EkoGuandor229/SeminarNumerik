@@ -6,9 +6,11 @@
 \section{Newton-Verfahren
 \label{buch:section:newtion}}
 \rhead{Newton-Verfahren}
+\index{Newton-Verfahren}%
 Die bisher vorgestellten Verfahren zur Bestimmung einer Nullstelle
 $x^*$ der Funktion $f$, $f(x^*)=0$ sind linear konvergent und damit
 eher langsam.
+\index{Nullstelle}%
 Dafür war nicht mehr als Stetigkeit nötig, um Konvergenz des Verfahrens
 sicherzustellen.
 
@@ -19,8 +21,11 @@ sicherzustellen.
 \label{buch:subsection:newton:analytisch}}
 In Abschnitt~\ref{buch:subsection:linearekonvergenz} wurde dargestellt,
 dass nach Möglichkeit quadratische Konvergenz angestrebt werden sollte.
+\index{quadratische!Konvergenz}%
+\index{Konvergenz!quadratisch}%
 Quadratische Konvergenz könnte in einer Fixpunktiteration $x_{n+1}=g(x_n)$
 erreicht werden, wenn die Ableitung $g'(x^*)=0$ ist.
+\index{Fixpunkt}%
 
 Je grösser $f(x_n)$ ist, desto weiter dürfte $x_n$ von der Nullstelle
 entfernt sein.
@@ -54,6 +59,7 @@ Damit finden wir das im folgenden Satz beschriebene Verfahren mit
 quadratischer Konvergenz.
 
 \begin{satz}[Newton-Verfahren]
+\index{Newton-Verfahren}%
 \label{buch:satz:newton-verfahren}
 Hat die differenzierbare Funktion $f$ eine Nullstelle $x^*$ und gilt
 $f'(x^*)\ne 0$, dann konvergiert die Iterationsfolge
@@ -64,11 +70,13 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}
 für Startwerte $x_0$ genügend nahe bei $x^*$ quadratisch gegen die
 Nullstelle.
 \end{satz}
+\index{Startwert}%
 
 Das Sekantenverfahren hat darunter gelitten, dass die Berechnung
 der der nächsten Approximation mit Hilfe der Formel 
 \eqref{buch:eqn:sekanten-iteration} von umso stärker Auslöschung
 geplagt ist, je näher man bereits an der Lösung ist.
+\index{Sekantenverfahren}%
 Die Iterationsformel
 \eqref{buch:equation:newtoniteration}
 für die Newton-Iteration hat dieses Problem nicht.
@@ -109,6 +117,8 @@ x_n - \biggl(1 -\frac{e^{-x_n}}{2}\biggr)
 Die Korrektur für $n=0$ ist in Abbildung~\ref{buch:figure:newton}
 als Grundseite des rechtwinkligen Dreiecks $ABC$ erkennbar.
 Die Hypothenuse hat die Steigung $f'(x_0)$, daher ist
+\index{Hypothenuse}%
+\index{Dreieck}%
 \[
 \overline{AC}\cdot f'(x_0) = f(x_0)
 \qquad\Rightarrow\qquad
@@ -117,6 +127,7 @@ Die Hypothenuse hat die Steigung $f'(x_0)$, daher ist
 Die vom Newton-Verfahren berechnete Korrektur ist also die optimale
 Korrektur, die sich aus Funktionswert und erster Ableitung
 an der Stelle $x_n$ berechnen lässt.
+\index{Ableitung}%
 
 %
 % Wurzeln
@@ -126,6 +137,7 @@ Als Beispiel für die Anwendung des Newton-Verfahrens berechnen wir die
 $k$-te Wurzel einer positiven reellen
 Zahl $a$, wir lösen also die Gleichung
 $x^k = a$.
+\index{Wurzel}%
 Dies ist gleichbedeutend damit, eine Nullstelle der Funktion
 $f(x)=x^k-a$ zu bestimmen.
 Die Ableitung von $f$ ist
@@ -140,6 +152,7 @@ Im Falle $n=2$ finden wir das bereits in
 Abschnitt~\ref{buch:subsection:linearekonvergenz}
 untersuchte, quadratisch konvergente Verfahren zur Bestimmung
 der Quadratwurzel wieder.
+\index{Quadratwurzel}%
 In Tabelle~\ref{buch:table:wurzel5newton} ist das Verfahren für
 $a=10$, $k=5$ und $x_0=a$ gezeigt.
 Quadratische Konvergenz stellt sich allerdings erst bei $x_{10}$ ein,
@@ -181,9 +194,11 @@ einige Iterationen braucht, bis die Konvergenz quadratisch wird.
 %
 \subsection{Newton-Verfahren in $\mathbb R^n$
 \label{buch:section:newtoninRn}}
+\index{Newton-Verfahren!in $\mathbb R^n$}%
 In der bisher beschriebenen Form erlaubt das Newton-Verfahren, 
 Nullstellen von rellwertigen Funktion zu finden.
 Es eignet sich nicht, Vektorgleichungen zu lösen.
+\index{Vektorgleichung}%
 
 Sei daher im folgenden $f\colon \mathbb R^k \to \mathbb R^k$ eine
 Vektorfunktion mit einer Nullstelle $x^*$, $f(x^*)=0$, die numerisch gefunden 
@@ -195,6 +210,8 @@ Eine skalare Funktion $a(x)$ wird aber im allgemeinen zu wenig
 allgemein für eine performante Lösung des Problem sein, daher
 wird für $A(x)$ eine matrixwertige Funktion mit Werten in
 $\operatorname{GL}_k(\mathbb R)$ gewählt.
+\index{Funktion!matrixwertig}%
+\index{GLkR@$\operatorname{GL}_k(\mathbb R)$}%
 Wir setzen also an
 \[
 x_{n+1} = g(x_n) = x_n - A(x_n) f(x_n)
@@ -223,6 +240,7 @@ was den folgenden Satz motiviert.
 
 \begin{satz}[Newton-Verfahren für Vektorgleichungen]
 \label{buch:satz:newtonVektorgleichungen}
+\index{Newton-Verfahren!für Vektorgleichungen}
 Hat die Funktion $f\colon\mathbb R^k\to\mathbb R^k$ eine Nullstelle
 $x^*\in\mathbb R^n$, dann ist die Folge 
 \[
@@ -272,6 +290,7 @@ x^* + \delta_n -Df(x_n)^{-1}\cdot
 \end{align}
 Um \eqref{buch:equation:newtonn:iteration}
 zu berechnen, muss man auch $Df(x_n)$ in eine Taylor-Reihe entwickeln, sie ist
+\index{Taylor-Reihe}%
 \[
 Df(x_n)
 =
@@ -306,10 +325,12 @@ O(|\delta_n|^2)
 Der Fehler $\delta_{n+1}=O(|\delta_n|^2)$ nimmt somit quadratisch ab
 und damit ist gezeigt, dass die Iterationsfolge quadratrisch
 konvergiert.
+\index{Iterationsfolge}%
 \end{proof}
 
 \begin{beispiel}
 Es sollen die Polarkoordinaten des Punktes $(x,y)$
+\index{Polarkoordinaten}%
 als Lösung der Gleichung
 \[
 \begin{pmatrix}
@@ -325,6 +346,7 @@ bestimmt werden.
 Dies ist ein Beispiel für die Dimension $k=2$.
 
 Die Ableitungsmatrix von $f$ ist
+\index{Ableitungsmatrix}%
 \[
 Df(r,\varphi)
 =
@@ -452,10 +474,11 @@ Die Folge $(x_n)_{n\in\mathbb N}$ konvergiert also immer noch,
 aber die Konvergenz ist nur noch linear.
 
 %
-% Vergleich mit dem Sekanten-Verfahren
+% Vergleich mit dem Sekantenverfahren
 %
-\subsection{Vergleich mit dem Sekanten-Verfahren
+\subsection{Vergleich mit dem Sekantenverfahren
 \label{buch:subsection:newtonsekanten}}
+\index{Sekantenverfahren}%
 Die Ähnlichkeit des Newton-Verfahrens mit dem Sekantenverfahren ist 
 unübersehbar.
 Um dies deutlich zu machen, berechnen wir den Grenzfall $x_{n-1}\to x_n$
@@ -472,6 +495,7 @@ mit Hilfe der Form~\eqref{buch:sekante:stabil}.
 %\intertext{
 Beim Grenzübergang $x_{n-1}\to x_n$ geht der Quotient auf der rechten
 Seite in den Kehrwert der Ableitung $f'(x_n)$ über.
+\index{Grenzübergang}%
 Der Grenzfall des Sekantenverfahrens ist daher
 %}
 \begin{align*}
@@ -480,8 +504,9 @@ x_{n+1}
 x_n -\frac{f(x_n)}{f'(x_n)},
 \end{align*}
 also das Newton-Verfahren.
+\index{Newton-Verfahren}%
 
-Der Vorteil des Newton-Verfahrens gegenüber dem Sekanten-Verfahren ist
+Der Vorteil des Newton-Verfahrens gegenüber dem Sekantenverfahren ist
 jedoch, dass die Ableitung nicht nur mit Hilfe eines Differenzenquotienten
 approximiert wird, sondern exakt zur Verfügung steht.
 Damit ist das Newton-Verfahren nicht anfällig auf die Auslöschung, die
@@ -492,12 +517,15 @@ die Zuverlässigkeit des Sekantenverfahrens beeinträchtigt.
 %
 \subsection{Nullstellen von Polynomen
 \label{buch:subsection:polynomnullstellen}}
+\index{Polynom}%
+\index{Polynom!Nullstellen}%
 Das Newton-Verfahren verlang, dass die Ableitung $f'(x_n)$ genau
 berechnet werden kann.
 In einigen Fällen kann dies ein Hindernis für die Anwendung des
 Verfahrens sein.
 Polynome sind jedoch einfach genug, dass die Ableitung immer berechnet
 werden kann.
+\index{Ableitung}%
 Somit ist das Newton-Verfahren besonders gut geeignet, Nullstellen von
 Polynomen zu finden.
 In diesem Abschnitt sei daher
@@ -519,6 +547,7 @@ Zudem besteht die Gefahr von Verschmierung.
 
 Durch Ausklammern möglichst vieler Faktoren $x$ findet man die
 Formel
+\index{Ausklammern}%
 \begin{align}
 f(x)
 &=
@@ -528,8 +557,8 @@ f(x)
 welche den Funktionswert in genau $n$ Multiplikationen und $n$ Additionen
 zu berechnen gestattet.
 
-Wir bezeichnen die Teilprodukte in \eqref{buch:equation:polynomwert}
-mit
+Wir bezeichnen die Teilprodukte in \eqref{buch:equation:polynomwert} mit
+\index{Teilprodukte}%
 \[
 (\dots((a_nx+a_{n-1})x+a_{n-2})x+\dots)x+a_k
 =
@@ -556,7 +585,7 @@ p_{n-1}x+a_0.
 \end{equation}
 Diese Berechnung lässt sich in der folgenden, {\em Horner-Schema}
 genannten Tabelle
-\index{Horner-Schema}
+\index{Horner-Schema}%
 zusammenfassen.
 \begin{center}
 \includegraphics{chapters/20-gleichungen/figures/horner1.pdf}
@@ -595,9 +624,12 @@ f(2)
 
 \subsubsection{Deflation}
 Die Bedeutung der Werte $p_0,\dots,p_{n-1}$ lässt sich verstehen, wenn
-man den Polynom-Divisions-Algorithmus für $f(X) / (X-x)$ ausschreibt.
+man den Polynomdivisionsalgorithmus für $f(X) / (X-x)$ ausschreibt.
+\index{Polynomdivision}%
 Die Rekursionsformeln~\eqref{buch:equation:reste} zeigen, dass die
 Teilreste der Division die Koeffizienten $p_k$ haben:
+\index{Division}%
+\index{Teilreste}%
 \begin{equation}
 \setcounter{MaxMatrixCols}{20}
 \setlength\arraycolsep{1pt}
@@ -636,6 +668,7 @@ Das Polynom $q(X)$ hat Grad $n-1$, die Suche nach weiteren Nullstellen
 wird also vereinfacht. 
 Man nennt den Prozess, eine Nullstelle aus dem Polynom $f(X)$
 herauszudividieren, {\em Deflation}.
+\index{Nullstelle}%
 \index{Deflation}%
 
 \begin{beispiel}
@@ -681,9 +714,11 @@ Nullstellen von $f(x)=(x-3)(x-4)(x+4)(x+3)$ sind.
 
 
 \subsubsection{Berechnung der Ableitung}
+\index{Ableitung eines Polynoms}%
 Für das Newton-Verfahren wird ausser dem Funktionswert auch die Ableitung
 benötigt.
 Der Funktionswert $r=f(x)$ wird mit dem Horner-Schema sofort gefunden, ebenso
+\index{Horner-Schema}%
 der Quotient $q(x)$,
 Es gilt also
 \[
@@ -691,6 +726,7 @@ f(X) = q(X)(X-x) + r,
 \]
 was wir dazu verwenden können, die Ableitung von $f$ mit Hilfe der
 Produktregel zu berechnen:
+\index{Produktregel}%
 \[
 f'(X) = q'(X) (X-x) + q(X).
 \]
@@ -722,16 +758,19 @@ Man liest $f(4)=141$ und $f'(4)=97$ ab.
 \end{beispiel}
 
 Ist $x$ eine doppelte Nullstelle des Polynoms $f(x)$, dann ist $f'(x)=0$.
+\index{Nullstelle!doppelte}%
+\index{doppelte Nullstelle}%
 Das Horner-Schema kann daher auch dazu verwendet werden, doppelte
 Nullstellen zu erkennen und damit die Faktorisierung zu vereinfachen,
 wie das folgende Beispiel zeigt.
+\index{Faktorisierung}%
 
 \begin{beispiel}
 Wir betrachten das Polynom
 \[
 f(x) = x^4-13x^3 +41x^2 - 47x+18.
 \]
-Es hat die Nullstelle $x=1$, das Hornerschema liefert für den Quotienten
+Es hat die Nullstelle $x=1$, das Horner-Schema liefert für den Quotienten
 \begin{center}
 \begin{tabular}{>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}>{$}r<{$}}
  1&-13& 41&-47& 18\\
@@ -755,14 +794,14 @@ Damit ist das Polynom $f(x)$ vollständig faktorisiert.
 \end{beispiel}
 
 \subsubsection{Newton-Verfahren für Nullstellen von Polynomen}
-Da mit dem Hornerschema sowohl Funktionswerte wie auch Ableitungen
+Da mit dem Horner-Schema sowohl Funktionswerte wie auch Ableitungen
 effizient berechnet werden können, kann es dazu verwendet werden,
 das Newton-Verfahren für Polynomnullstellen zu implementieren.
 
 Das Horner-Schemas liefert zu jeder Nullstelle $x$ auch immer
 gleich den Quotienten $q(X)=f(X)/(X-x)$, welches für die Suche nach
 weiteren Nullstellen verwendet werden kann (Deflation).
-\index{Deflation}
+\index{Deflation}%
 
 \begin{beispiel}
 \begin{table}
@@ -782,7 +821,7 @@ n& x_n & f(x_n) & f'(x_n) & q_n(X) \\
 \end{tabular}
 \caption{Newton-Verfahren für das Polynom $f(X)=X^3+9X^2+9X+8$
 mit Hilfe des Horner-Schemas.
-Als Nebeneffekt bestimmt das Hornerschema in jeder Iteration auch
+Als Nebeneffekt bestimmt das Horner-Schema in jeder Iteration auch
 den Quotienten $q_n(x)=f(x)/(x-x_n)$.
 \label{buch:table:hornernewton}}
 \end{table}
@@ -791,6 +830,7 @@ von $f(X)=X^3+9X^2+9X +8$ sollen mit Hilfe des
 Newton-Verfahrens gefunden werden.
 Die Tabelle~\ref{buch:table:hornernewton} zeigt die vom Horner-Schema
 berechneten Funktions- und Ableitungswerte sowie das Quotientenpolynom.
+\index{Quotient!Polynom}%
 Die Konvergenz ist quadratisch und liefert die Nullstelle $x=-8$
 sowie den Quotienten $q(X)=X^2+X+1$,
 tatsächlich ist

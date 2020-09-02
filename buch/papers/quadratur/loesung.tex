@@ -130,7 +130,7 @@ muss man dazu die Integrale
     +
     a_{n}\int_{-1}^{1} x^{n}\,dx 
 \end{equation}
-berechnen können. Diese Berechnungen kann man durch die allgemeine Formel
+berechnen können. Diese Berechnungen kann durch die allgemeine Formel
 \begin{equation}
     \int_{-1}^{1} x^{k}\,dx 
     = 
@@ -181,6 +181,8 @@ Dafür hat man drei Möglichkeiten, welche nachfolgend erklärt werden.
 \subsubsection{Substitution der Polynome}
 Eine Möglichkeit für die Berechnung der Stützstellen 
 (und Gewichte, $w(x)$ ist dabei die Gewichtungsfunktion) ist, in der Formel
+\index{Gewichtung}%
+\index{Gewicht}%
 \begin{equation} \label{quadratur:equation:polynomsubstitution}
     \int_{a}^{b}w(x)P_{m}(x)\, dx = \sum_{i=0}^{n}A_{i}P_{m}(x_{i}), \; m \leq 2n + 1
 \end{equation}
@@ -284,6 +286,7 @@ und
 \end{equation}
 berechnen. Um die Formel zu verstehen, werden einige Grundkenntnisse über 
 orthogonale Polynome und deren Beziehung zur Gauss-Quadratur vorausgesetzt.
+\index{orthogonale Polynome}%
 Da aber für die häufigsten Formen der Gauss-Quadratur 
 (Siehe Abschnitt ~\ref{quadratur:subsection:gaussformen}) bereits vorberechnete
 Tabellen für die Stützstellen und Gewichte existieren, muss man die Theorie
@@ -347,9 +350,10 @@ werden nur einige für die Gauss-Quadratur relevante Eigenschaften
 angesprochen. 
 Eine gute Übersicht über Orthogonalität findet sich auf \cite{quadratur:wikipedia-orthogonality}.
 Weitere Informationen zu orthogonalen Polynomen kann man auf 
-\cite{quadratur:wikipedia-orthogonale-polynome} 
+\cite{quadratur:mathworld-orthogonal-polynomials}
 oder 
-\cite{quadratur:mathworld-orthogonal-polynomials} finden.
+\cite{quadratur:wikipedia-orthogonale-polynome} 
+finden.
 
 \subsubsection{Grundlagen orthogonale Polynome}
 Orthogonale Polynome werden in der mathematischen und 
@@ -383,6 +387,10 @@ Eigenschaften beschrieben.
     \end{tabular}
     \caption{Klassische Orthogonalpolynome
     \label{buch:table:orthogonalpolynomials}}    
+\index{Legendre-Polynome}%
+\index{Chebyshev-Polynome}%
+\index{Laguerre-Polynome}%
+\index{Hermite-Polynome}%
 \end{table}
 Weiterhin haben orthogonale Polynome rekursive Beziehungen zueinander, das heisst,
 dass mit der Formel
@@ -391,6 +399,7 @@ dass mit der Formel
 \end{equation}
 mit den ersten beiden Orthogonalpolynomen weitere Polynome berechnet werden können. 
 Die Koeffizienten für die Rekursionsformel finden sich in der 
+\index{Rekursionsformel}%
 Tabelle~\ref{buch:table:orthogonalcoefficients}
 \begin{table}
     \centering
@@ -414,6 +423,7 @@ Ein orthogonales Polynom $\phi_{n}(x)$ vom Grad $n$ hat $n$ reelle,
 unterschiedliche Nullstellen im Intervall $(a, b)$.
 Diese Eigenschaft ist für die Gauss-Quadratur relevant, 
 da für eine Gauss-Quadraturformel vom Grad $n$ für die exakte Berechnung 
+\index{Gauss-Quadraturformel}%
 des Integrals diejenigen Abszissenwerte $x_{i}$ benötigt werden, 
 welche den Nullstellen des $n-$ten orthogonalen Polynoms $P_{n}$ entsprechen.
 Weiterhin liegen die Nullstellen des Polynoms $\phi_{n}(x)$ zwischen den Nullstellen des Polynoms $\phi_{n+1}(x)$.
@@ -500,7 +510,7 @@ und das Integral ist
     \int_{-1}^{1}f(x)\,dx &\approx \int_{-1}^{1}p(x)\,dx \\
     &= \int_{-1}^{1} \sum_{i=0}^{n} f(x_{i}) l_{i}(x) \,dx \\
     &= \sum_{i=0}^{n} f(x_{i}) \cdot \int_{-1}^{1}  l_{i}(x) \,dx \\
-    &= \sum_{i=0}^{n} A_{i} f(x_{i})
+    &= \sum_{i=0}^{n} A_{i} f(x_{i}),
 \end{align}
 wobei $\int_{-1}^{1}  l_{i}(x) \,dx = A_{i}$.
 
@@ -598,6 +608,7 @@ Es folgt somit, dass
 
 \subsection{Formen der Gauss-Quadratur
 \label{quadratur:subsection:gaussformen}}
+\index{Fehler}%
 Wie im Abschnitt~\ref{quadratur:subsection:stützstellenberechnung}, 
 Orthogonale Polynome, bereits angedeutet, 
 gibt es verschiedene Ausprägungen der Gauss-Integration.
@@ -619,7 +630,9 @@ Die vier häufigsten Formen sind in der Tabelle~\ref{buch:table:gaussformen} zus
     \label{buch:table:gaussformen}}   
 \end{table}
 In den bisherigen Beispielen wurde die Gauss-Formel mit der Legendre-Form, auch Gauss-Legendre-Formel genannt, verwendet.
+\index{Gauss-Legendre-Formel}%
 Interessant ist bei der Gauss-Chebyshev-Formel, 
+\index{Gauss-Chebyshev-Formel}%
 dass für die Berechnung des Integrals keine Gewichte berechnet werden müssen,
 sondern dass für jedes $x_{i}$ das selbe Gewicht $\frac{\pi}{n+1}$ verwendet werden kann.
 Ausserdem lassen sich die Stützstellen $x_{i}$ mit der Formel
@@ -628,6 +641,7 @@ Ausserdem lassen sich die Stützstellen $x_{i}$ mit der Formel
 \end{equation}
 berechnen und sind symetrisch um $x = 0$ verteilt.
 Die Gauss-Laguerre-Formel verwendet für die Bestimmung der Stützstellen die Laguerre-Polynome.
+\index{Gauss-Laguerre-Formel}%
 Diese Stützstellen liegen alle auf dem Intervall $[0, \infty]$
 
 Möchte man nun ein beliebiges Integral mittels der Gauss-Quadratur berechnen,
@@ -672,6 +686,7 @@ Quadratur mit $n+1$ Stützstellen durchzuführen und die absolute Differenz
 zwischen beiden Resultaten zu berechnen. 
 Die komplexere Methode ist, 
 die Fehlerformel für die Gauss-Quadraturformel anzuwenden. 
+\index{Fehlerformel}%
 
 \subsubsection{Fehlerrechnung mittels Quadratur höherer Ordung}
 
@@ -768,6 +783,7 @@ man berechnet dasjenige $c$ im Intervall $[a, b]$ welches den höchsten Wert fü
         \hline
     \end{tabular}
     \caption{Fehlerformeln der Gauss-Quadratur
+\index{Fehlerformeln}%
     \label{buch:table:fehlerformeln}}   
 \end{table}
 

@@ -2,37 +2,37 @@
 % problemstellung.tex -- Beispiel-File für die Beschreibung des Problems
 %
 % (c) 2020 Severin Weiss
-%
 
 \section{Folgerungen
 \label{laplace:section:folgerungen}}
 \rhead{Folgerungen}
-Damit die Approximation von $\tilde{f}(t)$ möglichst genau $f(t)$ repräsentiert,
+Damit die Approximation von $\tilde{f}(t)$ möglichst genau $f(t)$
+repräsentiert,
 müssen die passenden Werte für $\lambda, \sigma $ und $\nu $ gefunden werden. 
-Dies geschah in diesem Falle rein iterativ durch probieren.
+Dies geschah in diesem Falle rein iterativ durch Probieren.
+Insbesondere wurden folgende Funktionen ausgewertet $
+F_{1}(s)=\frac{1}{1-s} $ und $F_{2}(s) = \frac{2}{s^{3}}$.
+Die Werte, welche für die Auswertung verwendet wurden, sind in der Tabelle~\ref{laplace:parametertabelle2} abgebildet.
 
-Insbesondere wurden folgende Funktionen ausgewertet $ F_{1}(s)=\frac{1}{1-s} $ und $F_{2}(s) = \frac{2}{s^{3}}$. 
-Die Werte welche für die Auswertung verwendet wurden sind in der Tabelle~\ref{laplace:parametertabelle} abgebildet.
-
-\begin{table}
-\centering
-\begin{tabular}[c]{c|c|c}
-& $F_{1}(s)=\frac{1}{1-s}$ & $F_{2}(s) = \frac{2}{s^{3}}$ \\
-\hline
-Parameter & $\lambda=1.288$ & $\lambda=0.101$ \\
-& $\sigma=1.000001$ & $\sigma=0.965$ \\
-& $\nu=0.81$ & $\nu=0.098953$ \\
-\end{tabular}
-\caption{XXX Beschreibung der Tabelle XXX
-\label{laplace:parametertabelle}}
-\end{table}
-Die Abbildungen \ref{laplace:fehlerf1} -- \ref{laplace:fehler2-5} zeigen die Verläufe der absoluten Fehler.
+%\begin{table}
+%\centering
+%\begin{tabular}[c]{c|c|c}
+%& $F_{1}(s)=\frac{1}{1-s}$ & $F_{2}(s) = \frac{2}{s^{3}}$ \\
+%\hline
+%Parameter & $\lambda=1.288$ & $\lambda=0.101$ \\
+%& $\sigma=1.000001$ & $\sigma=0.965$ \\
+%& $\nu=0.81$ & $\nu=0.098953$ \\
+%\end{tabular}
+%\caption{Funktionen im Zeitbereich und iterativ bestimmte Parameter $\lambda, \sigma$ und $\mu$ für die Methode von Talbot
+%\label{laplace:parametertabelle1}}
+%\end{table}
+%Die Abbildungen \ref{laplace:fehlerf1} -- \ref{laplace:fehlerf2} zeigen die Verläufe der absoluten Fehler.
 
 \begin{figure}
 \centering
 \includegraphics[width=6.9cm]{papers/laplace/Error_1divide_sminus1}
 \includegraphics[width=6.9cm]{papers/laplace/Error_1divide_sminus1_bis_tgleich5}
-\caption{Fehler von $F_{1}(s)$
+\caption{Fehlerentwicklung von $F_{1}(s)$
 \label{laplace:fehlerf1}
 }
 \end{figure}
@@ -48,7 +48,7 @@ Die Abbildungen \ref{laplace:fehlerf1} -- \ref{laplace:fehler2-5} zeigen die Ver
 \centering
 \includegraphics[width=6.9cm]{papers/laplace/Error_2divide_s_pow3}
 \includegraphics[width=6.9cm]{papers/laplace/Error_2divide_s_pow3_bis_tgleich5}
-\caption{Fehler von $F_{2}(s)$
+\caption{Fehlerentwicklung von $F_{2}(s)$
 \label{laplace:fehlerf2}
 }
 \end{figure}
@@ -63,25 +63,50 @@ Die Abbildungen \ref{laplace:fehlerf1} -- \ref{laplace:fehler2-5} zeigen die Ver
 
 
 Es ist deutlich ersichtlich, dass der Fehler nur für ein gewisses
-Zeitintervall akzeptabel ist. Im Bereich wo der Fehler sich in einem
+Zeitintervall akzeptabel ist.
+Im Bereich, wo der Fehler sich in einem
 tolerierbaren Bereich befindet, wurden die Parameter $\lambda$,
 $\sigma$ und $\nu$ für ein bestimmtes $t_{0}$ ermittelt.
-Diese Parameter sind für andere Zeitpunkt $t_{x}$ nicht mehr sinnvoll. 
-Für den Zeitpunkt $t_{0}=1$ wurden die Fehler in der Grössenordnung $10^{-8}$ respektive $10^{-6}$ erreicht. 
-Dies geschah mittels Erhöhung der Iterationszahl N.
+Diese Parameter sind für spätere Zeitpunkte nicht mehr sinnvoll (der Fehler wird sehr gross).
+Zu späteren Zeitpunkten müssten die Parameter auf ein Neues iterativ
+ermittelt werden.
+Der Versuch die optimierten Parameter durch einen Algorithmus zu
+finden, ist in \cite{laplace:talbot} für Interssierte nachzuschlagen.
+Für den Zeitpunkt $t_{0}=1$ wurden die Fehler in der Grössenordnung
+$10^{-8}$ respektive $10^{-6}$ erreicht.
+Dies geschah mittels Erhöhung der Iterationszahl $n$. Um noch bessere
+Resultate zu erhalten, könnte die Romberg-Beschleunigung verwendet
+\index{Romberg-Beschleunigung}%
+werden (für detaillierte Information siehe Kapitel 4.2).
 
-\begin{center}
-\begin{tabular}[c]{c|c|c}
-& $F_{1}(s)$ & $F_{2}(s)$ \\
+\begin{table}
+\centering
+\begin{tabular}{l|r@{\hskip2pt}l|r@{\hskip2pt}l}
+& \multicolumn{2}{c|}{$F_{1}(s)$} & \multicolumn{2}{c}{$F_{2}(s)$}\\
 \hline
-Parameter & $\lambda=1.288$ & $\lambda=0.101$ \\
- & $\sigma=1.000001$ & $\sigma=0.965$ \\
- & $\nu=0.81$ & $\nu=0.098953$ \\
+Parameter & $\lambda$&$=1.288$ & $\lambda$&$=0.101$ \\
+ & $\sigma$ &$=1.000001$ & $\sigma$&$=0.965$ \\
+ & $\nu$ & $=0.81$ & $\nu$ & $=0.098953$ \\
 \hline
-$t_{0}$ & $1$ & $1$ \\
+$t_{0}$ & \multicolumn{2}{c|}{$1$} & \multicolumn{2}{c}{$1$} \\
 \hline
-Fehler & $1.7076~\cdot~10^{-08}$ & $1.8447~\cdot~10^{-06}$ \\
+Iterationszahl n & \multicolumn{2}{c|}{$63000$} & \multicolumn{2}{c}{$100000$} \\
+\hline
+Fehler & \multicolumn{2}{c|}{$1.7076~\cdot~10^{-08}$} & \multicolumn{2}{c}{$1.8447~\cdot~10^{-06}$} \\
 \end{tabular}
-\end{center}
+\caption{Fehler zum Zeitpunkt $t_{0}$ mit iterativ optimierten Talbot-Parametern $\lambda, \sigma$ und $\mu$
+\label{laplace:parametertabelle2}}
+\end{table}
 
 
+%\lstinputlisting[style=Python,linerange={1-50},firstnumber=1,float,caption={Implementierung Talbotmethde in Python},label={laplace:codes:talbotmethode}]{papers/laplace/TalbotsMethode_homemade_f_t.py}
+%\lstinputlisting[style=Python,linerange={51-100},firstnumber=51,float,caption={Implementierung Talbotmethde in Python},label={laplace:codes:talbotmethode}]{papers/laplace/TalbotsMethode_homemade_f_t.py}
+%\lstinputlisting[style=Python,linerange={101-150},firstnumber=101,float,caption={Implementierung Talbotmethde in Python},label={laplace:codes:talbotmethode}]{papers/laplace/TalbotsMethode_homemade_f_t.py}
+%\lstinputlisting[style=Python,linerange={151-200},firstnumber=151,float,caption={Implementierung Talbotmethde in Python},label={laplace:codes:talbotmethode}]{papers/laplace/TalbotsMethode_homemade_f_t.py}
+%\lstinputlisting[style=Python,linerange={201-250},firstnumber=201,float,caption={Implementierung Talbotmethde in Python},label={laplace:codes:talbotmethode}]{papers/laplace/TalbotsMethode_homemade_f_t.py}
+%\lstinputlisting[style=Python,linerange={251-287},firstnumber=251,float,caption={Implementierung Talbotmethde in Python},label={laplace:codes:talbotmethode}]{papers/laplace/TalbotsMethode_homemade_f_t.py}
+
+\FloatBarrier
+\section{Programmcode\label{laplace:section:programmcode}}
+\rhead{Programmcode}
+\lstinputlisting[style=Python]{papers/laplace/TalbotsMethode_homemade_f_t.py}

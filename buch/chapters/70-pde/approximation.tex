@@ -5,6 +5,7 @@
 %
 \subsection{Approximation
 \label{pde:fem:subsection:approximation}}
+\index{Approximation}%
 Das äquivalente Minimalproblem zu einer partiellen Differentialgleichung
 hat das Problem etwas vereinfacht, die Ordnung der Ableitung ist
 reduziert worden, aber ist ist immer noch ein Problem, in dem eine
@@ -29,6 +30,7 @@ Als erstes müssen wir das äquivalente Minimalproblem finden.
 
 \begin{problem}
 Sei $F(x)$ eine Stammfunktion von $f(x)$.
+\index{Stammfunktion}%
 Eine Lösung des Differentialgleichungsproblems~\eqref{buch:pde:approx:beispiel}
 minimiert
 \[
@@ -86,6 +88,7 @@ ist jede $F(x)+C$ ebenfalls eine Stammfunktion.
 Nach obiger Rechnung führt sie jedoch auf die gleichen Minima.
 
 \subsubsection{Approximation mit Polynomen}
+\index{Approximation durch Polynome}
 Wir können aber davon ausgehen, dass die Lösungsfunktionen einigermassen
 glatt sind, also sich gut durch ein Polynom approximieren lässt.
 Wir approximieren jetzt $u(x)$ als Polynom und schreiben
@@ -94,6 +97,7 @@ u(x) = a_0 + a_1x + a_2x^2 + \dots + a_nx^n.
 \]
 Das Minimalprinzip für $u(x)$ führt auf ein Minimalprinzip für 
 die Koeffizienten $a_k$.
+\index{Minimalprinzip}%
 Zunächst brauchen wir die Ableitung von $u(x)$:
 \begin{align*}
 u'(x) &= \sum_{k=1}^n ka_kx^{k-1}.
@@ -138,6 +142,7 @@ b^t a
 \end{align*}
 ausgewertet werden können.
 Gesucht ist jetzt also ein Koeffizientenvektor $a$, der den Ausdruck
+\index{Koeffizientenvektor}%
 \[
 Q(a) = a^t B a + b^t a + c
 \]
@@ -224,7 +229,7 @@ a_2^2
 a^2.
 \]
 Gesucht wird also nur das Minimum eines quadratischen Ausdrucks 
-in $a_2$, und dieses wird bei $a_2=\frac12$ angenommen.
+in $a_2$ und dieses wird bei $a_2=\frac12$ angenommen.
 Tatsächlich kann man nachprüfen, dass
 \[
 u(x)
@@ -302,6 +307,7 @@ u_0\\u_1
 \end{pmatrix} = b
 \]
 Das Problem ist damit auf das quadratische Minimalproblem
+\index{quadratisches Minimalproblem}%
 \[
 \begin{aligned}
 &\text{minimiere}&
@@ -372,12 +378,14 @@ werden kann.
 Dies ist nicht immer möglich, wie die Funktion $\varphi$ des Polarwinkels
 des Punktes $(x,y)$ auf dem Gebiet von
 Abbildung~\ref{buch:pde:figure:ringgebiet} zeigt.
+\index{Polarwinkel}%
 \begin{figure}
 \centering
 \includegraphics{chapters/70-pde/images/ringgebiet.pdf}
 \caption{Die auf dem Gebiet $\Omega$ definiert Funktion, $\varphi$,
 die einem Punkt den Polarwinkel $\varphi$ in Polarkoordinaten zuordnet,
 kann nicht stetig auf ganz $\mathbb R^2$ ausgedehnt werden.
+\index{Polarkoordinaten}%
 Der Grund dafür sind die unterschiedlichen Grenzwert im Punkt $P$.
 \label{buch:pde:figure:ringgebiet}}
 \end{figure}
@@ -435,6 +443,7 @@ von $x$ und $y$ wird, so dass das Minimalproblem wohldefiniert ist.
 Für das vorgeschlagene Minimalprinzip können wir jetzt wieder die
 Richtungsableitung für eine Änderung von $u$ um eine Funktion $h$
 mit verschwindenden Randwerten berechnen.
+\index{Richtungsableitung}%
 Wie früher finden wir
 \begin{align*}
 \frac{dI(u+\varepsilon h)}{d\varepsilon}\bigg|_{\varepsilon=0}

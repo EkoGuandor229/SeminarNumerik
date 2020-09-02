@@ -7,11 +7,15 @@
 \rhead{Einleitung}
 
 	Die Gleichung von Burgers,
+\index{Gleichung von Burgers}%
+\index{Burgers, Gleichung von}%
 	\begin{equation}
 		  \frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}}=\nu {\frac {\partial ^{2}u}{\partial x^{2}}},
 		  \label{burgers:eq_burgers}
 	\end{equation}
 	ist eine nichtlineare partielle Differentialgleichung.
+\index{nichtlinear}%
+\index{partielle Differentialgleichung}%
 	Das Definitionsgebiet
 	\begin{equation}
 		\Omega = \left \{ (x,t) \in  \mathbb{R} \, \times \,  \mathbb{R}^t \right \}
@@ -19,6 +23,7 @@
 	besteht aus der Dimension $x$ und der Zeit $t$.
 	Die Lösung der Gleichung von Burgers $u(t,x)$ ist in $\Omega$ definiert, wobei die Anfangswerte $u(0,x)$ bekannt sein müssen.
 	In diesem Paper wird die reibungsfreie Burgersgleichung
+\index{reibungsfrei}%
 	\begin{equation}
 		\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}}=0
 		\label{burgers:eq_invisid_burgers}
@@ -26,6 +31,7 @@
 	betrachtet, wobei der Diffusionsterm $\nu$ von \eqref{burgers:eq_burgers} auf 0 gesetzt ist.
 
 	Das Aussergewöhnliche an der Gleichung ist die Nichtlinearität. Diese Eigenschaft erschwert die numerische L\"osung erheblich.
+\index{Nichtlinearität}%
 
 	Als Beispiel kann f\"ur die Randbedingung bei $u(0,x)$ eine Normalverteilung verwendet werden.
 	Die gel\"oste Gleichung ist in \autoref{burgers:fig:b1} abgebildet.
@@ -40,6 +46,7 @@
 
 
 	\subsection{Beziehung zu den Navier-Stokes-Gleichungen}
+\index{Navier-Stokes-Gleichungen}%
 		Die Gleichung wird häufig für die Modelierung von Fluiden verwendet.
 		Sie wird gebraucht um die Navier-Stokes-Gleichungen zu vereinfachen.
 		Die Navier-Stokes-Gleichungen beschreiben die Str\"omung von Fluiden.
@@ -50,12 +57,15 @@
 			\label{burgers:eq_navier}
 		\end{equation}
 		 f\"ur newtonsche inkompressible Fluide hergeleitet werden \cite{burgers:navier}.
+\index{newtonisches Fluid}%
 		Wenn der Druck $p$ und die externe Kraft $F$ vernachl\"asigt wird, ergibt sich
 		\begin{equation}
 			\rho \left(\frac{\partial u}{\partial t} + u \, \nabla u \right) = \mu \nabla^2 u
 			 \label{burgers:eq_navier2}
 		\end{equation}
 		Da die Dichte $\rho$ für inkompressible Fluide konstant ist, kann sie mit der Viskosität $\mu$ zur Konstante der kinematischen Viskosität $\nu = \frac{\mu}{\rho}$
+\index{Dichte}%
+\index{Viskosität}%
 		\begin{equation}
 			 \frac{\partial u}{\partial t} + u \,\nabla u = \nu \nabla^2 u
 			 \label{burgers:eq_navier3}
@@ -64,7 +74,7 @@
 		Wie bereits erw\"ahnt, wird die reibungsfreie Gleichung betrachtet ($\nu = 0$).
 		Weiter werden die kommenden Berechnungen im eindimensionalen Raum durchgef\"uhrt.
 		Somit kann der Ableitungsoperator $\nabla$ als die Ableitung nach $x$ umgeschrieben werden.
-		Mit diesen Vereinfachungen der Navier Stokes Gleichung f\"ur newtonsche inkompressible Fluide ist man bei der urspr\"unglichen Gleichung \eqref{burgers:eq_invisid_burgers} angelangt.
+		Mit diesen Vereinfachungen der Navier-Stokes-Gleichung f\"ur newtonsche inkompressible Fluide ist man bei der urspr\"unglichen Gleichung \eqref{burgers:eq_invisid_burgers} angelangt.
 
 	%\subsection{Numerische Wetter Vorhersage}
 	%	Lewis Fry Richardson (1881 - 1953) war ein Britischer Mathematiker/Physiker.

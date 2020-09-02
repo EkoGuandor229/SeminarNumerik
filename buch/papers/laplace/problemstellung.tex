@@ -6,28 +6,34 @@
 
 
 
-\section{Problemstellung
+\section{Motivation: Lösung einer linearen Differentialgleichung
 \label{laplace:section:problemstellung}}
 \rhead{Problemstellung}
-\subsection{Beispiel: Lösung einer linearen DGL mittels Laplacetransformation}
-Wir wollen eine Lösung $f(t)$ aus $F(s)$ der linearen Differentialgleichung 
-\[
-\frac{df}{dt} + \lambda f(t) = 0, wobei f_{0} = f(t=0)
-\]
-Mit der Laplactransformation folgt
-\[
-(sF(s) - f_{0}) + \lambda F(s) = 0
-\]
-Die obige Gleichung im Frequenzbereich kann nach $F(s)$ aufgelöst werden.
+Wir wollen eine Lösung $f(t)$ der linearen Differentialgleichung 
+\begin{equation}
+\frac{df}{dt} + \lambda f(t) = 0, \qquad ~~ \text{mit} \qquad f_{0} = f(t=0).
+\label{laplace:lindgl}
+\end{equation}
+Wir wenden die Laplace-Transformation auf die Gleichung \eqref{laplace:lindgl} an. Mit der Laplace-Transformation folgt
+\index{Laplace-Transformation}%
+\begin{equation}
+(sF(s) - f_{0}) + \lambda F(s) = 0.
+\label{laplace:dgl}
+\end{equation}
+Die Gleichung \eqref{laplace:dgl} im Frequenzbereich kann nach $F(s)$ aufgelöst werden.
+\index{Frequenzbereich}%
 Es folgt somit
-\[
-F(s) = \frac{f_{0}}{s + \lambda}
-\]
-Um die Laplaceinverse von $F(s)$ zu finden existieren für gewisse Funktionstypen tabellierte zugehörige Rücktransformationen.
-Für die obige Funktion $F(s)$ ergibt sich zum Beispiel
-\[
-\mathcal{L}^{-1}\{F(s)\}=\mathcal{L}^{-1}\{\frac{f_{0}}{s+\lambda}\} = f_{0}e^{-\lambda t}
-\]
-Solche Tabellen sind jeweils in der Literatur zu finden, welche sich mit der Laplacetransformation beschäftigt.
-Wenn für die gesuchte Funktion $F(s)$ keine zugehörige Funktion tabelliert ist, muss das Integral wie in der Einleitung beschrieben numerisch berechnet werden.
+\begin{equation}
+F(s) = \frac{f_{0}}{s + \lambda}.
+\label{laplace:F(s)}
+\end{equation}
+Um die Laplace-Inverse von $F(s)$ zu finden, existieren für gewisse Funktionstypen tabellierte zugehörige Rücktransformationen.
+\index{Laplace-Inverse}%
+\index{Rücktransformation}%
+Für die Funktion $F(s)$ in Gleichung \eqref{laplace:F(s)} ergibt sich zum Beispiel
+\begin{equation}
+\mathcal{L}^{-1}\{F(s)\}=\mathcal{L}^{-1}\biggl\{\frac{f_{0}}{s+\lambda}\biggr\} = f_{0}e^{-\lambda t}.
+\end{equation}
+Solche Tabellen sind jeweils in der Literatur zu finden, welche sich mit der Laplace-Transformation beschäftigt.
+Wenn für die gegebene Funktion $F(s)$ keine zugehörige Funktion tabelliert ist, muss das Integral \eqref{laplace:riemanninversionsformel} wie in der Einleitung beschrieben numerisch berechnet werden.
 

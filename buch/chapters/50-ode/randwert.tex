@@ -6,7 +6,7 @@
 \section{Randwertprobleme\label{section:numerik:randwertprobleme}}
 \rhead{Randwertprobleme}
 Die bisher beschriebenen Verfahren gehen von einer Anfangsbedingung
-aus, und berechnen die dadurch eindeutig festgelegte Lösungskurve.
+aus und berechnen die dadurch eindeutig festgelegte Lösungskurve.
 Randwertproblem, beschrieben in Abschnitt~\ref{section:randwertprobleme},
 verknüpfen dagegen Werte von einzelnen Komponenten von $Y$ an den
 Rändern eines Intervalls.
@@ -25,15 +25,21 @@ von Gleichungen zu bestimmen.
 Mit einem nur der Schwerkraft unterworfenen Ball, der im Ursprung des
 Koordinatensystems geworfen wird, soll ein Ziel im Punkt $P$ getroffen
 werden.
+\index{Ball}%
+\index{Ziel}%
 In welcher Richtung und mit welcher Anfangsgeschwindigkeit muss er geworfen
 werden?
+\index{Anfangsgeschwindigkeit}%
 \end{aufgabe}
 
 Um das Problem einfach zu halten, modellieren wir diese Aufgabe wie
 folgt.
 Der Ball der Masse $m$ bewegt sich in der $x$-$y$-Ebene, wobei die
 Schwerkraft in negativer $y$-Richtung zeigt.
+\index{Masse}%
+\index{Schwerkraft}%
 Das Newtonsche Gesetz liefert die Differentialgleichung zweiter Ordnung
+\index{Newtonsches Gesetz}%
 \begin{equation}
 m\frac{d^2}{dt^2}\begin{pmatrix}x\\y\end{pmatrix}
 =
@@ -45,22 +51,26 @@ m\frac{d^2}{dt^2}\begin{pmatrix}x\\y\end{pmatrix}
 Die Masse $m$ kann herausgekürzt werden.
 Gesucht ist eine Lösung so, dass die Bahn durch die Punkte $(0,0)$
 und $P=(p,0)$ geht.
+\index{Bahn}%
 
 Genau genommen ist dies nicht ein Randwertproblem wie in 
 Abschnitt~\ref{section:randwertprobleme}, denn es wird nicht verlangt,
 dass der Ball zu einer bestimmten Zeit $t$ beim Punkt $P$ eintrifft.
 Die Differentialgleichung bedeutet aber, dass die Horizontalgeschwindigkeit
 des Balls konstant ist (die horizontale Beschleunigung ist immer $0$).
+\index{Horizontalgeschwindigkeit}%
 Ist $v_x$ die Horizontalgeschwindigkeit, dann erreicht der Ball zur
 Zeit $t_1=p/v_x$ die $x$-Koordinate des Ziels.
 Gesucht ist also die anfängliche Vertikalgeschwindigkeit, die man
 dem Ball geben muss, dass zur Zeit $p/v_x$ die $y$-Komponente
 der Lösung den Wert $0$ hat.
+\index{Vertikalgeschwindigkeit}%
 In dieser Form liegt ein Randwertproblem wie in
 Abschnitt~\ref{section:randwertprobleme} vor.
 
 Die Lösungen der Differentialgleichung~\ref{numerik:ball-dgl} sind aus
 dem Physik-Unterricht bekannt:
+\index{Physik}%
 es gilt
 \begin{equation}
 \begin{pmatrix}x(t)\\y(t)\end{pmatrix}
@@ -110,13 +120,17 @@ erfüllt.
 Darin stehen die roten Einträge für Werte, die nicht vorgegeben sind.
 Aus der Symmetrie des Problems kann man natürlich auch die Endgeschwindigkeit
 ablesen.
+\index{Symmetrie}%
+\index{Endgeschwindigkeit}%
 Zu bestimmen ist also $v_y$ so, dass die Lösungskurve durch den Punkt
 $(p,0)$ geht.
+\index{Lösungskurve}%
 
 Wird statt der Horizontalkomponenten der Anfangsgeschwindigkeit die
 gesamte Anfangsgeschwindigkeit $v_0$ vorgegeben, dann muss der
 Winkel gefunden werden, unter dem der Ball geworfen werden muss,
 um das Ziel zu trefen.
+\index{Anfangsgeschwindigkeit}%
 Bei der Elevation $\alpha$ sind die Komponenten der Anfangsgeschwindigkeit
 $v_x=v_0\cos\alpha$ und $v_y=v_0\sin\alpha$. 
 Setzt man dies in die Bedingung~\eqref{numerik:ball-bedingung} ein,
@@ -133,11 +147,14 @@ v_0 \sin \alpha &=\frac{gp}{2v_0\cos\alpha}
 Im Nenner rechts steht im Wesentlichen die kinetische Energie,
 je mehr kinetische Energie der Ball zu Beginn hat, desto kleiner
 ist der Winkel, man trifft das Ziel mit einer sehr flachen Bahn.
+\index{kinetische Energie}%
+\index{Energie!kinetisch}%
 Kleine Winkel reichen auch für geringe Schwerkraft ($g$ klein)
 und kurze Distanzen ($p$ klein).
 Die maximale Distanz wird erreicht, wenn das Argument des Arcussinus
 den Wert $1$ erreicht, grösser darf $p$ nicht werden, weil es sonst
 keine Lösung mehr für $\alpha$ gibt.
+\index{Arcussinus}%
 Die Maximaldistanz ist daher
 \[
 p_{\text{max}} = \frac{v_0^2}{g}.
@@ -157,7 +174,7 @@ Ein Seil ist zwischen zwei Punkten aufgehängt, welche Form nimmt es
 allein unter der Wirkung seines Eigengewichtes an?
 \end{aufgabe}
 Die Lösungskurve dieses Problems heisst die {\em Kettenlinie}.
-\index{Kettenlinie}
+\index{Kettenlinie}%
 Auch in diesem Fall können wir wieder eine Lösungsfunktion $y(x)$ finden,
 aber die Bestimmung der Parameter ist jetzt nicht mehr in geschlossener
 Form möglich.
@@ -177,15 +194,19 @@ gesuchte Kurve beschreibt.
 Zur Herleitung dient die Abbildung~\ref{numerik:kettenlinie}.
 Die Masse des Seils zwischen den beiden Punkten $x$ und $x+\Delta x$
 wird von den beiden eingezeichneten Kräften getragen.
+\index{Kraft}%
 Die horizontalen Komponenten tragen nicht dazu bei, das Seil zu
 tragen, sie haben daher entlang des ganzen Seils immer die gleiche
 Grösse $F$.
+\index{Seil}%
 Die Masse des Seilstücks ist proportional zu seiner Länge,
 der Proportionalitätsfaktor ist die lineare Massendichte $\mu$.
+\index{Massendichte}%
 Nach dem dritten Newtonschen Gesetz
 \index{Newton!drittes Gesetz von}
 sind die vertikalen Kraftkomponenten gleich gross wie die Gewichtskraft
 des Seilstücks:
+\index{Gewichtskraft}%
 \begin{align*}
 F(y'(x+\Delta x)-y'(x))
 &= \mu g\sqrt{(y(x+\Delta x)-y(x))^2+\Delta x^2}
@@ -204,6 +225,7 @@ Diese Differentialgleichung hat die Funktion
 \[
 y(x) = \frac1a \cosh ax + C
 \]
+\index{cosh@$\cosh(x)$}%
 als Lösung, wie man durch Nachrechnen einsehen kann\footnote{
 Man kann die Gleichung~\eqref{numerik:kettenloesung} natürlich auch direkt
 lösen. Dazu bestimmt man zuerst die Funktion $z(x)=y'(x)$, welche die
@@ -213,6 +235,7 @@ z'(x)=a\sqrt{1+z(x)^2}
 \]
 erfüllt.
 Diese Gleichung lässt sich durch Separation lösen:
+\index{Separation}%
 \[
 \begin{aligned}
 \frac{dz}{dx}&=a\sqrt{1+z^2}
@@ -224,6 +247,7 @@ Diese Gleichung lässt sich durch Separation lösen:
 z(x)=\sinh a(x+C_1).
 \end{aligned}
 \]
+\index{sinh@$\sinh(x)$}%
 Die Funktion $y(x)$ bekommt man jetzt durch Integration
 \[
 y(x)=\int z(x)\,dx = \frac1a \cosh a(x+C_1) + C_2,
@@ -244,6 +268,8 @@ a\cosh ax&=a\sqrt{1+\sinh^2 ax},
 \end{align*}
 umformen lässt, diese Gleichung ist für hyperbolische Funktionen
 immer erfüllt.
+\index{hyperbolische Funktionen}%
+\index{Funktion!hyperbolisch}%
 
 Die Differntialgleichung~\eqref{numerik:kettenloesung}
 hängt nicht von $x$ ab,
@@ -262,8 +288,9 @@ Setzt man $x=x_0$ ein, findet man $y(x_0)=y_0$, d.~h.~der Punkt $(x_0,y_0)$
 ist der Scheitelpunkt des Graphen von $y(x)$.
 
 Damit kann jetzt das Anfangswertproblem gelöst werden.
+\index{Anfangswertproblem}%
 Wir verlangen, dass die im Punkt $x=x_1$ der Funktionswert 
-$y(x_1)=y_1$ sein soll, und die Steigung $y'(x_1)=m$.
+$y(x_1)=y_1$ sein soll und die Steigung $y'(x_1)=m$.
 Setzt man die Lösung~\eqref{numerik:ketteaC} in die Bedingung
 für die Steigung ein, erhält man
 \[
@@ -315,6 +342,7 @@ $\asinh$ auftritt.
 
 Wir können die Gleichung jedoch iterativ mit dem Newton-Verfahren
 nach Satz~\ref{buch:satz:newton-verfahren} lösen.
+\index{Newton-Verfahren}%
 Dazu brauchen wir die Ableitung von $f$, sie ist
 \[
 f'(m)
@@ -388,8 +416,8 @@ for i = (1:10)
 endfor
 \end{lstlisting}
 
-\subsection{Schiess-Verfahren\label{numerik:schiess-verfahren}}
-\index{Schiess-Verfahren}%
+\subsection{Schiessverfahren\label{numerik:schiess-verfahren}}
+\index{Schiessverfahren}%
 Wenn man experimentell versucht, ein Ziel zu treffen, dann wird man
 in wiederholten Versuchen die Richtung anpassen, so dass man dem Ziel
 immer näher kommt.
@@ -440,8 +468,10 @@ h'(v_y)= \frac{\partial y}{\partial v_y},
 ein Eintrag der Jacobi-Matrix.
 In Abschnitt~\ref{grundlagen:jacobi} wurde gezeigt, wie man auch für
 die Jacobi-Matrix eine Differentialgleichung aufstellen kann, die
+\index{Jacobi-Matrix}%
 man natürlich ebenfalls mit den früher beschriebenen numerischen
 Bibliotheken lösen kann.
+\index{Bibliothek}%
 
 Das Randwertproblem kann daher mit folgendem Algorithmus numerisch gelöst
 werden.
@@ -449,8 +479,8 @@ werden.
 \item Beginne mit einer Schätzung für $v_y$
 \item Finde numerisch die Lösung des Anfangswertproblems mit $v_y$
 als anfängliche Vertikalgeschwindigkeit.
-Berechnet dabei auch die Jacobi-Matrix
-\item Lese die $h(v_y)$ aus der Lösung zur Zeit $p/v_x$ ab, und $h'(v_y)$
+Berechnet dabei auch die Jacobi-Matrix.
+\item Lese die $h(v_y)$ aus der Lösung zur Zeit $p/v_x$ ab und $h'(v_y)$
 aus der Jacobi-Matrix und verwendet den Newton-Algorithmus
 (Satz~\ref{buch:satz:newtonVektorgleichungen}), um eine verbesserte
 Schätzung von $v_y$ zu bekommen.

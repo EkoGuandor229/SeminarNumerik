@@ -10,11 +10,18 @@
 Die numerischen Datentypen eines digitalen Computers sind Approximationen
 für die abstrakten Zahlensysteme $\mathbb{N}$, $\mathbb{Z}$, $\mathbb{Q}$
 und $\mathbb{R}$.
-Man kann sie daher verwenden, die in der Analysis und der linaren Algebra
+\index{Zahlensystem}%
+\index{R@$\mathbb R$}%
+\index{N@$\mathbb N$}%
+\index{Z@$\mathbb Z$}%
+\index{Q@$\mathbb Q$}%
+Man kann sie daher verwenden, die in der Analysis und der linearen Algebra
 definierten Konzepte wie Grenzwerte, Integrale oder inverse Matrizen zu
 berechnen.
+\index{lineare!Algebra}
 Da sie jedoch nur Annäherungen sind, werden die gewohnten Rechenregeln 
 nicht immer gültig sein.
+\index{Rechenregeln}%
 In $\mathbb{R}$ kann die Addition dreier Zahlen zum Beispiel in beliebiger
 Reihenfolge durchgeführt werden, für \texttt{double}-Zahlen auf einem
 Computer ist dies nicht der Fall.
@@ -24,6 +31,9 @@ Das Programm \texttt{assoziativ.cpp} im Verzeichnis
 \texttt{buch/chapters/experiments/assoziativ} findet analoge Beispiel für
 die anderen Floatingpoint Typen \texttt{float} und \texttt{long double}.}:
 \verbatiminput{chapters/10-arithmetik/assoziativ.txt}
+\index{Octave}%
+\index{assoziativ}%
+\index{Assoziativgesetz}%
 Das Assoziativgesetz verlangt, dass $a+(b+b)=(a+b)+b$ ist und zunächst
 will es auch den Anschein haben, dass $x$ und $y$ tatsächlich gleich sind.
 Ungewöhnlich ist nur, dass der Wert von $x$ mit auf den ersten Blick
@@ -34,6 +44,7 @@ Diese Nullen deuten jedoch an, dass $x\ne 1$ aber $y=1$, wie man in Schritt
 Das Beispiel verdeutlicht, dass auf einem Computer zur Verfügung
 stehende numerische Datentypen die gewohnten Rechengesetze verletzen und
 neue Unzulänglichkeiten wie Rundungsfehler in die Berechnung injizieren.
+\index{Rundungsfehler}
 Die Numerik muss sich daher mit der Frage befassen, welcher Art diese
 neuen Effekte sind und wie ihnen effektiv begegnet werden kann.
 Nur so kann die Zuverlässigkeit numerisch gefundener Resultate
@@ -50,6 +61,8 @@ Numerische Instabilität liegt vor, wenn die Berechnung aufgrund von
 numerischen Effekten völlig aus dem Ruder läuft und sinnlose Resultate
 liefert, dies wird in Abschnitt~\ref{buch:section:instabilitaet}
 untersucht.
+\index{numerische Instabilität}%
+\index{Instabilität}%
 
 
 \input{chapters/10-arithmetik/zahlensysteme.tex}

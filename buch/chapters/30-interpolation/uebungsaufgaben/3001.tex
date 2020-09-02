@@ -1,12 +1,17 @@
 Das Polynom $p(x)$ soll die Funktionswerte der Sinusfunktion an den
+\index{Sinusfunktion}%
+\index{sinx@$\sin(x)$}%
 Stellen $k\frac{\pi}2$ für ganzzahliges $k$ mit $-10\le k\le 10$
 interpolieren.
 Wie gross ist der Fehler des Interpolationspolynoms für
 $x\in [-\frac{\pi}2,\frac{\pi}2]$.
+\index{Fehler}%
+\index{Interpolationspolynom}%
 
 \begin{loesung}
 Zunächst halten wir fest, dass $21$ Stützstellen verwendet werden, dass
 also $n=20$ ist.
+\index{Stützstellen}%
 Nach der Fehlerformel für das Interpolationspolynom gilt
 \[
 |f(x)-p(x)| \le \frac{|l(x)|}{21!} |f^{(21)}(x)|
@@ -14,6 +19,8 @@ Nach der Fehlerformel für das Interpolationspolynom gilt
 mit $f(x)=\sin x$.
 Die Ableitungen von $f$ sind wieder trigonometrische Funktionen,
 d.~h.~$|f^{(21)}(x)|\le 1$.
+\index{trigonometrische Funktion}%
+\index{Funktion!trigonometrisch}%
 Der Fehler ist daher
 \[
 |f(x)-p(x)| \le \frac{|l(x)|}{21!}.
@@ -66,7 +73,8 @@ In der Tat ist der Fehler viel kleiner als diese Schranke vermuten lässt.
 In Abbildung~\ref{buch:uebungsaufgaben:figure:3001plot} kann man
 erkennen, dass das Interpolationspolynom die Funktion in der Mitte
 des Intervalls sehr genau wiedergeben kann.
-Nur am Rande weicht es wegen des Runge-Phänomens stark ab.
+Nur am Rande weicht es wegen des Runges Phänomens stark ab.
+\index{Runges Phänomen}%
 In Abbildung~\ref{buch:uebungsaufgaben:figure:3001} ist der Fehler
 $\sin x -p(x)$ für $x\in[-\frac{\pi}2,\frac{\pi}2]$ dargestellt, es zeigt
 sich, dass der Betrag des Fehlers kleiner als $1.66\cdot 10^{-4}$ ist.

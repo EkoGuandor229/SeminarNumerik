@@ -1,49 +1,50 @@
-\section{Francis Iteration erster Ordnung\label{francis:section:francis_iteration}}
-\rhead{Francis Iteration erster Ordnung}
+\section{Francis-Iteration erster Ordnung\label{francis:section:francis_iteration}}
+\rhead{Francis-Iteration erster Ordnung}
+\index{Francis-Iteration}
 
-Nun wollen wir uns mit dem eigentlichen Francis Algorithmus \cite{francis:watkins_book} befassen.
+Nun wollen wir uns mit dem eigentlichen Francis-Algorithmus \cite{francis:watkins_book} befassen.
 Es handelt sich dabei um ein iteratives Verfahren und lässt sich daher am besten durch die Analyse einer Iteration beschreiben.
-Die Ausgangssituation für den Algorithmus ist eine Matrix, welche sich in oberer Hessenberg Form oder sogar tridiagonaler Form befindet.
+Die Ausgangssituation für den Algorithmus ist eine Matrix, welche sich in oberer Hessenberg-Form oder sogar tridiagonaler Form befindet.
 
 Der Algorithmus beginnt mit der Wahl eines Shifts $\rho_{1}$ und der Berechnung der ersten Spalte von $A-\rho_{1} I$. 
-Diese hat die Form:
-
+\index{Shift}%
+Diese Spalte hat die Form
 \begin{equation}
 	p=\begin{bmatrix}
 	a_{11}-\rho_{1}\\
 	a_{21}\\
 	0\\
-	.\\
-	.\\
+	\vdots\\
+	\\
 	0
-	\end{bmatrix}
+	\end{bmatrix}.
 \end{equation}
 
-Anschliessend muss eine Matrix $Q_{0}$ gefunden werden, welche auf den Achsen 1 und 2 arbeitet und den Wert von $a_{21}$ eliminiert. Diese kann zum Beispiel mit Givens Rotationsmatrizen \ref{francis:section:grundlagen:givens} oder einer Householder-Transformationsmatrix \ref{francis:section:grundlagen:householder} gebildet werden.
+Anschliessend muss eine Matrix $Q_{0}$ gefunden werden, welche auf den Achsen 1 und 2 arbeitet und den Wert von $a_{21}$ eliminiert. Diese Matrix kann zum Beispiel mit Givens-Rotationsmatrizen \ref{francis:section:grundlagen:givens} oder einer Householder-Transformationsmatrix \ref{francis:section:grundlagen:householder} gebildet werden.
 
 \begin{equation}
 	Q_{0}^{-1}p=\begin{bmatrix}
 	*\\
 	0\\
 	0\\
-	.\\
-	.\\
+	\vdots\\
+	\\
 	0
 	\end{bmatrix}
 \end{equation}
 
-Danach muss mit $Q_{0}$ A zu  $Q_{0}^{-1}AQ_{0}$ transformiert werden.
-Die Transformation von A nach $Q_{0}^{-1}A$ kombiniert lediglich die Zeilen 1 und 2, die Matrix behält aber ihre Hessenberg Form.
-Die anschliessende Transformation von $Q_{0}^{-1}A$ nach $Q_{0}^{-1}AQ_{0}$ kombiniert die Spalten 1 und 2, wodurch die Hessenberg Form zerstört wird.
-Es entsteht an der Stelle (3,1) eine ''Ausbuchtung".
-Der Rest der Iteration beschäftigt sich damit, die Matrix wieder in ihre Hessenberg Form zu bringen.
+Danach muss $A$ mit $Q_{0}$ zu  $Q_{0}^{-1}AQ_{0}$ transformiert werden.
+Die Transformation von $A$ nach $Q_{0}^{-1}A$ kombiniert lediglich die Zeilen 1 und 2, die Matrix behält aber ihre Hessenberg-Form.
+Die anschliessende Transformation von $Q_{0}^{-1}A$ nach $Q_{0}^{-1}AQ_{0}$ kombiniert die Spalten 1 und 2, wodurch die Hessenberg-Form zerstört wird.
+Es entsteht an der Stelle (3,1) eine ``Ausbuchtung''.
+\index{Ausbuchtung}%
+Der Rest der Iteration beschäftigt sich damit, die Matrix wieder in ihre Hessenberg-Form zu bringen.
 Dafür wählen wir eine Matrix welche auf den Achsen 2 und 3 arbeitet und den Wert von $a_{31}$ eliminiert.
 So wird die Ausbuchtung nach unten verschoben.
 Dieses Prozedere wird wiederholt, bis die Ausbuchtung schlussendlich unten aus der Matrix hinausgeschoben wird.
-Die Hessenberg Form ist wiederhergestellt.
+Die Hessenberg-Form ist wiederhergestellt.
 
 Bei einer $5 \times 5$ Matrix sieht eine Iteration also wie folgt aus:
-
 \begin{equation}
 	\begin{bmatrix}
 	* & * & * & * & *  \\
@@ -75,10 +76,13 @@ Bei einer $5 \times 5$ Matrix sieht eine Iteration also wie folgt aus:
 	\end{bmatrix}
 \end{equation}
 
-Mit $\hat{A}$ als Resultat einer Francis Iteration ergibt sich: $\hat{A}=Q_{n-2}...Q_{1}Q_{0}AQ_{0}^{-1}Q_{1}^{-1}...Q_{n-2}^{-1}$
-Wobei $Q_{0}$ die Transformation bezeichnet, welche eine Ausbuchtung in der Matrix erzeugt und $Q_{1},...,Q_{n-2}$ die Transformationen sind, welche die Hessenberg Form wiederherstellen.
+Das Resultat einer Francis-Iteration ist also
+\begin{equation}
+	\hat{A}=Q_{n-2}\dots Q_{1}Q_{0}AQ_{0}^{-1}Q_{1}^{-1}\dots Q_{n-2}^{-1},
+\end{equation}
+wobei $Q_{0}$ die Transformation bezeichnet, welche eine Ausbuchtung in der Matrix erzeugt und $Q_{1},\dots,Q_{n-2}$ die Transformationen sind, welche die Hessenberg-Form wiederherstellen.
 Dabei handelt es sich also nur um Ähnlichkeitstransformationen und $\hat{A}$ besitzt dementsprechend die gleichen Eigenwerte wie $A$.
-Mit jeder Iteration konvergieren die Elemente unter der Diagonalen gegen null und die Eigenwerte erscheinen dementsprechend auf der Diagonalen von $\hat{A}$.
+Mit jeder Iteration konvergieren die Elemente unter der Diagonalen weiter gegen Null und die Eigenwerte erscheinen dementsprechend auf der Diagonalen von $\hat{A}$.
 
 \subsection{Wahl der Shifts\label{francis:section:francis_iteration:wahl_shift}}
 Die Shifts werden zur Konvergenzbeschleunigung gebraucht.
@@ -91,8 +95,15 @@ Daher wird oft ein Eigenwert auf der Diagonalen als Shift für die nächste Iter
 Zu Beginn mag dies noch eine schlechte Approximation sein, sie verbessert sich aber sehr schnell.
 
 Wird das unterste Diagonalelement verwendet spricht man von einem Rayleigh-Quotienten-Shift.
+\index{Rayleigh-Quotienten-Shift}%
+\index{Shift!Rayleigh-Quotienten-}%
 Eine andere, ähnliche Shift-Strategie ist der nach James Hardy Wilkinson benannte Wilkinson-Shift.
-Für diesen wird der näher am letzten Matrixelement liegende Eigenwert der untersten \glqq $2\times2$ Matrix \grqq als Shift benutzt.
+\index{Wilkinson, James Hardy}%
+\index{Wilkinson-Shift}%
+\index{Shift!Wilkinson-}%
+\index{Shift-Strategie}%
+Für diesen wird der näher am letzten Matrixelement liegende Eigenwert der untersten "`$2\times2$ Matrix"' als Shift benutzt.
+
 
 \begin{beispiel}
 	Gegeben sei eine Matrix $A$, welche sich bereits in Hessenberg Form befindet
@@ -105,8 +116,10 @@ Für diesen wird der näher am letzten Matrixelement liegende Eigenwert der unte
 	0 & 25.096 & 20.687 & -6.606 & -0.197\\
 	0 & 0 & -5.963 & \textcolor{orange}{-16.816} & \textcolor{orange}{-12.445}\\
 	0 & 0 & 0 & \textcolor{orange}{-9.01} & \textcolor{red}{10.189}\\
-	\end{bmatrix} \text{mit }
-	eig(A)=
+	\end{bmatrix} 
+	\qquad
+	\text{mit }
+	\texttt{eig}(A)=
 	\begin{bmatrix}
 	65 & \\
 	-21.277 & \\
@@ -116,8 +129,8 @@ Für diesen wird der näher am letzten Matrixelement liegende Eigenwert der unte
 	\end{bmatrix}
 	\end{equation}
 	
-	Für die den Rayleigh-Quotienten-Shift-Strategie würde man also \textcolor{red}{$10.189$} als ersten Shift verwenden.
-	Verfolgt man die Wilkinson-Shift-Strategie, würde man die Eigenwerte der Matrix
+	Für die Rayleigh-Quotienten-Shift Strategie würde man also \textcolor{red}{$10.189$} als ersten Shift verwenden.
+	Verfolgt man die Wilkinson-Shift Strategie, würde man die Eigenwerte der Matrix
 
 	\begin{equation}
 	\begin{bmatrix}

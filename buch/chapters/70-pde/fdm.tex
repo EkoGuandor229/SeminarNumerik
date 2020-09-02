@@ -31,6 +31,9 @@ i,k\in\mathbb Z,
 \]
 sie bilden ein Gitter $\Gamma$ mit Gitterkonstante oder Schrittweite
 $h_x$ in $x$-Richtung und $h_y$ in $y$-Richtung.
+\index{Gitter}%
+\index{Gitterkonstante}%
+\index{Schrittweite}%
 
 Die Funktion $u(x,y)$ nimmt in den Punkten $x_{ik}$ die Werte
 $u_{ik} = u(x_{ik})$ an.
@@ -42,6 +45,7 @@ in Gleichungen für die Unbekannten $u_{ik}$ übersetzt werden.
 
 \subsubsection{Dirichlet-Randbedingungen}
 Dirichlet-Randbedingungen geben die Werte auf dem Rand vor.
+\index{Dirichlet-Randbedingung}%
 Liegt ein Punkt $x_{ik}$ des Gitters $\Gamma$ auf dem Rand $\partial\Omega$
 von $\Omega$, dann geben die Dirichlet-Randbedingungen den Wert
 dieser Variablen vor.
@@ -82,6 +86,7 @@ indem $h_x$ und $h_y$ verkleinert werden.
 
 Der Fehler der Approximation~\eqref{chapter:pde:approx1st} ergibt sich
 aus dem Mittelwertsatz der Differentialrechnung.
+\index{Mittelwertsatz}%
 Es gibt Zahlen $\xi$ und $\eta$ zwischen $ih_x$ und $(i+1)h_x$
 bzw.~$kh_y$ und $(k+1)h_y$ derart, dass
 \begin{align*}
@@ -99,7 +104,7 @@ Dies zeigt, dass die Approximation~\eqref{chapter:pde:approx1st}
 nicht für die Werte der Ableitungen im Punkt $x_{ik}$ repräsentativ 
 sein kann.
 Alternativ könnten statt der Vorwärtsdifferenzen die {\em Rückwärtsdifferenzen}
-\index{Rückwärtsdifferenze}
+\index{Rückwärtsdifferenz}%
 \begin{align}
 \frac{\partial u}{\partial x} (x_{ik}) 
 &\approx
@@ -191,6 +196,7 @@ den exakten Wert der Ableitung im Punkt $x_0$, während die Vorwärts-
 und Rückwertsdifferenzen die Ableitungen in Punkten genau in der Mitte
 zwischen den Gitterpunkten rechts bzw.~links von $x_0$
 (Abbildung~\ref{buch:pde:diffex}).
+\index{quadratische!Funktion}%
 \end{beispiel}
 
 \subsubsection{Zweite Ableitungen}
@@ -252,12 +258,14 @@ Mit Vorwärtsdifferenzen erhält man zum Beispiel
 u_{i+1,k+1}-u_{i+1,k}
 -
 u_{i,k+1}+u_{ik}
-)
+).
 \end{align*}
 Die in Abbildung~\ref{buch:pde:diff2} dargestellten ``Schablonen''
 zeigen schematisch, wie die Ableitungen berechnet werden.
+\index{Schablone}%
 In den roten Kreisen um die beteiligten Knotenvariablen stehen die
 Gewichte, mit denen die Knotenvariablen multipliziert werden müssen.
+\index{Knotenvariable}%
 
 \subsubsection{Neumann-Randbedingungen}
 Neumann-Randbedingungen geben die Ableitungen in Richtung der Normalen
@@ -321,11 +329,13 @@ des Gebietes bekannt sind.
 
 
 \subsubsection{Das Poisson-Problem}
+\index{Poisson-Problem}%
 \begin{figure}
 \centering
 \includegraphics{chapters/70-pde/images/laplace.pdf}
 \caption{Approximation des Laplace-Operators mit Summen von symmetrischen
 Differenzen.
+\index{Laplace-Operator}%
 In den roten Kreisen die Gewichte, mit denen die Knotenvariablen 
 multipliziert werden müssen, um den Ausdruck
 \eqref{pde:eqn:poissongl} zu ergeben.

@@ -8,13 +8,18 @@
 
 Im Kapitel~\ref{chapter:integration}, Integration, wurden die 
 Trapezregel und die Mittelpunktsregel für die numerische Integration, 
+\index{numerische Integration}%
+\index{Integration, numerische}%
 auch Quadratur genannt, erklärt. 
+\index{Quadratur}%
 In diesem Kapitel wird eine weitere Methode, die Gauss-Quadratur, erarbeitet.
 Die Gauss-Quadratur ist ein Verfahren, welches ein bestimmtes Integral der Form
+\index{Gauss-Quadratur}%
 \begin{equation}
     \int_{a}^{b} f(x) \,dx
 \end{equation}
 mit der approximierten Summenformel
+\index{Summenformel}
 \begin{equation} \label{quadratur:equation:quadraturapproxsumme}
     I = \sum_{i=0}^{n} A_i f(x_i)
 \end{equation}
@@ -23,9 +28,12 @@ Methode abhängen.
 Es werden dabei im Vergleich mit ähnlichen Verfahren viel weniger Funktionsauswertungen benötigt.
 
 Methoden für die Quadratur lassen sich in zwei Gruppen unterteilen: 
-Newton-Cotes-Formeln und Gauss Quadratur.
+Newton-Cotes-Formeln und Gauss-Quadratur.
+\index{Newton-Cotes-Formel}
 Die im Kapitel \ref{buch:subsection:mittelpunkt} und \ref{buch:subsection:trapez} beschriebenen
 Trapezregel und Mittelpunktsregel gehören zu der ersten Kategorie.
+\index{Trapezregel}%
+\index{Mittelpunktsregel}%
 Newton-Cotes-Formeln lassen sich dadurch erkennen, dass die Stützstellen auf der $x$-Achse 
 gleichmässig verteilt sind und eignen sich besonders für die Integration, wenn sich $f(x)$ 
 effizient in kleinen Intervallen berechnen lässt oder bereits von Computern berechnet worden ist.

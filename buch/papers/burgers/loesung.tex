@@ -72,7 +72,8 @@ gefunden werden.
 
 \subsubsection{Stabilit\"atskriterium lineare Methoden}
 	Die Stabilit\"at kann f\"ur diese L\"osungsmethode nicht garantiert werden.
-	Sie folgt dem Courant-Friedrichs-Lewy Kriterium
+	Sie folgt dem Courant-Friedrichs-Lewy-Kriterium
+\index{Courant-Friedrichs-Lewy-Kriterium}%
 	\begin{equation}
 		  c = \frac{u \, \Delta t}{\Delta x} < c_{\text{krit}}.
 	\end{equation}
@@ -86,7 +87,7 @@ gefunden werden.
 
 
 \subsubsection{Leap-Frog Methode}
-
+\index{Leap-Frog Methode}%
 	Bei genauer Betrachtung der Ableitungen in \autoref{burgers:fig:Linear1} und \autoref{burgers:fig:Linear2} erkennt man, dass sich die berechnete Ableitung eigentlich zwischen den beiden Punkten befindet.
 	Grunds\"atzlich sollte man für ein optimales Resultat die Ableitung genau am Punkt $u_{i}^{n}$ erhalten.
 
@@ -144,16 +145,17 @@ gefunden werden.
 	Mit der Einf\"uhrung des Leap-Frog Verfahrens wurde eine unerw\"unschte Instabilit\"at in das System gebracht.
 	Die Problematik ist, dass im Raum über zwei Raumschritte abgetastet wird.
 	Dabei kann schon in einem Abtastschritt eine Änderung vorkommen.
-	Von einer technischer Blickrichtung kann von einer Verletzung des Nyquist-Shannon-Abtasttheorem gesprochen werden.
+	Von einer technischer Blickrichtung kann von einer Verletzung des Nyquist-Shannon-Abtasttheorems gesprochen werden.
 	Die Abtastrate beträgt nicht das Doppelte der höchsten Frequenz im System.
 
 	\medskip
 
 	Die erw\"ahnte Instabilit\"at im Abschnitt \ref{burgers:sec:nwp}, auf die Richardson gestossen ist, ist die hier beschriebe.
+\index{Richardson, Lewis Fry}%
 	Ein analytisches Beispiel aus der Biografie von Richardson \cite{burgers:lynch_2014} mit der Differentialgleichung der Reibung.
 
 	\begin{equation}
-		\frac{dQ}{dt} = - \kappa Q, \,\,\,\,\, \text{wobei} \, \,\,\,\,\,\, Q=Q^0 \,\,\,\,\,\,\, \text{bei} \,\,\,\,\,\,\,\, t=0
+		\frac{dQ}{dt} = - \kappa Q, \,\,\,\,\, \text{wobei} \, \,\,\,\,\,\, Q=Q^0 \,\,\,\,\,\,\, \text{bei} \,\,\,\,\,\,\,\, t=0.
 	\end{equation}
 	Mit dem expliziten Verfahren w\"urde die Diskretisierung wie folgt aussehen:
 	\begin{equation}
@@ -199,6 +201,7 @@ gefunden werden.
 	Man sieht, dass $|\xi_+| < 1$ und somit eine abfallende, gegen Null gehende L\"osung entsteht.
 	Allerdings ist 	$|\xi_-| > 1$ und damit w\"achst die zu $\xi_-$ gehörige Lösung ohne Limit mit $n$.
 	Dieser Anteil wird der  \textit{computational mode} genannt und entsteht bei der Verwendung des expliziten Leap-Frog Verfahren.
+\index{computational mode}%
 	In \autoref{burgers:fig:cmr} kann der Verlauf der Lösungen für $\xi$ betrachted werden.
 	\begin{figure}
 	\centering
@@ -222,8 +225,10 @@ gefunden werden.
 	\paragraph{Unterdrückung des Computational Mode}
 	\label{burgers:sec:cm}
 
-	Dieser hochfrequente Fehler kann mittels eines digitalen Tiefpass-Filters eliminiert werden.
-	Das sogenannte Robert-Asselin-Time-Filter \cite{burgers:time_filter} kann hierf\"uhr eingesetzt werden.
+	Dieser hochfrequente Fehler kann mittels eines digitalen Tiefpassfilters eliminiert werden.
+\index{Tiefpassfilter}
+	Das sogenannte Robert-Asselin-Time-Filter \cite{burgers:time_filter} kann hierf\"ur eingesetzt werden.
+\index{Robert-Asselin-Time-Filter}%
 	Das Filter
 		\begin{equation}
 			\hat{u}(t_n,x_i) = u(t_n,x_i)+ \frac{\alpha}{2} [ \, u(t_n,x_{i-1}) - 2u(t_n,x_i)+u(t_n,x_{i+1}) ] \,
@@ -232,7 +237,7 @@ gefunden werden.
 	Mit dem D\"ampfungsfaktor $\alpha$ kann das Filter auf die Applikation angepasst werden.
 
 \subsection{Implizit}
-
+\index{implizites Verfahren}%
 	Beim impliziten Verfahren werden Datenpunkte der gleichen Zeitebene wie der gesuchte Punkt $u_{i}^{n}$ verwendet.
 
 
@@ -297,7 +302,6 @@ gefunden werden.
 	\begin{equation}
 	\frac {\partial u}{\partial t}+u{\frac {\partial u}{\partial x}} \cong \frac{u_{i}^{n}-u_{i}^{n-1}}{\Delta t}+ u_{i}^{n-1}\, \frac{u_{i+1}^{n}-u_{i-1}^{n}}{2\,\Delta x}=0.
 	\end{equation}
-
 	Die Gleichung kann nach den Unbekannten
 	\begin{equation}
 	   -u_{i}^{n-1} \, \Delta t \, u_{i-1}^{n} +  2 \, \Delta x \,  u_{i}^{n} + u_{i}^{n-1} \, \Delta t \, u_{i+1}^{n} =  2 \, \Delta x \, u_{i}^{n-1}
@@ -358,6 +362,7 @@ gefunden werden.
 	\end{matrix}}\right].
 	  \end{equation}
 	Matrizen mit dieser Anordnung werden tridiagonale Matrizen genannt.
+\index{tridiagonal}%
 	Die Gleichungen haben die allgemeine Form
 	  \begin{equation}
 	    a_{i}x_{{i-1}}+b_{i}x_{i}+c_{i}x_{{i+1}}=d_{i}
@@ -380,7 +385,8 @@ gefunden werden.
 	      \vdots \\{d_{n}}\\
 	    \end{bmatrix}
 	  \end{equation}
-	   und k\"onnen mit dem Thomas Algorithmus \autoref{TDMA} \cite{burgers:thomas} mit der Geschwindigkeit $O(n)$ gel\"ost werden.
+	   und k\"onnen mit dem Thomas-Algorithmus \autoref{TDMA} \cite{burgers:thomas} mit der Geschwindigkeit $O(n)$ gel\"ost werden.
+\index{Thomas-Algorithmus}%
 	   Mehr zum Algorithmus im Abschnitt \ref{buch:subsection:thomasalgorithmus}.
 
 	\begin{algorithm}\caption{Tridiagonal matrix algorithm (Thomas algorithm)}\label{TDMA}

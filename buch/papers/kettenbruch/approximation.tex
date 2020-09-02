@@ -51,30 +51,20 @@ Folgende Näherungswerte von $\pi$ können schnell und einfach gerechnet werden:
 Die Bestapproximation ist einfach formuliert durch die Bestimmung
 derjenigen rationalen Brüchen, welche von einer gegebenen rationalen
 oder irrationalen Zahl einen festgelegten minimalen Abstand haben
-und dabei einen möglichst kleinen positiven Nenner besitzen.
+und dabei einen möglichst kleinen positiven Nenner besitzen.\cite{kettenbruch:numerical-analysis}
 
 \subsubsection{Beispiel}
 \begin{beispiel}
 Die Funktion $\tan^{-1}(x)$ spielt bei der Berechnung von $\pi$ an vielen Stellen eine Rolle. 
-Es gilt die Leibnizsche Reihe
-\begin{equation}
-\frac{\pi}{4} = \tan^{-1}(1)
-=
-1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \frac{1}{9} - \frac{1}{11} +\dots
-\end{equation}
-Dank der Euler-Transformation gilt folgender Kettenbruch
-\begin{equation}
-\tan^{-1}(x) = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \frac{x^9}{9} - 
-\frac{x^{11}}{11}\dots,		\qquad x \leq 1
-\end{equation}
-Somit kann der Kettenbruch von $\tan^{-1}(x)$ folgendermassen dargestellt werden.
+Der Kettenbruch von $\tan^{-1}(x)$ kann folgendermassen dargestellt werden.
 \begin{equation}
 \tan^{-1}(x)
 =
 \cfrac{x}{1+\cfrac{x^2}{3+\cfrac{4x^2}{5+\cfrac{9x^2}{7+\cfrac{16x^2}{9+\cdots}}}}}
-\qquad	(|x|< 1)
+\qquad	(|x|< 1).
 \end{equation}
-Das Gleichungssystem kann umgeschrieben werden als Funktion $f_n$
+Diese spezielle Darstellungsform der Arkustangens Funktion wird in Kapitel 19 begründet.
+Somit kann der Kettenbruch auch umgeschrieben werden als Funktion $f_n$
 \begin{equation}
 f_n(x) = \frac{x}{1+}\frac{x^2}{3+}\frac{4x^2}{5+}\cdots\frac{(n-1)^2 x^2}{2n-1}
 \qquad	(|n|\ge 2)
@@ -112,4 +102,3 @@ n	& f_n(1) 	\\
 In wenigen und einfachen Schritten haben wir mit Hilfe einer
 Kettenbruchentwicklung ein System gebildet das die Konvergenz der
 Funktion $\tan^{-1}(x)$ vorantreibt und präzise Resultate liefert.
-

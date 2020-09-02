@@ -6,6 +6,8 @@
 \section{Problemstellung
 \label{section:pde:problem}}
 \rhead{Problemstellung}
+\index{Differentialgleichung!gewöhnlich}%
+\index{gewöhnliche Differentialgleichung}%
 Gewöhnliche Differentialgleichungen werden durch eine einzige Funktion
 $f\colon \mathbb R\times\mathbb R^n: (t,x)\mapsto f(t,x)$ beschrieben,
 werden.
@@ -24,6 +26,7 @@ ist eine Funktion $x(t)$ mit $x(t_0)=x_0$ derart, dass
 \]
 Das Definitionsgebiet der Lösungsfunktion $x(t)$ ist ein Intervall
 der Form $[t_0,a]$ mit $a>t_0$.
+\index{Definitionsgebiet}%
 
 Für eine partielle Differentialgleichung ist die Situation wesentlich
 komplizierter.
@@ -59,6 +62,8 @@ in Abschnitt~\ref{subsection:pde:loesungen} Lösungen beschreiben.
 \subsection{Gebiet und Rand
 \label{subsection:pde:gebiet}}
 Eine partielle Differentialgleichung sucht eine Funktion
+\index{partielle Differentialgleichung}%
+\index{Differentialgleichung!partiell}%
 \[
 u\colon \Omega\to\mathbb R
 \]
@@ -81,7 +86,7 @@ als eine Gleichung ähnlich wie zum Beispiel
 (x_1,\dots,x_n)\in \Omega
 \]
 gelten, $\Delta$ ist der {\em Laplace-Operator}.
-\index{Laplace-Operator}
+\index{Laplace-Operator}%
 Diese Beobachtung schränkt die Art der Menge $\Omega$ bereits ein,
 wie im Folgenden diskutiert werden soll.
 
@@ -111,7 +116,9 @@ Quotienten
 \]
 gilt.
 Der Grenzwert bedeutet, dass es für jedes $\varepsilon>0$ eine Umgebung
+\index{Umgebung}%
 $U_\delta(x_0)=\{x\;|\; |x-x_0|<\delta\}$ gibt derart, dass
+\index{Udeltax0@$U_\delta(x_0)$}
 \[
 \bigl|
 u(x)-u(x_0) - Du(x_0)\cdot (x-x_0)
@@ -125,6 +132,9 @@ im Definitionsgebiet $\Omega$ der Differentialgleichung vorhanden ist.
 Dies führt auf die folgende Definition (siehe auch Abbildung~\ref{buch:pde:figure:offen}.
 
 \begin{definition}
+\index{offene Menge}%
+\index{Gebiet}%
+\index{Menge!offen}%
 Eine Menge $\Omega$ heisst {\em offen}, wenn mit jedem Punkt $x\in \Omega$
 auch eine offene Umgebung $U_{\delta}(x)\subset\Omega$ darin enthalten ist.
 Ein {\em Gebiet} ist eine offene Menge in $\mathbb R^n$.
@@ -132,6 +142,7 @@ Ein {\em Gebiet} ist eine offene Menge in $\mathbb R^n$.
 
 Gebiete sind also genau die sinnvollen Definitionsgebiete für eine partielle
 Differentialgleichung.
+\index{Definitionsgebiet}%
 Es reicht allerdings nicht, dass die Funktion $u$ auf $\Omega$ definiert
 ist, da ja auch noch Randwerte erfüllt werden müssen.
 
@@ -142,6 +153,7 @@ ist, da ja auch noch Randwerte erfüllt werden müssen.
 Die sechs Strahlen der Menge $A$ links können nichts zu den Randwerten
 einer partiellen Differentialgleichunb beitragen, weil sie keinen
 Einfluss auf Werte in inneren Punkten (Mitte) haben können.
+\index{Strahlen}%
 Randwerte müssen daher nur auf einem Teil des Randes $\partial\mathring{A}$
 des Inneren (rechts) spezifiziert werden.
 \label{buch:pde:figure:gebiet}}
@@ -151,9 +163,11 @@ des Inneren (rechts) spezifiziert werden.
 Der {\em Abschluss} $\bar{\Omega}$ einer Menge $\Omega\subset\mathbb R^n$ ist
 die Menge aller Punkte in $\mathbb R^n$, die Grenzwerte von Folgen in
 $\Omega$ sind.
+\index{Abschluss}%
 Das {\em Innere} $\mathring{A}$ einer Menge $A$ ist die Menge aller Punkte
 $x$ derart, dass es eine Umgebung $U_\delta(x)$ gibt, die ganz in $A$
 enthalten ist: $U_{\delta}(x)\subset A$.
+\index{Inneres}%
 \end{definition}
 
 Alternativ kann man den Abschluss auch charakterisieren als die Menge
@@ -171,6 +185,8 @@ können, können zu diesem Zweck hinzugezogen werden.
 \begin{definition}
 Der {\em Rand} $\partial A$ einer Menge $A\subset\mathbb R^n$ ist
 $\partial A=\bar{A}\setminus\mathring{A}$.
+\index{Rand}
+\index{d@$\partial A$}
 \end{definition}
 
 Während also eine Differentialgleichung typischerweise auf einem
@@ -190,11 +206,14 @@ etwas Ordnung bringen soll.
 \subsubsection{Ordnung}
 Wie bei den gewöhnlichen Differentialgleichungen klassifizieren wir
 auch partielle Differentialgleichungen nach der Ordnung.
+\index{Ordnung!einer partiellen Differentialgleichung}%
+\index{partielle Differentialgleichung!Ordnung}
 
 \begin{definition}
 Die {\em Ordnung} einer partiellen Differentialgleichung ist die
 Ordnung der höchsten Ableitung, die in der Differentialgleichung
 vorkommt.
+\index{Ordnung}%
 \end{definition}
 
 Für die folgende Diskussion reicht es, partielle Differentialgleichungen
@@ -259,8 +278,9 @@ Eine partielle Differentialgleichung heisst {\em quasilinear},
 wenn die Funktion $F$ linear ist in den Argumenten $p_i$ und $t_{ij}$,
 wenn also die Bedingungen~\eqref{pde:eqn:linearp} und \eqref{pde:eqn:lineart}
 gelten.
+\index{quasilinear}%
 Linearität in $u$, also die Bedingung~\eqref{pde:eqn:linearu} ist
-für eine quaslinieare partielle Differentialgleichung nicht verlangt.
+für eine quasilineare partielle Differentialgleichung nicht verlangt.
 
 \begin{beispiel}
 Die Differentialgleichung
@@ -283,6 +303,8 @@ Diese Funktion ist linear in $t_{11}$ und $t_{22}$.
 \begin{beispiel}
 Die partielle Differentialgleichung erster Ordnung von Burgers
 (Siehe auch Kapitel~\ref{chapter:burgers})
+\index{Burgers}%
+\index{Gleichung!von Burgers}%
 \begin{equation}
 \frac{\partial u}{\partial x_1}
 +
@@ -331,7 +353,7 @@ f
 Da es in den zweiten Ableitungen nicht auf die Reihenfolge ankommt,
 kann die Matrix $a_{ij}$ immer symmetrisch gewählt werden.
 Die Matrix $A=(a_{ij})$ heisst die {\em Symbolmatrix} der Differentialgleichung.
-\index{Symbolmatrix}
+\index{Symbolmatrix}%
 
 Es stellt sich heraus, dass die Terme zweiter Ordnung, also die 
 Matrix $A$, das Verhalten der Lösung wesentlich beeinflussen.
@@ -363,11 +385,15 @@ Sie heisst {\em parabolisch}, wenn alle Eigenwerte bis auf einen
 verschwindenden positiv sind.
 \end{definition}
 \index{elliptische partielle Differentialgleichung}%
-\index{hyperbolisch partielle Differentialgleichung}%
-\index{parabolisch partielle Differentialgleichung}%
+\index{elliptisch}%
+\index{hyperbolische partielle Differentialgleichung}%
+\index{hyperbolisch}%
+\index{parabolische partielle Differentialgleichung}%
+\index{parabolisch}%
 
 \begin{beispiel}
 Die {\em Wellengleichung}
+\index{Wellengleichung}%
 \[
 \frac{1}{a^2}\frac{\partial^2 u}{\partial t^2}
 =
@@ -401,6 +427,7 @@ offen sein, ohne dass die Eindeutigikeit der Lösung dadurch gefährdet wird.
 
 \begin{beispiel}
 Die Gleichung für das Potential einer Ladungsverteilung
+\index{Ladungsverteilung}%
 \[
 \Delta u = f
 \qquad\Rightarrow\qquad
@@ -418,6 +445,7 @@ Die Lösungen dieser Gleichung sind nur dann bestimmt, wenn Werte von $u$
 auf dem gesamten Rand des Gebietes vorgegeben werden.
 Es ist also nicht möglich, eine ``Zeitrichtung'' für die Entwicklung
 der Lösung einer solchen Differentialgleichung zu finden.
+\index{Zeitrichtung}%
 \end{beispiel}
 
 Die Verschiedenartigkeit der Lösungen in Abhängigkeit vom Typ der
@@ -425,6 +453,7 @@ Differentialgleichung hat zur Folge, dass verschiedene Lösungsverfahren
 zum Einsatz kommen müssen.
 Die Klassifikation einer Differentialgleichung ist also Vorbedingung
 für die Wahl eines geeigneten Lösungsverfahrens.
+\index{Klassifikation!partielle Differentialgleichung}
 
 \subsection{Randbedingungen
 \label{subsection:pde:randbedingungen}}
@@ -434,6 +463,7 @@ gewählten Teilen das Randes $\partial\Omega$ des Gebietes $\Omega$
 vorgegeben sind.
 Die Theorie der partiellen Differentialgleichungen studiert ausführlich,
 welche Art von Randbedingungen wo auf dem Rand zu spezifizieren sind.
+\index{Randbedingung}%
 
 \subsubsection{Dirichlet-Randbedingungen}
 Werte der Funktion auf dem Rand können vorgegeben werden, indem eine
@@ -444,7 +474,8 @@ u(x) = g(x)
 $
 gilt.
 Diese Art von Randbedingungen heisst {\em Dirichlet-Randbedingungen}.
-\index{Dirichlet-Randbedingung}
+\index{Dirichlet-Randbedingung}%
+\index{Randbedingung!Dirichlet}%
 
 \subsubsection{Neumann-Randbedingungen}
 Die Theorie des Anfangswertproblems für gewöhnliche Differentialgleichungen
@@ -505,7 +536,7 @@ Die {\em Normalableitung}
 in $x$ ist die Richtungsableitung 
 der Funktion $u$ in Richtung $n$.
 \end{definition}
-\index{Normalableitung}
+\index{Normalableitung}%
 
 Im Falle der Wellengleichung
 \[
@@ -544,7 +575,8 @@ Die Vorgabe der Normalableitung auf dem Rand $\partial\Omega$
 \]
 heisst eine {\em Neumann-Randbedingung}.
 \end{definition}
-\index{Neumann-Randbedingung}
+\index{Neumann-Randbedingung}%
+\index{Randbedingung!Neumann}%
 
 \subsection{Lösungen
 \label{subsection:pde:loesungen}}

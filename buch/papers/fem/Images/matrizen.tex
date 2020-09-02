@@ -1,0 +1,121 @@
+%
+% matrizen.tex -- matrizen
+%
+% (c) 2020 Prof Dr Andreas Müller, Hochschule Rapperswil
+%
+\documentclass[tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{times}
+\usepackage{txfonts}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usetikzlibrary{arrows,intersections,math}
+\begin{document}
+\def\skala{1}
+\begin{tikzpicture}[>=latex,thick,scale=\skala]
+
+\definecolor{farbe1}{rgb}{1,0,0}
+\definecolor{farbe2}{rgb}{0,0,1}
+
+\def\xstep{0.82}
+\def\ystep{0.595}
+\def\xorg{-0.43}
+\def\yorg{-0.625}
+
+\begin{scope}[xshift=-3cm,yshift=3cm]
+
+\foreach \x in {0,1,2}{
+	\foreach \y in {0,1,2}{
+		\fill[color=farbe1!20]
+			({\xorg+(\x-0.3)*\xstep},{\yorg+(\y-0.4)*\ystep})
+			rectangle
+			({\xorg+(\x+0.3)*\xstep},{\yorg+(\y+0.4)*\ystep});
+	}
+}
+
+
+\node at (0,0) {$\displaystyle
+\renewcommand\arraystretch{1.4}
+B_1 = \begin{pmatrix}
+\;\;\frac12\;\; & \frac16    & \;\;\frac13  \;\; \\
+\frac16 & \frac1{12} & \frac1{24}\\
+\frac13 & \frac1{24} & \frac1{12}
+\end{pmatrix}
+$};
+
+\end{scope}
+
+\begin{scope}[xshift=3cm,yshift=3cm]
+
+\foreach \x in {0,1,2}{
+	\foreach \y in {0,1,2}{
+		\fill[color=farbe2!20]
+			({\xorg+(\x-0.3)*\xstep},{\yorg+(\y-0.4)*\ystep})
+			rectangle
+			({\xorg+(\x+0.3)*\xstep},{\yorg+(\y+0.4)*\ystep});
+	}
+}
+
+\node at (0,0) {$\displaystyle
+\renewcommand\arraystretch{1.4}
+B_2 = \begin{pmatrix}
+\;\;\frac12\;\; & \frac16    & \;\;\frac13\;\;   \\
+\frac16 & \frac1{12} & \frac1{24}\\
+\frac13 & \frac1{24} & \frac1{12}
+\end{pmatrix}
+$};
+
+\end{scope}
+
+\def\xstep{1.35}
+\def\ystep{0.593}
+\def\xorg{-1.71}
+\def\yorg{-0.91}
+
+\foreach \x in {0,1,3}{
+	\foreach \y in {0,2,3}{
+		\fill[color=farbe1!20]
+			({\xorg+(\x-0.4)*\xstep},{\yorg+(\y-0.4)*\ystep})
+			rectangle
+			({\xorg+(\x+0.4)*\xstep},{\yorg+(\y+0.4)*\ystep});
+	}
+}
+
+\foreach \x in {1,2,3}{
+	\foreach \y in {0,1,2}{
+		\fill[color=farbe2!20]
+			({\xorg+(\x-0.4)*\xstep},{\yorg+(\y-0.4)*\ystep})
+			rectangle
+			({\xorg+(\x+0.4)*\xstep},{\yorg+(\y+0.4)*\ystep});
+	}
+}
+
+\foreach \x in {1,3}{
+	\foreach \y in {0,2}{
+		\fill[color=farbe1!20]
+			({\xorg+(\x-0.4)*\xstep},{\yorg+(\y+0.4)*\ystep})
+			--
+			({\xorg+(\x-0.4)*\xstep},{\yorg+(\y-0.4)*\ystep})
+			--
+			({\xorg+(\x+0.4)*\xstep},{\yorg+(\y+0.4)*\ystep})
+			--cycle;
+	}
+}
+
+
+\node at (0,0) {$\displaystyle
+\renewcommand\arraystretch{1.4}
+B = \begin{pmatrix}
+\frac12 & \frac16              &  \phantom{\frac1{24}+\frac1{12}}          & \frac13                \\
+\frac16 & \frac1{12} + \frac12 & \frac16     & \frac1{24}+\frac13     \\
+ \phantom{\frac1{24}+\frac1{12}}             & \frac16              & \frac1{12}  & \frac1{24}             \\
+\frac13 & \frac1{24} + \frac13 & \frac1{24}  & \frac1{12} + \frac1{12}
+\end{pmatrix}
+$};
+
+\draw[->,line width=1.4pt] (-1.7,1.9) -- (-0.8,1.3);
+\draw[->,line width=1.4pt] (2.3,1.9) -- (1.4,1.3);
+
+\end{tikzpicture}
+\end{document}
+

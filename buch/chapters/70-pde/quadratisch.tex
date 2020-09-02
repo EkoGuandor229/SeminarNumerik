@@ -8,6 +8,7 @@
 In den vorangegangenen Beispielen wurde gezeigt, wie sich viele
 partielle Differentialgleichungen auf äquivalente Minimalprobleme
 zurückführen lassen.
+\index{quadratisches Minimalproblem}
 Indem man die Funktionen dann als Linearkombinationen approximiert,
 kann man daraus quadratische Minimalprobleme für die Koeffizienten
 dieser Linearkombinationen gewinnen.
@@ -18,6 +19,7 @@ Minimalprobleme algebraisch gelöst werden können.
 % Least-Squares-Problem als Beispiel
 %
 \subsubsection{Least-Squares-Problem}
+\index{Least-Squares-Problem}%
 Das folgende Problem ist ein wohlbekanntes Beispiel für eine einfaches
 quadratisches Minimalproblem.
 Es soll hier als Einstieg dienen, Ziel ist eine allgemeinere Form von
@@ -36,6 +38,7 @@ Finde einen $m$-dimensionalen Vektor $x$ derart, dass $|Ax-b|$ minimal ist.
 Die geometrische Intuition zur Lösung des Problems ist, dass 
 $Ax$ die Punkte eines Unterraums sind, der von den Spalten von $A$
 aufgespannt wird.
+\index{Unterraum}%
 Gesucht wird jetzt derjenige Punkt, der möglichst nahe am Punkt $b$
 liegt, der möglicherweise ausserhalb des Unterraums ist.
 Für diesen Punkt $Ax$ muss die Differenz $Ax-b$ auf dem Unterraum
@@ -44,6 +47,7 @@ Da dieser von den Spalten von $A$ aufgespannt wird, muss $Ax-b$ auf allen
 Spalten von $A$ senkrecht stehen.
 Das Skalarprodukt aller Spalten von $A$ mit $Ax-b$ muss daher verschwinden,
 also
+\index{Skalarprodukt}%
 \[
 A^t(Ax-b) = 0
 \qquad\Rightarrow\qquad
@@ -106,10 +110,13 @@ $Q(x)=x^tbx$ minimiert.
 % Nichtlineare Minimalprobleme
 %
 \subsubsection{Nichtlineare Minimalprobleme}
+\index{Nichtlineares Minimalproblem}%
+\index{Minimalproblem!nichtlinear}%
 In der Theorie der Funktionen mehrere Variablen lernt man die folgende
 Methode zur Lösung nichtlinearer Minimalprobleme.
 Sie wird oft auch die Methode der Lagrange-Multiplikatoren genannt,
 die Zahlen $\lambda_i$ heissen Lagrange-Multiplikatoren.
+\index{Lagrange-Multiplikator}%
 
 \begin{lemma}
 \label{buch:qm:lemma:lagrangemultiplikatoren}
@@ -137,9 +144,11 @@ Die letzte Gleichung ist eine Vektorgleichung mit $n$-Komponenten,
 das System~\eqref{label:qm:eqn:lagrangemultiplikatoren2} ist also
 ein Gleichungssystem mit $m+n$ Gleichungen für die $n+m$
 Unbekannten $x$ und $\lambda=(\lambda_1,\dots,\lambda_m)$, ein Zeilenvektor.
+\index{Zeilenvektor}%
 
 Die Funktionen $g_i(x)=0$ können in einen $m$-dimensionalen Vektor
 $g(x)$ zusammengefasst werden, für die wir auch den Gradienten
+\index{Gradient}%
 \[
 \nabla g(x)
 =
@@ -286,6 +295,8 @@ Dies lässt sich zum Beispiel mit dem Gauss-Algorithmus sofort
 beweisen.
 Auf die gleiche Weise kann man aber auch eine Formel für die Inverse
 einer Blockmatrix herleiten.
+\index{Blockmatrix}%
+\index{Inverse!einer Blockmatrix}%
 
 \begin{lemma}
 \label{buch:qm:lemma:blockinverse}
@@ -320,7 +331,9 @@ A^{-1} - A^{-1}B(D-CA^{-1}B)^{-1}CA^{-1}  & -A^{-1}B(D-CA^{-1}B)^{-1} \\
 
 \begin{proof}[Beweis]
 Wir schreiben $E_n$ für die $n\times n$-Einheitsmatrizen und führen den
-Gaussalgorithmus auf einem Tableau von Blockmatrizen durch.
+Gauss-Algorithmus auf einem Tableau von Blockmatrizen durch.
+\index{Gauss-Algorithmus}%
+\index{Einheitsmatrix}%
 Der Leser ist aufgefordert, sich zu überlegen, dass die Operationen
 des Gauss-Algorithmus auch funktionieren, wenn man sie in einer Algebra
 von Matrizen durchführt, man muss nur sorgfältig darauf achten, die
@@ -329,7 +342,7 @@ Reihenfolge der Faktoren nicht zu verändern.
 Der erste Schritt im Gauss-Algorithmus ist die Pivot-Division durch
 $A$, was in der Matrizenalgebra die Multiplikation von links mit
 $A^{-1}$ wird.
-Nach Voraussetzung existiert $A^{-1}$, so dass die Zeilenoperatione
+Nach Voraussetzung existiert $A^{-1}$, so dass die Zeilenoperation
 mit Pivot $A$ durchgeführt werden kann:
 \begin{align*}
 \renewcommand\arraystretch{1.25}
@@ -361,6 +374,8 @@ werden, was aber nur möglich ist, wenn $D-CA^{-1}B$ regulär ist.
 Wäre $D-CA^{-1}B$ nicht regulär, dann könnte auch $M$ nicht regulär
 sein.
 Somit kann auch die Pivotdivision durch $D-CA^{-1}B$ und das
+\index{Pivotdivision}%
+\index{Rückwärtseinsetzen}%
 Rückwärtseinsetzen durchgeführt werden, was auf}
 &\rightarrow
 \renewcommand\arraystretch{1.25}

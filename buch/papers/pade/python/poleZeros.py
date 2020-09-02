@@ -14,15 +14,15 @@ from sspade import *
 
 def plotpolezero(z,p,L,M,ax=None):
     if ax is None:
-        fig = plt.figure(figsize=(8,8))
+        fig = plt.figure(figsize=(8,11))
         ax = fig.add_subplot(1,1,1, aspect='equal')
-        fig.tight_layout()
+        #fig.tight_layout()
         ax.set_xlabel('Reale Achse',fontsize=16)
         ax.set_ylabel('Imaginäre Achse',fontsize=16)
     ax.grid(True)
     ax.plot(np.real(z),np.imag(z),'ok',markersize=3,mfc='none')
     ax.plot(np.real(p),np.imag(p),'xk',markersize=3, label='p={},q={}'.format(L,M))
-    ax.legend()
+    ax.legend(fontsize=14)
     return ax
 
 ax=None
@@ -46,3 +46,9 @@ for p in [10,20,30,40]:
     ax=plotpolezero(zeros,poles,40,p,ax)
 plt.savefig("bilder/poles3.pdf")
 
+
+ax=None 
+de = PadeExponential(190,200)
+zeros, poles, k = de.zpk
+ax=plotpolezero(zeros,poles,190,200,ax)
+plt.savefig("bilder/poles4.pdf")
